@@ -22,5 +22,9 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "types": ["../header-hunter_gr2_BE/types", "src"]
+  }
 }
