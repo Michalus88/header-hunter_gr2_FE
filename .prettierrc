@@ -1,12 +1,9 @@
 {
   "singleQuote": true,
   "trailingComma": "all",
-<<<<<<< HEAD
-  "printWidth": 100
-=======
-  "tabWidth": 4,
+  "tabWidth": 2,
   "printWidth": 100,
   "semi": true,
-  "bracketSpacing": true
->>>>>>> 63d1cb7142052db02f021af106aab47879d6b393
+  "bracketSpacing": true,
+  "endOfLine":"auto"
 }
