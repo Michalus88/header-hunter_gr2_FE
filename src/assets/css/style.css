@@ -6,7 +6,7 @@
 
 body,
 #root,
-#App .page_wrapper {
+#App .page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,4 +21,9 @@ body,
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: #222225;
+}
+
+.login-page-wrap {
+  background-color: rgb(35, 146, 41);
 }/*# sourceMappingURL=style.css.map */
