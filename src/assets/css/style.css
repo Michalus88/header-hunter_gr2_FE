@@ -24,6 +24,14 @@ body,
   background-color: #222225;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-page-login-group {
   position: absolute;
   top: 50%;
@@ -46,6 +54,12 @@ body,
   border-radius: 2px;
   background: #292a2b;
 }
+.login-page-login-group .login-input-email .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-email .p-float-label input:focus ~ label {
+  color: #c96789;
+}
 .login-page-login-group .login-input-password {
   margin: 1rem 0;
 }
@@ -53,6 +67,12 @@ body,
   border: none;
   border-radius: 2px;
   background: #292a2b;
+}
+.login-page-login-group .login-input-password .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-password .p-float-label input:focus ~ label {
+  color: #c96789;
 }
 .login-page-login-group .login-forgot-pass {
   display: flex;
@@ -72,6 +92,7 @@ body,
 .login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
   font-weight: bold;
   text-decoration: underline;
+  margin-left: 0.5rem;
 }
 .login-page-login-group .register-new-acc .register-new-acc-button {
   width: 120px;
@@ -79,4 +100,23 @@ body,
   background-color: #e02735;
   color: #f7f7f7;
   border-radius: 2px;
+}
+.login-page-login-group .register-new-acc register-new-acc-button:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:hover {
+  background-color: #c96789;
+  color: #f7f7f7;
+}
+.login-page-login-group .register-new-acc .p-button:focus {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:focus:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button:disabled:focus {
+  background-color: #e02735;
 }/*# sourceMappingURL=style.css.map */
