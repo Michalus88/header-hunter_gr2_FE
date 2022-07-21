@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root,
+#App .page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-container {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #222225;
+}
+
+.login-page-login-group {
+  position: absolute;
+  top: 10%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-page-login-group .login-group-image {
+  width: 124px;
+  height: 76px;
+}
+.login-page-login-group .login-input-email {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-email .p-inputtext {
+  border: none;
+  border-radius: 2px;
+  background: #292a2b;
+}
+.login-page-login-group .login-input-password {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-password .p-inputtext {
+  border: none;
+  border-radius: 2px;
+  background: #292a2b;
+}
+.login-page-login-group .login-forgot-pass {
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text {
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.login-page-login-group .register-new-acc .register-new-acc-button {
+  width: 120px;
+  height: 45px;
+  background-color: #e02735;
+  color: #f7f7f7;
+  border-radius: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */
