@@ -100,4 +100,23 @@ a:active {
   background-color: #e02735;
   color: #f7f7f7;
   border-radius: 2px;
+}
+.login-page-login-group .register-new-acc register-new-acc-button:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:hover {
+  background-color: #c96789;
+  color: #f7f7f7;
+}
+.login-page-login-group .register-new-acc .p-button:focus {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:focus:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button:disabled:focus {
+  background-color: #e02735;
 }/*# sourceMappingURL=style.css.map */
