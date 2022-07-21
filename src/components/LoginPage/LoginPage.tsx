@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 import megaK from '../../assets/img/MegaK.webp';
 
 export const LoginPage = () => {
@@ -30,6 +31,13 @@ export const LoginPage = () => {
             />
             <label htmlFor="password">Hasło</label>
           </span>
+        </div>
+        <div className="login-forgot-pass">Zapominiałeś hasła?</div>
+        <div className="register-new-acc">
+          <div className="register-new-acc-text">
+            Nie masz konta? <span className="register-new-acc-register">Zarejestruj się</span>
+          </div>
+          <Button className="register-new-acc-button" label="Zaloguj się" />
         </div>
       </div>
     </div>

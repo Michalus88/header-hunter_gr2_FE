@@ -43,6 +43,7 @@ body,
 }
 .login-page-login-group .login-input-email .p-inputtext {
   border: none;
+  border-radius: 2px;
   background: #292a2b;
 }
 .login-page-login-group .login-input-password {
@@ -50,5 +51,32 @@ body,
 }
 .login-page-login-group .login-input-password .p-inputtext {
   border: none;
+  border-radius: 2px;
   background: #292a2b;
+}
+.login-page-login-group .login-forgot-pass {
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text {
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.login-page-login-group .register-new-acc .register-new-acc-button {
+  width: 120px;
+  height: 45px;
+  background-color: #e02735;
+  color: #f7f7f7;
+  border-radius: 2px;
 }/*# sourceMappingURL=style.css.map */

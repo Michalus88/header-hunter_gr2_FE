@@ -16,6 +16,7 @@
     margin: 1rem 0;
     .p-inputtext {
       border: none;
+      border-radius: 2px;
       background: $input-brown;
     }
   }
@@ -23,7 +24,34 @@
     margin: 1rem 0;
     .p-inputtext {
       border: none;
+      border-radius: 2px;
       background: $input-brown;
+    }
+  }
+  .login-forgot-pass {
+    display: flex;
+    justify-content: end;
+    font-size: 14px;
+  }
+  .register-new-acc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 2rem;
+    .register-new-acc-text {
+      font-size: 14px;
+      .register-new-acc-register {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+    .register-new-acc-button {
+      width: 120px;
+      height: 45px;
+      background-color: $cta;
+      color: $main-text-color;
+      border-radius: 2px;
     }
   }
 }
