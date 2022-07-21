@@ -41,6 +41,15 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        labelComponents: ['CustomInputLabel'],
+        labelAttributes: ['label'],
+        controlComponents: ['CustomInput'],
+        depth: 3,
+      },
+    ],
   },
   settings: {
     'import/parser': {
