@@ -23,3 +23,10 @@ body,
   flex-direction: column;
   background-color: $bgc-dark;
 }
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
