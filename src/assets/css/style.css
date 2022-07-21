@@ -29,4 +29,26 @@ body,
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-page-login-group .login-group-image {
+  width: 124px;
+  height: 76px;
+}
+.login-page-login-group .login-input-email {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-email .p-inputtext {
+  border: none;
+  background: #292a2b;
+}
+.login-page-login-group .login-input-password {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-password .p-inputtext {
+  border: none;
+  background: #292a2b;
 }/*# sourceMappingURL=style.css.map */
