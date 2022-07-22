@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root,
+#App .page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-container {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #222225;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login-page-login-group {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-page-login-group .login-group-image {
+  width: 124px;
+  height: 76px;
+}
+.login-page-login-group .login-input-email {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-email .p-inputtext {
+  border: none;
+  border-radius: 2px;
+  background: #292a2b;
+}
+.login-page-login-group .login-input-email .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-email .p-float-label input:focus ~ label {
+  color: #c96789;
+}
+.login-page-login-group .login-input-password {
+  margin: 1rem 0;
+}
+.login-page-login-group .login-input-password .p-inputtext {
+  border: none;
+  border-radius: 2px;
+  background: #292a2b;
+}
+.login-page-login-group .login-input-password .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-password .p-float-label input:focus ~ label {
+  color: #c96789;
+}
+.login-page-login-group .login-forgot-pass {
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text {
+  font-size: 14px;
+}
+.login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
+  font-weight: bold;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+}
+.login-page-login-group .register-new-acc .register-new-acc-button {
+  width: 120px;
+  height: 45px;
+  background-color: #e02735;
+  color: #f7f7f7;
+  border-radius: 2px;
+}
+.login-page-login-group .register-new-acc register-new-acc-button:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:hover {
+  background-color: #c96789;
+  color: #f7f7f7;
+}
+.login-page-login-group .register-new-acc .p-button:focus {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:focus:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button:disabled:focus {
+  background-color: #e02735;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.BookInterview {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  border-bottom: 10px solid #222225;
+}
+
+.BookInterview__student {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  hight: 100%;
+}
+.BookInterview__student--buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+}
+.BookInterview__student--information {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: lighter;
+  font-size: 13px;
+}
+.BookInterview__student--information-avatar {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #222225;
+  margin: 0.3em 1em;
+}
+.BookInterview__student--reservation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 8em;
+  font-size: 12px;
+  margin: 0.3em 1em;
+}
+.BookInterview__student--reservation--reservation-text {
+  font-size: 0.6rem;
+  padding: 0.5em 0;
+  font-weight: lighter;
+  color: #939393;
+}
+.BookInterview__student--reservation--reservation-date {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.p-button {
+  background-color: #e02735;
+}
+
+.p-button:hover {
+  background-color: #c96789;
+  color: #f7f7f7;
+}
+
+.p-button:focus {
+  background-color: #e02735;
+}
+
+.p-button:focus:hover {
+  background-color: cadetblue;
+}
+
+.p-button:disabled:focus {
+  background-color: #e02735;
+}
+
+.BookInterview-button {
+  background-color: #e02735;
+  color: #f7f7f7;
+  border-radius: 2px;
+  margin: 0 0.5em;
+  font-weight: lighter;
+  font-size: 13px;
+}
+.BookInterview-button:hover {
+  background-color: yellow;
+}
+
+/*# sourceMappingURL=style.css.map */
