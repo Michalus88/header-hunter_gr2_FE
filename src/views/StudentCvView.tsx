@@ -1,10 +1,13 @@
 import React from 'react';
-import { Wrapper } from '../components/custom/Wrapper/Wrapper';
+import { MainWrapper } from '../components/common/MainWrapper/MainWrapper';
+import { GoBack } from '../components/GoBack/GoBack';
 
 export const StudentCvView = () => {
   return (
-   <Wrapper>
-    <p>{'<'} Wróć</p>
-   </Wrapper>
+    <MainWrapper>
+      <GoBack>
+        <p>coś</p>
+      </GoBack>
+    </MainWrapper>
   );
 };
