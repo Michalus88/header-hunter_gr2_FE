@@ -17,16 +17,39 @@
 
 .BookInterview__student {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  hight: 100%;
 
   &--buttons {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding: 0.5em
+    padding: 1.2em;
+
+    .p-button {
+      margin: 0.5em;
+      height: 27px;
+      background-color: $megak-red-color;
+      border-radius: 0;
+      font-size: 12px;
+      font-weight: normal;
+      text-align: center;
+      color: $main-text-color;
+
+      &:hover {
+        background-color: $megak-light-color !important;
+        color: $main-text-color !important;
+      }
+
+      &:disabled:focus {
+        background-color: $megak-red-color;
+      }
+
+      &:focus {
+        background-color: $megak-red-color !important;
+      }
+    }
   }
 
   &--information {
@@ -41,11 +64,15 @@
 
   &--information-avatar {
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 1px solid $bgc-dark;
-    margin: 0.3em 1em;
+    margin-left: 3.5em;
+  }
+
+  &--information-name {
+    margin-left: 1em;
   }
 
   &--reservation {
@@ -72,26 +99,11 @@
 }
 
 //interview button
-.p-button {
-  background-color: $megak-red-color;
-}
+//.p-button {
+//  margin: 0.5em;
+//  background-color: $megak-red-color;
+//}
 
-.p-button:hover {
-  background-color: $megak-light-color;
-  color: $main-text-color;
-}
-
-.p-button:focus {
-  background-color: $megak-red-color;
-}
-
-.p-button:focus:hover {
-  background-color: cadetblue;
-}
-
-.p-button:disabled:focus {
-  background-color: $megak-red-color;
-}
 
 .BookInterview-button {
   background-color: $megak-red-color;

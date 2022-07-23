@@ -137,16 +137,35 @@ a:active {
 
 .BookInterview__student {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  hight: 100%;
 }
 .BookInterview__student--buttons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 0.5em;
+  padding: 1.2em;
+}
+.BookInterview__student--buttons .p-button {
+  margin: 0.5em;
+  height: 27px;
+  background-color: #e02735;
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  color: #f7f7f7;
+}
+.BookInterview__student--buttons .p-button:hover {
+  background-color: #c96789 !important;
+  color: #f7f7f7 !important;
+}
+.BookInterview__student--buttons .p-button:disabled:focus {
+  background-color: #e02735;
+}
+.BookInterview__student--buttons .p-button:focus {
+  background-color: #e02735 !important;
 }
 .BookInterview__student--information {
   display: flex;
@@ -159,11 +178,14 @@ a:active {
 }
 .BookInterview__student--information-avatar {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: 1px solid #222225;
-  margin: 0.3em 1em;
+  margin-left: 3.5em;
+}
+.BookInterview__student--information-name {
+  margin-left: 1em;
 }
 .BookInterview__student--reservation {
   display: flex;
@@ -183,27 +205,6 @@ a:active {
 .BookInterview__student--reservation--reservation-date {
   font-weight: bold;
   letter-spacing: 1px;
-}
-
-.p-button {
-  background-color: #e02735;
-}
-
-.p-button:hover {
-  background-color: #c96789;
-  color: #f7f7f7;
-}
-
-.p-button:focus {
-  background-color: #e02735;
-}
-
-.p-button:focus:hover {
-  background-color: cadetblue;
-}
-
-.p-button:disabled:focus {
-  background-color: #e02735;
 }
 
 .BookInterview-button {
