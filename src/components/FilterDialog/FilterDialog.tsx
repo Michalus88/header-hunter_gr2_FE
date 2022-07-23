@@ -1,30 +1,47 @@
 import React from 'react';
-import { BooleanLiteral } from 'typescript';
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import { FilterGroup } from './FilterGroup';
+import { MegaButton } from '../Elements/MegaButton';
 
 interface Props {
-  toggleFilterDialog: boolean;
-  visible: BooleanLiteral;
+  toggleFilterDialog: () => void;
+  visible: boolean;
 }
 
-export const FilterDialog = (toggleFilterDialog: Props) => {
+export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
+  const header = (
+    <div className="filter-header">
+      <div className="filter-header-text">Filtrowanie</div>
+      <Button className="filter-header-button" label="Wyczyść wszystkie" />
+    </div>
+  );
+  const footer = (
+    <div>
+      <MegaButton
+        classNameAdd="megak-secondary"
+        buttonTitle="Anuluj"
+        onClick={() => toggleFilterDialog()}
+      />
+      <MegaButton
+        classNameAdd="megak-primary"
+        buttonTitle="Pokaż wyniki"
+        onClick={() => toggleFilterDialog()}
+      />
+    </div>
+  );
+
   return (
-    <>
-      <Dialog
-        header="Header"
-        visible={visible}
-        style={{ width: '50vw' }}
-        footer={renderFooter('displayBasic')}
-        onHide={() => onHide('displayBasic')}
-      >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </p>
-      </Dialog>{' '}
-    </>
+    <Dialog
+      className="filter-dialog"
+      header={header}
+      visible={visible}
+      resizable={false}
+      footer={footer}
+      onHide={() => toggleFilterDialog}
+      closable={false}
+    >
+      <FilterGroup />
+    </Dialog>
   );
 };

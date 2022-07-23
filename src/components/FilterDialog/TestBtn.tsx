@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from 'primereact/button';
 import { FilterDialog } from './FilterDialog';
+import { MegaButton } from '../Elements/MegaButton';
 
 export const TestBtn = () => {
   const [displayFilterDialog, setSisplayFilterDialog] = useState(false);
@@ -9,11 +9,14 @@ export const TestBtn = () => {
     setSisplayFilterDialog(!displayFilterDialog);
   };
 
-  return;
-  <Button
-    className="register-new-acc-button"
-    label="Zaloguj się"
-    onClick={() => toggleFilterDialog()}
-  />;
-  <FilterDialog visible={displayFilterDialog} toggleFilterDialog={toggleFilterDialog} />;
+  return (
+    <div className="test-btn">
+      <MegaButton
+        classNameAdd="megak-primary"
+        buttonTitle="Test Filters"
+        onClick={() => toggleFilterDialog()}
+      />
+      <FilterDialog visible={displayFilterDialog} toggleFilterDialog={toggleFilterDialog} />
+    </div>
+  );
 };

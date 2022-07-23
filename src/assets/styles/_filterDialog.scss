@@ -1,0 +1,46 @@
+@import './colors';
+.test-btn {
+  margin-top: 5rem;
+}
+.filter-dialog {
+  background: $megaK-black-color;
+  .cancel-button.p-button {
+    width: 120px;
+    height: 45px;
+    color: $main-text-color;
+  }
+  .cancel-button.p-button.p-button-text:enabled:hover {
+    color: $main-text-color;
+  }
+  .filter-header-button {
+    background: $input-brown;
+    color: $main-text-color;
+  }
+  .filter-header-button.p-button.p-button-text:enabled:hover {
+    background: $input-brown;
+    color: $main-text-color;
+  }
+  .p-button:enabled:focus,
+  .p-button:not(button):not(a):not(.p-disabled):focus {
+    background: $input-brown;
+  }
+}
+
+.filter-header {
+  width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-header {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filter-header {
+    width: 90vw;
+  }
+}

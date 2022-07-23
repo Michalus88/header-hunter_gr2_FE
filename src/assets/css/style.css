@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +11,9 @@ body,
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  letter-spacing: 0.7px;
   width: 100%;
-  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -76,7 +78,7 @@ a:active {
 }
 .login-page-login-group .login-forgot-pass {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: 14px;
 }
 .login-page-login-group .register-new-acc {
@@ -101,7 +103,7 @@ a:active {
   color: #f7f7f7;
   border-radius: 2px;
 }
-.login-page-login-group .register-new-acc register-new-acc-button:hover {
+.login-page-login-group .register-new-acc .register-new-acc-button:hover {
   background-color: #c96789;
 }
 .login-page-login-group .register-new-acc .p-button {
@@ -119,4 +121,73 @@ a:active {
 }
 .login-page-login-group .register-new-acc .p-button:disabled:focus {
   background-color: #e02735;
+}
+
+.test-btn {
+  margin-top: 5rem;
+}
+
+.filter-dialog {
+  background: #0a0a0a;
+}
+.filter-dialog .cancel-button.p-button {
+  width: 120px;
+  height: 45px;
+  color: #f7f7f7;
+}
+.filter-dialog .cancel-button.p-button.p-button-text:enabled:hover {
+  color: #f7f7f7;
+}
+.filter-dialog .filter-header-button {
+  background: #292a2b;
+  color: #f7f7f7;
+}
+.filter-dialog .filter-header-button.p-button.p-button-text:enabled:hover {
+  background: #292a2b;
+  color: #f7f7f7;
+}
+.filter-dialog .p-button:enabled:focus,
+.filter-dialog .p-button:not(button):not(a):not(.p-disabled):focus {
+  background: #292a2b;
+}
+
+.filter-header {
+  width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-header {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filter-header {
+    width: 90vw;
+  }
+}
+.mega-k-button {
+  height: 45px;
+  padding: 0 1.3rem;
+  color: #f7f7f7;
+  border-radius: 2px;
+  border: none;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mega-k-button:hover {
+  background-color: #c96789;
+}
+
+.megak-primary {
+  background-color: #e02735;
+}
+
+.megak-secondary {
+  background-color: none;
 }/*# sourceMappingURL=style.css.map */
