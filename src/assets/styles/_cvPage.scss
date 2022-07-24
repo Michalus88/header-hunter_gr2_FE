@@ -1,0 +1,35 @@
+@import './colors';
+
+.main-wrapper{
+  position: relative;
+  width: 1440px;
+  height: 30px;
+  margin: 100px auto;
+  background-color: gray;
+}
+
+.go-back{
+  position: absolute;
+  display: flex;
+  left: -85px;
+  margin: 0 10px;
+
+  .go-back__icon-container{
+    //text-align: center;
+  }
+
+  .go-back__link{
+    display: block;
+    padding: 7px 0;
+    height: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    color: $main-text-color;
+    transition:0.2s;
+
+    &:hover{
+      color:$cta
+    }
+  }
+}
+

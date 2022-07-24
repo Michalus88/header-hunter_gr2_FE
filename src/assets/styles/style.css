@@ -81,4 +81,31 @@ body,
   border-radius: 2px;
 }
 
+.main-wrapper {
+  position: relative;
+  width: 1440px;
+  height: 30px;
+  margin: 100px auto;
+  background-color: gray;
+}
+
+.go-back {
+  position: absolute;
+  display: flex;
+  left: -85px;
+  margin: 0 10px;
+}
+.go-back .go-back__link {
+  display: block;
+  padding: 7px 0;
+  height: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #f7f7f7;
+  transition: 0.2s;
+}
+.go-back .go-back__link:hover {
+  color: #e02735;
+}
+
 /*# sourceMappingURL=style.css.map */
