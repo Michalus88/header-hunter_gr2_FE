@@ -190,6 +190,12 @@ a:active {
 .filter-star-butons-group .filter-input-wrap {
   margin-left: 0.5rem;
 }
+.filter-star-butons-group .filter-input-wrap .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.filter-star-butons-group .filter-input-wrap .p-float-label input:focus ~ label {
+  color: #c96789;
+}
 .filter-star-butons-group .filter-input {
   height: 31px;
   margin: 0.4rem 0.4rem 0.4rem 0;

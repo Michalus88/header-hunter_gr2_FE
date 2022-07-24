@@ -60,6 +60,13 @@
   }
   .filter-input-wrap {
     margin-left: 0.5rem;
+    .p-inputtext:enabled:focus {
+      box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
+        inset 0 0 0 1px #c96789;
+    }
+    .p-float-label input:focus ~ label {
+      color: $megak-light-color;
+    }
   }
   .filter-input {
     height: 31px;
