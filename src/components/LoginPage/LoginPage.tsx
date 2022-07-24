@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
+import { TestBtn } from '../FilterDialog/TestBtn';
+import { MegaButton } from '../Elements/MegaButton';
 
 export const LoginPage = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
+
+  const clicked = () => {
+    console.log('Clicked');
+  };
 
   return (
     <div className="login-page-login-group">
@@ -48,9 +53,14 @@ export const LoginPage = () => {
               <NavLink to="no_link_yet">Zarejestruj się</NavLink>
             </span>
           </div>
-          <Button className="register-new-acc-button" label="Zaloguj się" />
+          <MegaButton
+            classNameAdd="register-new-acc-button"
+            buttonTitle="Zaloguj się"
+            onClick={() => clicked()}
+          />
         </div>
       </div>
+      <TestBtn />
     </div>
   );
 };
