@@ -3,35 +3,86 @@
   margin-top: 5rem;
 }
 .filter-dialog {
-  background: $megaK-black-color;
-  .cancel-button.p-button {
-    width: 120px;
-    height: 45px;
-    color: $main-text-color;
+  font-family: 'Catamaran';
+}
+.p-dialog-mask {
+  .p-dialog .p-dialog-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 1.25rem;
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
   }
-  .cancel-button.p-button.p-button-text:enabled:hover {
-    color: $main-text-color;
+  .p-dialog .p-dialog-footer {
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
   }
-  .filter-header-button {
-    background: $input-brown;
-    color: $main-text-color;
-  }
-  .filter-header-button.p-button.p-button-text:enabled:hover {
-    background: $input-brown;
-    color: $main-text-color;
-  }
-  .p-button:enabled:focus,
-  .p-button:not(button):not(a):not(.p-disabled):focus {
-    background: $input-brown;
+  .p-dialog .p-dialog-content {
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
   }
 }
-
 .filter-header {
   width: 520px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  .filter-clear-all {
+    height: 31px;
+    background: $mega-dark-blue-grey;
+  }
+}
+.fileter-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-star-butons-wraper {
+  margin-bottom: 0.8rem;
+}
+.filter-star-butons-tile {
+  font-size: 14px;
+}
+
+.filter-star-butons-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  .filter-star-butons-group-small {
+    height: 31px;
+    margin: 0.3rem 0.4rem 0.3rem 0;
+    padding: 0 0.4rem;
+    color: $main-text-color;
+    background-color: $input-brown;
+  }
+  .filter-input-wrap {
+    margin-left: 0.5rem;
+  }
+  .filter-input {
+    height: 31px;
+    margin: 0.4rem 0.4rem 0.4rem 0;
+    padding: 0 0.4rem;
+    border: none;
+    background-color: $input-brown;
+  }
+  .filter-radio-butons-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+.filter-radiobutton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  border: 2px color green;
+  .filter-radio-label {
+    margin-left: 0.5rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
