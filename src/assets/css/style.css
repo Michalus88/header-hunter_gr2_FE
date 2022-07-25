@@ -188,7 +188,26 @@ a:active {
   background-color: #292a2b;
 }
 .filter-star-butons-group .filter-input-wrap {
-  margin-left: 0.5rem;
+  margin-right: 0.6rem;
+}
+.filter-star-butons-group .filter-input-wrap label {
+  margin-right: 0.5rem;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-input {
+  height: 31px;
+  border: none;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.filter-star-butons-group .filter-input-wrap .p-float-label input:focus ~ label {
+  color: #c96789;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
+  background: #e02735;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button:hover {
+  background: #c96789;
 }
 .filter-star-butons-group .filter-input {
   height: 31px;
@@ -198,20 +217,30 @@ a:active {
   background-color: #292a2b;
 }
 .filter-star-butons-group .filter-radio-butons-group {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  color: #c96789;
 }
 
 .filter-radiobutton {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.4rem;
-  border: 2px color green;
 }
 .filter-radiobutton .filter-radio-label {
   margin-left: 0.5rem;
+}
+.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #e02735;
+}
+.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled).p-focus {
+  border-color: #e02735;
+}
+
+.p-radiobutton .p-radiobutton-box div.p-radiobutton-icon {
+  background-color: #e02735;
+}
+
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  border-color: #e02735;
 }
 
 @media screen and (max-width: 767px) {
@@ -244,7 +273,7 @@ a:active {
 }
 
 .megak-secondary {
-  background-color: none;
+  background-color: #0a0a0a;
 }
 
 .mega-k-star {

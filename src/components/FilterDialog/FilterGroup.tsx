@@ -1,138 +1,46 @@
 import React, { useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
-import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
 import { MegaButton } from '../Elements/MegaButton';
-import { StarButton } from '../Elements/StarButton';
+import { StarButtonGroup } from './StarsButttonGroup';
 
 export const FilterGroup = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
+  const [value3, setValue3] = useState<number | null>(null);
+  const [value4, setValue4] = useState<number | null>(null);
+  const [value5, setValue5] = useState<number | null>(0);
   const [radioValue1, setRadioValue1] = useState(null);
 
   const clicked = () => {
     console.log('Clicked');
   };
+
+  let suffix = '';
+  if (value5 === 0) suffix = ' miesięcy';
+  if (value5 === 1) suffix = ' miesiąc';
+  if (value5 === 2) suffix = ' miesiące';
+  if (value5 === 3) suffix = ' miesiące';
+  if (value5 === 4) suffix = ' miesiące';
+  if (value5 !== null && value5 >= 4) suffix = ' miesięcy';
+
   return (
     <>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena przejścia kursu</div>
-        <div className="filter-star-butons-group">
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="5"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="4"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="3"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="2"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="1"
-            onClick={() => clicked()}
-          />
-        </div>
+        <StarButtonGroup />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena aktywności i zaangażowania na kursie</div>
-        <div className="filter-star-butons-group">
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="5"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="4"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="3"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="2"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="1"
-            onClick={() => clicked()}
-          />
-        </div>
+        <StarButtonGroup />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena kodu w projekcie własnym</div>
-        <div className="filter-star-butons-group">
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="5"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="4"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="3"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="2"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="1"
-            onClick={() => clicked()}
-          />
-        </div>
+        <StarButtonGroup />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena pracy w zespole Scrum</div>
-        <div className="filter-star-butons-group">
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="5"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="4"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="3"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="2"
-            onClick={() => clicked()}
-          />
-          <StarButton
-            classNameAdd="megak-star-secondary"
-            buttonTitle="1"
-            onClick={() => clicked()}
-          />
-        </div>
+        <StarButtonGroup />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Preferowanie miejsce pracy</div>
@@ -177,35 +85,29 @@ export const FilterGroup = () => {
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Oczekiwane wynagrodzenie miesięczne netto</div>
         <div className="filter-star-butons-group">
-          Od
           <div className="filter-input-wrap">
-            <span className="p-float-label">
-              <InputText
-                className="filter-input"
-                id="minsalary"
-                size={10}
-                value={value1}
-                onChange={(e) => setValue1(e.target.value)}
-              />
-              <label className="filter-input-label" htmlFor="minsalary">
-                np. 1000 zł
-              </label>
-            </span>
+            <label htmlFor="stacked">Od </label>
+            <InputNumber
+              size={10}
+              inputId="stacked"
+              value={value3}
+              onValueChange={(e) => setValue3(e.value)}
+              showButtons={false}
+              placeholder="np. 1000 zł"
+              min={0}
+            />
           </div>
-          Do
           <div className="filter-input-wrap">
-            <span className="p-float-label">
-              <InputText
-                className="filter-input"
-                id="maxsalary"
-                size={10}
-                value={value2}
-                onChange={(e) => setValue2(e.target.value)}
-              />
-              <label className="filter-input-label" htmlFor="maxsalary">
-                np. 1000 zł
-              </label>
-            </span>
+            <label htmlFor="stacked">Do </label>
+            <InputNumber
+              size={10}
+              inputId="stacked"
+              value={value4}
+              onValueChange={(e) => setValue4(e.value)}
+              showButtons={false}
+              placeholder="np. 100000 zł"
+              min={0}
+            />
           </div>
         </div>
       </div>
@@ -223,7 +125,7 @@ export const FilterGroup = () => {
               checked={radioValue1 === 'Yes'}
             />
             <label className="filter-radio-label" htmlFor="yes">
-              Tak - XD
+              Tak
             </label>
           </div>
           <div className="filter-radiobutton">
@@ -243,11 +145,17 @@ export const FilterGroup = () => {
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Oczekiwane wynagrodzenie miesięczne netto</div>
         <div className="filter-star-butons-group">
-          <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
-            buttonTitle="0 miesięcy"
-            onClick={() => clicked()}
-          />
+          <div className="filter-input-wrap">
+            <InputNumber
+              size={8}
+              min={0}
+              inputId="stacked"
+              value={value5}
+              onValueChange={(e) => setValue5(e.value)}
+              showButtons
+              suffix={suffix}
+            />
+          </div>
         </div>
       </div>
     </>
