@@ -1,5 +1,6 @@
 .main-wrapper {
   position: relative;
+  display: flex;
   width: 1440px;
   height: 30px;
   margin: 100px auto;
@@ -80,6 +81,12 @@
 .main-wrapper .cv-student-info__about-me .cv-student-info__text {
   text-align: left;
   line-height: 26px;
+}
+.main-wrapper .cv-container .stars-container {
+  color: #939393;
+}
+.main-wrapper .cv-container .stars-container .stars-container__red-icon {
+  color: #e02735;
 }
 
 .go-back {

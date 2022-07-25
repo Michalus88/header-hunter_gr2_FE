@@ -44,6 +44,7 @@ export const StudentInfo = () => {
           repudiandae saepe suscipit tempora ullam vel!
         </p>
       </div>
+      {/*  TODO add buttons from develop */}
     </aside>
   );
 };

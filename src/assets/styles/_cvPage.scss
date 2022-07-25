@@ -2,6 +2,7 @@
 
 .main-wrapper {
   position: relative;
+  display: flex;
   width: 1440px;
   height: 30px;
   margin: 100px auto;
@@ -11,7 +12,7 @@
     display: flex;
     flex-direction: column;
     width: 250px;
-    padding:0 20px;
+    padding: 0 20px;
     background-color: $bgc-light;
 
 
@@ -62,44 +63,58 @@
     }
   }
 
-  .cv-student-info__contact{
-    display:flex;
+  .cv-student-info__contact {
+    display: flex;
     flex-direction: column;
     font-size: 16px;
-    margin:15px 0;
+    margin: 15px 0;
     color: $main-text-color;
 
-    .cv-student-info__contact-phone, .cv-student-info__contact-mail{
+    .cv-student-info__contact-phone, .cv-student-info__contact-mail {
       display: flex;
       justify-content: left;
-      margin:10px 0;
+      margin: 10px 0;
 
 
-      .cv-student-info__contact-icon{
-        color:$extra-text-color;
+      .cv-student-info__contact-icon {
+        color: $extra-text-color;
         margin-right: 10px;
       }
     }
   }
 
-  .cv-student-info__about-me{
-    display:flex;
+  .cv-student-info__about-me {
+    display: flex;
     flex-direction: column;
     margin-bottom: 20px;
     font-size: 16px;
     color: $main-text-color;
 
-    .cv-student-info__title{
-      margin-bottom:10px;
-      color:$extra-text-color;
+    .cv-student-info__title {
+      margin-bottom: 10px;
+      color: $extra-text-color;
     }
 
-    .cv-student-info__text{
+    .cv-student-info__text {
       text-align: left;
       line-height: 26px;
 
     }
   }
+
+  .cv-container {
+
+
+    .stars-container {
+      color: $extra-text-color;
+
+      .stars-container__red-icon {
+        color: $cta;
+      }
+    }
+
+  }
+
 
 }
 
