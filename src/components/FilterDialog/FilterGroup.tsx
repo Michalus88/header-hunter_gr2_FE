@@ -188,8 +188,9 @@ export const FilterGroup = () => {
               inputId="stacked"
               value={value3}
               onValueChange={(e) => setValue3(e.value)}
-              showButtons
+              showButtons={false}
               placeholder="np. 1000 zł"
+              min={0}
             />
           </div>
           <div className="filter-input-wrap">
@@ -199,8 +200,9 @@ export const FilterGroup = () => {
               inputId="stacked"
               value={value4}
               onValueChange={(e) => setValue4(e.value)}
-              showButtons
+              showButtons={false}
               placeholder="np. 100000 zł"
+              min={0}
             />
           </div>
         </div>
@@ -241,7 +243,8 @@ export const FilterGroup = () => {
         <div className="filter-star-butons-group">
           <div className="filter-input-wrap">
             <InputNumber
-              size={10}
+              size={8}
+              min={0}
               inputId="stacked"
               value={value5}
               onValueChange={(e) => setValue5(e.value)}

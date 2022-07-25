@@ -60,12 +60,19 @@
   }
   .filter-input-wrap {
     margin-left: 0.5rem;
+    .p-inputnumber-input {
+      height: 31px;
+      border: none;
+    }
     .p-inputtext:enabled:focus {
       box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
         inset 0 0 0 1px #c96789;
     }
     .p-float-label input:focus ~ label {
       color: $megak-light-color;
+    }
+    .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
+      background: $megak-red-color;
     }
   }
   .filter-input {
@@ -77,18 +84,20 @@
   }
   .filter-radio-butons-group {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
   }
 }
 .filter-radiobutton {
   display: flex;
-  justify-content: flex-start;
+  // justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.4rem;
-  border: 2px color green;
   .filter-radio-label {
     margin-left: 0.5rem;
+  }
+  .p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: green;
   }
 }
 
