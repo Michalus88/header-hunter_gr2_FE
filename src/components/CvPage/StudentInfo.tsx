@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
@@ -23,6 +25,24 @@ export const StudentInfo = () => {
         >
           sgnys
         </a>
+      </div>
+      <div className="cv-student-info__contact">
+        <div className="cv-student-info__contact-phone">
+          <FontAwesomeIcon icon={faPhone} className="cv-student-info__contact-icon" />
+          <p className="cv-student-info__phone">+48 600 000 000</p>
+        </div>
+        <div className="cv-student-info__contact-mail">
+          <FontAwesomeIcon icon={faEnvelope} className="cv-student-info__contact-icon" />
+          <p className="cv-student-info__phone">gnys1001@gmail.com</p>
+        </div>
+      </div>
+      <div className="cv-student-info__about-me">
+        <p className="cv-student-info__title">O mnie</p>
+        <p className="cv-student-info__text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
+          dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
+          repudiandae saepe suscipit tempora ullam vel!
+        </p>
       </div>
     </aside>
   );

@@ -9,12 +9,13 @@
   display: flex;
   flex-direction: column;
   width: 250px;
+  padding: 0 20px;
+  background-color: #2a2a2b;
 }
 .main-wrapper .cv-student-info .cv-student-info__picture-container {
-  margin: 30px 50px;
+  margin: 30px 30px;
   width: 150px;
   height: 150px;
-  background-color: #939393;
 }
 .main-wrapper .cv-student-info .cv-student-info__picture-container .cv-student-info__picture {
   max-width: 150px;
@@ -35,6 +36,8 @@
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info .cv-student-info__gitHub-icon {
   margin: 0 5px;
+  width: 20px;
+  height: 20px;
   background-color: #168bd4;
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info .cv-student-info__gitHub-login {
@@ -46,6 +49,37 @@
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info .cv-student-info__gitHub-login:hover {
   color: #b8dcf2;
+}
+.main-wrapper .cv-student-info__contact {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin: 15px 0;
+  color: #f7f7f7;
+}
+.main-wrapper .cv-student-info__contact .cv-student-info__contact-phone, .main-wrapper .cv-student-info__contact .cv-student-info__contact-mail {
+  display: flex;
+  justify-content: left;
+  margin: 10px 0;
+}
+.main-wrapper .cv-student-info__contact .cv-student-info__contact-phone .cv-student-info__contact-icon, .main-wrapper .cv-student-info__contact .cv-student-info__contact-mail .cv-student-info__contact-icon {
+  color: #939393;
+  margin-right: 10px;
+}
+.main-wrapper .cv-student-info__about-me {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #f7f7f7;
+}
+.main-wrapper .cv-student-info__about-me .cv-student-info__title {
+  margin-bottom: 10px;
+  color: #939393;
+}
+.main-wrapper .cv-student-info__about-me .cv-student-info__text {
+  text-align: left;
+  line-height: 26px;
 }
 
 .go-back {
