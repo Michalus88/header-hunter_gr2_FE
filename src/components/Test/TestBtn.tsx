@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FilterDialog } from './FilterDialog';
+import { FilterDialog } from '../FilterDialog/FilterDialog';
 import { MegaButton } from '../Elements/MegaButton';
 
 export const TestBtn = () => {
