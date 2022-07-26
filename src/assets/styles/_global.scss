@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800&display=swap');
 @import './colors';
 
 * {
@@ -12,7 +13,7 @@ body,
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,4 +23,11 @@ body,
   display: flex;
   flex-direction: column;
   background-color: $bgc-dark;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }

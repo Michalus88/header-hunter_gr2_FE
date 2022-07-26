@@ -1,0 +1,125 @@
+@import './colors';
+.test-btn {
+  margin-top: 5rem;
+}
+.filter-dialog {
+  font-family: 'Catamaran';
+}
+.p-dialog-mask {
+  .p-dialog .p-dialog-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 1.25rem;
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
+  }
+  .p-dialog .p-dialog-footer {
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
+  }
+  .p-dialog .p-dialog-content {
+    background: $megaK-black-color;
+    font-family: 'Catamaran';
+  }
+}
+.filter-header {
+  width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  .filter-clear-all {
+    height: 31px;
+    background: $mega-dark-blue-grey;
+  }
+}
+.fileter-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-star-butons-wraper {
+  margin-bottom: 0.8rem;
+}
+.filter-star-butons-tile {
+  font-size: 14px;
+}
+
+.filter-star-butons-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  .filter-star-butons-group-small {
+    height: 31px;
+    margin: 0.3rem 0.4rem 0.3rem 0;
+    padding: 0 0.4rem;
+    color: $main-text-color;
+    background-color: $input-brown;
+  }
+  .filter-input-wrap {
+    margin-right: 0.6rem;
+    label {
+      margin-right: 0.5rem;
+    }
+    .p-inputnumber-input {
+      height: 31px;
+      border: none;
+    }
+    .p-inputtext:enabled:focus {
+      box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
+        inset 0 0 0 1px #c96789;
+    }
+    .p-float-label input:focus ~ label {
+      color: $megak-light-color;
+    }
+    .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
+      background: $megak-red-color;
+      &:hover {
+        background: $megak-light-color;
+      }
+    }
+  }
+  .filter-input {
+    height: 31px;
+    margin: 0.4rem 0.4rem 0.4rem 0;
+    padding: 0 0.4rem;
+    border: none;
+    background-color: $input-brown;
+  }
+  .filter-radio-butons-group {
+    color: #c96789;
+  }
+}
+.filter-radiobutton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  .filter-radio-label {
+    margin-left: 0.5rem;
+  }
+  .p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: $megak-red-color;
+  }
+  .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled).p-focus {
+    border-color: $megak-red-color;
+  }
+}
+.p-radiobutton .p-radiobutton-box div.p-radiobutton-icon {
+  background-color: $megak-red-color;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  border-color: $megak-red-color;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-header {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filter-header {
+    width: 90vw;
+  }
+}

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@ body,
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,6 +38,14 @@ body,
   background-color: #222225;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-page-login-group {
   position: absolute;
   top: 50%;
@@ -46,6 +55,7 @@ body,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -56,6 +66,8 @@ body,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  letter-spacing: 0.6px;
+
 }
 .login-page-login-group .login-group-image {
   width: 124px;
@@ -69,6 +81,12 @@ body,
   border-radius: 2px;
   background: #292a2b;
 }
+.login-page-login-group .login-input-email .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-email .p-float-label input:focus ~ label {
+  color: #c96789;
+}
 .login-page-login-group .login-input-password {
   margin: 1rem 0;
 }
@@ -76,6 +94,12 @@ body,
   border: none;
   border-radius: 2px;
   background: #292a2b;
+}
+.login-page-login-group .login-input-password .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.login-page-login-group .login-input-password .p-float-label input:focus ~ label {
+  color: #c96789;
 }
 .login-page-login-group .login-forgot-pass {
   display: -webkit-box;
@@ -108,6 +132,7 @@ body,
 .login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
   font-weight: bold;
   text-decoration: underline;
+  margin-left: 0.5rem;
 }
 .login-page-login-group .register-new-acc .register-new-acc-button {
   width: 120px;
@@ -116,4 +141,211 @@ body,
   color: #f7f7f7;
   border-radius: 2px;
 }
-/*# sourceMappingURL=style.css.map */
+.login-page-login-group .register-new-acc .register-new-acc-button:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:hover {
+  background-color: #c96789;
+  color: #f7f7f7;
+}
+.login-page-login-group .register-new-acc .p-button:focus {
+  background-color: #e02735;
+}
+.login-page-login-group .register-new-acc .p-button:focus:hover {
+  background-color: #c96789;
+}
+.login-page-login-group .register-new-acc .p-button:disabled:focus {
+  background-color: #e02735;
+}
+.test-btn {
+  margin-top: 5rem;
+}
+.filter-dialog {
+  font-family: "Catamaran";
+}
+.p-dialog-mask .p-dialog .p-dialog-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 1.25rem;
+  background: #0a0a0a;
+  font-family: "Catamaran";
+}
+.p-dialog-mask .p-dialog .p-dialog-footer {
+  background: #0a0a0a;
+  font-family: "Catamaran";
+}
+.p-dialog-mask .p-dialog .p-dialog-content {
+  background: #0a0a0a;
+  font-family: "Catamaran";
+}
+.filter-header {
+  width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-header .filter-clear-all {
+  height: 31px;
+  background: #172a35;
+}
+.fileter-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-star-butons-wraper {
+  margin-bottom: 0.8rem;
+}
+.filter-star-butons-tile {
+  font-size: 14px;
+}
+.filter-star-butons-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter-star-butons-group .filter-star-butons-group-small {
+  height: 31px;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  padding: 0 0.4rem;
+  color: #f7f7f7;
+  background-color: #292a2b;
+}
+.filter-star-butons-group .filter-input-wrap {
+  margin-right: 0.6rem;
+}
+.filter-star-butons-group .filter-input-wrap label {
+  margin-right: 0.5rem;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-input {
+  height: 31px;
+  border: none;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputtext:enabled:focus {
+  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+}
+.filter-star-butons-group .filter-input-wrap .p-float-label input:focus ~ label {
+  color: #c96789;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
+  background: #e02735;
+}
+.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button:hover {
+  background: #c96789;
+}
+.filter-star-butons-group .filter-input {
+  height: 31px;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  padding: 0 0.4rem;
+  border: none;
+  background-color: #292a2b;
+}
+.filter-star-butons-group .filter-radio-butons-group {
+  color: #c96789;
+}
+.filter-radiobutton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.filter-radiobutton .filter-radio-label {
+  margin-left: 0.5rem;
+}
+.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #e02735;
+}
+.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled).p-focus {
+  border-color: #e02735;
+}
+
+.p-radiobutton .p-radiobutton-box div.p-radiobutton-icon {
+  background-color: #e02735;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  border-color: #e02735;
+}
+@media screen and (max-width: 767px) {
+  .filter-header {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filter-header {
+    width: 90vw;
+  }
+}
+.mega-k-button {
+  height: 45px;
+  padding: 0 1.2rem;
+  color: #f7f7f7;
+  border-radius: 2px;
+  border: none;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.mega-k-button:hover {
+  background-color: #c96789;
+}
+.megak-primary {
+  background-color: #e02735;
+}
+.megak-secondary {
+  background-color: #0a0a0a;
+}
+.mega-k-star {
+  height: 27px;
+  width: 42px;
+  padding: 0 0.4rem;
+  color: #f7f7f7;
+  border-radius: 2px;
+  border: none;
+  font-size: 12px;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292a2b;
+  cursor: pointer;
+}
+.mega-k-star .star-icon-size1 {
+  font-size: 0.65rem;
+  margin-left: 0.3rem;
+  color: #e02735;
+}
+.mega-k-star .star-icon-size2 {
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  color: #e02735;
+}
+.mega-k-star .star-icon-size3 {
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+  color: #e02735;
+}
+.mega-k-star .star-icon-size4 {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  color: #e02735;
+}
+.mega-k-star .star-icon-size5 {
+  font-size: 0.85rem;
+  margin-left: 0.3rem;
+  color: #e02735;
+}
+.mega-k-star:hover {
+  background-color: #c96789;
+}
+.megak-star-primary {
+  background-color: #e02735;
+}
+.megak-star-secondary {
+  background-color: none;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+}
