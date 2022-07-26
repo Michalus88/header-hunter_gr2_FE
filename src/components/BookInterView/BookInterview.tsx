@@ -13,9 +13,6 @@ export const BookInterview = () => {
     }
   };
 
-  // if (details) {
-  //   return <>terefere</>;
-  // }
   return (
     <div className="BookInterview">
       <div className="BookInterview__container">
@@ -48,7 +45,11 @@ export const BookInterview = () => {
 
             <button
               onClick={handleClick}
-              className="BookInterview-button BookInterview__student--button-more "
+              className={
+                details
+                  ? 'BookInterview-button BookInterview__student--button-more-close'
+                  : 'BookInterview-button BookInterview__student--button-more-open'
+              }
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="Group_29" data-name="Group 29" transform="translate(-268 -345)">
@@ -72,7 +73,13 @@ export const BookInterview = () => {
             </button>
           </div>
         </div>
-        <div className="BookInterview__student--details-container">
+        <div
+          className={
+            details
+              ? 'BookInterview__student--details-container-open'
+              : 'BookInterview__student--details-container-close'
+          }
+        >
           <div className="BookInterview__student--details">
             <div className="BookInterview__student--details-name">Ocena przejśćia kursu</div>
             <div className="BookInterview__student--details-value">
@@ -175,7 +182,11 @@ export const BookInterview = () => {
 
             <button
               onClick={handleClick}
-              className="BookInterview-button BookInterview__student--button-more "
+              className={
+                details
+                  ? 'BookInterview-button BookInterview__student--button-more-close'
+                  : 'BookInterview-button BookInterview__student--button-more-open'
+              }
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="Group_29" data-name="Group 29" transform="translate(-268 -345)">
@@ -199,7 +210,13 @@ export const BookInterview = () => {
             </button>
           </div>
         </div>
-        <div className="BookInterview__student--details-container">
+        <div
+          className={
+            details
+              ? 'BookInterview__student--details-container-open'
+              : 'BookInterview__student--details-container-close'
+          }
+        >
           <div className="BookInterview__student--details">
             <div className="BookInterview__student--details-name">Ocena przejśćia kursu</div>
             <div className="BookInterview__student--details-value">

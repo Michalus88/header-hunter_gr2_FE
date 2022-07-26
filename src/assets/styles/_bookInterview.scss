@@ -22,8 +22,8 @@ body {
   align-content: center;
   justify-content: center;
   width: 1430px;
+  background-color: $test;
   margin-top: 100px;
-  background-color: $bgc-light;
 
   &__container {
     display: flex;
@@ -31,15 +31,17 @@ body {
     align-content: center;
     justify-content: center;
     width: 1400px;
-    background-color: $bgc-light;
-
+    background-color: $bgc-dark;
+    margin-bottom: 1em;
   }
 }
 
 .BookInterview__student {
   display: flex;
   flex-direction: row;
-  width: 1400px;
+  width: 100%;
+  background-color: $bgc-light;
+  margin-bottom: 1em;
 
   &--all {
     display: flex;
@@ -104,7 +106,15 @@ body {
     }
   }
 
-  &--details-container {
+  &--details-container-close {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    width: 1400px;
+    background-color: $details-color;
+  }
+
+  &--details-container-open {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -115,7 +125,7 @@ body {
   &--details {
     display: flex;
     flex-direction: column;
-    border-bottom: 20px solid black;
+    border-bottom: 20px solid $bgc-dark;
   }
 
   &--details-name {
@@ -140,12 +150,21 @@ body {
   @include btn;
 }
 
-.BookInterview__student--button-more {
+.BookInterview__student--button-more-open {
   background-color: transparent;
+  transform: rotate(180deg);
 
   &:hover {
     background-color: transparent;
   }
 }
 
+.BookInterview__student--button-more-close {
+  background-color: transparent;
+  transform: rotate(0deg);
+
+  &:hover {
+    background-color: transparent;
+  }
+}
 
