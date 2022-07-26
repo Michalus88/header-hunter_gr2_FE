@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
-import { TestBtn } from '../FilterDialog/TestBtn';
+import { TestBtn } from '../Test/TestBtn';
 import { MegaButton } from '../Elements/MegaButton';
+import { TestBtn2 } from '../Test/TestBtn2';
 
 export const LoginPage = () => {
   const [value1, setValue1] = useState('');
@@ -60,7 +61,16 @@ export const LoginPage = () => {
           />
         </div>
       </div>
-      <TestBtn />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <TestBtn />
+        <TestBtn2 />
+      </div>
     </div>
   );
 };
