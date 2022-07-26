@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
 import { TestBtn } from '../Test/TestBtn';
@@ -33,11 +34,13 @@ export const LoginPage = () => {
         </div>
         <div className="login-input-password">
           <span className="p-float-label">
-            <InputText
+            <Password
               id="password"
               size={40}
               value={value2}
               onChange={(e) => setValue2(e.target.value)}
+              promptLabel="Wpisz hasło"
+              feedback={false}
             />
             <label className="login-input-label" htmlFor="password">
               Hasło
