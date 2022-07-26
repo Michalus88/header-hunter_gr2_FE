@@ -16,6 +16,7 @@ body,
   font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $bgc-dark;
 }
 .page-container {
   flex-grow: 1;
