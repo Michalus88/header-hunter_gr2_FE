@@ -1,0 +1,230 @@
+@import './colors';
+
+.main-wrapper {
+  position: relative;
+  display: flex;
+  width: 1440px;
+  height: 30px;
+  margin: 100px auto;
+  //background-color: gray;
+
+  .cv-student-info {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 0 20px;
+    background-color: $bgc-light;
+
+
+    .cv-student-info__picture-container {
+      margin: 30px 30px;
+      width: 150px;
+      height: 150px;
+
+      .cv-student-info__picture {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 50%;
+      }
+    }
+
+    .cv-student-info__name {
+      align-self: center;
+      padding: 5px 0;
+      font-size: 24px;
+    }
+
+    .cv-student-info__gitHub-info {
+      display: flex;
+      justify-content: center;
+      padding: 3px;
+      font-size: 16px;
+      color: $github-color;
+
+      .cv-student-info__gitHub-icon {
+        margin: 0 5px;
+        width: 20px;
+        height: 20px;
+        background-color: $github-color;
+      }
+
+      .cv-student-info__gitHub-login {
+        display: block;
+        margin: 0 5px;
+        text-decoration: none;
+        color: $github-color;
+        transition: 0.2s;
+
+        &:hover {
+          color: #b8dcf2;
+        }
+      }
+
+    }
+  }
+
+  .cv-student-info__contact {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin: 15px 0;
+    color: $main-text-color;
+
+    .cv-student-info__contact-phone, .cv-student-info__contact-mail {
+      display: flex;
+      justify-content: left;
+      margin: 10px 0;
+
+
+      .cv-student-info__contact-icon {
+        color: $extra-text-color;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .cv-student-info__about-me {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: $main-text-color;
+
+    .cv-student-info__title {
+      margin-bottom: 10px;
+      color: $extra-text-color;
+    }
+
+    .cv-student-info__text {
+      text-align: left;
+      line-height: 26px;
+
+    }
+  }
+
+  .cv-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2px;
+
+    h3.cv-title {
+      padding: 20px;
+      font-size: 20px;
+      font-weight: normal;
+      color: $main-text-color;
+      background-color: $bgc-light;
+    }
+
+    .cv-ratings, .cv-expectation, .cv-knowledge, .cv-projects {
+      display: flex;
+      flex-direction: column;
+
+
+      .cv-ratings__container, .cv-expectation__container, .cv-knowledge__container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+        .cv-ratings__item, .cv-expectation__item {
+          display: flex;
+          flex-direction: column;
+          flex-basis: 165px;
+          height: 100px;
+
+          .cv-ratings__rating {
+            display: flex;
+            font-size: 18px;
+            letter-spacing: 1.8px;
+
+            .cv-ratings__max {
+              margin-right: 10px;
+            }
+          }
+
+          .cv-ratings__title, .cv-expectation__title {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #CFCFCF;
+          }
+
+          .stars-container {
+            color: $extra-text-color;
+
+            .stars-container__red-icon {
+              color: $cta;
+            }
+          }
+
+        }
+      }
+
+      .cv-projects__container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+
+        .cv-projects__project {
+          display: flex;
+
+          a, .cv-projects__icon {
+            margin: 0 5px;
+            padding: 10px 0 5px;
+            font-size: 16px;
+            text-decoration: none;
+            color: $github-color;
+            transition: 0.2s;
+
+            &:hover {
+              color: #b8dcf2;
+            }
+          }
+
+          .cv-projects__icon {
+            transform: translateY(3px) rotate(-45deg);
+
+            &:hover {
+              color: $github-color;
+            }
+          }
+        }
+
+      }
+    }
+
+  }
+
+  .cv-expectation__text, .cv-knowledge__text {
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: $main-text-color
+  }
+}
+
+
+.go-back {
+  position: absolute;
+  display: flex;
+  left: -85px;
+  margin: 0 10px;
+
+  .go-back__icon-container {
+    //text-align: center;
+  }
+
+  .go-back__link {
+    display: block;
+    padding: 7px 0;
+    height: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    color: $main-text-color;
+    transition: 0.2s;
+
+    &:hover {
+      color: $cta
+    }
+  }
+}
+

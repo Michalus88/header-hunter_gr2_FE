@@ -1,7 +1,8 @@
 @import './colors';
+
 .login-page-login-group {
   position: absolute;
-  top: 50%;
+  top: 10%;
   right: 50%;
   transform: translate(50%, -50%);
   display: flex;
@@ -9,12 +10,15 @@
   align-items: center;
   flex-direction: column;
   letter-spacing: 0.6px;
+
   .login-group-image {
     width: 124px;
     height: 76px;
   }
+
   .login-input-email {
     margin: 1rem 0;
+
     .p-inputtext {
       border: none;
       border-radius: 2px;
@@ -28,8 +32,10 @@
       color: $megak-light-color;
     }
   }
+
   .login-input-password {
     margin: 1rem 0;
+
     .p-inputtext {
       border: none;
       border-radius: 2px;
@@ -43,25 +49,30 @@
       color: $megak-light-color;
     }
   }
+
   .login-forgot-pass {
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
   }
+
   .register-new-acc {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     margin-top: 2rem;
+
     .register-new-acc-text {
       font-size: 14px;
+
       .register-new-acc-register {
         font-weight: bold;
         text-decoration: underline;
         margin-left: 0.5rem;
       }
     }
+
     .register-new-acc-button {
       width: 120px;
       height: 45px;

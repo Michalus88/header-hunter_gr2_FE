@@ -2,15 +2,21 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body,
 #root,
 #App .page-wrapper {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,10 +24,17 @@ body,
 }
 
 .page-container {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #222225;
 }
 
@@ -37,12 +50,24 @@ a:active {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   letter-spacing: 0.6px;
+
 }
 .login-page-login-group .login-group-image {
   width: 124px;
@@ -77,15 +102,28 @@ a:active {
   color: #c96789;
 }
 .login-page-login-group .login-forgot-pass {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+    justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
   font-size: 14px;
 }
 .login-page-login-group .register-new-acc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 2rem;
 }
 .login-page-login-group .register-new-acc .register-new-acc-text {
@@ -122,15 +160,12 @@ a:active {
 .login-page-login-group .register-new-acc .p-button:disabled:focus {
   background-color: #e02735;
 }
-
 .test-btn {
   margin-top: 5rem;
 }
-
 .filter-dialog {
   font-family: "Catamaran";
 }
-
 .p-dialog-mask .p-dialog .p-dialog-header {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -146,7 +181,6 @@ a:active {
   background: #0a0a0a;
   font-family: "Catamaran";
 }
-
 .filter-header {
   width: 520px;
   display: flex;
@@ -158,22 +192,18 @@ a:active {
   height: 31px;
   background: #172a35;
 }
-
 .fileter-dialog-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
 }
-
 .filter-star-butons-wraper {
   margin-bottom: 0.8rem;
 }
-
 .filter-star-butons-tile {
   font-size: 14px;
 }
-
 .filter-star-butons-group {
   display: flex;
   justify-content: flex-start;
@@ -219,7 +249,6 @@ a:active {
 .filter-star-butons-group .filter-radio-butons-group {
   color: #c96789;
 }
-
 .filter-radiobutton {
   display: flex;
   align-items: center;
@@ -238,11 +267,9 @@ a:active {
 .p-radiobutton .p-radiobutton-box div.p-radiobutton-icon {
   background-color: #e02735;
 }
-
 .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
   border-color: #e02735;
 }
-
 @media screen and (max-width: 767px) {
   .filter-header {
     width: 70vw;
@@ -263,19 +290,15 @@ a:active {
   font-family: inherit;
   cursor: pointer;
 }
-
 .mega-k-button:hover {
   background-color: #c96789;
 }
-
 .megak-primary {
   background-color: #e02735;
 }
-
 .megak-secondary {
   background-color: #0a0a0a;
 }
-
 .mega-k-star {
   height: 27px;
   width: 42px;
@@ -316,16 +339,13 @@ a:active {
   margin-left: 0.3rem;
   color: #e02735;
 }
-
 .mega-k-star:hover {
   background-color: #c96789;
 }
-
 .megak-star-primary {
   background-color: #e02735;
 }
-
 .megak-star-secondary {
   background-color: none;
   margin: 0.4rem 0.4rem 0.4rem 0;
-}/*# sourceMappingURL=style.css.map */
+}
