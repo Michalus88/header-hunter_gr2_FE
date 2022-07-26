@@ -102,6 +102,9 @@ a:active {
 .login-page-login-group .login-input-password .p-float-label input:focus ~ label {
   color: #c96789;
 }
+.login-page-login-group .p-float-label .p-inputwrapper-focus ~ label {
+  color: #c96789;
+}
 .login-page-login-group .login-forgot-pass {
   display: -webkit-box;
   display: -ms-flexbox;

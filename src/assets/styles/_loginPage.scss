@@ -49,6 +49,9 @@
       color: $megak-light-color;
     }
   }
+  .p-float-label .p-inputwrapper-focus ~ label {
+    color: $megak-light-color;
+  }
 
   .login-forgot-pass {
     display: flex;
