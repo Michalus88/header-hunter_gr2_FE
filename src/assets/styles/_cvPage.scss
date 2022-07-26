@@ -6,7 +6,7 @@
   width: 1440px;
   height: 30px;
   margin: 100px auto;
-  background-color: gray;
+  //background-color: gray;
 
   .cv-student-info {
     display: flex;
@@ -103,19 +103,65 @@
   }
 
   .cv-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2px;
 
+    .cv-ratings {
+      display: flex;
+      flex-direction: column;
 
-    .stars-container {
-      color: $extra-text-color;
+      h3 {
+        padding: 20px;
+        font-size: 20px;
+        font-weight: normal;
+        color: $main-text-color;
+        //background-color: $bgc-light;
+        background-color: #b8dcf2;
+      }
 
-      .stars-container__red-icon {
-        color: $cta;
+      .cv-ratings__container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+        .cv-ratings__item {
+          display:flex;
+          flex-direction: column;
+          flex-basis: 165px;
+          height:75px;
+
+          .cv-ratings__rating{
+            display:flex;
+            font-size: 18px;
+            letter-spacing: 1.8px;
+
+            .cv-ratings__max{
+              margin-right: 10px;
+            }
+          }
+
+          .cv-ratings__title {
+            flex-grow:1;
+            font-size: 14px;
+            color: #CFCFCF;
+          }
+
+          .stars-container {
+            color: $extra-text-color;
+
+            .stars-container__red-icon {
+              color: $cta;
+            }
+          }
+
+        }
+
       }
     }
 
   }
-
-
 }
 
 

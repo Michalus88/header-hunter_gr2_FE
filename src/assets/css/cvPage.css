@@ -4,7 +4,6 @@
   width: 1440px;
   height: 30px;
   margin: 100px auto;
-  background-color: gray;
 }
 .main-wrapper .cv-student-info {
   display: flex;
@@ -82,10 +81,51 @@
   text-align: left;
   line-height: 26px;
 }
-.main-wrapper .cv-container .stars-container {
+.main-wrapper .cv-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 2px;
+}
+.main-wrapper .cv-container .cv-ratings {
+  display: flex;
+  flex-direction: column;
+}
+.main-wrapper .cv-container .cv-ratings h3 {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: normal;
+  color: #f7f7f7;
+  background-color: #b8dcf2;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 165px;
+  height: 75px;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__rating {
+  display: flex;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__rating .cv-ratings__max {
+  margin-right: 10px;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__title {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #CFCFCF;
+}
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .stars-container {
   color: #939393;
 }
-.main-wrapper .cv-container .stars-container .stars-container__red-icon {
+.main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .stars-container .stars-container__red-icon {
   color: #e02735;
 }
 
