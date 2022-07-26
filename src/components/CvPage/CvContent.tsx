@@ -2,6 +2,7 @@ import React from 'react';
 import { Ratings } from './Ratings';
 import { EmploymentExpectation } from './EmploymentExpectation';
 import { Knowledge } from './Knowledge';
+import { Projects } from './Projects';
 
 export const CvContent = () => {
   return (
@@ -26,6 +27,9 @@ export const CvContent = () => {
           dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
           repudiandae saepe suscipit tempora ullam vel!"
       />
+      <Projects title="Portfolio" urls={['url1', 'url2']} />
+      <Projects title="Projekt w zespole Scrumowym" urls={['url5']} />
+      <Projects title="Projekt na zaliczenie" urls={['url3', 'url4']} />
     </div>
   );
 };

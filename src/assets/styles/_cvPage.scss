@@ -116,7 +116,7 @@
       background-color: $bgc-light;
     }
 
-    .cv-ratings, .cv-expectation, .cv-knowledge {
+    .cv-ratings, .cv-expectation, .cv-knowledge, .cv-projects {
       display: flex;
       flex-direction: column;
 
@@ -126,24 +126,24 @@
         justify-content: space-between;
         padding: 20px;
 
-        .cv-ratings__item, .cv-expectation__item{
-          display:flex;
+        .cv-ratings__item, .cv-expectation__item {
+          display: flex;
           flex-direction: column;
           flex-basis: 165px;
-          height:100px;
+          height: 100px;
 
-          .cv-ratings__rating{
-            display:flex;
+          .cv-ratings__rating {
+            display: flex;
             font-size: 18px;
             letter-spacing: 1.8px;
 
-            .cv-ratings__max{
+            .cv-ratings__max {
               margin-right: 10px;
             }
           }
 
           .cv-ratings__title, .cv-expectation__title {
-            flex-grow:1;
+            flex-grow: 1;
             font-size: 14px;
             color: #CFCFCF;
           }
@@ -158,14 +158,47 @@
 
         }
       }
+
+      .cv-projects__container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+
+        .cv-projects__project {
+          display: flex;
+
+          a, .cv-projects__icon {
+            margin: 0 5px;
+            padding: 10px 0 5px;
+            font-size: 16px;
+            text-decoration: none;
+            color: $github-color;
+            transition: 0.2s;
+
+            &:hover {
+              color: #b8dcf2;
+            }
+          }
+
+          .cv-projects__icon {
+            transform: translateY(3px) rotate(-45deg);
+
+            &:hover {
+              color: $github-color;
+            }
+          }
+        }
+
+      }
     }
+
   }
 
-  .cv-expectation__text, .cv-knowledge__text{
-    padding:10px 0;
+  .cv-expectation__text, .cv-knowledge__text {
+    padding: 10px 0;
     font-size: 16px;
     line-height: 26px;
-    color:$main-text-color
+    color: $main-text-color
   }
 }
 
