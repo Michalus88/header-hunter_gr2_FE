@@ -6,8 +6,6 @@ import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
 
-import '../../assets/css/cvPage.css';
-
 export const StudentInfo = () => {
   return (
     <aside className="cv-student-info">
