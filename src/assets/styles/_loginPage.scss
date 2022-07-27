@@ -1,4 +1,5 @@
 @import './colors';
+
 .login-page-login-group {
   position: absolute;
   top: 50%;
@@ -8,12 +9,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  letter-spacing: 0.6px;
+
   .login-group-image {
     width: 124px;
     height: 76px;
   }
+
   .login-input-email {
     margin: 1rem 0;
+
     .p-inputtext {
       border: none;
       border-radius: 2px;
@@ -27,8 +32,10 @@
       color: $megak-light-color;
     }
   }
+
   .login-input-password {
     margin: 1rem 0;
+
     .p-inputtext {
       border: none;
       border-radius: 2px;
@@ -42,25 +49,33 @@
       color: $megak-light-color;
     }
   }
+  .p-float-label .p-inputwrapper-focus ~ label {
+    color: $megak-light-color;
+  }
+
   .login-forgot-pass {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     font-size: 14px;
   }
+
   .register-new-acc {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     margin-top: 2rem;
+
     .register-new-acc-text {
       font-size: 14px;
+
       .register-new-acc-register {
         font-weight: bold;
         text-decoration: underline;
         margin-left: 0.5rem;
       }
     }
+
     .register-new-acc-button {
       width: 120px;
       height: 45px;
@@ -68,7 +83,7 @@
       color: $main-text-color;
       border-radius: 2px;
     }
-    register-new-acc-button:hover {
+    .register-new-acc-button:hover {
       background-color: $megak-light-color;
     }
     .p-button {
