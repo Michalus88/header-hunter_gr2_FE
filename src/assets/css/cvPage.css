@@ -1,527 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body,
-#root,
-#App .page-wrapper {
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #222225;
-}
-
-.page-container {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: #222225;
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-  text-decoration: none;
-  color: inherit;
-}
-
-.login-page-login-group {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  letter-spacing: 0.6px;
-}
-.login-page-login-group .login-group-image {
-  width: 124px;
-  height: 76px;
-}
-.login-page-login-group .login-input-email {
-  margin: 1rem 0;
-}
-.login-page-login-group .login-input-email .p-inputtext {
-  border: none;
-  border-radius: 2px;
-  background: #292a2b;
-}
-.login-page-login-group .login-input-email .p-inputtext:enabled:focus {
-  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-}
-.login-page-login-group .login-input-email .p-float-label input:focus ~ label {
-  color: #c96789;
-}
-.login-page-login-group .login-input-password {
-  margin: 1rem 0;
-}
-.login-page-login-group .login-input-password .p-inputtext {
-  border: none;
-  border-radius: 2px;
-  background: #292a2b;
-}
-.login-page-login-group .login-input-password .p-inputtext:enabled:focus {
-  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-}
-.login-page-login-group .login-input-password .p-float-label input:focus ~ label {
-  color: #c96789;
-}
-.login-page-login-group .p-float-label .p-inputwrapper-focus ~ label {
-  color: #c96789;
-}
-.login-page-login-group .login-forgot-pass {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  font-size: 14px;
-}
-.login-page-login-group .register-new-acc {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-top: 2rem;
-}
-.login-page-login-group .register-new-acc .register-new-acc-text {
-  font-size: 14px;
-}
-.login-page-login-group .register-new-acc .register-new-acc-text .register-new-acc-register {
-  font-weight: bold;
-  text-decoration: underline;
-  margin-left: 0.5rem;
-}
-.login-page-login-group .register-new-acc .register-new-acc-button {
-  width: 120px;
-  height: 45px;
-  background-color: #e02735;
-  color: #f7f7f7;
-  border-radius: 2px;
-}
-.login-page-login-group .register-new-acc .register-new-acc-button:hover {
-  background-color: #c96789;
-}
-.login-page-login-group .register-new-acc .p-button {
-  background-color: #e02735;
-}
-.login-page-login-group .register-new-acc .p-button:hover {
-  background-color: #c96789;
-  color: #f7f7f7;
-}
-.login-page-login-group .register-new-acc .p-button:focus {
-  background-color: #e02735;
-}
-.login-page-login-group .register-new-acc .p-button:focus:hover {
-  background-color: #c96789;
-}
-.login-page-login-group .register-new-acc .p-button:disabled:focus {
-  background-color: #e02735;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #222225;
-  height: 100vh;
-  width: 100vw;
-}
-
-.BookInterview {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 1430px;
-  background-color: #0a0a0a;
-}
-.BookInterview__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 1400px;
-  background-color: #222225;
-  margin-bottom: 1em;
-}
-
-.BookInterview__student {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  background-color: 2a2a2b;
-  margin-bottom: 1em;
-}
-.BookInterview__student--all {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.BookInterview__student--buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  padding: 1.2em;
-}
-.BookInterview__student--information {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 6em;
-  height: 100%;
-  font-weight: lighter;
-  font-size: 13px;
-}
-.BookInterview__student--information-avatar {
-  display: inline-block;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 1px solid #222225;
-  margin-left: 3.5em;
-}
-.BookInterview__student--information-name {
-  width: 500px;
-  margin-left: 1em;
-}
-.BookInterview__student--reservation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 10em;
-  font-size: 12px;
-  margin: 0.3em 1em;
-}
-.BookInterview__student--reservation--reservation-text {
-  font-size: 0.6rem;
-  padding: 0.5em 0;
-  font-weight: lighter;
-  color: #939393;
-}
-.BookInterview__student--reservation--reservation-date {
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.BookInterview__student--details-container-close {
-  display: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 1400px;
-  background-color: #222324;
-}
-.BookInterview__student--details-container-open {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 1400px;
-  background-color: #222324;
-}
-.BookInterview__student--details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-bottom: 20px solid #222225;
-}
-.BookInterview__student--details-name {
-  text-align: left;
-  font-size: 12px;
-  margin: 1em;
-}
-.BookInterview__student--details-value {
-  font-size: 12px;
-  font-weight: lighter;
-  margin: 1em;
-}
-.BookInterview__student--details-span {
-  font-weight: bold;
-}
-
-.BookInterview-button {
-  background-color: #e02735;
-  font-size: 16px;
-  margin: 1em 0.5em;
-  padding: 0.5em;
-  border: none;
-  cursor: pointer;
-}
-.BookInterview-button:hover {
-  background-color: #c96789;
-}
-
-.BookInterview__student--button-more-open {
-  background-color: transparent;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.BookInterview__student--button-more-open:hover {
-  background-color: transparent;
-}
-
-.BookInterview__student--button-more-close {
-  background-color: transparent;
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-}
-.BookInterview__student--button-more-close:hover {
-  background-color: transparent;
-}
-
-.admin-page-wrapper {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  letter-spacing: 0.6px;
-}
-.admin-page-wrapper .admin-page-image {
-  width: 124px;
-  height: 76px;
-}
-.admin-page-wrapper .title {
-  margin-top: 50px;
-}
-.admin-page-wrapper .admin-input {
-  width: 350px;
-  height: 40px;
-  background-color: #292a2b;
-  margin: 15px 0;
-}
-.admin-page-wrapper .admin-input input {
-  width: 350px;
-  height: 40px;
-  background-color: #292a2b;
-  color: #f7f7f7;
-  font-size: 16px;
-  letter-spacing: 0;
-  text-align: left;
-  border: none;
-  padding-left: 15px;
-}
-.admin-page-wrapper .admin-input .button-file-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  color: #f7f7f7;
-  font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-.admin-page-wrapper .admin-input .button-file-wrapper .button-file {
-  border: none;
-  width: 350px;
-  text-align: left;
-  color: #f7f7f7;
-  background-color: #292a2b;
-  letter-spacing: 0;
-  font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  padding: 5px 15px;
-  font-size: 16px;
-}
-.admin-page-wrapper .admin-input .button-file-wrapper input[type=file] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-.admin-page-wrapper .csv-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.admin-page-wrapper .csv-form .admin-button-send {
-  display: block;
-  background-color: #e02735;
-  width: 100px;
-}
-.admin-page-wrapper .hr-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.admin-page-wrapper .hr-form .admin-button-send {
-  display: block;
-  background-color: #e02735;
-  width: 100px;
-}
-
 .main-wrapper {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 1440px;
   height: 30px;
   margin: 100px auto;
 }
 .main-wrapper .cv-student-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 250px;
   padding: 0 20px;
-  background-color: 2a2a2b;
+  background-color: #2a2a2b;
 }
 .main-wrapper .cv-student-info .cv-student-info__picture-container {
   margin: 30px 30px;
@@ -534,18 +23,13 @@ body {
   border-radius: 50%;
 }
 .main-wrapper .cv-student-info .cv-student-info__name {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   padding: 5px 0;
   font-size: 24px;
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 3px;
   font-size: 16px;
   color: #168bd4;
@@ -561,31 +45,21 @@ body {
   margin: 0 5px;
   text-decoration: none;
   color: #168bd4;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info .cv-student-info__gitHub-login:hover {
   color: #b8dcf2;
 }
 .main-wrapper .cv-student-info__contact {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   font-size: 16px;
   margin: 15px 0;
   color: #f7f7f7;
 }
 .main-wrapper .cv-student-info__contact .cv-student-info__contact-phone, .main-wrapper .cv-student-info__contact .cv-student-info__contact-mail {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  justify-content: left;
   margin: 10px 0;
 }
 .main-wrapper .cv-student-info__contact .cv-student-info__contact-phone .cv-student-info__contact-icon, .main-wrapper .cv-student-info__contact .cv-student-info__contact-mail .cv-student-info__contact-icon {
@@ -593,13 +67,8 @@ body {
   margin-right: 10px;
 }
 .main-wrapper .cv-student-info__about-me {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-bottom: 20px;
   font-size: 16px;
   color: #f7f7f7;
@@ -613,16 +82,9 @@ body {
   line-height: 26px;
 }
 .main-wrapper .cv-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-direction: column;
+  flex-grow: 1;
   margin-left: 2px;
 }
 .main-wrapper .cv-container h3.cv-title {
@@ -630,41 +92,24 @@ body {
   font-size: 20px;
   font-weight: normal;
   color: #f7f7f7;
-  background-color: 2a2a2b;
+  background-color: #2a2a2b;
 }
 .main-wrapper .cv-container .cv-ratings, .main-wrapper .cv-container .cv-expectation, .main-wrapper .cv-container .cv-knowledge, .main-wrapper .cv-container .cv-projects {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container, .main-wrapper .cv-container .cv-ratings .cv-expectation__container, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container, .main-wrapper .cv-container .cv-expectation .cv-ratings__container, .main-wrapper .cv-container .cv-expectation .cv-expectation__container, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container, .main-wrapper .cv-container .cv-projects .cv-ratings__container, .main-wrapper .cv-container .cv-projects .cv-expectation__container, .main-wrapper .cv-container .cv-projects .cv-knowledge__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   padding: 20px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-preferred-size: 165px;
-      flex-basis: 165px;
+  flex-direction: column;
+  flex-basis: 165px;
   height: 100px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-ratings__rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-size: 18px;
   letter-spacing: 1.8px;
@@ -673,9 +118,7 @@ body {
   margin-right: 10px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-expectation__title {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   font-size: 14px;
   color: #CFCFCF;
 }
@@ -686,18 +129,11 @@ body {
   color: #e02735;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container, .main-wrapper .cv-container .cv-expectation .cv-projects__container, .main-wrapper .cv-container .cv-knowledge .cv-projects__container, .main-wrapper .cv-container .cv-projects .cv-projects__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 20px 0;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon {
@@ -706,15 +142,13 @@ body {
   font-size: 16px;
   text-decoration: none;
   color: #168bd4;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon:hover {
   color: #b8dcf2;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon {
-  -webkit-transform: translateY(3px) rotate(-45deg);
-          transform: translateY(3px) rotate(-45deg);
+  transform: translateY(3px) rotate(-45deg);
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon:hover {
   color: #168bd4;
@@ -728,8 +162,6 @@ body {
 
 .go-back {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   left: -85px;
   margin: 0 10px;
@@ -741,248 +173,10 @@ body {
   text-decoration: none;
   font-size: 16px;
   color: #f7f7f7;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .go-back .go-back__link:hover {
   color: #e02735;
 }
 
-.test-btn {
-  margin-top: 5rem;
-}
-
-.filter-dialog {
-  font-family: "Catamaran";
-}
-
-.p-dialog-mask .p-dialog .p-dialog-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 1.25rem;
-  background: #0a0a0a;
-  font-family: "Catamaran";
-}
-.p-dialog-mask .p-dialog .p-dialog-footer {
-  background: #0a0a0a;
-  font-family: "Catamaran";
-}
-.p-dialog-mask .p-dialog .p-dialog-content {
-  background: #0a0a0a;
-  font-family: "Catamaran";
-}
-
-.filter-header {
-  width: 520px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.filter-header .filter-clear-all {
-  height: 31px;
-  background: #172a35;
-}
-
-.fileter-dialog-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.filter-star-butons-wraper {
-  margin-bottom: 0.8rem;
-}
-
-.filter-star-butons-tile {
-  font-size: 14px;
-}
-
-.filter-star-butons-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.filter-star-butons-group .filter-star-butons-group-small {
-  height: 31px;
-  margin: 0.3rem 0.4rem 0.3rem 0;
-  padding: 0 0.4rem;
-  color: #f7f7f7;
-  background-color: #292a2b;
-}
-.filter-star-butons-group .filter-input-wrap {
-  margin-right: 0.6rem;
-}
-.filter-star-butons-group .filter-input-wrap label {
-  margin-right: 0.5rem;
-}
-.filter-star-butons-group .filter-input-wrap .p-inputnumber-input {
-  height: 31px;
-  border: none;
-}
-.filter-star-butons-group .filter-input-wrap .p-inputtext:enabled:focus {
-  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
-}
-.filter-star-butons-group .filter-input-wrap .p-float-label input:focus ~ label {
-  color: #c96789;
-}
-.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button {
-  background: #e02735;
-}
-.filter-star-butons-group .filter-input-wrap .p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button:hover {
-  background: #c96789;
-}
-.filter-star-butons-group .filter-input {
-  height: 31px;
-  margin: 0.4rem 0.4rem 0.4rem 0;
-  padding: 0 0.4rem;
-  border: none;
-  background-color: #292a2b;
-}
-.filter-star-butons-group .filter-radio-butons-group {
-  color: #c96789;
-}
-
-.filter-radiobutton {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 0.4rem;
-}
-.filter-radiobutton .filter-radio-label {
-  margin-left: 0.5rem;
-}
-.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight {
-  border-color: #e02735;
-}
-.filter-radiobutton .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled).p-focus {
-  border-color: #e02735;
-}
-
-.p-radiobutton .p-radiobutton-box div.p-radiobutton-icon {
-  background-color: #e02735;
-}
-
-.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
-  border-color: #e02735;
-}
-
-@media screen and (max-width: 767px) {
-  .filter-header {
-    width: 70vw;
-  }
-}
-@media screen and (max-width: 500px) {
-  .filter-header {
-    width: 90vw;
-  }
-}
-.mega-k-button {
-  height: 45px;
-  padding: 0 1.2rem;
-  color: #f7f7f7;
-  border-radius: 2px;
-  border: none;
-  font-size: 1rem;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.mega-k-button:hover {
-  background-color: #c96789;
-}
-
-.megak-primary {
-  background-color: #e02735;
-}
-
-.megak-secondary {
-  background-color: #0a0a0a;
-}
-
-.mega-k-star {
-  height: 27px;
-  width: 42px;
-  padding: 0 0.4rem;
-  color: #f7f7f7;
-  border-radius: 2px;
-  border: none;
-  font-size: 12px;
-  font-family: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #292a2b;
-  cursor: pointer;
-}
-.mega-k-star .star-icon-size1 {
-  font-size: 0.65rem;
-  margin-left: 0.3rem;
-  color: #e02735;
-}
-.mega-k-star .star-icon-size2 {
-  font-size: 0.7rem;
-  margin-left: 0.3rem;
-  color: #e02735;
-}
-.mega-k-star .star-icon-size3 {
-  font-size: 0.75rem;
-  margin-left: 0.3rem;
-  color: #e02735;
-}
-.mega-k-star .star-icon-size4 {
-  font-size: 0.8rem;
-  margin-left: 0.3rem;
-  color: #e02735;
-}
-.mega-k-star .star-icon-size5 {
-  font-size: 0.85rem;
-  margin-left: 0.3rem;
-  color: #e02735;
-}
-
-.mega-k-star:hover {
-  background-color: #c96789;
-}
-
-.megak-star-primary {
-  background-color: #e02735;
-}
-
-.megak-star-secondary {
-  background-color: none;
-  margin: 0.4rem 0.4rem 0.4rem 0;
-}/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=cvPage.css.map */

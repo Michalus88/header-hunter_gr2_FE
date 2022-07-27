@@ -1,0 +1,20 @@
+@import './colors';
+.mega-k-button {
+  height: 45px;
+  padding: 0 1.2rem;
+  color: $main-text-color;
+  border-radius: 2px;
+  border: none;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.mega-k-button:hover {
+  background-color: $megak-light-color;
+}
+.megak-primary {
+  background-color: $megak-red-color;
+}
+.megak-secondary {
+  background-color: $megaK-black-color;
+}
