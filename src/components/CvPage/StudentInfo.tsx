@@ -5,6 +5,7 @@ import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
+import { MegaButton } from '../Elements/MegaButton';
 
 export const StudentInfo = () => {
   return (
@@ -41,6 +42,18 @@ export const StudentInfo = () => {
           dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
           repudiandae saepe suscipit tempora ullam vel!
         </p>
+      </div>
+      <div className="cv-student-info__btns">
+        <MegaButton
+          buttonTitle="Brak zainteresowania"
+          onClick={() => {}}
+          classNameAdd="cv-student-info__btn megak-primary"
+        />
+        <MegaButton
+          buttonTitle="Zatrudniony"
+          onClick={() => {}}
+          classNameAdd="megak-primary cv-student-info__btn"
+        />
       </div>
       {/*  TODO add buttons from develop */}
     </aside>
