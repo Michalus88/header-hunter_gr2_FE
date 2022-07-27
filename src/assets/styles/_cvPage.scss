@@ -3,17 +3,17 @@
 .main-wrapper {
   position: relative;
   display: flex;
+  align-items: flex-start;
   width: 1440px;
-  height: 30px;
   margin: 100px auto;
-  //background-color: gray;
 
   .cv-student-info {
     display: flex;
     flex-direction: column;
     width: 250px;
     padding: 0 20px;
-    background-color: $bgc-light;
+    background-color: #2a2a2b;
+    //background-color: $bgc-light;
 
 
     .cv-student-info__picture-container {
@@ -42,7 +42,7 @@
       color: $github-color;
 
       .cv-student-info__gitHub-icon {
-        margin: 0 5px;
+        margin: 5px 5px;
         width: 20px;
         height: 20px;
         background-color: $github-color;
@@ -61,46 +61,62 @@
       }
 
     }
-  }
 
-  .cv-student-info__contact {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    margin: 15px 0;
-    color: $main-text-color;
-
-    .cv-student-info__contact-phone, .cv-student-info__contact-mail {
+    .cv-student-info__contact {
       display: flex;
-      justify-content: left;
-      margin: 10px 0;
+      flex-direction: column;
+      font-size: 16px;
+      margin: 15px 0;
+      color: $main-text-color;
+
+      .cv-student-info__contact-phone, .cv-student-info__contact-mail {
+        display: flex;
+        justify-content: left;
+        margin: 10px 0;
 
 
-      .cv-student-info__contact-icon {
-        color: $extra-text-color;
-        margin-right: 10px;
+        .cv-student-info__contact-icon {
+          color: $extra-text-color;
+          margin:5px 10px 0;
+        }
       }
     }
-  }
 
-  .cv-student-info__about-me {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: $main-text-color;
+    .cv-student-info__about-me {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: $main-text-color;
 
-    .cv-student-info__title {
-      margin-bottom: 10px;
-      color: $extra-text-color;
+      .cv-student-info__title {
+        margin-bottom: 10px;
+        color: $extra-text-color;
+      }
+
+      .cv-student-info__text {
+        text-align: left;
+        line-height: 26px;
+
+      }
     }
 
-    .cv-student-info__text {
-      text-align: left;
-      line-height: 26px;
+    .cv-student-info__btns {
+      display: flex;
+      flex-direction: column;
+      margin:20px 0;
+
+      .megak-primary.cv-student-info__btn{
+        margin-bottom:10px;
+        width:100%;
+        font-size: 16px;
+      }
 
     }
+
   }
+
+
 
   .cv-container {
     display: flex;
@@ -113,7 +129,8 @@
       font-size: 20px;
       font-weight: normal;
       color: $main-text-color;
-      background-color: $bgc-light;
+      background-color: #2a2a2b;
+      //background-color: $bgc-light;
     }
 
     .cv-ratings, .cv-expectation, .cv-knowledge, .cv-projects {
@@ -181,7 +198,7 @@
           }
 
           .cv-projects__icon {
-            transform: translateY(3px) rotate(-45deg);
+            transform: scale(1.1) translateY(5px) rotate(-45deg);
 
             &:hover {
               color: $github-color;
@@ -215,8 +232,8 @@
 
   .go-back__link {
     display: block;
-    padding: 7px 0;
-    height: 30px;
+    padding: 5px 0;
+    //line-height: 30px;
     text-decoration: none;
     font-size: 16px;
     color: $main-text-color;
