@@ -86,10 +86,10 @@ export const FilterGroup = () => {
         <div className="filter-star-butons-tile">Oczekiwane wynagrodzenie miesięczne netto</div>
         <div className="filter-star-butons-group">
           <div className="filter-input-wrap">
-            <label htmlFor="stacked">Od </label>
+            <label htmlFor="input1">Od </label>
             <InputNumber
               size={10}
-              inputId="stacked"
+              inputId="input1"
               value={value3}
               onValueChange={(e) => setValue3(e.value)}
               showButtons={false}
@@ -98,10 +98,10 @@ export const FilterGroup = () => {
             />
           </div>
           <div className="filter-input-wrap">
-            <label htmlFor="stacked">Do </label>
+            <label htmlFor="input12">Do </label>
             <InputNumber
               size={10}
-              inputId="stacked"
+              inputId="input2"
               value={value4}
               onValueChange={(e) => setValue4(e.value)}
               showButtons={false}
@@ -149,7 +149,7 @@ export const FilterGroup = () => {
             <InputNumber
               size={8}
               min={0}
-              inputId="stacked"
+              inputId="input3"
               value={value5}
               onValueChange={(e) => setValue5(e.value)}
               showButtons
