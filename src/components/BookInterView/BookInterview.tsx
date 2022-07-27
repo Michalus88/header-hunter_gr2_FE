@@ -55,5 +55,5 @@ export const BookInterview = () => {
     />
   ));
 
-  return <>{students}</>;
+  return <div>{students}</div>;
 };

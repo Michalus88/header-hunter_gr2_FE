@@ -62,17 +62,27 @@ export const OneStudentBookInterview = (props: Props) => {
             </div>
           </div>
           <div className="BookInterview__student--buttons">
-            <button className="BookInterview__student--button-show-cv BookInterview-button">
+            <button
+              className="BookInterview__student--button-show-cv BookInterview-button"
+              type="button"
+            >
               Pokaż CV
             </button>
-            <button className="BookInterview__student--button-disinterest BookInterview-button">
+            <button
+              className="BookInterview__student--button-disinterest BookInterview-button"
+              type="button"
+            >
               Brak zainteresowania
             </button>
-            <button className="BookInterview__student--button-hired BookInterview-button">
+            <button
+              className="BookInterview__student--button-hired BookInterview-button"
+              type="button"
+            >
               Zatrudniony
             </button>
 
             <button
+              type="button"
               onClick={handleClick}
               className={
                 details

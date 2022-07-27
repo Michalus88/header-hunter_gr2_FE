@@ -7,6 +7,7 @@ import { TestBtn } from '../Test/TestBtn';
 import { MegaButton } from '../Elements/MegaButton';
 import { TestBtn2 } from '../Test/TestBtn2';
 import { TestBtn3 } from '../Test/TestBtn3';
+import { TestBtn4 } from '../Test/TestBtn4';
 
 export const LoginPage = () => {
   const [value1, setValue1] = useState('');
@@ -75,6 +76,7 @@ export const LoginPage = () => {
         <TestBtn />
         <TestBtn2 />
         <TestBtn3 />
+        <TestBtn4 />
       </div>
     </div>
   );

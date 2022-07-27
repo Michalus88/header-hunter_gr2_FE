@@ -16,13 +16,12 @@ body {
   width: 100vw;
 }
 
-
 .BookInterview {
   display: flex;
   align-content: center;
   justify-content: center;
   width: 1430px;
-  background-color: $test;
+  background-color: $megaK-black-color;
   &__container {
     display: flex;
     flex-direction: column;
@@ -79,7 +78,6 @@ body {
   &--information-name {
     width: 500px;
     margin-left: 1em;
-
   }
 
   &--reservation {
@@ -143,7 +141,6 @@ body {
   }
 }
 
-
 .BookInterview-button {
   @include btn;
 }
@@ -165,4 +162,3 @@ body {
     background-color: transparent;
   }
 }
-
