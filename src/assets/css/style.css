@@ -548,6 +548,12 @@ body {
   margin: 14px 20px;
   border-bottom: 2px solid #222225;
 }
+.available-students-wrapper .search-filtration .p-inputtext:enabled:focus {
+  border-color: #e02735;
+  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+  color: #f7f7f7;
+}
 .available-students-wrapper .search-filtration .input-wrapper {
   position: relative;
   display: -webkit-box;
@@ -569,7 +575,6 @@ body {
   height: 38px;
   width: 365px;
   border: none;
-  padding-left: 30px;
   color: #666666;
   letter-spacing: 0;
   font-family: "Catamaran", Arial, sans-serif;
@@ -1181,6 +1186,10 @@ body {
 
 .megak-secondary {
   background-color: #0a0a0a;
+}
+
+.megak-small-height {
+  height: 38px;
 }
 
 .mega-k-star {
