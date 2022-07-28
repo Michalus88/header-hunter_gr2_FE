@@ -168,60 +168,108 @@ a:active {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: #222225;
   height: 100vh;
   width: 100vw;
 }
 
 .BookInterview {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 1430px;
   background-color: #0a0a0a;
 }
 .BookInterview__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 1400px;
   background-color: #222225;
   margin-bottom: 1em;
 }
 
 .BookInterview__student {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 100%;
   background-color: 2a2a2b;
   margin-bottom: 1em;
 }
 .BookInterview__student--all {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .BookInterview__student--buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   padding: 1.2em;
 }
 .BookInterview__student--information {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-left: 6em;
   height: 100%;
   font-weight: lighter;
@@ -240,10 +288,19 @@ body {
   margin-left: 1em;
 }
 .BookInterview__student--reservation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 10em;
   font-size: 12px;
   margin: 0.3em 1em;
@@ -260,21 +317,38 @@ body {
 }
 .BookInterview__student--details-container-close {
   display: none;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 1400px;
   background-color: #222324;
 }
 .BookInterview__student--details-container-open {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 1400px;
   background-color: #222324;
 }
 .BookInterview__student--details {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-bottom: 20px solid #222225;
 }
 .BookInterview__student--details-name {
@@ -305,7 +379,8 @@ body {
 
 .BookInterview__student--button-more-open {
   background-color: transparent;
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 .BookInterview__student--button-more-open:hover {
   background-color: transparent;
@@ -313,7 +388,8 @@ body {
 
 .BookInterview__student--button-more-close {
   background-color: transparent;
-  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 .BookInterview__student--button-more-close:hover {
   background-color: transparent;
@@ -323,11 +399,21 @@ body {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   letter-spacing: 0.6px;
 }
 .admin-page-wrapper .admin-page-image {
@@ -365,7 +451,9 @@ body {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  justify-content: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   color: #f7f7f7;
   font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -388,9 +476,16 @@ body {
   opacity: 0;
 }
 .admin-page-wrapper .csv-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: end;
-  flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .admin-page-wrapper .csv-form .admin-button-send {
   display: block;
@@ -398,9 +493,16 @@ body {
   width: 100px;
 }
 .admin-page-wrapper .hr-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: end;
-  flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .admin-page-wrapper .hr-form .admin-button-send {
   display: block;
@@ -412,19 +514,35 @@ body {
 .available-students-wrapper {
   position: relative;
   background-color: #292a2b;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   max-width: 1430px;
   width: 80%;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
   color: #f7f7f7;
 }
 .available-students-wrapper .search-filtration {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 95%;
   height: 50px;
   margin: 14px 20px;
@@ -432,6 +550,8 @@ body {
 }
 .available-students-wrapper .search-filtration .input-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: #0a0a0a;
   height: 38px;
@@ -471,20 +591,29 @@ body {
   width: 95%;
 }
 .available-students-wrapper .available-One-student {
-  border-top: 8px solid #1E1E1F;
+  border-top: 8px solid #1e1e1f;
   width: 100%;
   margin: 0 auto;
 }
 .available-students-wrapper .available-One-student .available-student {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 95%;
   height: 60px;
   margin: 14px 20px 0 20px;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right {
   margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right .reservation {
@@ -507,20 +636,30 @@ body {
 .available-students-wrapper .available-One-student .available-student .available-student-right .expand .image-off {
   min-width: 30px;
   min-height: 30px;
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right .expand .image-on {
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .available-students-wrapper .available-One-student .student-details-off {
   display: none;
 }
 .available-students-wrapper .available-One-student .student-details-on {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 110px;
   width: 100%;
   background-color: #222324;
@@ -528,10 +667,15 @@ body {
 .available-students-wrapper .available-One-student .student-details-on .detail {
   padding: 8px;
   max-width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: left;
-  color: #CFCFCF;
+  color: #cfcfcf;
   letter-spacing: 0;
   line-height: 14px;
 }
@@ -551,8 +695,12 @@ body {
   width: 100%;
   height: 80px;
   background-color: #222225;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: right;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 40px solid #292a2b;
@@ -569,20 +717,22 @@ body {
   position: relative;
   width: 26px;
   height: 26px;
-  background-color: #CFCFCF;
+  background-color: #cfcfcf;
   margin-left: 15px;
 }
 .available-students-wrapper .footer-container .elements-switch .left-switch {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
 }
 .available-students-wrapper .footer-container .elements-switch .right-switch {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%) rotate(180deg);
+  -webkit-transform: translate(50%, -50%) rotate(180deg);
+          transform: translate(50%, -50%) rotate(180deg);
 }
 .available-students-wrapper .footer-container .elements-switch:hover {
   background-color: #666666;
@@ -1092,6 +1242,7 @@ body {
   background-color: none;
   margin: 0.4rem 0.4rem 0.4rem 0;
 }
+
 .top-panel-container {
   position: absolute;
   display: -webkit-box;
@@ -1173,4 +1324,3 @@ body {
 .top-panel-container .navbar .navbar-nav .navbar-nav-link:hover {
   background-color: #353538;
 }/*# sourceMappingURL=style.css.map */
-

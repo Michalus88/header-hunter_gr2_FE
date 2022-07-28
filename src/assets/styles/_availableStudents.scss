@@ -1,6 +1,5 @@
 @import 'colors';
 
-
 .available-students-wrapper {
   position: relative;
   background-color: $input-brown;
@@ -10,7 +9,7 @@
   height: max-content;
   max-width: 1430px;
   width: 80%;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
   color: $main-text-color;
 
   .search-filtration {
@@ -44,7 +43,6 @@
         letter-spacing: 0;
         font-family: 'Catamaran', Arial, sans-serif;
         background-color: #0a0a0a;
-
       }
     }
     a {
@@ -66,7 +64,7 @@
   }
 
   .available-One-student {
-    border-top: 8px solid #1E1E1F;
+    border-top: 8px solid #1e1e1f;
     width: 100%;
     margin: 0 auto;
 
@@ -86,7 +84,7 @@
           background-color: #e02735;
           color: #f7f7f7;
           font-size: 16px;
-          font-family: "Catamaran", Arial, sans-serif;
+          font-family: 'Catamaran', Arial, sans-serif;
           letter-spacing: 0;
           border: none;
           margin-right: 15px;
@@ -126,7 +124,7 @@
         display: flex;
         flex-direction: column;
         text-align: left;
-        color: #CFCFCF;
+        color: #cfcfcf;
         letter-spacing: 0;
         line-height: 14px;
         .title {
@@ -143,7 +141,6 @@
         }
       }
     }
-
   }
 
   .footer-container {
@@ -167,7 +164,7 @@
       position: relative;
       width: 26px;
       height: 26px;
-      background-color: #CFCFCF;
+      background-color: #cfcfcf;
       margin-left: 15px;
       .left-switch {
         position: absolute;
@@ -191,7 +188,3 @@
 .available-One-student:first-child {
   border-top: none;
 }
-
-
-
-
