@@ -52,50 +52,65 @@ export const AdminPage = () => {
         <form className="hr-form">
           {/* Email input */}
           <div className="admin-input">
-            <input
-              type="email"
-              placeholder="E-mail"
-              value={form.email}
-              onChange={(e) => updateForm('email', e.target.value)}
-            />
+            <label>
+              E-mail:
+              <input
+                type="email"
+                placeholder="E-mail"
+                value={form.email}
+                onChange={(e) => updateForm('email', e.target.value)}
+              />
+            </label>
           </div>
           {/* first name input */}
           <div className="admin-input">
-            <input
-              type="text"
-              placeholder="Imię"
-              value={form.firstName}
-              onChange={(e) => updateForm('firstName', e.target.value)}
-            />
+            <label>
+              Imię:
+              <input
+                type="text"
+                placeholder="Imię"
+                value={form.firstName}
+                onChange={(e) => updateForm('firstName', e.target.value)}
+              />
+            </label>
           </div>
           {/* last name input */}
           <div className="admin-input">
-            <input
-              type="text"
-              placeholder="Nazwisko"
-              value={form.lastName}
-              onChange={(e) => updateForm('lastName', e.target.value)}
-            />
+            <label>
+              Nazwisko:
+              <input
+                type="text"
+                placeholder="Nazwisko"
+                value={form.lastName}
+                onChange={(e) => updateForm('lastName', e.target.value)}
+              />
+            </label>
           </div>
           {/* company input */}
           <div className="admin-input">
-            <input
-              type="text"
-              placeholder="Firma / Organizacja"
-              value={form.company}
-              onChange={(e) => updateForm('company', e.target.value)}
-            />
+            <label>
+              Firma / Organizacja:
+              <input
+                type="text"
+                placeholder="Firma / Organizacja"
+                value={form.company}
+                onChange={(e) => updateForm('company', e.target.value)}
+              />
+            </label>
           </div>
           {/* max reserved students input */}
           <div className="admin-input">
-            <input
-              type="number"
-              placeholder="Limit studentów"
-              value={form.maxReservedStudents}
-              onChange={(e) => updateForm('maxReservedStudents', e.target.value)}
-              min="1"
-              max="50"
-            />
+            <label>
+              Limit kursantów:
+              <input
+                type="number"
+                placeholder="Limit studentów"
+                value={form.maxReservedStudents}
+                onChange={(e) => updateForm('maxReservedStudents', e.target.value)}
+                min="1"
+                max="50"
+              />
+            </label>
           </div>
           <MegaButton
             buttonTitle="Dodaj"
@@ -112,7 +127,7 @@ export const AdminPage = () => {
               <button className="button-file" type="submit">
                 Wybierz plik CSV
               </button>
-              <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
+              <input type="file" accept=".csv" value={file} onChange={(e) => setFile(e.target.value)} />
             </div>
           </div>
 
