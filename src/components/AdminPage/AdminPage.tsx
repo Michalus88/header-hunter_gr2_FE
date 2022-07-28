@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
+import { TopPanel } from '../TopPanel/TopPanel';
 // import {HrProfileRegister} from 'types';
 
 interface HrProfileRegister {
@@ -43,7 +44,7 @@ export const AdminPage = () => {
     console.log(`plik: ${info}`);
   };
 
-  return (
+  return (<> <TopPanel />
     <div>
       <div className="admin-page-wrapper">
         <h1>Panel Administratora</h1>
@@ -60,6 +61,7 @@ export const AdminPage = () => {
                 value={form.email}
                 onChange={(e) => updateForm('email', e.target.value)}
               />
+
             </label>
           </div>
           {/* first name input */}
@@ -84,6 +86,7 @@ export const AdminPage = () => {
                 value={form.lastName}
                 onChange={(e) => updateForm('lastName', e.target.value)}
               />
+
             </label>
           </div>
           {/* company input */}
@@ -96,6 +99,7 @@ export const AdminPage = () => {
                 value={form.company}
                 onChange={(e) => updateForm('company', e.target.value)}
               />
+
             </label>
           </div>
           {/* max reserved students input */}
@@ -128,16 +132,17 @@ export const AdminPage = () => {
                 Wybierz plik CSV
               </button>
               <input type="file" accept=".csv" value={file} onChange={(e) => setFile(e.target.value)} />
-            </div>
-          </div>
 
-          <MegaButton
-            buttonTitle="Wyślij"
-            onClick={() => clicked2(file)}
-            classNameAdd="admin-button-send"
-          />
-        </form>
+            </div>
+
+            <MegaButton
+              buttonTitle="Wyślij"
+              onClick={() => clicked2(file)}
+              classNameAdd="admin-button-send"
+            />
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

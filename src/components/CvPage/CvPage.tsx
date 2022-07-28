@@ -5,13 +5,17 @@ import { StudentInfo } from './StudentInfo';
 
 import '../../assets/css/cvPage.css';
 import { CvContent } from './CvContent';
+import { TopPanel } from '../TopPanel/TopPanel';
 
 export const CvPage = () => {
   return (
-    <MainWrapper>
-      <GoBack />
-      <StudentInfo />
-      <CvContent />
-    </MainWrapper>
+    <>
+      <TopPanel />
+      <MainWrapper>
+        <GoBack />
+        <StudentInfo />
+        <CvContent />
+      </MainWrapper>
+    </>
   );
 };
