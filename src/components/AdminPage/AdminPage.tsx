@@ -44,53 +44,68 @@ export const AdminPage = () => {
     console.log(`plik: ${info}`);
   };
 
-  return (
-    <>
-      <TopPanel />
-      <div>
-        <div className="admin-page-wrapper">
-          <h1>Panel Administratora</h1>
-          <img src={megaK} alt="MegaK logo" className="admin-page-image" />
-          <h3 className="title">Dodaj HR-a</h3>
-          <form className="hr-form">
-            {/* Email input */}
-            <div className="admin-input">
+  return (<> <TopPanel />
+    <div>
+      <div className="admin-page-wrapper">
+        <h1>Panel Administratora</h1>
+        <img src={megaK} alt="MegaK logo" className="admin-page-image" />
+        <h3 className="title">Dodaj HR-a</h3>
+        <form className="hr-form">
+          {/* Email input */}
+          <div className="admin-input">
+            <label>
+              E-mail:
               <input
                 type="email"
                 placeholder="E-mail"
                 value={form.email}
                 onChange={(e) => updateForm('email', e.target.value)}
               />
-            </div>
-            {/* first name input */}
-            <div className="admin-input">
+
+            </label>
+          </div>
+          {/* first name input */}
+          <div className="admin-input">
+            <label>
+              Imię:
               <input
                 type="text"
                 placeholder="Imię"
                 value={form.firstName}
                 onChange={(e) => updateForm('firstName', e.target.value)}
               />
-            </div>
-            {/* last name input */}
-            <div className="admin-input">
+            </label>
+          </div>
+          {/* last name input */}
+          <div className="admin-input">
+            <label>
+              Nazwisko:
               <input
                 type="text"
                 placeholder="Nazwisko"
                 value={form.lastName}
                 onChange={(e) => updateForm('lastName', e.target.value)}
               />
-            </div>
-            {/* company input */}
-            <div className="admin-input">
+
+            </label>
+          </div>
+          {/* company input */}
+          <div className="admin-input">
+            <label>
+              Firma / Organizacja:
               <input
                 type="text"
                 placeholder="Firma / Organizacja"
                 value={form.company}
                 onChange={(e) => updateForm('company', e.target.value)}
               />
-            </div>
-            {/* max reserved students input */}
-            <div className="admin-input">
+
+            </label>
+          </div>
+          {/* max reserved students input */}
+          <div className="admin-input">
+            <label>
+              Limit kursantów:
               <input
                 type="number"
                 placeholder="Limit studentów"
@@ -99,24 +114,25 @@ export const AdminPage = () => {
                 min="1"
                 max="50"
               />
-            </div>
-            <MegaButton
-              buttonTitle="Dodaj"
-              onClick={() => clicked1(form)}
-              classNameAdd="admin-button-send"
-            />
-          </form>
+            </label>
+          </div>
+          <MegaButton
+            buttonTitle="Dodaj"
+            onClick={() => clicked1(form)}
+            classNameAdd="admin-button-send"
+          />
+        </form>
 
-          <h3 className="title">Import studentów z pliku CSV</h3>
-          <form className="csv-form">
-            {/* file input */}
-            <div className="admin-input">
-              <div className="button-file-wrapper">
-                <button className="button-file" type="submit">
-                  Wybierz plik CSV
-                </button>
-                <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
-              </div>
+        <h3 className="title">Import studentów z pliku CSV</h3>
+        <form className="csv-form">
+          {/* file input */}
+          <div className="admin-input">
+            <div className="button-file-wrapper">
+              <button className="button-file" type="submit">
+                Wybierz plik CSV
+              </button>
+              <input type="file" accept=".csv" value={file} onChange={(e) => setFile(e.target.value)} />
+
             </div>
 
             <MegaButton
