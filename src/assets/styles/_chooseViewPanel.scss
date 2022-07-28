@@ -1,0 +1,31 @@
+@import './colors';
+
+.choose-view-container {
+  display: flex;
+  margin: 26px auto 0;
+  width: 80%;
+  height: 72px;
+  background-color: $input-brown;
+
+  .choose-view-button {
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: $input-brown;
+
+    .choose-view-button-link {
+      font-size: 1rem;
+      padding: 26px 20px;
+      color: $main-text-color;
+    }
+  }
+
+  .choose-view-button:hover {
+    background-color: #353538;
+  }
+
+  .styleActive {
+    font-size: 1.3rem;
+    border-bottom: 4px solid $megak-red-color;
+  }
+}
