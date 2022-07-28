@@ -13,7 +13,7 @@ export const TestBtn5 = () => {
     <div className="test-btn">
       <MegaButton
         classNameAdd="megak-primary"
-        buttonTitle="Test Interview"
+        buttonTitle="Available students"
         onClick={() => onClick()}
       />
     </div>
