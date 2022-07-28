@@ -8,7 +8,7 @@
   height: 80px;
   width: 100%;
   padding: 0 10%;
-  color:$main-text-color;
+  color: $main-text-color;
   background-color: $bgc-header;
 
   .top-panel-logo {
@@ -67,6 +67,10 @@
       .navbar-nav-link {
         display: block;
         padding: 5px 10px;
+      }
+
+      .navbar-nav-link:hover {
+        background-color: #353538;
       }
     }
   }

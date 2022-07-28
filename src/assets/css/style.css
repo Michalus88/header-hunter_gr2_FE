@@ -139,7 +139,7 @@ a:active {
   flex-direction: column;
   width: 250px;
   padding: 0 20px;
-  background-color: #2a2a2b;
+  background-color: 2a2a2b;
 }
 .main-wrapper .cv-student-info .cv-student-info__picture-container {
   margin: 30px 30px;
@@ -221,7 +221,7 @@ a:active {
   font-size: 20px;
   font-weight: normal;
   color: #f7f7f7;
-  background-color: #2a2a2b;
+  background-color: 2a2a2b;
 }
 .main-wrapper .cv-container .cv-ratings, .main-wrapper .cv-container .cv-expectation, .main-wrapper .cv-container .cv-knowledge, .main-wrapper .cv-container .cv-projects {
   display: flex;
@@ -576,6 +576,9 @@ a:active {
 .top-panel-container .navbar .navbar-nav .navbar-nav-link {
   display: block;
   padding: 5px 10px;
+}
+.top-panel-container .navbar .navbar-nav .navbar-nav-link:hover {
+  background-color: #353538;
 }
 
 /*# sourceMappingURL=style.css.map */
