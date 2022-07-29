@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LoginPage } from './components/LoginPage/LoginPage';
-import { Test } from './components/Test/Test';
 import { BookInterview } from './components/BookInterView/BookInterview';
 import { CvPage } from './components/CvPage/CvPage';
 import { AdminPage } from './components/AdminPage/AdminPage';

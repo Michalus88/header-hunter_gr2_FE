@@ -3,7 +3,6 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
-import { TestBtn } from '../Test/TestBtn';
 import { MegaButton } from '../Elements/MegaButton';
 import { TestBtn2 } from '../Test/TestBtn2';
 import { TestBtn3 } from '../Test/TestBtn3';
@@ -74,7 +73,6 @@ export const LoginPage = () => {
           alignItems: 'center',
         }}
       >
-        <TestBtn />
         <TestBtn2 />
         <TestBtn3 />
         <TestBtn4 />
