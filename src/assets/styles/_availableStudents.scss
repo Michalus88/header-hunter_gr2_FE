@@ -102,11 +102,11 @@
           .image-off {
             min-width: 30px;
             min-height: 30px;
-            transform: rotate(180deg);
-            transition: 0.5s;
+            transform: none;
+            transition: 0.3s;
           }
           .image-on {
-            transform: none;
+            transform: rotate(180deg);
             transition: 0.5s;
           }
         }
