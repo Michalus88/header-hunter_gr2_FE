@@ -1,6 +1,7 @@
 @import 'colors';
 
 .admin-page-wrapper {
+  margin-top: 80px;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -42,6 +43,12 @@
         border: none;
         padding-left: 15px;
       }
+    }
+    p {
+      opacity: 0.9;
+      font-size: 12px;
+      padding-bottom: 2px;
+      color: $cta;
     }
 
     .button-file-wrapper {
