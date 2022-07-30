@@ -34,6 +34,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
         'import/prefer-default-export': 'off',
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': [
             2,
             {
