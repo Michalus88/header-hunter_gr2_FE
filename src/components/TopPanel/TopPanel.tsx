@@ -11,9 +11,11 @@ export const TopPanel = () => {
 
   return (
     <div className="top-panel-container">
-      <img className="top-panel-logo" src={megaK} alt="MegaK logo" />
-      <TopPanelRecruiter showMenu={showMenu} />
-      {show && <TopPanelMenu />}
+      <div className="top-panel-wrapper">
+        <img className="top-panel-logo" src={megaK} alt="MegaK logo" />
+        <TopPanelRecruiter showMenu={showMenu} />
+        {show && <TopPanelMenu />}
+      </div>
     </div>
   );
 };
