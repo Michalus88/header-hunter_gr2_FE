@@ -975,6 +975,7 @@ body {
   height: 80px;
   width: 100%;
   padding: 0 10%;
+  font-size: 18px;
   color: #f7f7f7;
   background-color: #1e1e20;
 }
@@ -1013,7 +1014,7 @@ body {
   cursor: pointer;
 }
 .top-panel-container .navbar {
-  position: fixed;
+  position: absolute;
   top: 80px;
   right: 10%;
   width: 200px;
@@ -1027,7 +1028,9 @@ body {
 }
 .top-panel-container .navbar .navbar-nav .navbar-nav-link {
   display: block;
-  padding: 5px 10px;
+  height: 40px;
+  line-height: 40px;
+  padding: 2px 10px;
 }
 .top-panel-container .navbar .navbar-nav .navbar-nav-link:hover {
   background-color: #353538;
