@@ -2,10 +2,9 @@
 
 .choose-view-container {
   display: flex;
-  margin: 26px auto 0;
   height: 72px;
-  width: 1430px;
-  max-width: 80%;
+  width: 100%;
+  border-bottom: 2px solid $bgc-dark;
   background-color: $input-brown;
 
   .choose-view-button {
