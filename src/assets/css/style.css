@@ -983,9 +983,12 @@ body {
   margin: 0 auto;
   font-size: 18px;
 }
-.top-panel-container .top-panel-wrapper .top-panel-logo {
+.top-panel-container .top-panel-wrapper .top-panel-link {
   position: relative;
   align-items: center;
+  height: 55px;
+}
+.top-panel-container .top-panel-wrapper .top-panel-logo {
   width: 89px;
   height: 55px;
 }
