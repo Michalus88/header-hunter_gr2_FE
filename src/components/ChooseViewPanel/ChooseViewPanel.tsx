@@ -10,10 +10,15 @@ export const ChooseViewPanel = () => {
 
   return (
     <div className="choose-view-container">
-      <ChooseViewButton isActive={isActive} numeral={1} figure={digit} path="/test">
+      <ChooseViewButton
+        isActive={isActive}
+        numeral={1}
+        figure={digit}
+        path="/hr/available-students"
+      >
         Dostępni kursanci
       </ChooseViewButton>
-      <ChooseViewButton isActive={isActive} numeral={2} figure={digit} path="/test">
+      <ChooseViewButton isActive={isActive} numeral={2} figure={digit} path="/interview">
         Do rozmowy
       </ChooseViewButton>
     </div>
