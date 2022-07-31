@@ -358,7 +358,7 @@ body {
 }
 .admin-page-wrapper .csv-form {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   flex-direction: column;
 }
 .admin-page-wrapper .csv-form .admin-button-send {
@@ -368,7 +368,7 @@ body {
 }
 .admin-page-wrapper .hr-form {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   flex-direction: column;
 }
 .admin-page-wrapper .hr-form .admin-button-send {
