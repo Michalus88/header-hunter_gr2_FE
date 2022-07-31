@@ -3,20 +3,21 @@
 .choose-view-container {
   display: flex;
   margin: 26px auto 0;
-  width: 80%;
   height: 72px;
+  width: 1430px;
+  max-width: 80%;
   background-color: $input-brown;
 
   .choose-view-button {
-    padding: 0;
     box-sizing: border-box;
     border: none;
+    padding: 0;
     background-color: $input-brown;
 
     .choose-view-button-link {
-      font-size: 1rem;
       padding: 26px 20px;
-      color: $main-text-color;
+      font-size: 18px;
+      color: #cfcfcf;
     }
   }
 
@@ -25,7 +26,10 @@
   }
 
   .styleActive {
-    font-size: 1.3rem;
     border-bottom: 4px solid $megak-red-color;
+
+    .choose-view-button-link {
+      color: white;
+    }
   }
 }

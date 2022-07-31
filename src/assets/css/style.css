@@ -762,27 +762,30 @@ body {
 .choose-view-container {
   display: flex;
   margin: 26px auto 0;
-  width: 80%;
   height: 72px;
+  width: 1430px;
+  max-width: 80%;
   background-color: #292a2b;
 }
 .choose-view-container .choose-view-button {
-  padding: 0;
   box-sizing: border-box;
   border: none;
+  padding: 0;
   background-color: #292a2b;
 }
 .choose-view-container .choose-view-button .choose-view-button-link {
-  font-size: 1rem;
   padding: 26px 20px;
-  color: #f7f7f7;
+  font-size: 18px;
+  color: #cfcfcf;
 }
 .choose-view-container .choose-view-button:hover {
   background-color: #353538;
 }
 .choose-view-container .styleActive {
-  font-size: 1.3rem;
   border-bottom: 4px solid #e02735;
+}
+.choose-view-container .styleActive .choose-view-button-link {
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
