@@ -19,11 +19,7 @@ export const RegisterStudentView = () => {
   return (
     <div className="RegisterStudentView">
       <div className="RegisterStudentView__Wrapper">
-        <form
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
-          })}
-        >
+        <form onSubmit={handleSubmit((data) => {})}>
           <label>
             Adres e-mail
             <br />
@@ -43,7 +39,9 @@ export const RegisterStudentView = () => {
               placeholder="Adres e-mail"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.firstName?.message}</p>
+
           <br />
           <label>
             Telefon
@@ -64,8 +62,11 @@ export const RegisterStudentView = () => {
               placeholder="Numer telefonu"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.number?.message}</p>
+
           <br />
+
           <label>
             Imię
             <br />
@@ -87,6 +88,7 @@ export const RegisterStudentView = () => {
             <p className="RegisterStudentView__Input--error">{errors.firstName?.message}</p>
             <br />
           </label>
+
           <label>
             Nazwisko
             <br />
@@ -106,7 +108,9 @@ export const RegisterStudentView = () => {
               placeholder="Nazwisko"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.lastName?.message}</p>
+
           <label>
             Github Login
             <br />
@@ -142,8 +146,10 @@ export const RegisterStudentView = () => {
               placeholder="URL do portfolio nr 1"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
           <br />
+
           <label>
             Link do portfolio 2
             <br />
@@ -158,6 +164,7 @@ export const RegisterStudentView = () => {
               placeholder="URL do portfolio nr 2"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
           <br />
           <label>
@@ -174,8 +181,10 @@ export const RegisterStudentView = () => {
               placeholder="URL do portfolio nr 3"
             />
           </label>
+
           <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
           <br />
+
           <label>
             Link do portfolio nr 4
             <br />
