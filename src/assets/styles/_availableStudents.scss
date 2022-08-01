@@ -1,0 +1,195 @@
+@import 'colors';
+
+.available-students-wrapper {
+  position: relative;
+  background-color: $input-brown;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: max-content;
+  max-width: 1430px;
+  width: 80%;
+  margin: 100px auto 0 auto;
+  color: $main-text-color;
+
+  .search-filtration {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    height: 50px;
+    margin: 14px 20px;
+    border-bottom: 2px solid $bgc-dark;
+    .p-inputtext:enabled:focus {
+      border-color: #e02735;
+      box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
+        inset 0 0 0 1px #c96789;
+      color: $main-text-color;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      background-color: #0a0a0a;
+      height: 38px;
+      width: 365px;
+      img {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        height: 15px;
+        width: 15px;
+      }
+      input {
+        font-size: 14px;
+        height: 38px;
+        width: 365px;
+        border: none;
+        color: #666666;
+        letter-spacing: 0;
+        font-family: 'Catamaran', Arial, sans-serif;
+        background-color: #0a0a0a;
+      }
+    }
+    a {
+      font-size: 14px;
+      width: 90px;
+      height: 38px;
+      color: #f7f7f7;
+      letter-spacing: 0;
+      text-align: left;
+      padding: 7px 5px 5px 10px;
+      font-family: 'Catamaran', Arial, sans-serif;
+      background-color: #0a0a0a;
+    }
+  }
+
+  .students-list {
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  .available-One-student {
+    border-top: 8px solid #1e1e1f;
+    width: 100%;
+    margin: 0 auto;
+
+    .available-student {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 95%;
+      height: 60px;
+      margin: 14px 20px 0 20px;
+      .available-student-right {
+        margin-bottom: 15px;
+        display: flex;
+        .reservation {
+          width: 158px;
+          height: 39px;
+          background-color: #e02735;
+          color: #f7f7f7;
+          font-size: 16px;
+          font-family: 'Catamaran', Arial, sans-serif;
+          letter-spacing: 0;
+          border: none;
+          margin-right: 15px;
+        }
+        .expand {
+          background-color: transparent;
+          border: none;
+          height: 40px;
+          width: 40px;
+          .image-off {
+            min-width: 30px;
+            min-height: 30px;
+            transform: none;
+            transition: 0.3s;
+          }
+          .image-on {
+            transform: rotate(180deg);
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+
+    .student-details-off {
+      display: none;
+    }
+    .student-details-on {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      height: 110px;
+      width: 100%;
+      background-color: #222324;
+      .detail {
+        padding: 8px;
+        max-width: 120px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        color: #cfcfcf;
+        letter-spacing: 0;
+        line-height: 14px;
+        .title {
+          height: 70px;
+          font-size: 12px;
+        }
+        .description {
+          font-size: 14px;
+          letter-spacing: 1.5px;
+        }
+        .description-text {
+          font-size: 14px;
+          letter-spacing: 0;
+        }
+      }
+    }
+  }
+
+  .footer-container {
+    width: 100%;
+    height: 80px;
+    background-color: #222225;
+    display: flex;
+    justify-content: right;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 40px solid $input-brown;
+    .elements-status {
+      margin-left: 15px;
+    }
+    .select-footer {
+      font-size: 12px;
+      margin-left: 15px;
+      height: 26px;
+    }
+    .elements-switch {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      background-color: #cfcfcf;
+      margin-left: 15px;
+      .left-switch {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
+      .right-switch {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%) rotate(180deg);
+      }
+    }
+    .elements-switch:hover {
+      background-color: #666666;
+    }
+  }
+}
+
+.available-One-student:first-child {
+  border-top: none;
+}

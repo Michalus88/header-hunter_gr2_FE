@@ -3,11 +3,11 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
-import { TestBtn } from '../Test/TestBtn';
 import { MegaButton } from '../Elements/MegaButton';
 import { TestBtn2 } from '../Test/TestBtn2';
 import { TestBtn3 } from '../Test/TestBtn3';
 import { TestBtn4 } from '../Test/TestBtn4';
+import { TestBtn5 } from '../Test/TestBtn5';
 
 export const LoginPage = () => {
   const [value1, setValue1] = useState('');
@@ -73,10 +73,10 @@ export const LoginPage = () => {
           alignItems: 'center',
         }}
       >
-        <TestBtn />
         <TestBtn2 />
         <TestBtn3 />
         <TestBtn4 />
+        <TestBtn5 />
       </div>
     </div>
   );
