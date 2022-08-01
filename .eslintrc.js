@@ -10,6 +10,7 @@ module.exports = {
     extends: [
         'airbnb',
         'airbnb-typescript',
+        'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
         'plugin:import/recommended',
@@ -34,6 +35,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
         'import/prefer-default-export': 'off',
+        'react/jsx-uses-react': 1
         'react/function-component-definition': [
             2,
             {
