@@ -7,15 +7,14 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: './tsconfig.json',
   },
-  extends: [
-    'airbnb',
-    'airbnb-typescript',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
+   extends: [
+        'airbnb',
+        'airbnb-typescript',
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:react-hooks/recommended',
+        'plugin:import/typescript',
+        'plugin:prettier/recommended',
   ],
   plugins: ['@typescript-eslint', 'import', 'prettier'],
   ignorePatterns: [
