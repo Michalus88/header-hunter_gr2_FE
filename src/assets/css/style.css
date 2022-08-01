@@ -387,7 +387,7 @@ body {
   height: max-content;
   max-width: 1430px;
   width: 80%;
-  margin: 100px auto 0 auto;
+  margin: 0 auto;
   color: #f7f7f7;
 }
 .available-students-wrapper .search-filtration {
@@ -563,6 +563,43 @@ body {
 
 .available-One-student:first-child {
   border-top: none;
+}
+
+.view-panel {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  max-width: 1430px;
+  width: 80%;
+  height: 72px;
+  color: #f7f7f7;
+  background-color: #292a2b;
+  margin: 100px auto 0 auto;
+  border-bottom: 2px solid #222225;
+}
+.view-panel .link-wrapper {
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  height: 72px;
+  list-style-type: none;
+}
+.view-panel .link-wrapper .link {
+  text-align: left;
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #CFCFCF;
+  padding: 23px 0 19px 0;
+  margin-left: 34px;
+  margin-right: 20px;
+}
+.view-panel .link-wrapper .link:hover {
+  background-color: red;
+  color: black;
+}
+.view-panel .link-wrapper .link:active {
+  background-color: gray;
+  color: white;
 }
 
 .main-wrapper {

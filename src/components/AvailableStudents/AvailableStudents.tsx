@@ -3,11 +3,13 @@ import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
 import { ViewSupport } from '../ViewSupport/ViewSupport';
 import { AvailableOneStudent } from '../AvailableOneStudent/AvailableOneStudent';
 import { TopPanel } from '../TopPanel/TopPanel';
+import { ViewPanel } from '../ViewPanel/ViewPanel';
 
 export const AvailableStudents = () => {
   return (
     <>
       <TopPanel />
+        <ViewPanel/>
       <div className="available-students-wrapper">
         <SearchFiltration />
         <div className="students-list">
