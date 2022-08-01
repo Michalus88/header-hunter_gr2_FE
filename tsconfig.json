@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -21,10 +22,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ],
-  "baseUrl": ".",
-  "paths": {
-    "types": ["../header-hunter_gr2_BE/types", "src"]
-  }
+    "src",
+    "style"
+  ]
 }

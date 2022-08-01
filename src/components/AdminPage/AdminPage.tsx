@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
+import { HrProfileRegister } from 'types';
 import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
-// import {HrProfileRegister} from 'types';
 
-interface HrProfileRegister {
-  email: string;
-  firstName: string;
-  lastName: string;
-  company: string;
-  maxReservedStudents: number;
-}
+// interface HrProfileRegister {
+//   email: string;
+//   firstName: string;
+//   lastName: string;
+//   company: string;
+//   maxReservedStudents: number;
+// }
 
 type InputProps = {
   name: Path<HrProfileRegister>;
