@@ -21,7 +21,7 @@ type InputProps = {
   required: boolean;
   min: { minValue: number; minMessage: string };
   max: { value: number; message: string };
-  pattern?: { value: RegExp; message: string };
+  pattern: { value: RegExp; message: string };
 };
 
 const Input = ({
