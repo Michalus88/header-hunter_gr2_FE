@@ -3,7 +3,6 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
-import { MegaButton } from '../Elements/MegaButton';
 import { TestBtn2 } from '../Test/TestBtn2';
 import { TestBtn3 } from '../Test/TestBtn3';
 import { TestBtn4 } from '../Test/TestBtn4';
@@ -16,7 +15,12 @@ export const LoginPage = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log('SUBMIT', value1, value2);
+
+    if (!login && value2 === '') {
+      console.log(`SUBMIT LOST PASS email ${value1}`);
+    } else {
+      console.log(`SUBMIT e-mial ${value1} password ${value2}`);
+    }
   };
   const toggleLostPass = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -24,7 +28,6 @@ export const LoginPage = () => {
     if (login) {
       setValue2('');
     }
-    console.log('Zapomniało się...', value1);
   };
 
   return (
@@ -62,7 +65,7 @@ export const LoginPage = () => {
               </span>
             </div>
           ) : (
-            <div>Podaj email</div>
+            <div className="lost-password-text">Zapomniałeś hasła - Wpisz swój adres e-mail.</div>
           )}
           <div className="login-forgot-pass">
             {login ? (
@@ -76,21 +79,13 @@ export const LoginPage = () => {
             )}
           </div>
           <div className="register-new-acc">
-            <div className="register-new-acc-text">
-              Nie masz konta?
-              <span className="register-new-acc-register">
-                <NavLink className="register" to="no_link_yet">
-                  Zarejestruj się
-                </NavLink>
-              </span>
-            </div>
             {login ? (
               <button type="submit" className="register-new-acc-button mega-k-button">
                 Zaloguj się
               </button>
             ) : (
               <button type="submit" className="register-new-acc-button mega-k-button">
-                Wyślij email
+                Wyślij e-mail
               </button>
             )}
           </div>

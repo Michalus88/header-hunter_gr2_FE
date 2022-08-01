@@ -13,11 +13,10 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-    'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   ignorePatterns: [
     '.eslintrc.js',
     '**/*.js',

@@ -118,9 +118,9 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -139,7 +139,7 @@ a:active {
   margin-left: 0.5rem;
 }
 .login-page-login-group .register-new-acc .register-new-acc-button {
-  width: 120px;
+  width: 140px;
   height: 45px;
   background-color: #e02735;
   color: #f7f7f7;
@@ -163,6 +163,9 @@ a:active {
 }
 .login-page-login-group .register-new-acc .p-button:disabled:focus {
   background-color: #e02735;
+}
+.login-page-login-group .lost-password-text {
+  text-align: center;
 }
 
 * {
