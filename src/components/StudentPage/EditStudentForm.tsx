@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 // import { ExpectedTypeWork } from 'types';
+// import { StudentProfileUpdate } from 'types';
 import { ValidateMsg } from './ValidateMsg';
 
 enum ExpectedTypeWork {
@@ -18,6 +19,7 @@ enum ExpectedContractType {
 }
 
 interface StudentProfileRegister {
+  email: string;
   tel: string | undefined;
   firstName: string;
   lastName: string;
@@ -38,6 +40,7 @@ interface StudentProfileRegister {
 
 export const EditStudentForm = () => {
   const [dataStudent, setDataStudent] = useState<StudentProfileRegister>({
+    email: 'gnys1001@gmail.com',
     tel: '60000000',
     firstName: 'Sławek',
     lastName: 'Gnyś',
@@ -70,6 +73,7 @@ export const EditStudentForm = () => {
       portfolioUrls: dataStudent.portfolioUrls,
       bio: dataStudent.bio,
       expectedTypeWork: dataStudent.expectedTypeWork,
+      email: dataStudent.email,
     },
     mode: 'onChange',
   });
@@ -86,6 +90,17 @@ export const EditStudentForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="student-page__form">
+        <input
+          type="email"
+          {...register('email', {
+            required: 'this is required',
+            pattern: {
+              value: /@/,
+              message: 'Invalid email address',
+            },
+          })}
+        />
+        <ValidateMsg text={errors.email && errors.email.message} />
         <input
           type="text"
           {...register('firstName', {
