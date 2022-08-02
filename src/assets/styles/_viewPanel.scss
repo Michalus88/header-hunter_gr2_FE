@@ -1,0 +1,44 @@
+@import "colors";
+
+.view-panel {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  max-width: 1430px;
+  width: 80%;
+  height: 72px;
+  color: $main-text-color;
+  background-color: $input-brown;
+  margin: 100px auto 0 auto;
+  border-bottom: 2px solid $bgc-dark;
+
+  .link-wrapper {
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    height: 72px;
+    list-style-type: none;
+    //margin-left: 34px;
+    //border-bottom: 3px solid $cta;
+
+    .link {
+      text-align: left;
+      //width: 120%;
+      font-size: 18px;
+      letter-spacing: 0;
+      color: #CFCFCF;
+      padding: 23px 0 19px 0;
+      margin-left: 34px;
+      margin-right: 20px;
+
+    }
+    .link:hover {
+      background-color: red;
+      color: black;
+    }
+    .link:active {
+      background-color: gray;
+      color: white;
+    }
+  }
+}
