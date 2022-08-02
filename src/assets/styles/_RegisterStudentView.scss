@@ -19,18 +19,21 @@
     display: flex;
     justify-content: center;
     width: 1430px;
+    margin-top: 1em;
 
   }
 
   &__Input {
     width: 1200px;
     padding: 0.5em 1em;
+    margin: 1em 0;
 
     &--more-info {
       min-height: 300px;
       min-width: 1200px;
       max-height: 200px;
       max-width: 1400px;
+      margin: 1em 0;
     }
 
     &--error {
@@ -63,3 +66,4 @@ label {
 .mega-k-button:hover {
   background-color: $megak-light-color;
 }
+

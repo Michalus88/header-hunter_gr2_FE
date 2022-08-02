@@ -1,9 +1,10 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-// import { ExpectedTypeWork } from 'types';
+import React, { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { ExpectedTypeWork, ExpectedContractType, StudentProfileRegister } from 'types';
 import '../../assets/css/RegisterStudentView.css';
 
 export const RegisterStudentView = () => {
+  const [registerStudent, setRegisterStudent] = useState<StudentProfileRegister>('');
   const {
     register,
     formState: { errors },
@@ -16,10 +17,50 @@ export const RegisterStudentView = () => {
     },
   });
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch(`http://localhost:3001/api/user/student`, {
+  //       method: 'POST',
+  //     });
+  //     const data = await res.json();
+  //     setRegisterStudent(data);
+  //   })();
+  // }, [setRegisterStudent]);
+
+  // const onSubmit: SubmitHandler<StudentProfileRegister> = (data) => {
+  //   alert(JSON.stringify(data));
+  // };
+
+  const ArrayPortfolioUrls = watch([
+    'portfolioUrlsFirst',
+    'portfolioUrlsSecond',
+    'portfolioUrlsThird',
+    'portfolioUrlsFourth',
+    'portfolioUrlsFifth',
+  ]);
+  const ArrayBonusProjectUrlsFirst = watch([
+    'bonusProjectUrlsFirst',
+    'bonusProjectUrlsSecond',
+    'bonusProjectUrlsThird',
+    'bonusProjectUrlsFourth',
+    'bonusProjectUrlsFirstFifth',
+  ]);
+  const [
+    portfolioUrlsFirst,
+    portfolioUrlsSecond,
+    portfolioUrlsThird,
+    portfolioUrlsFourth,
+    portfolioUrlsFifth,
+  ] = ArrayPortfolioUrls;
+
   return (
     <div className="RegisterStudentView">
       <div className="RegisterStudentView__Wrapper">
-        <form onSubmit={handleSubmit((data) => {})}>
+        <form
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+          })}
+        >
           <label>
             Adres e-mail
             <br />
@@ -28,7 +69,7 @@ export const RegisterStudentView = () => {
               {...register('email', {
                 required: 'Pole wymagane',
                 minLength: {
-                  value: 7,
+                  value: 6,
                   message: 'E-Mail musi zawierać conajmniej 7 znaków i @',
                 },
                 maxLength: {
@@ -40,8 +81,11 @@ export const RegisterStudentView = () => {
             />
           </label>
 
-          <p className="RegisterStudentView__Input--error">{errors.firstName?.message}</p>
-
+          {errors.email && (
+            <p className="RegisterStudentView__Input--error">
+              Adres e-mail nie może zawierać mniej niż 6 znaków i więcej niż 255
+            </p>
+          )}
           <br />
           <label>
             Telefon
@@ -62,11 +106,10 @@ export const RegisterStudentView = () => {
               placeholder="Numer telefonu"
             />
           </label>
-
-          <p className="RegisterStudentView__Input--error">{errors.number?.message}</p>
-
+          {errors.tel && (
+            <p className="RegisterStudentView__Input--error">Numer telefonu musi zawierać 9 cyfr</p>
+          )}
           <br />
-
           <label>
             Imię
             <br />
@@ -85,7 +128,11 @@ export const RegisterStudentView = () => {
               })}
               placeholder="Imię"
             />
-            <p className="RegisterStudentView__Input--error">{errors.firstName?.message}</p>
+            {errors.firstName && (
+              <p className="RegisterStudentView__Input--error">
+                Musi zawierać minimu, 3 znaki, a maksymalnie 28
+              </p>
+            )}
             <br />
           </label>
 
@@ -109,9 +156,13 @@ export const RegisterStudentView = () => {
             />
           </label>
 
-          <p className="RegisterStudentView__Input--error">{errors.lastName?.message}</p>
-
+          {errors.lastName && (
+            <p className="RegisterStudentView__Input--error">
+              Nazwikso nie musi zawierać conajmniej 3 znaki, a maksymalnie 28
+            </p>
+          )}
           <label>
+            <br />
             Github Login
             <br />
             <input
@@ -130,158 +181,16 @@ export const RegisterStudentView = () => {
               placeholder="Login GitHuba"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.githubUsername?.message}</p>
-          <br />
-          <label>
-            Link do portfolio nr 1
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('portfolioUrls', {
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-              })}
-              placeholder="URL do portfolio nr 1"
-            />
-          </label>
-
-          <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
+          {errors.githubUsername && (
+            <p className="RegisterStudentView__Input--error">
+              Pole nie może być puste. Musi zawierać conajmniej 1 znak maksymalnie 255.
+            </p>
+          )}
           <br />
 
           <label>
-            Link do portfolio 2
             <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('portfolioUrls', {
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-              })}
-              placeholder="URL do portfolio nr 2"
-            />
-          </label>
-
-          <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
-          <br />
-          <label>
-            Link do portfolio nr 3
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('portfolioUrls', {
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-              })}
-              placeholder="URL do portfolio nr 3"
-            />
-          </label>
-
-          <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
-          <br />
-
-          <label>
-            Link do portfolio nr 4
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('portfolioUrls', {
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-              })}
-              placeholder="URL do portfolio nr 4"
-            />
-          </label>
-          <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
-          <br />
-          <label>
-            Link do portfolio nr 5
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('portfolioUrls', {
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-              })}
-              placeholder="URL do portfolio nr 5"
-            />
-          </label>
-          <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
-          <br />
-          <label>
-            Link do projektu bonusowego
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('bonusProjectUrls', {
-                required: 'Pole wymagane',
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-                minLength: {
-                  value: 1,
-                  message: 'Pole nie może być puste',
-                },
-              })}
-              placeholder="Repozytorium do projektu zaliczeniowego"
-            />
-          </label>
-          <br />
-          <br />
-          <label>
-            Link do projektu bonusowego nr 2
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('bonusProjectUrls', {
-                required: 'Pole wymagane',
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-                minLength: {
-                  value: 1,
-                  message: 'Pole nie może być puste',
-                },
-              })}
-              placeholder="Repozytorium do projektu zaliczeniowego nr 2"
-            />
-          </label>
-          <br />
-          <br />
-          <label>
-            Link do projektu bonusowego nr 3
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('bonusProjectUrls', {
-                required: 'Pole wymagane',
-                maxLength: {
-                  value: 255,
-                  message: 'Maksymalna długość znaków 255',
-                },
-                minLength: {
-                  value: 1,
-                  message: 'Pole nie może być puste',
-                },
-              })}
-              placeholder="Repozytorium do projektu zaliczeniowego nr 3"
-            />
-          </label>
-          <br />
-          <label>
             Kilka słów o sobie
-            <p className="RegisterStudentView__Input--error">{errors.portfolioUrls?.message}</p>
             <br />
             <textarea
               className="RegisterStudentView__Input--more-info"
@@ -294,23 +203,24 @@ export const RegisterStudentView = () => {
               placeholder="Napisz kilka słów o sobie"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.bio?.message}</p>
-          <br />
+          {errors.bio && (
+            <p className="RegisterStudentView__Input--error">Musisz zmieścić się w 255 znakach</p>
+          )}
           <label>
+            <br />
             Preferowany typ pracy
             <br />
             <select
               {...register('expectedTypeWork', { required: 'Pole wymagane' })}
               placeholder="Preferowane miejsce pracy"
             >
-              <option value={ExpectedTypeWork}>Bez znaczenia</option>
-              <option value="AT_LOCATION">Na miejscu</option>
-              <option value="READY_TO_MOVE">Gotowość do przeprowadzki</option>
-              <option value="REMOTE">Wyłącznie zdalnie</option>
+              <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option>
+              <option value={ExpectedTypeWork.AT_LOCATION}>Na miejscu</option>
+              <option value={ExpectedTypeWork.READY_TO_MOVE}>Gotowość do przeprowadzki</option>
+              <option value={ExpectedTypeWork.REMOTE}>Wyłącznie zdalnie</option>
             </select>
           </label>
           <p className="RegisterStudentView__Input--info">Domyślnie bez znaczenia</p>
-          <br />
           <label>
             Docelowe miasto
             <br />
@@ -325,19 +235,25 @@ export const RegisterStudentView = () => {
               placeholder="Docelowe miasto"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.targetWorkCity?.message}</p>
-          <br />
+          {errors.targetWorkCity && (
+            <p className="RegisterStudentView__Input--error">
+              Maksymalna długość nazwy miasta to 30 znaków
+            </p>
+          )}
           <label>
+            <br />
             Oczekiwany typ kontraktu
             <br />
             <select
               {...register('expectedContractType', { required: 'Pole wymagane' })}
               placeholder="Oczekiwany typ kontraktu"
             >
-              <option value="NULL">Brak preferencji</option>
-              <option value="EMPLOYMENT_CONTRACT">Tylko umowa o pracę</option>
-              <option value="B_TO_B">Możliwe B2B</option>
-              <option value="COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT">Możliwe UZ/UoD</option>
+              <option value="">Brak preferencji</option>
+              <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko umowa o pracę</option>
+              <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
+              <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRAC}>
+                Możliwe UZ/UoD
+              </option>
             </select>
           </label>
           <br />
@@ -364,7 +280,6 @@ export const RegisterStudentView = () => {
             </select>
           </label>
           <p className="RegisterStudentView__Input--info">Domyślnie Nie</p>
-          <br />
           <label>
             Komercyjne doświadczenie
             <br />
@@ -375,9 +290,9 @@ export const RegisterStudentView = () => {
               placeholder="Przebieg edukacji"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">
-            {errors.monthsOfCommercialExp?.message}
-          </p>
+          {errors.monthsOfCommercialExp && (
+            <p className="RegisterStudentView__Input--error">Pole wymagane</p>
+          )}
           <br />
           <label>
             Przebieg edukacji
@@ -393,7 +308,11 @@ export const RegisterStudentView = () => {
               placeholder="Przebieg edukacji"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.education?.message}</p>
+          {errors.education && (
+            <p className="RegisterStudentView__Input--error">
+              Test za długi. Możliwość 65535 znaków
+            </p>
+          )}
           <br />
           <label>
             Przebieg doświadczenie zawodowego
@@ -409,7 +328,11 @@ export const RegisterStudentView = () => {
               placeholder="Przebieg doświadczenia zawodowego"
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.workExperience?.message}</p>
+          {errors.workExperience && (
+            <p className="RegisterStudentView__Input--error">
+              Test za długi. Możliwość 65535 znaków
+            </p>
+          )}
           <br />
           <label>
             Ukończone kursy
@@ -425,9 +348,217 @@ export const RegisterStudentView = () => {
               placeholder="Przebieg Kursy i certyfikaty związane z programowaniem."
             />
           </label>
-          <p className="RegisterStudentView__Input--error">{errors.courses?.message}</p>
+          {errors.courses && (
+            <p className="RegisterStudentView__Input--error">
+              Test za długi. Możliwość 65535 znaków
+            </p>
+          )}
           <br />
-          <button className="mega-k-button">Zapisz</button>
+          <label>
+            Link do portfolio nr 1
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('portfolioUrlsFirst', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="URL do portfolio nr 1"
+            />
+          </label>
+
+          {errors.portfolioUrlFirst && (
+            <p className="RegisterStudentView__Input--error">
+              Link do portfolio może mieć maksymalnie 255 znaków.
+            </p>
+          )}
+          <br />
+
+          <label>
+            Link do portfolio 2
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('portfolioUrlsSecond', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="URL do portfolio nr 2"
+            />
+          </label>
+
+          {errors.portfolioUrlsSecond && (
+            <p className="RegisterStudentView__Input--error">
+              Link do portfolio może mieć maksymalnie 255 znaków.
+            </p>
+          )}
+          <br />
+          <label>
+            Link do portfolio nr 3
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('portfolioUrlsThird', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="URL do portfolio nr 3"
+            />
+          </label>
+
+          {errors.portfolioUrlThird && (
+            <p className="RegisterStudentView__Input--error">
+              Link do portfolio może mieć maksymalnie 255 znaków.
+            </p>
+          )}
+          <br />
+
+          <label>
+            Link do portfolio nr 4
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('portfolioUrlsFourth', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="URL do portfolio nr 4"
+            />
+          </label>
+          {errors.portfolioUrlFourth && (
+            <p className="RegisterStudentView__Input--error">
+              Link do portfolio może mieć maksymalnie 255 znaków.
+            </p>
+          )}
+          <br />
+          <label>
+            Link do portfolio nr 5
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('portfolioUrlsFifth', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="URL do portfolio nr 5"
+            />
+          </label>
+          {errors.portfolioUrlFifth && (
+            <p className="RegisterStudentView__Input--error">
+              Link do portfolio może mieć maksymalnie 255 znaków.
+            </p>
+          )}
+          <br />
+          <label>
+            Link do projektu bonusowego nr 1
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('bonusProjectUrlsFirst', {
+                required: 'Pole wymagane',
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+                minLength: {
+                  value: 1,
+                  message: 'Pole wymagane',
+                },
+              })}
+              placeholder="Repozytorium do projektu zaliczeniowego"
+            />
+          </label>
+          {errors.bonusProjectUrlsFirst && (
+            <p className="RegisterStudentView__Input--error">
+              Pole wymagane. Pole musi zawierać conajmniej 1 znak maksymalnie 255.
+            </p>
+          )}
+          <label>
+            <br />
+            Link do projektu bonusowego nr 2
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('bonusProjectUrlsSecond', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="Repozytorium do projektu zaliczeniowego nr 2"
+            />
+          </label>
+          {errors.bonusProjectUrlsSecond && (
+            <p className="RegisterStudentView__Input--error">Pole może maksymalnie zawierać 255.</p>
+          )}
+          <label>
+            <br />
+            Link do projektu bonusowego nr 3
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('bonusProjectUrlsThird', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="Repozytorium do projektu zaliczeniowego nr 3"
+            />
+          </label>
+          {errors.bonusProjectUrlsThird && (
+            <p className="RegisterStudentView__Input--error">Pole może maksymalnie zawierać 255.</p>
+          )}
+          <label>
+            <br />
+            Link do projektu bonusowego nr 4
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('bonusProjectUrlsFourth', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="Repozytorium do projektu zaliczeniowego nr 4"
+            />
+          </label>
+          {errors.bonusProjectUrlsFourth && (
+            <p className="RegisterStudentView__Input--error">Pole może maksymalnie zawierać 255.</p>
+          )}
+          <label>
+            <br />
+            Link do projektu bonusowego nr 5
+            <br />
+            <input
+              className="RegisterStudentView__Input"
+              {...register('bonusProjectUrlsFifth', {
+                maxLength: {
+                  value: 255,
+                  message: 'Maksymalna długość znaków 255',
+                },
+              })}
+              placeholder="Repozytorium do projektu zaliczeniowego nr 5"
+            />
+          </label>
+          {errors.bonusProjectUrlsFifth && (
+            <p className="RegisterStudentView__Input--error">Pole może maksymalnie zawierać 255.</p>
+          )}
+          <br />
+          <button type="submit" className="mega-k-button">
+            Zapisz
+          </button>
         </form>
       </div>
     </div>

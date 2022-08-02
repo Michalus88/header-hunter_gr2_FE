@@ -21,10 +21,6 @@
   background-color: #0a0a0a;
 }
 
-textarea {
-  padding: 1em;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -42,16 +38,19 @@ textarea {
   display: flex;
   justify-content: center;
   width: 1430px;
+  margin-top: 1em;
 }
 .RegisterStudentView__Input {
   width: 1200px;
   padding: 0.5em 1em;
+  margin: 1em 0;
 }
 .RegisterStudentView__Input--more-info {
   min-height: 300px;
   min-width: 1200px;
   max-height: 200px;
   max-width: 1400px;
+  margin: 1em 0;
 }
 .RegisterStudentView__Input--error {
   color: #e02735;
