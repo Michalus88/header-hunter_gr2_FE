@@ -131,158 +131,60 @@ a:active {
   margin-bottom: 2rem;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+.BookInterview-student-all {
   display: flex;
-  align-content: center;
-  justify-content: center;
-  background-color: #222225;
-  height: 100vh;
-  width: 100vw;
 }
-
-.BookInterview {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 1430px;
-  background-color: #0a0a0a;
-}
-.BookInterview__container {
+.BookInterview-student-all .BookInterview-student-reservation {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  width: 1400px;
-  background-color: #222225;
-  margin-bottom: 1em;
+}
+.BookInterview-student-all .BookInterview-student-reservation .BookInterview-student-reservation-text {
+  color: #CFCFCF;
+  font-size: 12px;
+  text-align: left;
+  letter-spacing: 0;
+  opacity: 1;
+}
+.BookInterview-student-all .BookInterview-student-reservation .BookInterview-student-reservation-date {
+  letter-spacing: 1.6px;
+  color: #F7F7F7;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.BookInterview__student {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: 2a2a2b;
-  margin-bottom: 1em;
-}
-.BookInterview__student--all {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.BookInterview__student--buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  padding: 1.2em;
-}
-.BookInterview__student--information {
+.BookInterview-student-information {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 6em;
   height: 100%;
   font-weight: lighter;
   font-size: 13px;
 }
-.BookInterview__student--information-avatar {
+.BookInterview-student-information .BookInterview-student-information-avatar {
   display: inline-block;
   width: 45px;
   height: 45px;
   border-radius: 50%;
   border: 1px solid #222225;
-  margin-left: 3.5em;
+  margin-left: 3em;
 }
-.BookInterview__student--information-name {
-  width: 500px;
-  margin-left: 1em;
-}
-.BookInterview__student--reservation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 10em;
-  font-size: 12px;
-  margin: 0.3em 1em;
-}
-.BookInterview__student--reservation--reservation-text {
-  font-size: 0.6rem;
-  padding: 0.5em 0;
-  font-weight: lighter;
-  color: #939393;
-}
-.BookInterview__student--reservation--reservation-date {
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.BookInterview__student--details-container-close {
-  display: none;
-  flex-direction: row;
-  justify-content: center;
-  width: 1400px;
-  background-color: #222324;
-}
-.BookInterview__student--details-container-open {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 1400px;
-  background-color: #222324;
-}
-.BookInterview__student--details {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 20px solid #222225;
-}
-.BookInterview__student--details-name {
+.BookInterview-student-information .BookInterview-student-information-name {
   text-align: left;
-  font-size: 12px;
-  margin: 1em;
+  font-size: 17px;
+  letter-spacing: 0px;
+  color: #F7F7F7;
+  margin: 10px;
 }
-.BookInterview__student--details-value {
-  font-size: 12px;
-  font-weight: lighter;
-  margin: 1em;
-}
-.BookInterview__student--details-span {
-  font-weight: bold;
-}
-
-.BookInterview-button {
+.BookInterview-student-information .reservation {
+  width: 158px;
+  height: 39px;
   background-color: #e02735;
+  color: #f7f7f7;
   font-size: 16px;
-  margin: 1em 0.5em;
-  padding: 0.5em;
+  font-family: "Catamaran", Arial, sans-serif;
+  letter-spacing: 0;
   border: none;
-  cursor: pointer;
-}
-.BookInterview-button:hover {
-  background-color: #c96789;
-}
-
-.BookInterview__student--button-more-open {
-  background-color: transparent;
-  transform: rotate(180deg);
-}
-.BookInterview__student--button-more-open:hover {
-  background-color: transparent;
-}
-
-.BookInterview__student--button-more-close {
-  background-color: transparent;
-  transform: rotate(0deg);
-}
-.BookInterview__student--button-more-close:hover {
-  background-color: transparent;
+  margin-right: 15px;
 }
 
 .admin-page-wrapper {
@@ -464,12 +366,15 @@ body {
   margin-bottom: 15px;
   display: flex;
 }
-.available-students-wrapper .available-One-student .available-student .available-student-right .reservation {
-  width: 158px;
+.available-students-wrapper .available-One-student .available-student .available-student-right .right-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 135px;
   height: 39px;
   background-color: #e02735;
   color: #f7f7f7;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Catamaran", Arial, sans-serif;
   letter-spacing: 0;
   border: none;
