@@ -5,6 +5,11 @@ import { MegaButton } from '../Elements/MegaButton';
 import { StarButtonGroup } from './StarsButttonGroup';
 
 export const FilterGroup = () => {
+  const [workRemontly, setWorkRemontly] = useState(false);
+  const [workInOffice, setWorkInOffice] = useState(false);
+
+  console.log(workRemontly, workInOffice);
+
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [value3, setValue3] = useState<number | null>(null);
@@ -48,12 +53,12 @@ export const FilterGroup = () => {
           <MegaButton
             classNameAdd="megak-secondary filter-star-butons-group-small"
             buttonTitle="Praca zdala"
-            onClick={() => clicked()}
+            onClick={() => setWorkRemontly(true)}
           />
           <MegaButton
             classNameAdd="megak-secondary filter-star-butons-group-small"
             buttonTitle="Praca w biurze"
-            onClick={() => clicked()}
+            onClick={() => setWorkInOffice(true)}
           />
         </div>
       </div>

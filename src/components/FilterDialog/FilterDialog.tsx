@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { FilterGroup } from './FilterGroup';
@@ -8,6 +8,9 @@ interface Props {
   toggleFilterDialog: () => void;
   visible: boolean;
 }
+const handleClearFilters = () => {
+  console.log('Clear');
+};
 
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const header = (
@@ -16,7 +19,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       <MegaButton
         classNameAdd="megak-secondary filter-clear-all"
         buttonTitle="Wyczyść wszystkie"
-        onClick={() => toggleFilterDialog()}
+        onClick={() => handleClearFilters()}
       />
     </div>
   );
