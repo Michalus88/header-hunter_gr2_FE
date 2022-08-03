@@ -103,6 +103,23 @@ export const EditStudentForm = () => {
   const portfolios = watch(['portfolio1', 'portfolio2', 'portfolio3', 'portfolio4', 'portfolio5']);
   const projects = watch(['project1', 'project2', 'project3', 'project4', 'project5']);
 
+  const expected =
+    String(watch('expectedContractType')) === '' ? null : watch('expectedContractType');
+  console.log(expected);
+
+  const portfolioArr = portfolios.map((el) => {
+    if (el !== '') {
+      return el;
+    }
+    return null;
+  });
+  const projectArr = projects.map((el) => {
+    if (el !== '') {
+      return el;
+    }
+    return null;
+  });
+
   // const names = watch(['firstName', 'lastName']);
   // const [firstName, lastName] = names;
   // console.log(lastName);
@@ -121,12 +138,12 @@ export const EditStudentForm = () => {
       firstName: data.firstName,
       lastName: data.lastName,
       githubUsername: data.githubUsername,
-      portfolioUrls: portfolios,
-      projectUrls: projects,
+      portfolioUrls: portfolioArr,
+      projectUrls: projectArr,
       bio: data.bio,
-      expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
+      expectedTypeWork: data.expectedTypeWork,
       targetWorkCity: data.targetWorkCity,
-      expectedContractType: ExpectedContractType.EMPLOYMENT_CONTRACT,
+      expectedContractType: data.expectedContractType,
       expectedSalary: data.expectedSalary,
       canTakeApprenticeship: canTakeApprenticeshipFromForm,
       // canTakeApprenticeship: false,
@@ -223,6 +240,7 @@ export const EditStudentForm = () => {
         />
         <ValidateMsg text={errors.targetWorkCity && errors.targetWorkCity.message} />
         <select {...register('expectedContractType')}>
+          <option value="">Brak preferencji</option>
           <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko UoP</option>
           <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
           <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT}>
