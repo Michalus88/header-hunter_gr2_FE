@@ -5,14 +5,6 @@ import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
 
-// interface HrProfileRegister {
-//   email: string;
-//   firstName: string;
-//   lastName: string;
-//   company: string;
-//   maxReservedStudents: number;
-// }
-
 type InputProps = {
   name: Path<HrProfileRegister>;
   placeholder: string;
@@ -53,31 +45,10 @@ export const AdminPage = () => {
     handleSubmit,
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
   const [file, setFile] = useState('');
-  // const [form, setForm] = useState<HrProfileRegister>({
-  //   email: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   company: '',
-  //   maxReservedStudents: 1,
-  // });
 
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
     alert(JSON.stringify(data));
   };
-
-  // console.log(form, 'obecna wortość form');
-
-  // const updateForm = (key: string, value: string | number) => {
-  //   setForm((formx) => ({
-  //     ...formx,
-  //     [key]: value,
-  //   }));
-  // };
-
-  // const clicked1 = (formx: HrProfileRegister) => {
-  //   console.log('Clicked1', formx);
-  //   console.log('Zawartość', form);
-  // };
 
   const clicked2 = (info: string) => {
     console.log(`plik: ${info}`);
@@ -211,75 +182,6 @@ export const AdminPage = () => {
               Dodaj
             </button>
           </form>
-          {/* <form className="hr-form"> */}
-          {/*  /!* Email input *!/ */}
-          {/*  <div className="admin-input"> */}
-          {/*    <label> */}
-          {/*      E-mail: */}
-          {/*      <input */}
-          {/*        type="email" */}
-          {/*        placeholder="E-mail" */}
-          {/*        value={form.email} */}
-          {/*        onChange={(e) => updateForm('email', e.target.value)} */}
-          {/*      /> */}
-          {/*    </label> */}
-          {/*  </div> */}
-          {/*  /!* first name input *!/ */}
-          {/*  <div className="admin-input"> */}
-          {/*    <label> */}
-          {/*      Imię: */}
-          {/*      <input */}
-          {/*        type="text" */}
-          {/*        placeholder="Imię" */}
-          {/*        value={form.firstName} */}
-          {/*        onChange={(e) => updateForm('firstName', e.target.value)} */}
-          {/*      /> */}
-          {/*    </label> */}
-          {/*  </div> */}
-          {/*  /!* last name input *!/ */}
-          {/*  <div className="admin-input"> */}
-          {/*    <label> */}
-          {/*      Nazwisko: */}
-          {/*      <input */}
-          {/*        type="text" */}
-          {/*        placeholder="Nazwisko" */}
-          {/*        value={form.lastName} */}
-          {/*        onChange={(e) => updateForm('lastName', e.target.value)} */}
-          {/*      /> */}
-          {/*    </label> */}
-          {/*  </div> */}
-          {/*  /!* company input *!/ */}
-          {/*  <div className="admin-input"> */}
-          {/*    <label> */}
-          {/*      Firma / Organizacja: */}
-          {/*      <input */}
-          {/*        type="text" */}
-          {/*        placeholder="Firma / Organizacja" */}
-          {/*        value={form.company} */}
-          {/*        onChange={(e) => updateForm('company', e.target.value)} */}
-          {/*      /> */}
-          {/*    </label> */}
-          {/*  </div> */}
-          {/*  /!* max reserved students input *!/ */}
-          {/*  <div className="admin-input"> */}
-          {/*    <label> */}
-          {/*      Limit kursantów: */}
-          {/*      <input */}
-          {/*        type="number" */}
-          {/*        placeholder="Limit studentów" */}
-          {/*        value={form.maxReservedStudents} */}
-          {/*        onChange={(e) => updateForm('maxReservedStudents', e.target.value)} */}
-          {/*        min="1" */}
-          {/*        max="50" */}
-          {/*      /> */}
-          {/*    </label> */}
-          {/*  </div> */}
-          {/*  <MegaButton */}
-          {/*    buttonTitle="Dodaj" */}
-          {/*    onClick={() => clicked1(form)} */}
-          {/*    classNameAdd="admin-button-send" */}
-          {/*  /> */}
-          {/* </form> */}
 
           <h3 className="title">Import studentów z pliku CSV</h3>
           <form className="csv-form">

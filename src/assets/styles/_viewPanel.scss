@@ -1,0 +1,39 @@
+@import "colors";
+
+.view-panel {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  max-width: 1430px;
+  width: 80%;
+  height: 72px;
+  color: $main-text-color;
+  background-color: $input-brown;
+  margin: 100px auto 0 auto;
+  border-bottom: 2px solid $bgc-dark;
+
+  .link-wrapper {
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    height: 72px;
+    list-style-type: none;
+
+    .link {
+      text-align: left;
+      //width: 120%;
+      font-size: 18px;
+      letter-spacing: 0;
+      color: #CFCFCF;
+      padding: 23px 24px 19px 20px;
+      margin-left: 10px;
+
+    }
+
+    .active {
+      color: $main-text-color;
+      border-bottom: 3px solid $cta;
+    }
+
+  }
+}
