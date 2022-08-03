@@ -29,7 +29,6 @@ export const LoginPage = () => {
 
     if (!login && value2 === '') {
       console.log(`SUBMIT LOST PASS email ${value1}`);
-      setValue1('');
       setValue2('');
       setLogin(true);
       showSuccess();
