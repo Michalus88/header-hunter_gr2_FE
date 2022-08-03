@@ -24,6 +24,11 @@ interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
   portfolio3: string | undefined;
   portfolio4: string | undefined;
   portfolio5: string | undefined;
+  project1: string | undefined;
+  project2: string | undefined;
+  project3: string | undefined;
+  project4: string | undefined;
+  project5: string | undefined;
 }
 
 interface StudentProfileRegister {
@@ -47,7 +52,7 @@ interface StudentProfileRegister {
 }
 
 export const EditStudentForm = () => {
-  const [dataStudent, setDataStudent] = useState<StudentProfileUpdate>({
+  const [dataStudent, setDataStudent] = useState({
     email: 'gnys1001@gmail.com',
     tel: '60000000',
     firstName: 'Sławek',
@@ -78,8 +83,8 @@ export const EditStudentForm = () => {
       lastName: dataStudent.lastName,
       tel: dataStudent.tel,
       githubUsername: dataStudent.githubUsername,
-      portfolioUrls: dataStudent.portfolioUrls,
-      projectUrls: dataStudent.projectUrls,
+      // portfolioUrls: dataStudent.portfolioUrls,
+      // projectUrls: dataStudent.projectUrls,
       bio: dataStudent.bio,
       expectedTypeWork: dataStudent.expectedTypeWork,
       email: dataStudent.email,
@@ -95,30 +100,43 @@ export const EditStudentForm = () => {
     mode: 'onChange',
   });
 
-  if (dataStudent.portfolioUrls) {
-    const [portfolio1, portfolio2, portfolio3, portfolio4, portfolio5] = dataStudent.portfolioUrls;
-    console.log(portfolio1, portfolio2, portfolio3, portfolio4, portfolio5);
-  }
+  const portfolios = watch(['portfolio1', 'portfolio2', 'portfolio3', 'portfolio4', 'portfolio5']);
+  const projects = watch(['project1', 'project2', 'project3', 'project4', 'project5']);
 
-  const potfrolio = watch('portfolioUrls');
-  console.log(potfrolio);
+  // const names = watch(['firstName', 'lastName']);
+  // const [firstName, lastName] = names;
+  // console.log(lastName);
+  // console.log('imiona', names);
+  //
+  // const potfrolio = watch('portfolioUrls');
+  // console.log(potfrolio);
 
   const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
   console.log('log', canTakeApprenticeshipFromForm);
 
   const onSubmit: SubmitHandler<StudentProfileUpdate> = (data) => {
-    console.log(data.canTakeApprenticeship);
     const fff = {
-      ...data,
+      email: data.email,
+      tel: data.tel,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      githubUsername: data.githubUsername,
+      portfolioUrls: portfolios,
+      projectUrls: projects,
+      bio: data.bio,
+      expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
+      targetWorkCity: data.targetWorkCity,
+      expectedContractType: ExpectedContractType.EMPLOYMENT_CONTRACT,
+      expectedSalary: data.expectedSalary,
       canTakeApprenticeship: canTakeApprenticeshipFromForm,
+      // canTakeApprenticeship: false,
+      monthsOfCommercialExp: 0,
+      education: data.education,
+      workExperience: data.workExperience,
+      courses: data.courses,
     };
     alert(JSON.stringify(fff));
   };
-
-  const names = watch(['firstName', 'lastName']);
-  const [firstName, lastName] = names;
-  console.log(lastName);
-  console.log(names);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -133,7 +151,7 @@ export const EditStudentForm = () => {
             },
           })}
         />
-        <ValidateMsg text={errors.email && errors.email.message} />
+        <ValidateMsg text={errors.email?.message} />
         <input
           type="text"
           {...register('firstName', {
@@ -229,13 +247,19 @@ export const EditStudentForm = () => {
               {...register('canTakeApprenticeship', {
                 required: 'one of this checkbox is required',
               })}
+              defaultChecked={dataStudent.canTakeApprenticeship}
             />
             Tak
           </div>
         </label>
         <label>
           <div>
-            <input type="radio" value="No" {...register('canTakeApprenticeship')} />
+            <input
+              type="radio"
+              value="No"
+              {...register('canTakeApprenticeship')}
+              defaultChecked={!dataStudent.canTakeApprenticeship}
+            />
             Nie
           </div>
         </label>
@@ -255,8 +279,71 @@ export const EditStudentForm = () => {
         <input type="text" {...register('courses')} />
 
         <div>
-          <input type="url" {...register('portfolioUrls')} />
-          <input type="url" {...register('portfolioUrls')} />
+          <input
+            type="text"
+            {...register('portfolio1')}
+            defaultValue={dataStudent.portfolioUrls ? dataStudent.portfolioUrls[0] : ''}
+          />
+          <input
+            type="text"
+            {...register('portfolio2')}
+            defaultValue={dataStudent.portfolioUrls ? dataStudent.portfolioUrls[1] : ''}
+          />
+          <input
+            type="text"
+            {...register('portfolio3')}
+            defaultValue={dataStudent.portfolioUrls ? dataStudent.portfolioUrls[2] : ''}
+          />
+          <input
+            type="text"
+            {...register('portfolio4')}
+            defaultValue={dataStudent.portfolioUrls ? dataStudent.portfolioUrls[3] : ''}
+          />
+          <input
+            type="text"
+            {...register('portfolio5')}
+            defaultValue={dataStudent.portfolioUrls ? dataStudent.portfolioUrls[4] : ''}
+          />
+        </div>
+
+        {/* <div> */}
+        {/*  <h3>test</h3> */}
+        {/*  {dataStudent.portfolioUrls?.map((url: string, index: number) => { */}
+        {/*    const portfolio = `portfolio${index + 1}`; */}
+        {/*    console.log('sprawdzenie', portfolio); */}
+
+        {/*    return ( */}
+        {/*      <> */}
+        {/*        <input key={url} type="url" {...register({ portfolio1 })} defaultValue={url} /> */}
+        {/*        <p>{url}</p> */}
+        {/*      </> */}
+        {/*    ); */}
+        {/*  })} */}
+        {/* </div> */}
+
+        <div>
+          <input type="text" {...register('project1')} />
+          <ValidateMsg text={errors.project1 && errors.project1.message} />
+          <input
+            type="text"
+            {...register('project2')}
+            defaultValue={dataStudent.projectUrls ? dataStudent.projectUrls[1] : ''}
+          />
+          <input
+            type="text"
+            {...register('project3')}
+            defaultValue={dataStudent.projectUrls ? dataStudent.projectUrls[2] : ''}
+          />
+          <input
+            type="text"
+            {...register('project4')}
+            defaultValue={dataStudent.projectUrls ? dataStudent.projectUrls[3] : ''}
+          />
+          <input
+            type="text"
+            {...register('project5')}
+            defaultValue={dataStudent.projectUrls ? dataStudent.projectUrls[4] : ''}
+          />
         </div>
 
         <button type="submit">Edytuj</button>
