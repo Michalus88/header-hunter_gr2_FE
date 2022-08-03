@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 
@@ -8,18 +7,21 @@ interface Props {
   toggleFilterDialog: () => void;
   visible: boolean;
 }
-const handleClearFilters = () => {
-  console.log('Clear');
-};
 
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
+  const [clearAll, setClearAll] = useState(false);
+
+  const toggleClearAll = () => {
+    setClearAll(!clearAll);
+  };
+
   const header = (
     <div className="filter-header">
       <div className="filter-header-text">Filtrowanie</div>
       <MegaButton
         classNameAdd="megak-secondary filter-clear-all"
         buttonTitle="Wyczyść wszystkie"
-        onClick={() => handleClearFilters()}
+        onClick={toggleClearAll}
       />
     </div>
   );
@@ -48,7 +50,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       onHide={() => toggleFilterDialog}
       closable={false}
     >
-      <FilterGroup />
+      <FilterGroup clearAll={clearAll} />
     </Dialog>
   );
 };

@@ -1,19 +1,16 @@
-import userEvent from '@testing-library/user-event';
 import { useEffect, useState } from 'react';
 import { StarButton } from '../Elements/StarButton';
 
-export const StarButtonGroup = () => {
+interface Props {
+  clearAll: boolean;
+}
+
+export const StarButtonGroup = ({ clearAll }: Props) => {
   const [chosenNumber, setChosenNumber] = useState(0);
 
-  // const clicked = (e: number) => {
-  //   console.log('Clicked', e);
-  //   setChosenNumber(e);
-  //   console.log(chosenNumber);
-  // };
-
   useEffect(() => {
-    console.log(chosenNumber);
-  }, [chosenNumber]);
+    setChosenNumber(0);
+  }, [clearAll]);
 
   return (
     <div className="filter-star-butons-group">

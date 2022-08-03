@@ -2,15 +2,21 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body,
 #root,
 #App .page-wrapper {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,10 +25,17 @@ body,
 }
 
 .page-container {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #222225;
 }
 
@@ -38,11 +51,21 @@ a:active {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   letter-spacing: 0.6px;
 }
 .login-page-login-group .login-group-image {
@@ -58,7 +81,8 @@ a:active {
   background: #292a2b;
 }
 .login-page-login-group .login-input-email .p-inputtext:enabled:focus {
-  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
 }
 .login-page-login-group .login-input-email .p-float-label input:focus ~ label {
   color: #c96789;
@@ -72,7 +96,8 @@ a:active {
   background: #292a2b;
 }
 .login-page-login-group .login-input-password .p-inputtext:enabled:focus {
-  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
 }
 .login-page-login-group .login-input-password .p-float-label input:focus ~ label {
   color: #c96789;
@@ -81,15 +106,28 @@ a:active {
   color: #c96789;
 }
 .login-page-login-group .login-forgot-pass {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   font-size: 14px;
 }
 .login-page-login-group .register-new-acc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 2rem;
 }
 .login-page-login-group .register-new-acc .register-new-acc-text {
@@ -132,11 +170,18 @@ a:active {
 }
 
 .BookInterview-student-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .BookInterview-student-all .BookInterview-student-reservation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .BookInterview-student-all .BookInterview-student-reservation .BookInterview-student-reservation-text {
   color: #CFCFCF;
@@ -153,9 +198,15 @@ a:active {
 }
 
 .BookInterview-student-information {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
   font-weight: lighter;
   font-size: 13px;
@@ -192,11 +243,21 @@ a:active {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   letter-spacing: 0.6px;
 }
 .admin-page-wrapper .admin-page-image {
@@ -240,7 +301,9 @@ a:active {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  justify-content: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   color: #f7f7f7;
   font-family: "Catamaran", "Roboto", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
@@ -263,9 +326,16 @@ a:active {
   opacity: 0;
 }
 .admin-page-wrapper .csv-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .admin-page-wrapper .csv-form .admin-button-send {
   display: block;
@@ -273,9 +343,16 @@ a:active {
   width: 100px;
 }
 .admin-page-wrapper .hr-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .admin-page-wrapper .hr-form .admin-button-send {
   display: block;
@@ -287,9 +364,18 @@ a:active {
 .available-students-wrapper {
   position: relative;
   background-color: #292a2b;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   max-width: 1430px;
   width: 80%;
@@ -297,9 +383,16 @@ a:active {
   color: #f7f7f7;
 }
 .available-students-wrapper .search-filtration {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 95%;
   height: 50px;
   margin: 14px 20px;
@@ -307,11 +400,14 @@ a:active {
 }
 .available-students-wrapper .search-filtration .p-inputtext:enabled:focus {
   border-color: #e02735;
-  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
   color: #f7f7f7;
 }
 .available-students-wrapper .search-filtration .input-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: #0a0a0a;
   height: 38px;
@@ -355,21 +451,36 @@ a:active {
   margin: 0 auto;
 }
 .available-students-wrapper .available-One-student .available-student {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 95%;
   height: 60px;
   margin: 14px 20px 0 20px;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right {
   margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right .right-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 135px;
   height: 39px;
   background-color: #e02735;
@@ -389,20 +500,30 @@ a:active {
 .available-students-wrapper .available-One-student .available-student .available-student-right .expand .image-off {
   min-width: 30px;
   min-height: 30px;
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 .available-students-wrapper .available-One-student .available-student .available-student-right .expand .image-on {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .available-students-wrapper .available-One-student .student-details-off {
   display: none;
 }
 .available-students-wrapper .available-One-student .student-details-on {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 110px;
   width: 100%;
   background-color: #222324;
@@ -410,8 +531,13 @@ a:active {
 .available-students-wrapper .available-One-student .student-details-on .detail {
   padding: 8px;
   max-width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: left;
   color: #cfcfcf;
   letter-spacing: 0;
@@ -433,8 +559,12 @@ a:active {
   width: 100%;
   height: 80px;
   background-color: #222225;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: right;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 40px solid #292a2b;
@@ -458,13 +588,15 @@ a:active {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
 }
 .available-students-wrapper .footer-container .elements-switch .right-switch {
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%, -50%) rotate(180deg);
+  -webkit-transform: translate(50%, -50%) rotate(180deg);
+          transform: translate(50%, -50%) rotate(180deg);
 }
 .available-students-wrapper .footer-container .elements-switch:hover {
   background-color: #666666;
@@ -476,8 +608,12 @@ a:active {
 
 .view-panel {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   max-width: 1430px;
   width: 80%;
   height: 72px;
@@ -488,8 +624,12 @@ a:active {
 }
 .view-panel .link-wrapper {
   z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   height: 72px;
   list-style-type: none;
 }
@@ -508,14 +648,23 @@ a:active {
 
 .main-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 1440px;
   margin: 100px auto;
 }
 .main-wrapper .cv-student-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 250px;
   padding: 0 20px;
   background-color: #2a2a2b;
@@ -531,13 +680,18 @@ a:active {
   border-radius: 50%;
 }
 .main-wrapper .cv-student-info .cv-student-info__name {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   padding: 5px 0;
   font-size: 24px;
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 3px;
   font-size: 16px;
   color: #168bd4;
@@ -553,21 +707,31 @@ a:active {
   margin: 0 5px;
   text-decoration: none;
   color: #168bd4;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .main-wrapper .cv-student-info .cv-student-info__gitHub-info .cv-student-info__gitHub-login:hover {
   color: #b8dcf2;
 }
 .main-wrapper .cv-student-info .cv-student-info__contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   font-size: 16px;
   margin: 15px 0;
   color: #f7f7f7;
 }
 .main-wrapper .cv-student-info .cv-student-info__contact .cv-student-info__contact-phone, .main-wrapper .cv-student-info .cv-student-info__contact .cv-student-info__contact-mail {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   margin: 10px 0;
 }
 .main-wrapper .cv-student-info .cv-student-info__contact .cv-student-info__contact-phone .cv-student-info__contact-icon, .main-wrapper .cv-student-info .cv-student-info__contact .cv-student-info__contact-mail .cv-student-info__contact-icon {
@@ -575,8 +739,13 @@ a:active {
   margin: 5px 10px 0;
 }
 .main-wrapper .cv-student-info .cv-student-info__about-me {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 20px;
   font-size: 16px;
   color: #f7f7f7;
@@ -590,8 +759,13 @@ a:active {
   line-height: 26px;
 }
 .main-wrapper .cv-student-info .cv-student-info__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 20px 0;
 }
 .main-wrapper .cv-student-info .cv-student-info__btns .megak-primary.cv-student-info__btn {
@@ -600,9 +774,16 @@ a:active {
   font-size: 16px;
 }
 .main-wrapper .cv-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-left: 2px;
 }
 .main-wrapper .cv-container h3.cv-title {
@@ -613,21 +794,38 @@ a:active {
   background-color: #2a2a2b;
 }
 .main-wrapper .cv-container .cv-ratings, .main-wrapper .cv-container .cv-expectation, .main-wrapper .cv-container .cv-knowledge, .main-wrapper .cv-container .cv-projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container, .main-wrapper .cv-container .cv-ratings .cv-expectation__container, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container, .main-wrapper .cv-container .cv-expectation .cv-ratings__container, .main-wrapper .cv-container .cv-expectation .cv-expectation__container, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container, .main-wrapper .cv-container .cv-projects .cv-ratings__container, .main-wrapper .cv-container .cv-projects .cv-expectation__container, .main-wrapper .cv-container .cv-projects .cv-knowledge__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 20px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-basis: 165px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-preferred-size: 165px;
+      flex-basis: 165px;
   height: 100px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-ratings__rating, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-ratings__rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 18px;
   letter-spacing: 1.8px;
@@ -636,7 +834,9 @@ a:active {
   margin-right: 10px;
 }
 .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-ratings .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-expectation .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-knowledge .cv-knowledge__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-ratings__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-expectation__container .cv-expectation__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-ratings__item .cv-expectation__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-ratings__title, .main-wrapper .cv-container .cv-projects .cv-knowledge__container .cv-expectation__item .cv-expectation__title {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   font-size: 14px;
   color: #CFCFCF;
 }
@@ -647,11 +847,18 @@ a:active {
   color: #e02735;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container, .main-wrapper .cv-container .cv-expectation .cv-projects__container, .main-wrapper .cv-container .cv-knowledge .cv-projects__container, .main-wrapper .cv-container .cv-projects .cv-projects__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 20px 0;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project a, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon {
@@ -660,13 +867,15 @@ a:active {
   font-size: 16px;
   text-decoration: none;
   color: #168bd4;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project a:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon:hover {
   color: #b8dcf2;
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon {
-  transform: scale(1.1) translateY(5px) rotate(-45deg);
+  -webkit-transform: scale(1.1) translateY(5px) rotate(-45deg);
+          transform: scale(1.1) translateY(5px) rotate(-45deg);
 }
 .main-wrapper .cv-container .cv-ratings .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-expectation .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-knowledge .cv-projects__container .cv-projects__project .cv-projects__icon:hover, .main-wrapper .cv-container .cv-projects .cv-projects__container .cv-projects__project .cv-projects__icon:hover {
   color: #168bd4;
@@ -680,6 +889,8 @@ a:active {
 
 .go-back {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   left: -85px;
   margin: 0 10px;
@@ -690,6 +901,7 @@ a:active {
   text-decoration: none;
   font-size: 16px;
   color: #f7f7f7;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 .go-back .go-back__link:hover {
@@ -722,10 +934,17 @@ a:active {
 
 .filter-header {
   width: 520px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .filter-header .filter-clear-all {
   height: 31px;
@@ -733,10 +952,17 @@ a:active {
 }
 
 .fileter-dialog-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .filter-star-butons-wraper {
@@ -748,10 +974,17 @@ a:active {
 }
 
 .filter-star-butons-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .filter-star-butons-group .filter-star-butons-group-small {
   height: 31px;
@@ -759,6 +992,9 @@ a:active {
   padding: 0 0.4rem;
   color: #f7f7f7;
   background-color: #292a2b;
+}
+.filter-star-butons-group .megak-glow {
+  background-color: #e02735;
 }
 .filter-star-butons-group .filter-input-wrap {
   margin-right: 0.6rem;
@@ -771,7 +1007,8 @@ a:active {
   border: none;
 }
 .filter-star-butons-group .filter-input-wrap .p-inputtext:enabled:focus {
-  box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+  -webkit-box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
+          box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789;
 }
 .filter-star-butons-group .filter-input-wrap .p-float-label input:focus ~ label {
   color: #c96789;
@@ -794,8 +1031,12 @@ a:active {
 }
 
 .filter-radiobutton {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 0.4rem;
 }
 .filter-radiobutton .filter-radio-label {
@@ -862,9 +1103,15 @@ a:active {
   border: none;
   font-size: 12px;
   font-family: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #292a2b;
   cursor: pointer;
 }
@@ -900,6 +1147,9 @@ a:active {
   -webkit-box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.603), 0 0 8px 8px rgba(255, 0, 0, 0.603);
           box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.603), 0 0 8px 8px rgba(255, 0, 0, 0.603);
 }
+.mega-k-star .megak-glow {
+  background-color: #e02735;
+}
 
 .mega-k-star:hover {
   background-color: #c96789;
@@ -915,6 +1165,8 @@ a:active {
 }
 
 .choose-view-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 72px;
   width: 100%;
@@ -922,7 +1174,8 @@ a:active {
   background-color: #292a2b;
 }
 .choose-view-container .choose-view-button {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: none;
   padding: 0;
   background-color: #292a2b;
@@ -951,9 +1204,15 @@ a:active {
   background-color: #1e1e20;
 }
 .top-panel-container .top-panel-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 80%;
   max-width: 1430px;
   margin: 0 auto;
@@ -961,7 +1220,9 @@ a:active {
 }
 .top-panel-container .top-panel-wrapper .top-panel-link {
   position: relative;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 55px;
 }
 .top-panel-container .top-panel-wrapper .top-panel-logo {
@@ -970,6 +1231,8 @@ a:active {
 }
 .top-panel-container .top-panel-wrapper .top-panel-hr {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   top: 0;
   height: 100%;
@@ -982,9 +1245,13 @@ a:active {
   border-radius: 25px;
 }
 .top-panel-container .top-panel-wrapper .top-panel-hr .top-panel-hr-paragraph {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   line-height: 75px;
   height: 100%;
 }
@@ -1005,7 +1272,9 @@ a:active {
   background-color: #1e1e20;
 }
 .top-panel-container .top-panel-wrapper .navbar .navbar-nav {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   list-style: none;
   max-width: 100%;
   height: 100%;
@@ -1018,6 +1287,4 @@ a:active {
 }
 .top-panel-container .top-panel-wrapper .navbar .navbar-nav .navbar-nav-link:hover {
   background-color: #353538;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
