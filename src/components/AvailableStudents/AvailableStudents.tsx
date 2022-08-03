@@ -9,7 +9,7 @@ export const AvailableStudents = () => {
   return (
     <>
       <TopPanel />
-        <ViewPanel/>
+      <ViewPanel />
       <div className="available-students-wrapper">
         <SearchFiltration />
         <div className="students-list">
