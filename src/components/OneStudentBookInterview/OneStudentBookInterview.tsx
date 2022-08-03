@@ -16,7 +16,7 @@ interface Props {
   workExperience: number;
 }
 
-export const OneStudentBookInterview = (props:Props) => {
+export const OneStudentBookInterview = (props: Props) => {
   const [details, setDetails] = useState(false);
 
   const handleClick = () => {
@@ -30,120 +30,118 @@ export const OneStudentBookInterview = (props:Props) => {
   const {
     firstName,
     lastName,
-    courseCompletion, //Ocena przejścia kursu
-    courseEngagement, //Ocena aktywności zaangażowania na kursie
-    projectDegree,  //Ocena kodu w projekcie własnym
-    teamProjectDegree, //Ocena pracy w zespole Scrum
-    expectedTypeWork, //Preferowane miejsce pracy
-    targetWorkCity, //Docelowe miejsce gdzie chce pracować kandydat
-    expectedContractType, //Oczekiwany typ kontraktu
-    expectedSalary, //Oczekiwane wynagrodzenie miesięczne netto
-    canTakeApprenticeship, //Zgoda na odbycie bezpłatnych praktyk/stażu na początek
-    workExperience, //Komercyjne doświadczenie w programowaniu
+    courseCompletion, // Ocena przejścia kursu
+    courseEngagement, // Ocena aktywności zaangażowania na kursie
+    projectDegree, // Ocena kodu w projekcie własnym
+    teamProjectDegree, // Ocena pracy w zespole Scrum
+    expectedTypeWork, // Preferowane miejsce pracy
+    targetWorkCity, // Docelowe miejsce gdzie chce pracować kandydat
+    expectedContractType, // Oczekiwany typ kontraktu
+    expectedSalary, // Oczekiwane wynagrodzenie miesięczne netto
+    canTakeApprenticeship, // Zgoda na odbycie bezpłatnych praktyk/stażu na początek
+    workExperience, // Komercyjne doświadczenie w programowaniu
   } = props;
 
   return (
-      <article className="available-One-student">
-        <div className="available-student">
-          <div className="BookInterview-student-all">
-            <div className="BookInterview-student-reservation">
-              <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
-              <p className="BookInterview-student-reservation-date">10.01.2001</p>
-            </div>
-
-            <div className="BookInterview-student-information">
-              <img
-                  className="BookInterview-student-information-avatar"
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                  alt="avatar użytkownika"
-              />
-              <p className="BookInterview-student-information-name">
-                {firstName} {lastName}
-              </p>
-            </div>
+    <article className="available-One-student">
+      <div className="available-student">
+        <div className="BookInterview-student-all">
+          <div className="BookInterview-student-reservation">
+            <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
+            <p className="BookInterview-student-reservation-date">10.01.2001</p>
           </div>
-          <div className="available-student-right">
-            <button className="right-button" type="button">
-              Pokaż CV
-            </button><button className="right-button" type="button">
+
+          <div className="BookInterview-student-information">
+            <img
+              className="BookInterview-student-information-avatar"
+              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              alt="avatar użytkownika"
+            />
+            <p className="BookInterview-student-information-name">
+              {firstName} {lastName}
+            </p>
+          </div>
+        </div>
+        <div className="available-student-right">
+          <button className="right-button" type="button">
+            Pokaż CV
+          </button>
+          <button className="right-button" type="button">
             Brak zainteresowania
-          </button><button className="right-button" type="button">
+          </button>
+          <button className="right-button" type="button">
             Zatrudniony
           </button>
-            <button className="expand" type="button" onClick={handleClick}>
-              <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
-            </button>
-          </div>
+          <button className="expand" type="button" onClick={handleClick}>
+            <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
+          </button>
         </div>
-        <div className={details ? 'student-details-on' : 'student-details-off'}>
-          <div className="detail">
-            <span className="title">Ocena przejścia kursu</span>
-            <span className="description">
+      </div>
+      <div className={details ? 'student-details-on' : 'student-details-off'}>
+        <div className="detail">
+          <span className="title">Ocena przejścia kursu</span>
+          <span className="description">
             <strong>{courseCompletion}</strong> / 5
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Ocena aktywności zaangażowania na kursie</span>
-            <span className="description">
+        </div>
+        <div className="detail">
+          <span className="title">Ocena aktywności zaangażowania na kursie</span>
+          <span className="description">
             <strong>{courseEngagement}</strong> / 5
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Ocena kodu w projekcie własnym</span>
-            <span className="description">
+        </div>
+        <div className="detail">
+          <span className="title">Ocena kodu w projekcie własnym</span>
+          <span className="description">
             <strong>{projectDegree}</strong> / 5
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Ocena pracy w zespole Scrum</span>
-            <span className="description">
+        </div>
+        <div className="detail">
+          <span className="title">Ocena pracy w zespole Scrum</span>
+          <span className="description">
             <strong>{teamProjectDegree}</strong> / 5
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Preferowane miejsce pracy</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Preferowane miejsce pracy</span>
+          <span className="description-text">
             <strong>{expectedTypeWork}</strong>
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
+          <span className="description-text">
             <strong>{targetWorkCity}</strong>
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Oczekiwany typ kontraktu</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Oczekiwany typ kontraktu</span>
+          <span className="description-text">
             <strong>{expectedContractType}</strong>
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
+          <span className="description-text">
             <strong>{expectedSalary}zł</strong>
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</span>
+          <span className="description-text">
             <strong>{canTakeApprenticeship}</strong>
           </span>
-          </div>
-          <div className="detail">
-            <span className="title">Komercyjne doświadczenie w programowaniu</span>
-            <span className="description-text">
+        </div>
+        <div className="detail">
+          <span className="title">Komercyjne doświadczenie w programowaniu</span>
+          <span className="description-text">
             <strong>{workExperience} mies.</strong>
           </span>
-          </div>
         </div>
-      </article>
+      </div>
+    </article>
   );
 };
-
-
-
-
 
 // ------------pifpaf---------------
 

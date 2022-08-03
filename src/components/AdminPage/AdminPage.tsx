@@ -5,8 +5,6 @@ import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
 
-
-
 type InputProps = {
   name: Path<HrProfileRegister>;
   placeholder: string;
@@ -48,12 +46,9 @@ export const AdminPage = () => {
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
   const [file, setFile] = useState('');
 
-
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
     alert(JSON.stringify(data));
   };
-
-
 
   const clicked2 = (info: string) => {
     console.log(`plik: ${info}`);
@@ -187,7 +182,6 @@ export const AdminPage = () => {
               Dodaj
             </button>
           </form>
-
 
           <h3 className="title">Import studentów z pliku CSV</h3>
           <form className="csv-form">

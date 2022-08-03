@@ -7,35 +7,33 @@ import { ViewPanel } from '../ViewPanel/ViewPanel';
 import { SimulatedData } from '../SimulatedData/SimulatedData';
 
 export const AvailableStudents = () => {
-    const data = SimulatedData;
+  const data = SimulatedData;
 
-    const students = SimulatedData.map((student) => (
-        <AvailableOneStudent
-            key={student.id}
-            firstName={student.firstName}
-            lastName={student.lastName}
-            courseCompletion={student.courseCompletion}
-            courseEngagement={student.courseEngagement}
-            projectDegree={student.projectDegree}
-            teamProjectDegree={student.projectDegree}
-            expectedTypeWork={student.expectedTypeWork}
-            targetWorkCity={student.targetWorkCity}
-            expectedContractType={student.expectedContractType}
-            expectedSalary={student.expectedSalary}
-            canTakeApprenticeship={student.canTakeApprenticeship}
-            workExperience={student.workExperience}
-        />
-    ));
+  const students = SimulatedData.map((student) => (
+    <AvailableOneStudent
+      key={student.id}
+      firstName={student.firstName}
+      lastName={student.lastName}
+      courseCompletion={student.courseCompletion}
+      courseEngagement={student.courseEngagement}
+      projectDegree={student.projectDegree}
+      teamProjectDegree={student.projectDegree}
+      expectedTypeWork={student.expectedTypeWork}
+      targetWorkCity={student.targetWorkCity}
+      expectedContractType={student.expectedContractType}
+      expectedSalary={student.expectedSalary}
+      canTakeApprenticeship={student.canTakeApprenticeship}
+      workExperience={student.workExperience}
+    />
+  ));
 
   return (
     <>
       <TopPanel />
-      <ViewPanel/>
+      <ViewPanel />
       <div className="available-students-wrapper">
         <SearchFiltration />
-        <div className="students-list">
-          {students}
-        </div>
+        <div className="students-list">{students}</div>
         <ViewSupport />
       </div>
     </>

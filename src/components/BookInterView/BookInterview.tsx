@@ -3,13 +3,12 @@ import '../../assets/css/BookInterview.css';
 import '../../assets/css/style.css';
 import { OneStudentBookInterview } from '../OneStudentBookInterview/OneStudentBookInterview';
 import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
-import {SimulatedData} from '../SimulatedData/SimulatedData';
+import { SimulatedData } from '../SimulatedData/SimulatedData';
 import { TopPanel } from '../TopPanel/TopPanel';
 import { ViewPanel } from '../ViewPanel/ViewPanel';
 import { ViewSupport } from '../ViewSupport/ViewSupport';
 
 export const BookInterview = () => {
-
   const students = SimulatedData.map((student) => (
     <OneStudentBookInterview
       key={student.id}
@@ -29,16 +28,14 @@ export const BookInterview = () => {
   ));
 
   return (
-      <>
-        <TopPanel />
-        <ViewPanel/>
-        <div className="available-students-wrapper">
-          <SearchFiltration />
-          <div className="students-list">
-            {students}
-          </div>
-          <ViewSupport />
-        </div>
-      </>
+    <>
+      <TopPanel />
+      <ViewPanel />
+      <div className="available-students-wrapper">
+        <SearchFiltration />
+        <div className="students-list">{students}</div>
+        <ViewSupport />
+      </div>
+    </>
   );
 };
