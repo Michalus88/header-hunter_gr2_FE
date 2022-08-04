@@ -189,7 +189,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
         </div>
       </div>
       <div className="filter-star-butons-wraper">
-        <div className="filter-star-butons-tile">Oczekiwane wynagrodzenie miesięczne netto</div>
+        <div className="filter-star-butons-tile">
+          Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu
+        </div>
         <div className="filter-star-butons-group">
           <div className="filter-input-wrap">
             <InputNumber
