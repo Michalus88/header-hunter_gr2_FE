@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import megaK from '../../assets/img/MegaK.webp';
 import { TopPanelRecruiter } from './TopPanelRecruiter';
 import { TopPanelMenu } from './TopPanelMenu';
-import { TestBtn3 } from '../Test/TestBtn3';
 
 export const TopPanel = () => {
   const [show, setShow] = useState(false);

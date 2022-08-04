@@ -4,8 +4,6 @@ import { Password } from 'primereact/password';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import megaK from '../../assets/img/MegaK.webp';
-import { TestBtn3 } from '../Test/TestBtn3';
-import { TestBtn5 } from '../Test/TestBtn5';
 
 export const LoginPage = () => {
   const [login, setLogin] = useState(true);
