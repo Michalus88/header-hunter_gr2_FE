@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import group from '../../assets/img/Group 29.png';
+import { MegaButton } from '../Elements/MegaButton';
 
 interface Props {
   firstName: string;
@@ -18,6 +20,8 @@ interface Props {
 
 export const OneStudentBookInterview = (props: Props) => {
   const [details, setDetails] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleClick = () => {
     if (!details) {
@@ -63,15 +67,21 @@ export const OneStudentBookInterview = (props: Props) => {
           </div>
         </div>
         <div className="available-student-right">
-          <button className="right-button" type="button">
-            Pokaż CV
-          </button>
-          <button className="right-button" type="button">
-            Brak zainteresowania
-          </button>
-          <button className="right-button" type="button">
-            Zatrudniony
-          </button>
+          <MegaButton
+            classNameAdd="megak-primary filter-star-butons-group-small right-button"
+            buttonTitle="Pokaż CV"
+            onClick={() => navigate('/students/id')}
+          />
+          <MegaButton
+            classNameAdd="megak-primary filter-star-butons-group-small right-button"
+            buttonTitle="Brak zainteresowania"
+            onClick={() => {}}
+          />
+          <MegaButton
+            classNameAdd="megak-primary filter-star-butons-group-small right-button"
+            buttonTitle="Zatrudniony"
+            onClick={() => {}}
+          />
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
           </button>

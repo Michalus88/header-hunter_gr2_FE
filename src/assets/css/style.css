@@ -483,8 +483,6 @@ a:active {
           align-items: center;
   width: 135px;
   height: 39px;
-  background-color: #e02735;
-  color: #f7f7f7;
   font-size: 14px;
   font-family: "Catamaran", Arial, sans-serif;
   letter-spacing: 0;
@@ -1069,7 +1067,7 @@ a:active {
 }
 .mega-k-button {
   height: 45px;
-  padding: 0 1.2rem;
+  padding: 0;
   color: #f7f7f7;
   border-radius: 2px;
   border: none;
@@ -1092,6 +1090,10 @@ a:active {
 
 .megak-small-height {
   height: 38px;
+}
+
+.megak-paddng {
+  padding: 0 1.2rem;
 }
 
 .mega-k-star {
@@ -1236,6 +1238,14 @@ a:active {
   display: flex;
   top: 0;
   height: 100%;
+}
+.top-panel-container .top-panel-wrapper .top-panel-hr span.top-panel-hr-expand {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #939393;
+}
+.top-panel-container .top-panel-wrapper .top-panel-hr span.top-panel-hr-expand:hover {
+  border-top: 10px solid #e02735;
 }
 .top-panel-container .top-panel-wrapper .top-panel-hr .top-panel-hr-photo {
   position: relative;

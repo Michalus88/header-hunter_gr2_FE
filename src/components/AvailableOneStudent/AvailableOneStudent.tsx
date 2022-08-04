@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import group from '../../assets/img/Group 29.png';
+import { MegaButton } from '../Elements/MegaButton';
 
 interface Props {
   firstName: string;
@@ -42,6 +43,8 @@ export const AvailableOneStudent = (props: Props) => {
     workExperience, // Komercyjne doświadczenie w programowaniu
   } = props;
 
+  const click = () => console.log('click');
+
   return (
     <article className="available-One-student">
       <div className="available-student">
@@ -49,9 +52,11 @@ export const AvailableOneStudent = (props: Props) => {
           {firstName} {lastName}
         </p>
         <div className="available-student-right">
-          <button className="right-button" type="button">
-            Zarezerwuj rozmowę
-          </button>
+          <MegaButton
+            classNameAdd="megak-primary filter-star-butons-group-small right-button"
+            buttonTitle="Zarezerwuj rozmowę"
+            onClick={() => click}
+          />
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
           </button>
