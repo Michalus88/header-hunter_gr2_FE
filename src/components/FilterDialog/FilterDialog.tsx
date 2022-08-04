@@ -19,7 +19,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
     <div className="filter-header">
       <div className="filter-header-text">Filtrowanie</div>
       <MegaButton
-        classNameAdd="megak-secondary filter-clear-all"
+        classNameAdd="megak-secondary filter-clear-all megak-paddng"
         buttonTitle="Wyczyść wszystkie"
         onClick={toggleClearAll}
       />
@@ -28,12 +28,12 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const footer = (
     <div className="fileter-dialog-footer">
       <MegaButton
-        classNameAdd="megak-secondary"
+        classNameAdd="megak-secondary megak-paddng"
         buttonTitle="Anuluj"
         onClick={() => toggleFilterDialog()}
       />
       <MegaButton
-        classNameAdd="megak-primary"
+        classNameAdd="megak-primary megak-paddng"
         buttonTitle="Pokaż wyniki"
         onClick={() => toggleFilterDialog()}
       />

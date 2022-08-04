@@ -1,6 +1,5 @@
 import React from 'react';
 import defaultUser from '../../assets/img/default-user.jpg';
-import expand from '../../assets/img/expand.png';
 
 export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
   const showOptions = () => {
@@ -19,7 +18,7 @@ export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
       <div className="top-panel-hr-paragraph">
         <p>Imie Nazwisko</p>
       </div>
-      <img className="top-panel-hr-expand" src={expand} alt="expand" />
+      <span className="top-panel-hr-expand" />
     </div>
   );
 };

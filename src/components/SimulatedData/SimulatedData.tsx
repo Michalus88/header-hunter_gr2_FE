@@ -15,7 +15,7 @@ export const SimulatedData = [
     workExperience: 0,
   },
   {
-    id: 2,
+    id: 21,
     firstName: 'Jakub',
     lastName: 'Testowy',
     courseCompletion: 5,

@@ -1,7 +1,7 @@
 @import './colors';
 .mega-k-button {
   height: 45px;
-  padding: 0 1.2rem;
+  padding: 0;
   color: $main-text-color;
   border-radius: 2px;
   border: none;
@@ -20,4 +20,7 @@
 }
 .megak-small-height {
   height: 38px;
+}
+.megak-paddng {
+  padding: 0 1.2rem;
 }

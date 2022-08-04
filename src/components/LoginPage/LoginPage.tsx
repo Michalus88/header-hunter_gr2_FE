@@ -1,12 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import megaK from '../../assets/img/MegaK.webp';
-import { TestBtn2 } from '../Test/TestBtn2';
 import { TestBtn3 } from '../Test/TestBtn3';
-import { TestBtn4 } from '../Test/TestBtn4';
 import { TestBtn5 } from '../Test/TestBtn5';
 
 export const LoginPage = () => {
@@ -14,6 +12,8 @@ export const LoginPage = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const toast = useRef<any>(null);
+
+  const navigate = useNavigate();
 
   const showSuccess = () => {
     toast.current.show({
@@ -97,7 +97,11 @@ export const LoginPage = () => {
             </div>
             <div className="register-new-acc">
               {login ? (
-                <button type="submit" className="register-new-acc-button mega-k-button">
+                <button
+                  type="submit"
+                  className="register-new-acc-button mega-k-button"
+                  onClick={() => navigate('/hr/available-students')}
+                >
                   Zaloguj się
                 </button>
               ) : (
@@ -114,12 +118,7 @@ export const LoginPage = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-        >
-          <TestBtn2 />
-          <TestBtn3 />
-          <TestBtn4 />
-          <TestBtn5 />
-        </div>
+        />
       </div>
     </>
   );
