@@ -5,21 +5,21 @@
   display: flex;
   flex-direction: column;
   width: 1440px;
-  height:700px;
+  height: 700px;
   margin: 175px auto;
 }
 
-.student-page__form{
-  width: 60%;
+.student-page__form {
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15px auto;
-  //background-color: red;
+  margin: 30px auto;
+  //background-color: gray;
 }
 
-.student-page__valid{
+.student-page__valid {
   //position: absolute;
   //bottom: -15px;
   width: 100%;
@@ -28,4 +28,60 @@
   font-family: bitter, sans-serif;
   font-size: 12px;
   color: #FF8383;
+}
+
+
+.student-page__input-container label {
+  display: flex;
+  margin: 10px;
+  line-height: 40px;
+
+  span {
+    width: 35%
+  }
+
+  .student-page__radio {
+    margin-right: 5px;
+  }
+}
+
+.student-page__input-container input, .student-page__input-container textarea, .student-page__input-container select {
+  padding: 10px;
+}
+
+.student-page__radio-container {
+  display: flex;
+  margin: 10px;
+
+  p {
+    width: 35%
+  }
+
+  .student-page__radio {
+    display: flex;
+    align-items: center;
+    line-height: 40px;
+    margin-right: 15px;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
+.student-page__title-form{
+  text-transform: uppercase;
+  margin:40px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.student-page_btns{
+  display: flex;
+  justify-content: space-between;
+  padding:0 40px;
+}
+
+.mega-k-button.megak-primary.edit{
+  margin-top: 30px;
 }
