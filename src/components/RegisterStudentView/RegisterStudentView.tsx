@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, ExpectedContractType, StudentProfileRegister } from 'types';
 import '../../assets/css/RegisterStudentView.css';
+import { useParams } from 'react-router';
 
 export const RegisterStudentView = () => {
   const {
@@ -28,80 +29,58 @@ export const RegisterStudentView = () => {
     'portfolioUrlFourth',
     'portfolioUrlFifth',
   ]);
-  console.log('array watch ', ArrayPortfolioUrls);
 
-  const testarray = ArrayPortfolioUrls.map((arr) => {
+  const newArrayPortfolioUrls = ArrayPortfolioUrls.map((arr) => {
     if (arr !== '') {
       return arr;
     }
     return null;
   });
 
-  console.log(testarray, 'testarray');
   const ArrayBonusProjectUrls = watch([
-    'bonusProjectUrlFirst',
+    'bonusProjectUrl',
     'bonusProjectUrlSecond',
     'bonusProjectUrlThird',
     'bonusProjectUrlFourth',
     'bonusProjectUrlFifth',
   ]);
 
+  const newArrayBonusProjectUrls = ArrayPortfolioUrls.map((arr) => {
+    if (arr !== '') {
+      return arr;
+    }
+    return null;
+  });
+
   const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
 
-  const onSubmit: SubmitHandler<StudentProfileRegister> = (data) => {
-    const fff = {
-      tel: phone,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      githubUsername: data.githubUsername,
-      portfolioUrls: ArrayPortfolioUrls,
-      projectUrls: ArrayBonusProjectUrls,
-      bio: data.bio,
-      expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
-      targetWorkCity: data.targetWorkCity,
-      expectedContractType: ExpectedContractType.EMPLOYMENT_CONTRACT,
-      expectedSalary: data.expectedSalary,
-      canTakeApprenticeship: canTakeApprenticeshipFromForm,
-      // canTakeApprenticeship: false,
-      monthsOfCommercialExp: 0,
-      education: data.education,
-      workExperience: data.workExperience,
-      courses: data.courses,
-    };
-    console.log(fff);
-  };
+  const { userId, token } = useParams();
 
-  // console.log('watch', ArrayBonusProjectUrls);
+  const registerHendler: SubmitHandler<StudentProfileRegister> = async (data) => {
+    const data2 = {
+      ...data,
+      projectUrls: newArrayPortfolioUrls,
+      bonusProjectUrls: newArrayBonusProjectUrls,
+    };
+    console.log(data2);
+    const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data2),
+    });
+    console.log(res);
+    const test = await res.json();
+    console.log(test);
+  };
 
   return (
     <div className="RegisterStudentView">
       <div className="RegisterStudentView__Wrapper">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Adres e-mail
-            <br />
-            <input
-              className="RegisterStudentView__Input"
-              {...register('email', {
-                required: 'Pole wymagane',
-                minLength: {
-                  value: 6,
-                  message: 'E-Mail musi zawierać conajmniej 7 znaków i @',
-                },
-                maxLength: {
-                  value: 255,
-                  message: 'Adres email maksymalnie może zawierać 255 znaków',
-                },
-              })}
-              placeholder="Adres e-mail"
-            />
-          </label>
-
-          {errors.email && (
-            <p className="RegisterStudentView__Input--error">
-              Adres e-mail nie może zawierać mniej niż 6 znaków i więcej niż 255
-            </p>
-          )}
+        <form onSubmit={handleSubmit(registerHendler)}>
           <br />
           <label>
             Telefon
@@ -480,7 +459,7 @@ export const RegisterStudentView = () => {
             <br />
             <input
               className="RegisterStudentView__Input"
-              {...register('bonusProjectUrlFirst', {
+              {...register('bonusProjectUrl', {
                 required: 'Pole wymagane',
                 maxLength: {
                   value: 255,
