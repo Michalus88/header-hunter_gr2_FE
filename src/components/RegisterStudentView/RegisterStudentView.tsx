@@ -53,18 +53,15 @@ export const RegisterStudentView = () => {
       bonusProjectUrls: newArrayBonusProjectUrls,
     };
     console.log(data2);
-    const res = await fetch(
-      `http://localhost:3001/api/student/activate/c57108c4-323d-4b19-84ec-c8907bfd127c/329af47b-f051-458a-96ba-2d24bd8e2a0c`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data2),
+    const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-    );
+      body: JSON.stringify(data2),
+    });
     console.log(res);
     const test = await res.json();
     console.log(test);
