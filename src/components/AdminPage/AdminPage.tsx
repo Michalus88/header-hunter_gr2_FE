@@ -44,18 +44,28 @@ export const AdminPage = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+  const formFileRef = useRef<HTMLFormElement | any>(null);
+  const inputFileRef = useRef<HTMLFormElement | any>(null);
 
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
     alert(JSON.stringify(data));
   };
-  const inputFileRef = useRef<HTMLFormElement | any>(null);
 
-  const clicked2 = async (event: React.MouseEvent<HTMLElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileObj = event.target.files && event.target.files[0];
+
+    if (!fileObj) {
+      return;
+    }
+    setFile(fileObj);
+  };
+
+  const cvsSendHandleClick = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
     const data = new FormData();
-    data.append('studentsList', inputFileRef.current[1].files[0]);
+    data.append('studentsList', file as File);
 
     const headers = new Headers();
 
@@ -205,24 +215,24 @@ export const AdminPage = () => {
           </form>
 
           <h3 className="title">Import studentów z pliku CSV</h3>
-          <form ref={inputFileRef} className="csv-form">
-            {/* file input */}
+          <form ref={formFileRef} className="csv-form">
             <div className="admin-input">
-              <div className="button-file-wrapper">
-                <button className="button-file" type="submit">
-                  Wybierz plik CSV
-                </button>
-                <input
-                  type="file"
-                  accept=".csv"
-                  value={file}
-                  onChange={(e) => setFile(e.target.value)}
-                />
-              </div>
+              {/* <div className="button-file-wrapper"> */}
+              <input
+                ref={inputFileRef}
+                type="file"
+                accept=".csv"
+                placeholder="Wybierz plik CSV"
+                onChange={handleFileChange}
+              />
+              {/* </div> */}
             </div>
-            <button type="submit" onClick={clicked2}>
-              Wyślij
-            </button>
+
+            <MegaButton
+              buttonTitle="Wyślij"
+              onClick={cvsSendHandleClick}
+              classNameAdd="admin-button-send"
+            />
           </form>
         </div>
       </div>
