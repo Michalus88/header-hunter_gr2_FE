@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
 import { HrProfileRegister } from 'types';
+
 import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
