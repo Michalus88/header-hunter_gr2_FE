@@ -1,0 +1,30 @@
+@import './colors';
+
+.Notification {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 6em;
+
+  &__Ok {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: green;
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &--button-back {
+      background-color: $megak-red-color;
+      margin: 1em;
+      padding: 0.5em 1em;
+    }
+  }
+}

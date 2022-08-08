@@ -1,0 +1,27 @@
+.Notification {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 6em;
+}
+.Notification__Fail {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #e02735;
+}
+.Notification__Fail--button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.Notification__Fail--button-back {
+  background-color: #e02735;
+  margin: 1em;
+  padding: 0.5em 1em;
+}
+
+/*# sourceMappingURL=NotificationFail.css.map */
