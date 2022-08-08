@@ -1,56 +1,133 @@
 @import 'colors';
 
-.admin-page-wrapper {
+.admin-title {
   margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .admin-page-image {
+    width: 124px;
+    height: 76px;
+  }
+}
+
+.admin-page-wrapper {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  align-items: start;
+  flex-direction: row;
   letter-spacing: 0.6px;
 
-  .admin-page-image {
-    width: 124px;
-    height: 76px;
-  }
+  .hr-wrapper {
 
-  .title {
-    margin-top: 50px;
-  }
+    .title {
+      margin-top: 50px;
+    }
 
-  .admin-input {
-    width: 350px;
-    height: 51px;
-    background-color: $input-brown;
-    margin: 15px 0 15px 0;
-    label {
-      color: $main-text-color;
-      font-size: 12px;
-      background-color: $border-bottom;
-      padding-left: 10px;
-      input {
-        width: 350px;
-        height: 35px;
-        background-color: $input-brown;
-        opacity: 1;
+    .admin-input {
+      width: 350px;
+      height: 51px;
+      //background-color: $input-brown;
+      margin: 15px 0 15px 0;
+      label {
         color: $main-text-color;
-        font-size: 16px;
-        letter-spacing: 0;
-        text-align: left;
-        border: none;
-        padding-left: 15px;
+        font-size: 12px;
+        //background-color: $border-bottom;
+        padding-left: 10px;
+        input {
+          width: 350px;
+          height: 35px;
+          background-color: $input-brown;
+          opacity: 1;
+          color: $main-text-color;
+          font-size: 16px;
+          letter-spacing: 0;
+          text-align: left;
+          border: none;
+          padding-left: 15px;
+        }
+      }
+      p {
+        opacity: 0.9;
+        font-size: 12px;
+        padding-bottom: 2px;
+        color: $cta;
+      }
+      hr-form {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .admin-button-send {
+          display: block;
+          background-color: $cta;
+          width: 100px;
+          margin-top: 12px;
+        }
+      }
+
+      .button-file-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        justify-content: left;
+        color: $main-text-color;
+        font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        .button-file {
+          border: none;
+          width: 350px;
+          text-align: left;
+          color: $main-text-color;
+          background-color: $input-brown;
+          letter-spacing: 0;
+          font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          padding: 5px 15px;
+          font-size: 16px;
+          margin-top: 5px;
+        }
+      }
+
+      .button-file-wrapper
+      input[type=file] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
       }
     }
-    p {
-      opacity: 0.9;
-      font-size: 12px;
-      padding-bottom: 2px;
-      color: $cta;
-    }
+  }
 
+  .button-file {
+    border: none;
+    width: 350px;
+    text-align: left;
+    color: $main-text-color;
+    background-color: $input-brown;
+    letter-spacing: 0;
+    font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  .csv-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20px;
+
+    .title {
+      margin-top: 50px;
+      margin-bottom: 10px;
+    }
     .button-file-wrapper {
       position: relative;
       overflow: hidden;
@@ -80,29 +157,50 @@
       top: 0;
       opacity: 0;
     }
-  }
-  .csv-form  {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
 
-    .admin-button-send {
-      display: block;
-      background-color: $cta;
-      width: 100px;
+    .button-file-wrapper
+    input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+    .csv-form  {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+
+      .admin-button-send {
+        display: block;
+        background-color: $cta;
+        width: 100px;
+      }
     }
   }
-  .hr-form {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-
-    .admin-button-send {
-      display: block;
-      background-color: $cta;
-      width: 100px;
-      margin-top: 12px;
-    }
-  }
-
 }
+
+
+.csv-form  {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  .admin-button-send {
+    display: block;
+    background-color: $cta;
+    width: 100px;
+  }
+}
+.hr-form {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  .admin-button-send {
+    display: block;
+    background-color: $cta;
+    width: 100px;
+    margin-top: 12px;
+  }
+}
+
