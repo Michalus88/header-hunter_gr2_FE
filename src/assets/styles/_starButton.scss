@@ -38,6 +38,15 @@
     margin-left: 0.3rem;
     color: $megak-red-color;
   }
+  .pi-star-fill {
+    color: rgb(255, 216, 232);
+    border-radius: 50%;
+    background-color: rgb(250, 70, 70);
+    box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.603), 0 0 8px 8px rgba(255, 0, 0, 0.603);
+  }
+  .megak-glow {
+    background-color: $megak-red-color;
+  }
 }
 .mega-k-star:hover {
   background-color: $megak-light-color;

@@ -9,7 +9,7 @@
   height: max-content;
   max-width: 1430px;
   width: 80%;
-  margin: 100px auto 0 auto;
+  margin: 0 auto;
   color: $main-text-color;
 
   .search-filtration {
@@ -83,12 +83,13 @@
       .available-student-right {
         margin-bottom: 15px;
         display: flex;
-        .reservation {
-          width: 158px;
+        .right-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 135px;
           height: 39px;
-          background-color: #e02735;
-          color: #f7f7f7;
-          font-size: 16px;
+          font-size: 14px;
           font-family: 'Catamaran', Arial, sans-serif;
           letter-spacing: 0;
           border: none;

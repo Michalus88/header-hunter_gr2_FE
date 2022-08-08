@@ -1,59 +1,99 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
 import { MegaButton } from '../Elements/MegaButton';
 import { StarButtonGroup } from './StarsButttonGroup';
 
-export const FilterGroup = () => {
-  const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState('');
-  const [value3, setValue3] = useState<number | null>(null);
-  const [value4, setValue4] = useState<number | null>(null);
-  const [value5, setValue5] = useState<number | null>(0);
+interface Props {
+  clearAll: boolean;
+}
+
+export const FilterGroup = ({ clearAll }: Props) => {
+  const [workRemontely, setWorkRemontely] = useState(false);
+  const [workInOffice, setWorkInOffice] = useState(false);
+  const [contract, setContract] = useState(false);
+  const [B2B, setB2B] = useState(false);
+  const [contractOfMandate, setContractOfMandate] = useState(false);
+  const [contractWork, setContractWork] = useState(false);
+  const [value, setValue] = useState<number | null>(null);
+  const [value1, setValue1] = useState<number | null>(null);
+  const [value2, setValue2] = useState<number | null>(0);
   const [radioValue1, setRadioValue1] = useState(null);
 
-  const clicked = () => {
-    console.log('Clicked');
+  useEffect(() => {
+    setWorkRemontely(false);
+    setWorkInOffice(false);
+    setContract(false);
+    setB2B(false);
+    setContractOfMandate(false);
+    setContractWork(false);
+    setValue(null);
+    setValue1(null);
+    setValue2(0);
+    setRadioValue1(null);
+  }, [clearAll]);
+
+  const toggleWorkRemontely = () => {
+    setWorkRemontely(!workRemontely);
+  };
+  const toggleWorkInOffice = () => {
+    setWorkInOffice(!workInOffice);
+  };
+  const toggleContract = () => {
+    setContract(!contract);
+  };
+  const toggleB2B = () => {
+    setB2B(!B2B);
+  };
+  const toggleContractOfMandate = () => {
+    setContractOfMandate(!contractOfMandate);
+  };
+  const toggleContractWork = () => {
+    setContractWork(!contractWork);
   };
 
   let suffix = '';
-  if (value5 === 0) suffix = ' miesięcy';
-  if (value5 === 1) suffix = ' miesiąc';
-  if (value5 === 2) suffix = ' miesiące';
-  if (value5 === 3) suffix = ' miesiące';
-  if (value5 === 4) suffix = ' miesiące';
-  if (value5 !== null && value5 >= 4) suffix = ' miesięcy';
+  if (value2 === 0) suffix = ' miesięcy';
+  if (value2 === 1) suffix = ' miesiąc';
+  if (value2 === 2) suffix = ' miesiące';
+  if (value2 === 3) suffix = ' miesiące';
+  if (value2 === 4) suffix = ' miesiące';
+  if (value2 !== null && value2 >= 4) suffix = ' miesięcy';
 
   return (
     <>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena przejścia kursu</div>
-        <StarButtonGroup />
+        <StarButtonGroup clearAll={clearAll} />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena aktywności i zaangażowania na kursie</div>
-        <StarButtonGroup />
+        <StarButtonGroup clearAll={clearAll} />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena kodu w projekcie własnym</div>
-        <StarButtonGroup />
+        <StarButtonGroup clearAll={clearAll} />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena pracy w zespole Scrum</div>
-        <StarButtonGroup />
+        <StarButtonGroup clearAll={clearAll} />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Preferowanie miejsce pracy</div>
         <div className="filter-star-butons-group">
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small ${
+              workRemontely && 'megak-glow'
+            }`}
             buttonTitle="Praca zdala"
-            onClick={() => clicked()}
+            onClick={toggleWorkRemontely}
           />
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
+              workInOffice && 'megak-glow'
+            }`}
             buttonTitle="Praca w biurze"
-            onClick={() => clicked()}
+            onClick={toggleWorkInOffice}
           />
         </div>
       </div>
@@ -61,24 +101,30 @@ export const FilterGroup = () => {
         <div className="filter-star-butons-tile">Oczekiwany typ kontraktu</div>
         <div className="filter-star-butons-group">
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
+              contract && 'megak-glow'
+            }`}
             buttonTitle="Umowa o pracę"
-            onClick={() => clicked()}
+            onClick={toggleContract}
           />
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${B2B && 'megak-glow'}`}
             buttonTitle="B2B"
-            onClick={() => clicked()}
+            onClick={toggleB2B}
           />
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
+              contractOfMandate && 'megak-glow'
+            }`}
             buttonTitle="Umowa zlecenie"
-            onClick={() => clicked()}
+            onClick={toggleContractOfMandate}
           />
           <MegaButton
-            classNameAdd="megak-secondary filter-star-butons-group-small"
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
+              contractWork && 'megak-glow'
+            }`}
             buttonTitle="Umowa o dzieło"
-            onClick={() => clicked()}
+            onClick={toggleContractWork}
           />
         </div>
       </div>
@@ -90,8 +136,8 @@ export const FilterGroup = () => {
             <InputNumber
               size={10}
               inputId="input1"
-              value={value3}
-              onValueChange={(e) => setValue3(e.value)}
+              value={value}
+              onValueChange={(e) => setValue(e.value)}
               showButtons={false}
               placeholder="np. 1000 zł"
               min={0}
@@ -102,8 +148,8 @@ export const FilterGroup = () => {
             <InputNumber
               size={10}
               inputId="input2"
-              value={value4}
-              onValueChange={(e) => setValue4(e.value)}
+              value={value1}
+              onValueChange={(e) => setValue1(e.value)}
               showButtons={false}
               placeholder="np. 100000 zł"
               min={0}
@@ -143,15 +189,17 @@ export const FilterGroup = () => {
         </div>
       </div>
       <div className="filter-star-butons-wraper">
-        <div className="filter-star-butons-tile">Oczekiwane wynagrodzenie miesięczne netto</div>
+        <div className="filter-star-butons-tile">
+          Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu
+        </div>
         <div className="filter-star-butons-group">
           <div className="filter-input-wrap">
             <InputNumber
               size={8}
               min={0}
               inputId="input3"
-              value={value5}
-              onValueChange={(e) => setValue5(e.value)}
+              value={value2}
+              onValueChange={(e) => setValue2(e.value)}
               showButtons
               suffix={suffix}
             />

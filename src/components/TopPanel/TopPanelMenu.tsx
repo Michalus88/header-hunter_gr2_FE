@@ -12,12 +12,17 @@ export const TopPanelMenu = () => {
         </li>
         <li>
           <NavLink className="navbar-nav-link" to="/">
-            Wloguj
+            Wyloguj
           </NavLink>
         </li>
         <li>
           <NavLink className="navbar-nav-link" to="/zmienHaslo">
             Zmiana hasła
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="navbar-nav-link" to="/admin">
+            Panel Administratora
           </NavLink>
         </li>
       </ul>

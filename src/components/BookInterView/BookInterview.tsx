@@ -2,42 +2,14 @@ import React, { useState } from 'react';
 import '../../assets/css/BookInterview.css';
 import '../../assets/css/style.css';
 import { OneStudentBookInterview } from '../OneStudentBookInterview/OneStudentBookInterview';
+import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
+import { SimulatedData } from '../SimulatedData/SimulatedData';
+import { TopPanel } from '../TopPanel/TopPanel';
+import { ViewPanel } from '../ViewPanel/ViewPanel';
+import { ViewSupport } from '../ViewSupport/ViewSupport';
 
 export const BookInterview = () => {
-  const data = [
-    {
-      id: 1,
-      firstName: 'Michał',
-      lastName: 'Górecki',
-      courseCompletion: 5,
-      courseEngagement: 5,
-      projectDegree: 4,
-      teamProjectDegree: 5,
-      expectedTypeWork: 'Zdalnie',
-      targetWorkCity: null,
-      expectedContractType: 'B2B',
-      expectedSalary: 1000,
-      canTakeApprenticeship: 'Nie',
-      workExperience: 0,
-    },
-    {
-      id: 2,
-      firstName: 'Jakub',
-      lastName: 'Testowy',
-      courseCompletion: 5,
-      courseEngagement: 5,
-      projectDegree: 5,
-      teamProjectDegree: 5,
-      expectedTypeWork: 'Biuro',
-      targetWorkCity: 'Warszawa',
-      expectedContractType: 'Umowa o pracę',
-      expectedSalary: 15000,
-      canTakeApprenticeship: 'Nie',
-      workExperience: 12,
-    },
-  ];
-
-  const students = data.map((student) => (
+  const students = SimulatedData.map((student) => (
     <OneStudentBookInterview
       key={student.id}
       firstName={student.firstName}
@@ -55,5 +27,15 @@ export const BookInterview = () => {
     />
   ));
 
-  return <div>{students}</div>;
+  return (
+    <>
+      <TopPanel />
+      <ViewPanel />
+      <div className="available-students-wrapper">
+        <SearchFiltration />
+        <div className="students-list">{students}</div>
+        <ViewSupport />
+      </div>
+    </>
+  );
 };

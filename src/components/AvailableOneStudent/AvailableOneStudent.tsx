@@ -1,7 +1,23 @@
 import React, { useState } from 'react';
 import group from '../../assets/img/Group 29.png';
+import { MegaButton } from '../Elements/MegaButton';
 
-export const AvailableOneStudent = () => {
+interface Props {
+  firstName: string;
+  lastName: string;
+  courseCompletion: number;
+  courseEngagement: number;
+  projectDegree: number;
+  teamProjectDegree: number;
+  expectedTypeWork: string;
+  targetWorkCity: string | null;
+  expectedContractType: string;
+  expectedSalary: number;
+  canTakeApprenticeship: string;
+  workExperience: number;
+}
+
+export const AvailableOneStudent = (props: Props) => {
   const [details, setDetails] = useState(false);
 
   const handleClick = () => {
@@ -12,14 +28,35 @@ export const AvailableOneStudent = () => {
     }
   };
 
+  const {
+    firstName,
+    lastName,
+    courseCompletion, // Ocena przejścia kursu
+    courseEngagement, // Ocena aktywności zaangażowania na kursie
+    projectDegree, // Ocena kodu w projekcie własnym
+    teamProjectDegree, // Ocena pracy w zespole Scrum
+    expectedTypeWork, // Preferowane miejsce pracy
+    targetWorkCity, // Docelowe miejsce gdzie chce pracować kandydat
+    expectedContractType, // Oczekiwany typ kontraktu
+    expectedSalary, // Oczekiwane wynagrodzenie miesięczne netto
+    canTakeApprenticeship, // Zgoda na odbycie bezpłatnych praktyk/stażu na początek
+    workExperience, // Komercyjne doświadczenie w programowaniu
+  } = props;
+
+  const click = () => console.log('click');
+
   return (
     <article className="available-One-student">
       <div className="available-student">
-        <p>student</p>
+        <p>
+          {firstName} {lastName}
+        </p>
         <div className="available-student-right">
-          <button className="reservation" type="button">
-            Zarezerwuj rozmowę
-          </button>
+          <MegaButton
+            classNameAdd="megak-primary filter-star-butons-group-small right-button"
+            buttonTitle="Zarezerwuj rozmowę"
+            onClick={() => click}
+          />
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
           </button>
@@ -29,61 +66,61 @@ export const AvailableOneStudent = () => {
         <div className="detail">
           <span className="title">Ocena przejścia kursu</span>
           <span className="description">
-            <strong>5</strong> / 5
+            <strong>{courseCompletion}</strong> / 5
           </span>
         </div>
         <div className="detail">
           <span className="title">Ocena aktywności zaangażowania na kursie</span>
           <span className="description">
-            <strong>3</strong> / 5
+            <strong>{courseEngagement}</strong> / 5
           </span>
         </div>
         <div className="detail">
           <span className="title">Ocena kodu w projekcie własnym</span>
           <span className="description">
-            <strong>4</strong> / 5
+            <strong>{projectDegree}</strong> / 5
           </span>
         </div>
         <div className="detail">
           <span className="title">Ocena pracy w zespole Scrum</span>
           <span className="description">
-            <strong>5</strong> / 5
+            <strong>{teamProjectDegree}</strong> / 5
           </span>
         </div>
         <div className="detail">
           <span className="title">Preferowane miejsce pracy</span>
           <span className="description-text">
-            <strong>Biuro</strong>
+            <strong>{expectedTypeWork}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
           <span className="description-text">
-            <strong>Warszawa</strong>
+            <strong>{targetWorkCity}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwany typ kontraktu</span>
           <span className="description-text">
-            <strong>Umowa o pracę</strong>
+            <strong>{expectedContractType}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
           <span className="description-text">
-            <strong>8 000 zł</strong>
+            <strong>{expectedSalary}zł</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</span>
           <span className="description-text">
-            <strong>TAK</strong>
+            <strong>{canTakeApprenticeship}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Komercyjne doświadczenie w programowaniu</span>
           <span className="description-text">
-            <strong>6 miesięcy</strong>
+            <strong>{workExperience} mies.</strong>
           </span>
         </div>
       </div>

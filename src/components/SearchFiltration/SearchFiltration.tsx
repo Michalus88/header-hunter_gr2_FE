@@ -40,7 +40,7 @@ export const SearchFiltration = () => {
         /> */}
       </p>
       <MegaButton
-        classNameAdd="megak-secondary megak-small-height"
+        classNameAdd="megak-secondary megak-small-height megak-paddng"
         buttonTitle="Filter"
         onClick={() => toggleFilterDialog()}
       />
