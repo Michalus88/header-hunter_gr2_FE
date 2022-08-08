@@ -17,26 +17,6 @@ interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
   project5: string | undefined;
 }
 
-// interface StudentProfileRegister {
-//   email: string;
-//   tel: string | undefined;
-//   firstName: string;
-//   lastName: string;
-//   githubUsername: string;
-//   portfolioUrls: string[] | null;
-//   projectUrls: string[];
-//   bio: string | undefined;
-//   expectedTypeWork: ExpectedTypeWork;
-//   targetWorkCity: string | undefined;
-//   expectedContractType: ExpectedContractType;
-//   expectedSalary: string | undefined;
-//   canTakeApprenticeship: boolean;
-//   monthsOfCommercialExp: number;
-//   education: string | undefined;
-//   workExperience: string | undefined;
-//   courses: string | undefined;
-// }
-
 export const EditStudentForm = () => {
   const [dataStudent, setDataStudent] = useState({
     email: 'gnys1001@gmail.com',
@@ -109,8 +89,8 @@ export const EditStudentForm = () => {
     ]);
     const projects = watch(['project1', 'project2', 'project3', 'project4', 'project5']);
 
-    portfolioArr = portfolios.map((el) => (el !== '' ? el : null));
-    projectArr = projects.map((el) => (el !== '' ? el : null));
+    portfolioArr = portfolios.filter((el) => el);
+    projectArr = projects.filter((el) => el);
   }, [portfolioArr, projectArr]);
 
   const onSubmit: SubmitHandler<StudentProfileUpdate> = (data) => {
