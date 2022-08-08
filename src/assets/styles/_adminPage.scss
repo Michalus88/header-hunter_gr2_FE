@@ -25,7 +25,6 @@
   letter-spacing: 0.6px;
 
   .hr-wrapper {
-
     .title {
       margin-top: 50px;
     }
@@ -78,7 +77,8 @@
         display: inline-block;
         justify-content: left;
         color: $main-text-color;
-        font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+          sans-serif;
 
         .button-file {
           border: none;
@@ -87,19 +87,22 @@
           color: $main-text-color;
           background-color: $input-brown;
           letter-spacing: 0;
-          font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif;
           padding: 5px 15px;
           font-size: 16px;
           margin-top: 5px;
         }
       }
 
-      .button-file-wrapper
-      input[type=file] {
+      .button-file-wrapper input[type='file'] {
         position: absolute;
         left: 0;
         top: 0;
         opacity: 0;
+      }
+      input[type='file'] {
+        margin-top: 27px;
       }
     }
   }
@@ -134,7 +137,8 @@
       display: inline-block;
       justify-content: left;
       color: $main-text-color;
-      font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+        sans-serif;
 
       .button-file {
         border: none;
@@ -143,29 +147,28 @@
         color: $main-text-color;
         background-color: $input-brown;
         letter-spacing: 0;
-        font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Catamaran', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+          sans-serif;
         padding: 5px 15px;
         font-size: 16px;
         margin-top: 5px;
       }
     }
 
-    .button-file-wrapper
-    input[type=file] {
+    .button-file-wrapper input[type='file'] {
       position: absolute;
       left: 0;
       top: 0;
       opacity: 0;
     }
 
-    .button-file-wrapper
-    input[type=file] {
+    .button-file-wrapper input[type='file'] {
       position: absolute;
       left: 0;
       top: 0;
       opacity: 0;
     }
-    .csv-form  {
+    .csv-form {
       display: flex;
       align-items: flex-end;
       flex-direction: column;
@@ -179,8 +182,7 @@
   }
 }
 
-
-.csv-form  {
+.csv-form {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -203,4 +205,3 @@
     margin-top: 12px;
   }
 }
-
