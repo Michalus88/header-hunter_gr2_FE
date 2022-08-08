@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { LegacyRef, MutableRefObject, RefObject, useRef, useState } from 'react';
 import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
 import { HrProfileRegister } from 'types';
 import megaK from '../../assets/img/MegaK.webp';
@@ -49,9 +49,30 @@ export const AdminPage = () => {
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
     alert(JSON.stringify(data));
   };
+  const inputFileRef = useRef<HTMLFormElement | any>(null);
 
-  const clicked2 = (info: string) => {
-    console.log(`plik: ${info}`);
+  const clicked2 = async (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+
+    const data = new FormData();
+    data.append('studentsList', inputFileRef.current[1].files[0]);
+
+    const headers = new Headers();
+
+    headers.append('Origin', '*');
+    headers.append('Access-Control-Allow-Headers', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+
+    fetch('http://localhost:3001/api/user/student', {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'POST',
+      headers,
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((error) => console.log(`Failed: ${error.message}`));
   };
 
   return (
@@ -184,7 +205,7 @@ export const AdminPage = () => {
           </form>
 
           <h3 className="title">Import studentów z pliku CSV</h3>
-          <form className="csv-form">
+          <form ref={inputFileRef} className="csv-form">
             {/* file input */}
             <div className="admin-input">
               <div className="button-file-wrapper">
@@ -199,11 +220,9 @@ export const AdminPage = () => {
                 />
               </div>
             </div>
-            <MegaButton
-              buttonTitle="Wyślij"
-              onClick={() => clicked2(file)}
-              classNameAdd="admin-button-send"
-            />
+            <button type="submit" onClick={clicked2}>
+              Wyślij
+            </button>
           </form>
         </div>
       </div>
