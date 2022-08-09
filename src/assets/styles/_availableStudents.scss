@@ -473,21 +473,27 @@
 
       .available-student {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: space-around;
         width: 95%;
-        height: 60px;
+        height: 110px;
         margin: 14px 20px 0 20px;
+
+        p {
+          margin: 0 auto;
+        }
         .available-student-right {
-          margin-bottom: 15px;
+          margin-bottom: 5px;
           display: flex;
+          justify-content: space-around;
+          align-items: center;
           .right-button {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80px;
+            width: 120px;
             height: 39px;
-            font-size: 11px;
+            font-size: 13px;
             font-family: 'Catamaran', Arial, sans-serif;
             letter-spacing: 0;
             border: none;
@@ -674,32 +680,37 @@
 
       .available-student {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: space-around;
         width: 95%;
-        height: 60px;
-        margin: 14px 10px 0 10px;
+        height: 110px;
+        margin: 14px 20px 0 20px;
+
+        p {
+          margin: 0 auto;
+        }
         .available-student-right {
-          margin-bottom: 10px;
+          margin-bottom: 5px;
           display: flex;
-          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
           .right-button {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 48px;
+            width: 90px;
             height: 39px;
-            font-size: 7px;
+            font-size: 12px;
             font-family: 'Catamaran', Arial, sans-serif;
             letter-spacing: 0;
             border: none;
-            margin-right: 3px;
+            margin-right: 5px;
           }
           .expand {
             background-color: transparent;
             border: none;
-            height: 35px;
-            width: 35px;
+            height: 30px;
+            width: 30px;
             .image-off {
               min-width: 30px;
               min-height: 30px;
@@ -725,7 +736,7 @@
         width: 100%;
         background-color: #222324;
         .detail {
-          padding: 3px;
+          padding: 8px;
           max-width: 100%;
           display: flex;
           flex-direction: row;
@@ -737,14 +748,14 @@
           .title {
             height: 20px;
             font-size: 11px;
-            width: 280px;
+            width: 290px;
           }
           .description {
-            font-size: 14px;
-            letter-spacing: 1.5px;
+            font-size: 11px;
+            letter-spacing: 0.5px;
           }
           .description-text {
-            font-size: 14px;
+            font-size: 11px;
             letter-spacing: 0;
           }
         }

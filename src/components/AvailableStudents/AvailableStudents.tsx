@@ -8,6 +8,7 @@ import { SimulatedData } from '../SimulatedData/SimulatedData';
 
 export const AvailableStudents = () => {
   const data = SimulatedData;
+    console.log(data.length);
 
   const students = SimulatedData.map((student) => (
     <AvailableOneStudent

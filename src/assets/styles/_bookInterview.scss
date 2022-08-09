@@ -61,6 +61,7 @@
 @media (max-width: 800px) {
   .BookInterview-student-all {
     display: flex;
+    justify-content: center;
 
     .BookInterview-student-reservation {
       display: flex;
@@ -69,7 +70,7 @@
 
       .BookInterview-student-reservation-text {
         color: #CFCFCF;
-        font-size: 12px;
+        font-size: 14px;
         text-align: left;
         letter-spacing: 0;
         opacity: 1;
@@ -78,31 +79,32 @@
         letter-spacing: 0.5px;
         color: #F7F7F7;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
   }
   .BookInterview-student-information {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     font-weight: lighter;
-    font-size: 13px;
+    font-size: 15px;
+    margin-left: 15px;
     .BookInterview-student-information-avatar {
       display: inline-block;
       width: 45px;
       height: 45px;
       border-radius: 50%;
       border: 1px solid $bgc-dark;
-      margin-left: 2em;
+      margin: 0 2em;
     }
     .BookInterview-student-information-name {
-      text-align: left;
-      font-size: 14px;
+      text-align: center;
+      font-size: 15px;
       letter-spacing: 0px;
       color: #F7F7F7;
-      margin: 5px;
+      margin: 5px 15px;
     }
     .reservation {
       width: 158px;
@@ -121,6 +123,7 @@
 @media (max-width: 600px) {
   .BookInterview-student-all {
     display: flex;
+    justify-content: center;
 
     .BookInterview-student-reservation {
       display: flex;
@@ -129,7 +132,7 @@
 
       .BookInterview-student-reservation-text {
         color: #CFCFCF;
-        font-size: 9px;
+        font-size: 14px;
         text-align: left;
         letter-spacing: 0;
         opacity: 1;
@@ -138,31 +141,32 @@
         letter-spacing: 0.5px;
         color: #F7F7F7;
         font-weight: bold;
-        font-size: 9px;
+        font-size: 14px;
       }
     }
   }
   .BookInterview-student-information {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     font-weight: lighter;
-    font-size: 9px;
+    font-size: 15px;
+    margin-left: 15px;
     .BookInterview-student-information-avatar {
       display: inline-block;
-      width: 30px;
-      height: 30px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       border: 1px solid $bgc-dark;
-      margin-left: 0.5em;
+      margin: 0 2em;
     }
     .BookInterview-student-information-name {
-      text-align: left;
-      font-size: 10px;
+      text-align: center;
+      font-size: 14px;
       letter-spacing: 0px;
       color: #F7F7F7;
-      margin: 5px;
+      margin: 5px 15px;
     }
     .reservation {
       width: 158px;

@@ -190,6 +190,7 @@ a:active {
 @media (max-width: 800px) {
   .BookInterview-student-all {
     display: flex;
+    justify-content: center;
   }
   .BookInterview-student-all .BookInterview-student-reservation {
     display: flex;
@@ -197,7 +198,7 @@ a:active {
   }
   .BookInterview-student-all .BookInterview-student-reservation .BookInterview-student-reservation-text {
     color: #CFCFCF;
-    font-size: 12px;
+    font-size: 14px;
     text-align: left;
     letter-spacing: 0;
     opacity: 1;
@@ -206,15 +207,16 @@ a:active {
     letter-spacing: 0.5px;
     color: #F7F7F7;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
   }
   .BookInterview-student-information {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     font-weight: lighter;
-    font-size: 13px;
+    font-size: 15px;
+    margin-left: 15px;
   }
   .BookInterview-student-information .BookInterview-student-information-avatar {
     display: inline-block;
@@ -222,14 +224,14 @@ a:active {
     height: 45px;
     border-radius: 50%;
     border: 1px solid #222225;
-    margin-left: 2em;
+    margin: 0 2em;
   }
   .BookInterview-student-information .BookInterview-student-information-name {
-    text-align: left;
-    font-size: 14px;
+    text-align: center;
+    font-size: 15px;
     letter-spacing: 0px;
     color: #F7F7F7;
-    margin: 5px;
+    margin: 5px 15px;
   }
   .BookInterview-student-information .reservation {
     width: 158px;
@@ -246,6 +248,7 @@ a:active {
 @media (max-width: 600px) {
   .BookInterview-student-all {
     display: flex;
+    justify-content: center;
   }
   .BookInterview-student-all .BookInterview-student-reservation {
     display: flex;
@@ -253,7 +256,7 @@ a:active {
   }
   .BookInterview-student-all .BookInterview-student-reservation .BookInterview-student-reservation-text {
     color: #CFCFCF;
-    font-size: 9px;
+    font-size: 14px;
     text-align: left;
     letter-spacing: 0;
     opacity: 1;
@@ -262,30 +265,31 @@ a:active {
     letter-spacing: 0.5px;
     color: #F7F7F7;
     font-weight: bold;
-    font-size: 9px;
+    font-size: 14px;
   }
   .BookInterview-student-information {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     font-weight: lighter;
-    font-size: 9px;
+    font-size: 15px;
+    margin-left: 15px;
   }
   .BookInterview-student-information .BookInterview-student-information-avatar {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 1px solid #222225;
-    margin-left: 0.5em;
+    margin: 0 2em;
   }
   .BookInterview-student-information .BookInterview-student-information-name {
-    text-align: left;
-    font-size: 10px;
+    text-align: center;
+    font-size: 14px;
     letter-spacing: 0px;
     color: #F7F7F7;
-    margin: 5px;
+    margin: 5px 15px;
   }
   .BookInterview-student-information .reservation {
     width: 158px;
@@ -847,23 +851,28 @@ a:active {
   }
   .available-students-wrapper .available-One-student .available-student {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     width: 95%;
-    height: 60px;
+    height: 110px;
     margin: 14px 20px 0 20px;
   }
+  .available-students-wrapper .available-One-student .available-student p {
+    margin: 0 auto;
+  }
   .available-students-wrapper .available-One-student .available-student .available-student-right {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   .available-students-wrapper .available-One-student .available-student .available-student-right .right-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
+    width: 120px;
     height: 39px;
-    font-size: 11px;
+    font-size: 13px;
     font-family: "Catamaran", Arial, sans-serif;
     letter-spacing: 0;
     border: none;
@@ -1037,34 +1046,38 @@ a:active {
   }
   .available-students-wrapper .available-One-student .available-student {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     width: 95%;
-    height: 60px;
-    margin: 14px 10px 0 10px;
+    height: 110px;
+    margin: 14px 20px 0 20px;
+  }
+  .available-students-wrapper .available-One-student .available-student p {
+    margin: 0 auto;
   }
   .available-students-wrapper .available-One-student .available-student .available-student-right {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
   .available-students-wrapper .available-One-student .available-student .available-student-right .right-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
+    width: 90px;
     height: 39px;
-    font-size: 7px;
+    font-size: 12px;
     font-family: "Catamaran", Arial, sans-serif;
     letter-spacing: 0;
     border: none;
-    margin-right: 3px;
+    margin-right: 5px;
   }
   .available-students-wrapper .available-One-student .available-student .available-student-right .expand {
     background-color: transparent;
     border: none;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
   }
   .available-students-wrapper .available-One-student .available-student .available-student-right .expand .image-off {
     min-width: 30px;
@@ -1088,7 +1101,7 @@ a:active {
     background-color: #222324;
   }
   .available-students-wrapper .available-One-student .student-details-on .detail {
-    padding: 3px;
+    padding: 8px;
     max-width: 100%;
     display: flex;
     flex-direction: row;
@@ -1101,14 +1114,14 @@ a:active {
   .available-students-wrapper .available-One-student .student-details-on .detail .title {
     height: 20px;
     font-size: 11px;
-    width: 280px;
+    width: 290px;
   }
   .available-students-wrapper .available-One-student .student-details-on .detail .description {
-    font-size: 14px;
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
   }
   .available-students-wrapper .available-One-student .student-details-on .detail .description-text {
-    font-size: 14px;
+    font-size: 11px;
     letter-spacing: 0;
   }
   .available-students-wrapper .footer-container {
