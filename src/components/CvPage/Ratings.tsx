@@ -10,7 +10,8 @@ export const Ratings = () => {
         <Rate text="Ocena przejścia kursu" rate={4} />
         <Rate text="Ocena aktywności i zaangażowania na kursie" rate={2} />
         <Rate text="Ocena kodu w projekcie własnym" rate={5} />
-        <Rate text="Ocena prcy w zespole Scrum" rate={4} />
+        <Rate text="Ocena pracy w zespole Scrum" rate={4} />
+        <Rate text="Ocena zadania zaliczeniowego w kursie" rate={4} />
       </div>
     </div>
   );
