@@ -50,7 +50,22 @@ export const AdminPage = () => {
   const inputFileRef = useRef<HTMLFormElement | any>(null);
 
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
-    alert(JSON.stringify(data));
+    const headers = new Headers();
+
+    headers.append('Access-Control-Allow-Headers', '*');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+
+    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR}`, {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((error) => console.log(`Failed: ${error.message}`));
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,11 +85,10 @@ export const AdminPage = () => {
 
     const headers = new Headers();
 
-    headers.append('Origin', '*');
     headers.append('Access-Control-Allow-Headers', '*');
     headers.append('Access-Control-Allow-Credentials', 'true');
 
-    fetch('http://localhost:3001/api/user/student', {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT}`, {
       mode: 'cors',
       credentials: 'include',
       method: 'POST',
@@ -209,7 +223,11 @@ export const AdminPage = () => {
                 </label>
                 <p>{errors.maxReservedStudents && errors.maxReservedStudents.message}</p>
               </div>
-              <button className="mega-k-button admin-button-send" type="submit">
+              <button
+                className="mega-k-button admin-button-send"
+                type="submit"
+                // onClick={hrRegisterClick}
+              >
                 Dodaj
               </button>
             </form>
