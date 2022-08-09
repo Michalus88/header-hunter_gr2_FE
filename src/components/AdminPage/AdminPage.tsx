@@ -52,7 +52,6 @@ export const AdminPage = () => {
   const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
     const headers = new Headers();
 
-    headers.append('Origin', '*');
     headers.append('Access-Control-Allow-Headers', '*');
     headers.append('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Credentials', 'true');
@@ -86,7 +85,6 @@ export const AdminPage = () => {
 
     const headers = new Headers();
 
-    headers.append('Origin', '*');
     headers.append('Access-Control-Allow-Headers', '*');
     headers.append('Access-Control-Allow-Credentials', 'true');
 
