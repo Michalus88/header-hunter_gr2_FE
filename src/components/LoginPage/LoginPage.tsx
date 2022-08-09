@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
+import ReCAPTCHA from 'react-google-recaptcha';
 import megaK from '../../assets/img/MegaK.webp';
 
 export const LoginPage = () => {
@@ -10,6 +11,7 @@ export const LoginPage = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const toast = useRef<any>(null);
+  const recaptchaRef = React.createRef<ReCAPTCHA>();
 
   const navigate = useNavigate();
 
@@ -24,6 +26,10 @@ export const LoginPage = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+
+    if (recaptchaRef.current) {
+      recaptchaRef.current.execute();
+    }
 
     if (!login && value2 === '') {
       console.log(`SUBMIT LOST PASS email ${value1}`);
@@ -43,6 +49,10 @@ export const LoginPage = () => {
     }
   };
 
+  // const onChange = (value: any) => {
+  //   console.log('Captcha value:', value);
+  // };
+
   return (
     <>
       <Toast ref={toast} />
@@ -50,6 +60,13 @@ export const LoginPage = () => {
         <img className="login-group-image" src={megaK} alt="MegaK logo" />
         <div>
           <form className="sign-form row  justify-content-center mt-5" onSubmit={handleSubmit}>
+            <ReCAPTCHA
+              className="reCaptcha"
+              sitekey={String(process.env.REACT_APP_RECAPTCHA_PUBLIC_KEY)}
+              size="invisible"
+              // onChange={onChange}
+              ref={recaptchaRef}
+            />
             <div className="login-input-email">
               <span className="p-float-label">
                 <InputText
@@ -110,13 +127,6 @@ export const LoginPage = () => {
             </div>
           </form>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        />
       </div>
     </>
   );

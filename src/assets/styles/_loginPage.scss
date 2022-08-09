@@ -107,4 +107,10 @@
     text-align: center;
     margin-bottom: 2rem;
   }
+  .reCaptcha {
+    .grecaptcha-badge {
+      bottom: -100% !important;
+      right: 15% !important;
+    }
+  }
 }
