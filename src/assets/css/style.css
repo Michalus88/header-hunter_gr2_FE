@@ -2725,4 +2725,55 @@ a:active {
   .top-panel-container .top-panel-wrapper .navbar .navbar-nav .navbar-nav-link:hover {
     background-color: #353538;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+.loader {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.loader:before, .loader:after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+
+.loader:after {
+  -webkit-box-shadow: 0 2px 0 #FF3D00 inset;
+          box-shadow: 0 2px 0 #FF3D00 inset;
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/*
+author:
+https://cssloaders.github.io/
+*//*# sourceMappingURL=style.css.map */

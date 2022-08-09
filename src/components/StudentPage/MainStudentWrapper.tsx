@@ -1,6 +1,4 @@
 import React from 'react';
-// import '../../assets/css/cvPage.css';
-import '../../assets/css/studentPage.css';
 
 interface Props {
   children: React.ReactNode;

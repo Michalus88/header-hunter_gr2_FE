@@ -49,10 +49,6 @@ export const LoginPage = () => {
     }
   };
 
-  // const onChange = (value: any) => {
-  //   console.log('Captcha value:', value);
-  // };
-
   return (
     <>
       <Toast ref={toast} />
@@ -64,7 +60,6 @@ export const LoginPage = () => {
               className="reCaptcha"
               sitekey={String(process.env.REACT_APP_RECAPTCHA_PUBLIC_KEY)}
               size="invisible"
-              // onChange={onChange}
               ref={recaptchaRef}
             />
             <div className="login-input-email">
