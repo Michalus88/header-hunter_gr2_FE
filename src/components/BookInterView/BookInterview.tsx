@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import '../../assets/css/BookInterview.css';
-import '../../assets/css/style.css';
 import { OneStudentBookInterview } from '../OneStudentBookInterview/OneStudentBookInterview';
 import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
 import { SimulatedData } from '../SimulatedData/SimulatedData';

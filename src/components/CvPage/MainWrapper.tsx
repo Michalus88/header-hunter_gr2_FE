@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../../assets/css/cvPage.css';
-
 interface Props {
   children: React.ReactNode;
 }

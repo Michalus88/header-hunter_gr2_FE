@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
+import ReCAPTCHA from 'react-google-recaptcha';
 import megaK from '../../assets/img/MegaK.webp';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -12,6 +13,9 @@ export const LoginPage = () => {
   const [value2, setValue2] = useState('');
   const toast = useRef<any>(null);
   const { signIn } = useAuth();
+  const recaptchaRef = React.createRef<ReCAPTCHA>();
+
+
 
   const showSuccess = () => {
     toast.current.show({
@@ -24,6 +28,10 @@ export const LoginPage = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+
+    if (recaptchaRef.current) {
+      recaptchaRef.current.execute();
+    }
 
     if (!login && value2 === '') {
       console.log(`SUBMIT LOST PASS email ${value1}`);
@@ -52,6 +60,12 @@ export const LoginPage = () => {
         <img className="login-group-image" src={megaK} alt="MegaK logo" />
         <div>
           <form className="sign-form row  justify-content-center mt-5" onSubmit={handleSubmit}>
+            <ReCAPTCHA
+              className="reCaptcha"
+              sitekey={String(process.env.REACT_APP_RECAPTCHA_PUBLIC_KEY)}
+              size="invisible"
+              ref={recaptchaRef}
+            />
             <div className="login-input-email">
               <span className="p-float-label">
                 <InputText
@@ -112,13 +126,6 @@ export const LoginPage = () => {
             </div>
           </form>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        />
       </div>
     </>
   );
