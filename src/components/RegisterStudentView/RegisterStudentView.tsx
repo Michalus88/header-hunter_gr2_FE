@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, ExpectedContractType, StudentProfileRegister } from 'types';
-import '../../assets/css/RegisterStudentView.css';
 import { useParams } from 'react-router';
+import { ToastContainer, toast } from 'react-toastify';
+import '../../assets/css/RegisterStudentView.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterStudentView = () => {
   const {
@@ -10,6 +12,7 @@ export const RegisterStudentView = () => {
     formState: { errors },
     handleSubmit,
     watch,
+    reset,
   } = useForm<any>({
     mode: 'onChange',
     defaultValues: {
@@ -46,6 +49,13 @@ export const RegisterStudentView = () => {
 
   const { userId, token } = useParams();
 
+  const notify2 = () => {
+    toast.success('Test', {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 3000,
+    });
+  };
+
   const registerHendler: SubmitHandler<StudentProfileRegister> = async (data) => {
     const data2 = {
       ...data,
@@ -53,18 +63,40 @@ export const RegisterStudentView = () => {
       bonusProjectUrls: newArrayBonusProjectUrls,
     };
     console.log(data2);
-    const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data2),
-    });
-    console.log(res);
-    const test = await res.json();
-    console.log(test);
+    try {
+      const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data2),
+      });
+      console.log(res);
+      const test = await res.json();
+      console.log(test);
+    } catch (e) {
+      if (e) {
+        const err = e;
+        const notifyError = () => {
+          toast.error(`${err}`, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000,
+          });
+        };
+        notifyError();
+        console.log(err);
+      } else {
+        const notifySucces = () => {
+          toast.success('Formularz został wysłany pomyślnie', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000,
+          });
+        };
+        notifySucces();
+      }
+    }
   };
 
   return (
@@ -233,7 +265,7 @@ export const RegisterStudentView = () => {
               {...register('expectedContractType', { required: 'Pole wymagane' })}
               placeholder="Oczekiwany typ kontraktu"
             >
-              <option value="">Brak preferencji</option>
+              <option defaultValue="">Brak preferencji</option>
               <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko umowa o pracę</option>
               <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
               <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT}>
@@ -546,6 +578,7 @@ export const RegisterStudentView = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -31,25 +31,24 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: #0a0a0a;
   overflow-x: hidden;
+  background-color: #0a0a0a;
 }
 .RegisterStudentView__Wrapper {
   display: flex;
   justify-content: center;
-  width: 1430px;
   margin-top: 1em;
 }
 .RegisterStudentView__Input {
-  width: 1200px;
+  width: 600px;
   padding: 0.5em 1em;
   margin: 1em 0;
 }
 .RegisterStudentView__Input--more-info {
   min-height: 300px;
-  min-width: 1200px;
+  min-width: 600px;
   max-height: 200px;
-  max-width: 1400px;
+  max-width: 600px;
   margin: 1em 0;
 }
 .RegisterStudentView__Input--error {

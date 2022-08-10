@@ -12,27 +12,25 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: $megaK-black-color;
   overflow-x: hidden;
+  background-color: $megaK-black-color;
 
   &__Wrapper {
     display: flex;
     justify-content: center;
-    width: 1430px;
     margin-top: 1em;
-
   }
 
   &__Input {
-    width: 1200px;
+    width: 600px;
     padding: 0.5em 1em;
     margin: 1em 0;
 
     &--more-info {
       min-height: 300px;
-      min-width: 1200px;
+      min-width: 600px;
       max-height: 200px;
-      max-width: 1400px;
+      max-width: 600px;
       margin: 1em 0;
     }
 
