@@ -20,11 +20,6 @@ export const TopPanelMenu = () => {
             Zmiana hasła
           </NavLink>
         </li>
-        <li>
-          <NavLink className="navbar-nav-link" to="/admin">
-            Panel Administratora
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );
