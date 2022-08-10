@@ -6,7 +6,7 @@ export const TopPanelMenu = () => {
     <nav className="navbar">
       <ul className="navbar-nav">
         <li>
-          <NavLink className="navbar-nav-link" to="/konto">
+          <NavLink className="navbar-nav-link" to="/account">
             Konto
           </NavLink>
         </li>

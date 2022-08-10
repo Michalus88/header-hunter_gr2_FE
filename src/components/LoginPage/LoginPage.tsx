@@ -15,8 +15,6 @@ export const LoginPage = () => {
   const { signIn } = useAuth();
   const recaptchaRef = React.createRef<ReCAPTCHA>();
 
-
-
   const showSuccess = () => {
     toast.current.show({
       severity: 'success',

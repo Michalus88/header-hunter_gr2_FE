@@ -24,15 +24,16 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         );
         if (res.ok) {
           const userData = await res.json();
-          setUser(user);
+
+          setUser(userData);
           pathRedirect(userData);
         } else {
           setUser(null);
           // Notification ''
         }
       } catch (err) {
-        console.log('Server is anavailable.');
-        // Notification 'Server is anavailable.'
+        console.log('Server is unavailable.');
+        // Notification 'Server is unavailable.'
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
