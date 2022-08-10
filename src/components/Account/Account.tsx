@@ -54,9 +54,23 @@ export const Account = () => {
     // console.log(JSON.stringify(data));
   };
   const formChangePasswordOnSubmit: SubmitHandler<PasswordChange> = (data) => {
-    console.log({ data });
+    if (data.newPassword !== data.repeatPassword)
+      console.log('Nowe hasło i jego powtórzenie są różne.');
+    if (data.newPassword === data.oldPassword) console.log('Nowe i stare hasło są jednakowe.');
 
-    // console.log(JSON.stringify(data));
+    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_PASSWORD}`, {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((error) => console.log(`Failed: ${error.message}`));
   };
   useEffect(() => {
     console.log({ user });
