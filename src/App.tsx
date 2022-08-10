@@ -19,7 +19,7 @@ export const App = () => {
       <Route path="/hr/available-students" element={<AvailableStudents />} />
       <Route path="/students/:id" element={<CvPage />} />
       <Route path="/student" element={<StudentPage />} />
-      <Route path="*" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };
