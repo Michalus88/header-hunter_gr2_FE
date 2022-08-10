@@ -1,19 +1,21 @@
 import React, { useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import ReCAPTCHA from 'react-google-recaptcha';
 import megaK from '../../assets/img/MegaK.webp';
+import { useAuth } from '../../hooks/useAuth';
 
 export const LoginPage = () => {
   const [login, setLogin] = useState(true);
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const toast = useRef<any>(null);
+  const { signIn } = useAuth();
   const recaptchaRef = React.createRef<ReCAPTCHA>();
 
-  const navigate = useNavigate();
+
 
   const showSuccess = () => {
     toast.current.show({
@@ -24,7 +26,7 @@ export const LoginPage = () => {
     });
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (recaptchaRef.current) {
@@ -37,6 +39,8 @@ export const LoginPage = () => {
       setLogin(true);
       showSuccess();
     } else {
+      const credential = { email: value1, password: value2 };
+      await signIn(credential);
       console.log(`SUBMIT e-mial ${value1} password ${value2}`);
     }
   };
@@ -110,7 +114,7 @@ export const LoginPage = () => {
                 <button
                   type="submit"
                   className="register-new-acc-button mega-k-button"
-                  onClick={() => navigate('/hr/available-students')}
+                  // onClick={() => navigate('/hr/available-students')}
                 >
                   Zaloguj się
                 </button>
