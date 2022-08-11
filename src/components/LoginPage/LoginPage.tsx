@@ -13,7 +13,7 @@ export const LoginPage = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const toast = useRef<any>(null);
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
   const recaptchaRef = React.createRef<ReCAPTCHA>();
 
   const {
@@ -41,16 +41,56 @@ export const LoginPage = () => {
       recaptchaRef.current.execute();
     }
 
-    if (!login && e.password === '') {
+    if (!login && !user) {
       console.log(`SUBMIT LOST PASS email ${e.email}`);
+      fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_PASSWORD_RECOVERY}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'PATCH',
+          body: JSON.stringify({ email: e.email }),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          if (json.statusCode === 200) {
+            toast.current.show({
+              severity: 'success',
+              summary: 'Sukces',
+              detail: 'Wysłano wiadomość e-mail na podany adres',
+              life: 4000,
+            });
+          }
+        })
+        .catch((error) =>
+          toast.current.show({
+            severity: 'error',
+            summary: 'Błąd',
+            detail: 'Coś poszło nie tak. Spróbuj później.',
+            life: 4000,
+          }),
+        );
       // e.password = '';
       setLogin(true);
       showSuccess();
     } else {
-      console.log(e.password, 'okiiiii');
+      // console.log(e.password, 'okiiiii');
       const credential = { email: e.email, password: e.password };
       await signIn(credential);
-      console.log(`SUBMIT e-mial ${e.email} password ${e.password}`);
+      if (!user) {
+        toast.current.show({
+          severity: 'error',
+          summary: 'Błąd',
+          detail: 'Podano błędne dane logowania. Spróbuj jeszcze raz.',
+          life: 4000,
+        });
+        // console.log(`SUBMIT e-mial ${e.email} password ${e.password}`);
+      }
     }
   };
 
