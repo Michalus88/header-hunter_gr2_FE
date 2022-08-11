@@ -1,13 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Login } from 'types';
 import megaK from '../../assets/img/MegaK.webp';
 import { useAuth } from '../../hooks/useAuth';
-import { Login } from 'types';
 
 export const LoginPage = () => {
   const [login, setLogin] = useState(true);
@@ -35,8 +34,8 @@ export const LoginPage = () => {
   // const onSubmit: SubmitHandler<Login> = data => console.log(data.email, data.password);
 
   const onSubmit: SubmitHandler<Login> = async (e) => {
-  // : { preventDefault: () => void }
-  //   e.preventDefault();
+    // : { preventDefault: () => void }
+    //   e.preventDefault();
 
     if (recaptchaRef.current) {
       recaptchaRef.current.execute();
@@ -48,7 +47,7 @@ export const LoginPage = () => {
       setLogin(true);
       showSuccess();
     } else {
-      console.log(e.password, "okiiiii");
+      console.log(e.password, 'okiiiii');
       const credential = { email: e.email, password: e.password };
       await signIn(credential);
       console.log(`SUBMIT e-mial ${e.email} password ${e.password}`);
@@ -69,7 +68,10 @@ export const LoginPage = () => {
       <div className="login-page-login-group">
         <img className="login-group-image" src={megaK} alt="MegaK logo" />
         <div>
-          <form className="sign-form row  justify-content-center mt-5" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="sign-form row  justify-content-center mt-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <ReCAPTCHA
               className="reCaptcha"
               sitekey={String(process.env.REACT_APP_RECAPTCHA_PUBLIC_KEY)}
@@ -92,8 +94,7 @@ export const LoginPage = () => {
                       message: 'Minimum 5 znaków',
                     },
                     pattern: {
-                      value:
-                          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       message: 'Nieprawidłowy adres E-mail',
                     },
                   })}
