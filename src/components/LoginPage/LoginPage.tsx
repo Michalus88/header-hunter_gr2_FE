@@ -4,8 +4,10 @@ import { Password } from 'primereact/password';
 import { NavLink } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
 import megaK from '../../assets/img/MegaK.webp';
 import { useAuth } from '../../hooks/useAuth';
+import { Login } from 'types';
 
 export const LoginPage = () => {
   const [login, setLogin] = useState(true);
@@ -14,6 +16,12 @@ export const LoginPage = () => {
   const toast = useRef<any>(null);
   const { signIn } = useAuth();
   const recaptchaRef = React.createRef<ReCAPTCHA>();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<Login>({ mode: 'onChange' });
 
   const showSuccess = () => {
     toast.current.show({
@@ -24,22 +32,26 @@ export const LoginPage = () => {
     });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  // const onSubmit: SubmitHandler<Login> = data => console.log(data.email, data.password);
+
+  const onSubmit: SubmitHandler<Login> = async (e) => {
+  // : { preventDefault: () => void }
+  //   e.preventDefault();
 
     if (recaptchaRef.current) {
       recaptchaRef.current.execute();
     }
 
-    if (!login && value2 === '') {
-      console.log(`SUBMIT LOST PASS email ${value1}`);
-      setValue2('');
+    if (!login && e.password === '') {
+      console.log(`SUBMIT LOST PASS email ${e.email}`);
+      // e.password = '';
       setLogin(true);
       showSuccess();
     } else {
-      const credential = { email: value1, password: value2 };
+      console.log(e.password, "okiiiii");
+      const credential = { email: e.email, password: e.password };
       await signIn(credential);
-      console.log(`SUBMIT e-mial ${value1} password ${value2}`);
+      console.log(`SUBMIT e-mial ${e.email} password ${e.password}`);
     }
   };
 
@@ -57,7 +69,7 @@ export const LoginPage = () => {
       <div className="login-page-login-group">
         <img className="login-group-image" src={megaK} alt="MegaK logo" />
         <div>
-          <form className="sign-form row  justify-content-center mt-5" onSubmit={handleSubmit}>
+          <form className="sign-form row  justify-content-center mt-5" onSubmit={handleSubmit(onSubmit)}>
             <ReCAPTCHA
               className="reCaptcha"
               sitekey={String(process.env.REACT_APP_RECAPTCHA_PUBLIC_KEY)}
@@ -69,29 +81,55 @@ export const LoginPage = () => {
                 <InputText
                   id="email"
                   size={40}
-                  value={value1}
-                  onChange={(e) => setValue1(e.target.value)}
+                  {...register('email', {
+                    required: 'Pole Wymagane',
+                    maxLength: {
+                      value: 255,
+                      message: 'Maksimum 255 znaków',
+                    },
+                    minLength: {
+                      value: 5,
+                      message: 'Minimum 5 znaków',
+                    },
+                    pattern: {
+                      value:
+                          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: 'Nieprawidłowy adres E-mail',
+                    },
+                  })}
                 />
                 <label className="login-input-label" htmlFor="email">
                   E-mail
                 </label>
               </span>
+              <p>{errors.email && errors.email.message}</p>
             </div>
             {login ? (
               <div className="login-input-password">
                 <span className="p-float-label">
-                  <Password
+                  <InputText
+                    type="password"
                     id="password"
                     size={40}
-                    value={value2}
-                    onChange={(e) => setValue2(e.target.value)}
-                    promptLabel="Wpisz hasło"
-                    feedback={false}
+                    {...register('password', {
+                      // required: 'Pole Wymagane',
+                      maxLength: {
+                        value: 255,
+                        message: 'Maksimum 255 znaków',
+                      },
+                      minLength: {
+                        value: 5,
+                        message: 'Minimum 5 znaków',
+                      },
+                    })}
+                    // promptLabel="Wpisz hasło"
+                    // feedback={false}
                   />
                   <label className="login-input-label" htmlFor="password">
                     Hasło
                   </label>
                 </span>
+                <p>{errors.password && errors.password.message}</p>
               </div>
             ) : (
               <div className="lost-password-text">Zapomniałeś hasła - Wpisz swój adres e-mail.</div>
