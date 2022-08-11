@@ -6,6 +6,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import '../../assets/css/RegisterStudentView.css';
 import 'react-toastify/dist/ReactToastify.css';
 
+interface ActivationForm extends StudentProfileRegister {
+  portfolioUrls: string[];
+  portfolioUrlSecond: string;
+  portfolioUrlThird: string;
+  portfolioUrlFourth: string;
+  portfolioUrlFifth: string;
+  bonusProjectUrls: string[];
+  bonusProjectUrlSecond: string;
+  bonusProjectUrlThird: string;
+  bonusProjectUrlFourth: string;
+  bonusProjectUrlFifth: string;
+}
+
 export const RegisterStudentView = () => {
   const {
     register,
@@ -13,7 +26,7 @@ export const RegisterStudentView = () => {
     handleSubmit,
     watch,
     reset,
-  } = useForm<any>({
+  } = useForm<ActivationForm>({
     mode: 'onChange',
     defaultValues: {
       monthsOfCommercialExp: 0,
@@ -26,7 +39,7 @@ export const RegisterStudentView = () => {
   const phone = String(watch('tel')) === '' ? null : watch('tel');
 
   const ArrayPortfolioUrls = watch([
-    'portfolioUrlFirst',
+    'portfolioUrls',
     'portfolioUrlSecond',
     'portfolioUrlThird',
     'portfolioUrlFourth',
@@ -36,7 +49,7 @@ export const RegisterStudentView = () => {
   const newArrayPortfolioUrls = ArrayPortfolioUrls.filter((url) => url);
 
   const ArrayBonusProjectUrls = watch([
-    'bonusProjectUrl',
+    'bonusProjectUrls',
     'bonusProjectUrlSecond',
     'bonusProjectUrlThird',
     'bonusProjectUrlFourth',
@@ -46,6 +59,7 @@ export const RegisterStudentView = () => {
   const newArrayBonusProjectUrls = ArrayPortfolioUrls.filter((url) => url);
 
   const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
+  const monthsOfCommercialExpForm = Number(watch('canTakeApprenticeship'));
 
   const { userId, token } = useParams();
 
@@ -56,15 +70,28 @@ export const RegisterStudentView = () => {
     });
   };
 
-  const registerHendler: SubmitHandler<StudentProfileRegister> = async (data) => {
+  const registerHendler: SubmitHandler<ActivationForm> = async (data) => {
+    const {
+      portfolioUrlSecond,
+      portfolioUrlThird,
+      portfolioUrlFourth,
+      portfolioUrlFifth,
+      bonusProjectUrlSecond,
+      bonusProjectUrlThird,
+      bonusProjectUrlFourth,
+      bonusProjectUrlFifth,
+      ...rest
+    } = data;
     const data2 = {
-      ...data,
+      ...rest,
       projectUrls: newArrayPortfolioUrls,
-      bonusProjectUrls: newArrayBonusProjectUrls,
+      portfolioUrls: newArrayBonusProjectUrls,
+      tel: phone,
+      canTakeApprenticeship: canTakeApprenticeshipFromForm,
     };
-    console.log(data2);
+    console.log(data2, 'data2');
     try {
-      const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
+      const res = await fetch(`http://localhost:3001/api/student/activate/${id}/${token}`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -75,18 +102,16 @@ export const RegisterStudentView = () => {
       });
       console.log(res);
       const test = await res.json();
-      console.log(test);
+      console.log(test, 'test');
     } catch (e) {
       if (e) {
-        const err = e;
         const notifyError = () => {
-          toast.error(`${err}`, {
+          toast.error('Sorry, try later', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 3000,
           });
         };
         notifyError();
-        console.log(err);
       } else {
         const notifySucces = () => {
           toast.success('Formularz został wysłany pomyślnie', {
@@ -265,7 +290,7 @@ export const RegisterStudentView = () => {
               {...register('expectedContractType', { required: 'Pole wymagane' })}
               placeholder="Oczekiwany typ kontraktu"
             >
-              <option defaultValue="">Brak preferencji</option>
+              <option value="">Brak preferencji</option>
               <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko umowa o pracę</option>
               <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
               <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT}>
@@ -292,8 +317,8 @@ export const RegisterStudentView = () => {
               {...register('canTakeApprenticeship', { required: 'Pole wymagane' })}
               placeholder="Wyrażam zgodę na bezpłatne praktyki/staż na początek"
             >
-              <option defaultValue="false">Nie</option>
-              <option value="true">Tak</option>
+              <option defaultValue="0">Nie</option>
+              <option value="1">Tak</option>
             </select>
           </label>
           <p className="RegisterStudentView__Input--info">Domyślnie Nie</p>
@@ -376,7 +401,7 @@ export const RegisterStudentView = () => {
             <br />
             <input
               className="RegisterStudentView__Input"
-              {...register('portfolioUrlFirst', {
+              {...register('portfolioUrls', {
                 maxLength: {
                   value: 255,
                   message: 'Maksymalna długość znaków 255',
@@ -386,7 +411,7 @@ export const RegisterStudentView = () => {
             />
           </label>
 
-          {errors.portfolioUrlFirst && (
+          {errors.portfolioUrls && (
             <p className="RegisterStudentView__Input--error">
               Link do portfolio może mieć maksymalnie 255 znaków.
             </p>
@@ -481,7 +506,7 @@ export const RegisterStudentView = () => {
             <br />
             <input
               className="RegisterStudentView__Input"
-              {...register('bonusProjectUrl', {
+              {...register('projectUrls', {
                 required: 'Pole wymagane',
                 maxLength: {
                   value: 255,
@@ -495,7 +520,7 @@ export const RegisterStudentView = () => {
               placeholder="Repozytorium do projektu zaliczeniowego"
             />
           </label>
-          {errors.bonusProjectUrlFirst && (
+          {errors.bonusProjectUrls && (
             <p className="RegisterStudentView__Input--error">
               Pole wymagane. Pole musi zawierać conajmniej 1 znak maksymalnie 255.
             </p>

@@ -10,17 +10,17 @@ module.exports = {
     extends: [
         'airbnb',
         'airbnb-typescript',
+        'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
-        'plugin:import/recommended',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
     ],
-    plugins: ['@typescript-eslint', 'import', 'prettier'],
+    plugins: ['@typescript-eslint', 'prettier'],
     ignorePatterns: [
         '.eslintrc.js',
-        '**/*.js',
-        '**/*.js',
+        '/*.js',
+        '/*.js',
         'node_modules',
         'public',
         'coverage',
@@ -28,13 +28,14 @@ module.exports = {
         'build',
     ],
     rules: {
-        'react/jsx-props-no-spreading': 'off',
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unused-vars': 'warn',
         'import/prefer-default-export': 'off',
+        'react/jsx-uses-react': 1,
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': [
             2,
             {
