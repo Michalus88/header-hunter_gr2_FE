@@ -1,0 +1,67 @@
+@import './colors';
+@import './mixin';
+@import './megaKButton';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.RegisterStudentView {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  overflow-x: hidden;
+  background-color: $megaK-black-color;
+
+  &__Wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+  }
+
+  &__Input {
+    width: 600px;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+
+    &--more-info {
+      min-height: 300px;
+      min-width: 600px;
+      max-height: 200px;
+      max-width: 600px;
+      margin: 1em 0;
+    }
+
+    &--error {
+      color: $megak-red-color
+    }
+
+    &--info {
+      color: green;
+    }
+  }
+}
+
+label {
+  text-align: center;
+}
+
+.mega-k-button {
+  height: 45px;
+  padding: 0 1.2rem;
+  margin-bottom: 3em;
+  color: $main-text-color;
+  background-color: $megak-red-color;
+  border-radius: 2px;
+  border: none;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mega-k-button:hover {
+  background-color: $megak-light-color;
+}
+
