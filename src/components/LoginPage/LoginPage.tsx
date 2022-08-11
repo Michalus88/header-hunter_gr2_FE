@@ -23,8 +23,6 @@ export const LoginPage = () => {
     handleSubmit,
   } = useForm<Login>({ mode: 'onChange' });
 
-
-
   const showSuccess = () => {
     toast.current.show({
       severity: 'success',
