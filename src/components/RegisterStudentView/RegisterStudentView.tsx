@@ -91,7 +91,7 @@ export const RegisterStudentView = () => {
     };
     console.log(data2, 'data2');
     try {
-      const res = await fetch(`http://localhost:3001/api/student/activate/${id}/${token}`, {
+      const res = await fetch(`http://localhost:3001/api/student/activate/${userId}/${token}`, {
         method: 'POST',
         credentials: 'include',
         headers: {
