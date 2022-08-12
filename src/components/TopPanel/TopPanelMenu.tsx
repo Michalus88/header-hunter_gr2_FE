@@ -17,11 +17,6 @@ export const TopPanelMenu = () => {
             Wyloguj
           </NavLink>
         </li>
-        <li>
-          <NavLink className="navbar-nav-link" to="/zmienHaslo">
-            Zmiana hasła
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );
