@@ -34,7 +34,9 @@ export const ChangeEmail = () => {
 
   return (
     <>
-      <h2 className="student-page__title-form">Zmiana adresu e-mail</h2>
+      <h2 className="student-page__title-form" style={{ marginTop: '85px' }}>
+        Zmiana adresu e-mail
+      </h2>
 
       <form onSubmit={handleSubmitEmail(formChangeEmailOnSubmit)}>
         <div className="student-page__form">
