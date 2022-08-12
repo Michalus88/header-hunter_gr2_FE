@@ -13,12 +13,20 @@ import { ViewPanel } from '../ViewPanel/ViewPanel';
 
 export const AvailableStudents = () => {
   const [students, setStudents] = useState<JSX.Element[]>(null!);
+  const [maxPerPage, setMaxPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [studentsCount, setStudentsCount] = useState<number>(null!);
+  const [totalPages, setTotalPages] = useState<number>(null!);
 
   useEffect(() => {
     const fetchMyAPI = async () => {
+      console.log(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_AVAILABLE}/${maxPerPage}/${currentPage}`,
+      );
+
       try {
         const data = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_AVAILABLE}/5/1`,
+          `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_AVAILABLE}/${maxPerPage}/${currentPage}`,
           {
             mode: 'cors',
             credentials: 'include',
@@ -31,6 +39,7 @@ export const AvailableStudents = () => {
         );
         if (data.status !== 200) throw new Error('Błąd pobierania danych');
         const response = (await data.json()) as AvailableStudentWhitPaginationRes;
+        console.log(response);
 
         const studentsRes = response.students.map((student: AvailableStudentRes) => (
           <AvailableOneStudent
@@ -50,13 +59,24 @@ export const AvailableStudents = () => {
           />
         ));
         setStudents(studentsRes);
+        setCurrentPage(response.pages.currentPage);
+        setMaxPerPage(response.pages.maxPerPage);
+        setTotalPages(response.pages.totalPages);
+        setStudentsCount(response.pages.studentsCount);
       } catch (error: any) {
         console.log(`Fetch error: ${error.message}`);
       }
     };
 
     fetchMyAPI();
-  }, []);
+  }, [currentPage, maxPerPage]);
+
+  const onChangeViewSupport = (currentP: number, maxPerP: number) => {
+    // setValue(data)
+    console.log({ currentP }, { maxPerP });
+    setCurrentPage(currentP);
+    setMaxPerPage(maxPerP);
+  };
 
   return (
     <>
@@ -65,7 +85,13 @@ export const AvailableStudents = () => {
       <div className="available-students-wrapper">
         <SearchFiltration />
         <div className="students-list">{students}</div>
-        <ViewSupport />
+        <ViewSupport
+          currentPage={currentPage}
+          maxPerPage={maxPerPage}
+          studentsCount={studentsCount}
+          totalPages={totalPages}
+          onChangeViewSupport={onChangeViewSupport}
+        />
       </div>
     </>
   );

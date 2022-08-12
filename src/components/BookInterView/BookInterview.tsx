@@ -32,7 +32,7 @@ export const BookInterview = () => {
       <div className="available-students-wrapper">
         <SearchFiltration />
         <div className="students-list">{students}</div>
-        <ViewSupport />
+        {/* <ViewSupport /> */}
       </div>
     </>
   );

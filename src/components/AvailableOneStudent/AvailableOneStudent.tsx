@@ -97,7 +97,7 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
           <span className="description-text">
-            <strong>{targetWorkCity}</strong>
+            <strong>{!targetWorkCity ? `brak` : `${targetWorkCity}`}</strong>
           </span>
         </div>
         <div className="detail">
@@ -109,7 +109,7 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
           <span className="description-text">
-            <strong>{expectedSalary}zł</strong>
+            <strong>{!expectedSalary ? `brak` : `${expectedSalary}zł`}</strong>
           </span>
         </div>
         <div className="detail">
