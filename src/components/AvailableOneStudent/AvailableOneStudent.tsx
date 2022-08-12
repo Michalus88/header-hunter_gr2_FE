@@ -21,14 +21,6 @@ interface Props {
 export const AvailableOneStudent = (props: Props) => {
   const [details, setDetails] = useState(false);
 
-  const handleClick = () => {
-    if (!details) {
-      setDetails(true);
-    } else {
-      setDetails(false);
-    }
-  };
-
   const {
     firstName,
     lastName,
@@ -44,6 +36,48 @@ export const AvailableOneStudent = (props: Props) => {
     workExperience, // Komercyjne doświadczenie w programowaniu
   } = props;
 
+  const contractT = (): string => {
+    switch (expectedContractType) {
+      case 0:
+        return 'Tylko UoP';
+        break;
+      case 1:
+        return 'Możliwe B2B';
+        break;
+      case 2:
+        return 'Możliwe UZ/UoD';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const workT = (): string => {
+    switch (expectedTypeWork) {
+      case 0:
+        return 'Na miejscu';
+        break;
+      case 1:
+        return 'Gotowość do przeprowadzki';
+        break;
+      case 2:
+        return 'Wyłącznie zdalnie';
+        break;
+      case 3:
+        return 'Hybrydowo';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const handleClick = () => {
+    if (!details) {
+      setDetails(true);
+    } else {
+      setDetails(false);
+    }
+  };
   const click = () => console.log('click');
 
   return (
@@ -91,7 +125,7 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Preferowane miejsce pracy</span>
           <span className="description-text">
-            <strong>{expectedTypeWork}</strong>
+            <strong>{workT()}</strong>
           </span>
         </div>
         <div className="detail">
@@ -103,7 +137,7 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Oczekiwany typ kontraktu</span>
           <span className="description-text">
-            <strong>{expectedContractType}</strong>
+            <strong>{contractT()}</strong>
           </span>
         </div>
         <div className="detail">

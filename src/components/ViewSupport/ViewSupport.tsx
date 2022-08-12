@@ -74,7 +74,7 @@ export const ViewSupport = ({
             )
           }
         >
-          <img src={back} alt="" />
+          <img src={back} alt="" style={{ width: '100%', height: '100%' }} />
         </button>
       </p>
     </div>
