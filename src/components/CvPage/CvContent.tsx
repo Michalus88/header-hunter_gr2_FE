@@ -4,10 +4,27 @@ import { EmploymentExpectation } from './EmploymentExpectation';
 import { Knowledge } from './Knowledge';
 import { Projects } from './Projects';
 
-export const CvContent = () => {
+interface Props {
+  courseCompletion: number;
+  courseEngagement: number;
+  projectDegree: number;
+  teamProjectDegree: number;
+}
+
+export const CvContent = ({
+  courseCompletion,
+  courseEngagement,
+  projectDegree,
+  teamProjectDegree,
+}: Props) => {
   return (
     <div className="cv-container">
-      <Ratings />
+      <Ratings
+        courseCompletion={courseCompletion}
+        courseEngagement={courseEngagement}
+        projectDegree={projectDegree}
+        teamProjectDegree={teamProjectDegree}
+      />
       <EmploymentExpectation />
       <Knowledge
         title="Edukacja"

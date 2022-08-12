@@ -66,6 +66,8 @@ export const EditStudentForm = () => {
     mode: 'onChange',
   });
 
+  const userId = '2609e8f2-36d4-4f8f-a886-00156a721119';
+
   const tel = String(watch('tel')) === '' ? null : watch('tel');
   const bio = String(watch('bio')) === '' ? null : watch('bio');
   const targetWorkCity = String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
@@ -93,7 +95,7 @@ export const EditStudentForm = () => {
     projectArr = projects.filter((el) => el);
   }, [portfolioArr, projectArr]);
 
-  const onSubmit: SubmitHandler<StudentProfileUpdate> = (data) => {
+  const onSubmit: SubmitHandler<StudentProfileUpdate> = async (data) => {
     const fff = {
       email: data.email,
       tel,
@@ -114,6 +116,18 @@ export const EditStudentForm = () => {
       courses,
     };
     alert(JSON.stringify(fff));
+    const res = await fetch(`http://localhost:3001/api/student/${userId}`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(fff),
+    });
+    console.log(res);
+    const test = await res.json();
+    console.log(test);
   };
 
   return (
