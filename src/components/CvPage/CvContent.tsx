@@ -1,4 +1,5 @@
 import React from 'react';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 import { Ratings } from './Ratings';
 import { EmploymentExpectation } from './EmploymentExpectation';
 import { Knowledge } from './Knowledge';
@@ -9,6 +10,12 @@ interface Props {
   courseEngagement: number;
   projectDegree: number;
   teamProjectDegree: number;
+  targetWorkCity: string | undefined;
+  expectedTypeWork: ExpectedTypeWork;
+  expectedContractType: ExpectedContractType;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  monthsOfCommercialExp: number;
 }
 
 export const CvContent = ({
@@ -16,6 +23,12 @@ export const CvContent = ({
   courseEngagement,
   projectDegree,
   teamProjectDegree,
+  targetWorkCity,
+  expectedTypeWork,
+  expectedContractType,
+  expectedSalary,
+  canTakeApprenticeship,
+  monthsOfCommercialExp,
 }: Props) => {
   return (
     <div className="cv-container">
@@ -25,7 +38,14 @@ export const CvContent = ({
         projectDegree={projectDegree}
         teamProjectDegree={teamProjectDegree}
       />
-      <EmploymentExpectation />
+      <EmploymentExpectation
+        targetWorkCity={targetWorkCity}
+        expectedTypeWork={expectedTypeWork}
+        expectedContractType={expectedContractType}
+        expectedSalary={expectedSalary}
+        canTakeApprenticeship={canTakeApprenticeship}
+        monthsOfCommercialExp={monthsOfCommercialExp}
+      />
       <Knowledge
         title="Edukacja"
         description="Lorem111 ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
