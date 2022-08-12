@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
@@ -9,12 +10,12 @@ interface Props {
   courseEngagement: number;
   projectDegree: number;
   teamProjectDegree: number;
-  expectedTypeWork: string;
-  targetWorkCity: string | null;
-  expectedContractType: string;
-  expectedSalary: number;
-  canTakeApprenticeship: string;
-  workExperience: number;
+  expectedTypeWork: ExpectedTypeWork;
+  targetWorkCity: string | undefined;
+  expectedContractType: ExpectedContractType;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  workExperience: string | undefined;
 }
 
 export const AvailableOneStudent = (props: Props) => {
@@ -120,7 +121,7 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Komercyjne doświadczenie w programowaniu</span>
           <span className="description-text">
-            <strong>{workExperience} mies.</strong>
+            <strong>{!workExperience ? 'brak' : `${workExperience}mies`}</strong>
           </span>
         </div>
       </div>
