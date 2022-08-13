@@ -46,8 +46,15 @@ export const ViewSupport = ({
 
   return (
     <div className="footer-container">
-      <p className="elements-status">Na stronie</p>
-      <select className="select-footer" name="" id="" value={maxPerPage} onChange={handleChange}>
+      <p className="elements-status">Studentów na stronie</p>
+      <select
+        className="select-footer"
+        // style={{ marginLeft: '4px' }}
+        name=""
+        id=""
+        value={maxPerPage}
+        onChange={handleChange}
+      >
         {options.map((option) =>
           studentsCount > option.value ? (
             <option value={option.value} key={option.value}>
@@ -59,7 +66,9 @@ export const ViewSupport = ({
           {studentsCount}
         </option>
       </select>
-      <p className="elements-status">{` Strona ${currentPage} z ${totalPages}`}</p>
+
+      <p className="elements-status" style={{ marginLeft: '0px' }}>{`/${studentsCount}`}</p>
+      <p className="elements-status">{` Strona ${currentPage}/${totalPages}`}</p>
       <p className="elements-switch">
         <button
           className="left-switch"
