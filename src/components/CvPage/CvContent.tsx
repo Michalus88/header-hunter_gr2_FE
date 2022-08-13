@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExpectedContractType, ExpectedTypeWork } from 'types';
+import { ExpectedContractType, ExpectedTypeWork, UrlEntity } from 'types';
 import { Ratings } from './Ratings';
 import { EmploymentExpectation } from './EmploymentExpectation';
 import { Knowledge } from './Knowledge';
@@ -19,6 +19,9 @@ interface Props {
   education: string | undefined;
   courses: string | undefined;
   workExperience: string | undefined;
+  portfolioUrls: UrlEntity[] | [];
+  bonusProjectUrls: UrlEntity[];
+  projectUrls: UrlEntity[];
 }
 
 export const CvContent = ({
@@ -35,6 +38,9 @@ export const CvContent = ({
   education,
   courses,
   workExperience,
+  portfolioUrls,
+  bonusProjectUrls,
+  projectUrls,
 }: Props) => {
   return (
     <div className="cv-container">
@@ -55,9 +61,9 @@ export const CvContent = ({
       <Knowledge title="Edukacja" description={education} />
       <Knowledge title="Kursy" description={courses} />
       <Knowledge title="Doświadczenie zawodowe" description={workExperience} />
-      <Projects title="Portfolio" urls={['url1', 'url2']} />
-      <Projects title="Projekt w zespole Scrumowym" urls={['url5']} />
-      <Projects title="Projekt na zaliczenie" urls={['url3', 'url4']} />
+      <Projects title="Portfolio" urls={portfolioUrls} />
+      <Projects title="Projekt w zespole Scrumowym" urls={bonusProjectUrls} />
+      <Projects title="Projekt na zaliczenie" urls={projectUrls} />
     </div>
   );
 };
