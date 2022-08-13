@@ -30,6 +30,30 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
     setClearAll(!clearAll);
   };
 
+  const sendValueFromFilterDialog = async () => {
+    console.log(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}`);
+
+    console.log({ filteringOptions });
+
+    try {
+      await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify(filteringOptions),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    } catch (e) {
+      console.log(`Connection error: ${e}`);
+    }
+  };
+
   const header = (
     <div className="filter-header">
       <div className="filter-header-text">Filtrowanie</div>
@@ -50,7 +74,9 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       <MegaButton
         classNameAdd="megak-primary megak-paddng"
         buttonTitle="Pokaż wyniki"
-        onClick={() => toggleFilterDialog()}
+        onClick={() => {
+          sendValueFromFilterDialog();
+        }}
       />
     </div>
   );
