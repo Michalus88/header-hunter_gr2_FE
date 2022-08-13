@@ -8,7 +8,7 @@ interface HrContextType {
   setBookedStudents: (students: ReservedStudentResWithPaginationRes[]) => void;
 }
 
-export const GameContext = createContext<HrContextType>(null!);
+export const HrContext = createContext<HrContextType>(null!);
 
 export const HrProvider = ({ children }: { children: JSX.Element }) => {
   const [availableStudents, setAvailableStudents] = useState<AvailableStudentWhitPaginationRes[]>(
@@ -17,11 +17,11 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
   const [bookedStudents, setBookedStudents] = useState<ReservedStudentResWithPaginationRes[]>([]);
 
   return (
-    <GameContext.Provider
+    <HrContext.Provider
       /* eslint-disable-next-line react/jsx-no-constructed-context-values */
       value={{ availableStudents, setAvailableStudents, bookedStudents, setBookedStudents }}
     >
       {children}
-    </GameContext.Provider>
+    </HrContext.Provider>
   );
 };
