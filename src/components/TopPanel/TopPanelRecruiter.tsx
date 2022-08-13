@@ -1,7 +1,10 @@
 import React from 'react';
 import defaultUser from '../../assets/img/default-user.jpg';
+import { useAuth } from '../../hooks/useAuth';
 
 export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
+  const { user } = useAuth();
+
   const showOptions = () => {
     showMenu();
   };
@@ -16,7 +19,9 @@ export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
     >
       <img className="top-panel-hr-photo" src={defaultUser} alt="recruiter" />
       <div className="top-panel-hr-paragraph">
-        <p>Imie Nazwisko</p>
+        <p>
+          {user?.firstName} {user?.lastName}{' '}
+        </p>
       </div>
       <span className="top-panel-hr-expand" />
     </div>
