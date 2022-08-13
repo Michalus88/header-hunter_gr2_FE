@@ -19,9 +19,7 @@ export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
     >
       <img className="top-panel-hr-photo" src={defaultUser} alt="recruiter" />
       <div className="top-panel-hr-paragraph">
-        <p>
-          {user?.firstName} {user?.lastName}{' '}
-        </p>
+        <p>{user?.firstName ? `${user?.firstName} ${user?.lastName}` : 'Admin'}</p>
       </div>
       <span className="top-panel-hr-expand" />
     </div>
