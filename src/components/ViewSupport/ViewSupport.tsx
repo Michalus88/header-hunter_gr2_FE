@@ -36,8 +36,6 @@ export const ViewSupport = ({
   ];
 
   const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
-    console.log(event.currentTarget.value);
-
     onChangeViewSupport(
       studentsCount === maxPerPage ? 1 : currentPage,
       Number(event.currentTarget.value),
@@ -47,14 +45,7 @@ export const ViewSupport = ({
   return (
     <div className="footer-container">
       <p className="elements-status">Studentów na stronie</p>
-      <select
-        className="select-footer"
-        // style={{ marginLeft: '4px' }}
-        name=""
-        id=""
-        value={maxPerPage}
-        onChange={handleChange}
-      >
+      <select className="select-footer" name="" id="" value={maxPerPage} onChange={handleChange}>
         {options.map((option) =>
           studentsCount > option.value ? (
             <option value={option.value} key={option.value}>

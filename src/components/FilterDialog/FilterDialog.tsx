@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { ExpectedContractType, ExpectedTypeWork } from 'types';
+import { Toast } from 'primereact/toast';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 import { HrContext } from '../../providers/HrProvider';
@@ -13,6 +14,8 @@ interface Props {
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const [clearAll, setClearAll] = useState(false);
   const { filteringOptions, setFilteringOptions } = useContext(HrContext);
+
+  const toast = useRef<any>(null);
 
   const toggleClearAll = () => {
     setFilteringOptions({
@@ -36,7 +39,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
     console.log({ filteringOptions });
 
     try {
-      await fetch(
+      const data = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}`,
         {
           mode: 'cors',
@@ -49,8 +52,23 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
           },
         },
       );
-    } catch (e) {
-      console.log(`Connection error: ${e}`);
+      const response = await data.json();
+      if (data.status >= 400) {
+        toast.current.show({
+          severity: 'error',
+          summary: 'Błąd',
+          detail: `${response.message}`,
+          life: 4000,
+        });
+        return;
+      }
+    } catch (e: any) {
+      toast.current.show({
+        severity: 'error',
+        summary: 'Błąd',
+        detail: `${e.message}`,
+        life: 4000,
+      });
     }
   };
 
@@ -82,16 +100,19 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   );
 
   return (
-    <Dialog
-      className="filter-dialog"
-      header={header}
-      visible={visible}
-      resizable={false}
-      footer={footer}
-      onHide={() => toggleFilterDialog}
-      closable={false}
-    >
-      <FilterGroup clearAll={clearAll} />
-    </Dialog>
+    <>
+      <Toast ref={toast} />
+      <Dialog
+        className="filter-dialog"
+        header={header}
+        visible={visible}
+        resizable={false}
+        footer={footer}
+        onHide={() => toggleFilterDialog}
+        closable={false}
+      >
+        <FilterGroup clearAll={clearAll} />
+      </Dialog>
+    </>
   );
 };

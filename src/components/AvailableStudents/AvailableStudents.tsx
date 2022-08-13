@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   AvailableStudentRes,
   AvailableStudentWhitPaginationRes,
   ExpectedContractType,
   ExpectedTypeWork,
 } from 'types';
+import { Toast } from 'primereact/toast';
 import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
 import { ViewSupport } from '../ViewSupport/ViewSupport';
 import { AvailableOneStudent } from '../AvailableOneStudent/AvailableOneStudent';
@@ -18,6 +19,8 @@ export const AvailableStudents = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [studentsCount, setStudentsCount] = useState<number>(null!);
   const [totalPages, setTotalPages] = useState<number>(null!);
+
+  const toast = useRef<any>(null);
 
   const { availableStudents, setAvailableStudents } = useContext(HrContext);
 
@@ -36,8 +39,17 @@ export const AvailableStudents = () => {
             },
           },
         );
-        if (data.status !== 200) throw new Error('Błąd pobierania danych');
+
         const response = (await data.json()) as AvailableStudentWhitPaginationRes;
+        if (data.status !== 200) {
+          toast.current.show({
+            severity: 'error',
+            summary: 'Błąd',
+            detail: 'Błąd pobierania dostępnych studentów',
+            life: 4000,
+          });
+          return;
+        }
         console.log(response);
         setAvailableStudents(response);
 
@@ -85,6 +97,7 @@ export const AvailableStudents = () => {
 
   return (
     <>
+      <Toast ref={toast} />
       <TopPanel />
       <ViewPanel />
       <div className="available-students-wrapper">
