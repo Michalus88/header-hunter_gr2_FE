@@ -175,13 +175,23 @@
       .left-switch {
         position: absolute;
         top: 50%;
-        right: 50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        background-image: url('../img/arrow-back.svg');
+        background-size: contain;
         transform: translate(50%, -50%);
       }
       .right-switch {
         position: absolute;
         top: 50%;
-        right: 50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        background-image: url('../img/arrow-back.svg');
+        background-size: contain;
         transform: translate(50%, -50%) rotate(180deg);
       }
     }
@@ -196,7 +206,6 @@
 }
 
 @media (max-width: 1024px) {
-
   .available-students-wrapper {
     position: relative;
     background-color: $input-brown;
@@ -220,7 +229,7 @@
       .p-inputtext:enabled:focus {
         border-color: #e02735;
         box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
-        inset 0 0 0 1px #c96789;
+          inset 0 0 0 1px #c96789;
         color: $main-text-color;
       }
       .input-wrapper {
@@ -393,11 +402,9 @@
   .available-One-student:first-child {
     border-top: none;
   }
-
 }
 
 @media (max-width: 800px) {
-
   .available-students-wrapper {
     position: relative;
     background-color: $input-brown;
@@ -421,7 +428,7 @@
       .p-inputtext:enabled:focus {
         border-color: #e02735;
         box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
-        inset 0 0 0 1px #c96789;
+          inset 0 0 0 1px #c96789;
         color: $main-text-color;
       }
       .input-wrapper {
@@ -600,11 +607,9 @@
   .available-One-student:first-child {
     border-top: none;
   }
-
 }
 
 @media (max-width: 600px) {
-
   .available-students-wrapper {
     position: relative;
     background-color: $input-brown;
@@ -628,7 +633,7 @@
       .p-inputtext:enabled:focus {
         border-color: #e02735;
         box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
-        inset 0 0 0 1px #c96789;
+          inset 0 0 0 1px #c96789;
         color: $main-text-color;
       }
       .input-wrapper {
@@ -809,6 +814,4 @@
   .available-One-student:first-child {
     border-top: none;
   }
-
 }
-

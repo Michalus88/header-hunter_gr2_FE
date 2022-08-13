@@ -38,12 +38,15 @@ export const ViewSupport = ({
   const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
     console.log(event.currentTarget.value);
 
-    onChangeViewSupport(currentPage, Number(event.currentTarget.value));
+    onChangeViewSupport(
+      studentsCount === maxPerPage ? 1 : currentPage,
+      Number(event.currentTarget.value),
+    );
   };
 
   return (
     <div className="footer-container">
-      <p className="elements-status">Wyświetl</p>
+      <p className="elements-status">Na stronie</p>
       <select className="select-footer" name="" id="" value={maxPerPage} onChange={handleChange}>
         {options.map((option) =>
           studentsCount >= option.value ? (
@@ -53,14 +56,14 @@ export const ViewSupport = ({
           ) : null,
         )}
       </select>
-      <p className="elements-status">{`${currentPage} z ${totalPages}`}</p>
+      <p className="elements-status">{` Strona ${currentPage} z ${totalPages}`}</p>
       <p className="elements-switch">
         <button
           className="left-switch"
           type="submit"
           onClick={() => onChangeViewSupport(currentPage > 1 ? (currentPage -= 1) : 1, maxPerPage)}
         >
-          <img src={back} alt="" />
+          {' '}
         </button>
       </p>
       <p className="elements-switch">
@@ -74,7 +77,7 @@ export const ViewSupport = ({
             )
           }
         >
-          <img src={back} alt="" style={{ width: '100%', height: '100%' }} />
+          {' '}
         </button>
       </p>
     </div>
