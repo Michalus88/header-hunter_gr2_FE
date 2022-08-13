@@ -8,6 +8,7 @@ import { AvailableStudents } from '../components/AvailableStudents/AvailableStud
 import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
+import { HrProvider } from '../providers/HrProvider';
 
 export const AuthenticatedApp = () => {
   return (
@@ -16,7 +17,14 @@ export const AuthenticatedApp = () => {
         <Route path="/" element={<LoginPage />} />
         <Route path="/account" element={<Account />} />
         <Route path="/interview" element={<BookInterview />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/admin"
+          element={
+            <HrProvider>
+              <AdminPage />
+            </HrProvider>
+          }
+        />
         <Route path="/hr/available-students" element={<AvailableStudents />} />
         <Route path="/students/:id" element={<CvPage />} />
         <Route path="/student" element={<StudentPage />} />
