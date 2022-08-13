@@ -16,16 +16,23 @@ export const AuthenticatedApp = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/interview" element={<BookInterview />} />
         <Route
-          path="/admin"
+          path="/interview"
           element={
             <HrProvider>
-              <AdminPage />
+              <BookInterview />
             </HrProvider>
           }
         />
-        <Route path="/hr/available-students" element={<AvailableStudents />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/hr/available-students"
+          element={
+            <HrProvider>
+              <AvailableStudents />
+            </HrProvider>
+          }
+        />
         <Route path="/students/:id" element={<CvPage />} />
         <Route path="/student" element={<StudentPage />} />
       </Routes>
