@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import defaultImg from '../../assets/img/default-user.jpg';
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
@@ -48,7 +47,7 @@ export const StudentInfo = ({ githubUsername, firstName, lastName, tel, email, b
       </div>
       <div className="cv-student-info__about-me">
         <p className="cv-student-info__title">O mnie</p>
-        <pre className="cv-student-info__text">{bio}</pre>
+        <p className="cv-student-info__text">{bio}</p>
       </div>
       <div className="cv-student-info__btns">
         <MegaButton

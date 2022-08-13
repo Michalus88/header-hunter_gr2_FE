@@ -66,8 +66,6 @@ export const EditStudentForm = () => {
     mode: 'onChange',
   });
 
-  const userId = '2609e8f2-36d4-4f8f-a886-00156a721119';
-
   const tel = String(watch('tel')) === '' ? null : watch('tel');
   const bio = String(watch('bio')) === '' ? null : watch('bio');
   const targetWorkCity = String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
@@ -116,7 +114,7 @@ export const EditStudentForm = () => {
       courses,
     };
     alert(JSON.stringify(fff));
-    const res = await fetch(`http://localhost:3001/api/student/${userId}`, {
+    const res = await fetch(`http://localhost:3001/api/student`, {
       method: 'PUT',
       credentials: 'include',
       headers: {
@@ -139,24 +137,6 @@ export const EditStudentForm = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="student-page__form">
-          <div className="student-page__input-container">
-            <label>
-              <span>E-mail:</span>
-              <input
-                className="student-page__input"
-                type="email"
-                {...register('email', {
-                  required: 'this is required',
-                  pattern: {
-                    value: /@/,
-                    message: 'Invalid email address',
-                  },
-                })}
-              />
-            </label>
-          </div>
-          <ValidateMsg text={errors.email?.message} />
-
           <div className="student-page__input-container">
             <label>
               <span>Imię:</span>
