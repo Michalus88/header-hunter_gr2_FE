@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   AvailableStudentRes,
   AvailableStudentWhitPaginationRes,
@@ -10,20 +10,19 @@ import { ViewSupport } from '../ViewSupport/ViewSupport';
 import { AvailableOneStudent } from '../AvailableOneStudent/AvailableOneStudent';
 import { TopPanel } from '../TopPanel/TopPanel';
 import { ViewPanel } from '../ViewPanel/ViewPanel';
+import { HrContext } from '../../providers/HrProvider';
 
 export const AvailableStudents = () => {
-  const [students, setStudents] = useState<JSX.Element[]>(null!);
+  const [studentsJSX, setStudentsJSX] = useState<JSX.Element[]>(null!);
   const [maxPerPage, setMaxPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
   const [studentsCount, setStudentsCount] = useState<number>(null!);
   const [totalPages, setTotalPages] = useState<number>(null!);
 
+  const { availableStudents, setAvailableStudents } = useContext(HrContext);
+
   useEffect(() => {
     const fetchMyAPI = async () => {
-      console.log(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_AVAILABLE}/${maxPerPage}/${currentPage}`,
-      );
-
       try {
         const data = await fetch(
           `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_AVAILABLE}/${maxPerPage}/${currentPage}`,
@@ -40,25 +39,31 @@ export const AvailableStudents = () => {
         if (data.status !== 200) throw new Error('Błąd pobierania danych');
         const response = (await data.json()) as AvailableStudentWhitPaginationRes;
         console.log(response);
+        setAvailableStudents(response);
 
-        const studentsRes = response.students.map((student: AvailableStudentRes) => (
-          <AvailableOneStudent
-            key={student.id}
-            courseCompletion={student.courseCompletion}
-            courseEngagement={student.courseEngagement}
-            projectDegree={student.projectDegree}
-            teamProjectDegree={student.projectDegree}
-            firstName={student.studentInfo.firstName}
-            lastName={student.studentInfo.lastName}
-            expectedTypeWork={student.studentInfo.expectedTypeWork as ExpectedTypeWork}
-            targetWorkCity={student.studentInfo.targetWorkCity}
-            expectedContractType={student.studentInfo.expectedContractType as ExpectedContractType}
-            expectedSalary={student.studentInfo.expectedSalary}
-            canTakeApprenticeship={student.studentInfo.canTakeApprenticeship}
-            workExperience={student.studentInfo.workExperience}
-          />
-        ));
-        setStudents(studentsRes);
+        const studentsRes = response.students.map(
+          (student: AvailableStudentRes): JSX.Element => (
+            <AvailableOneStudent
+              key={student.id}
+              id={student.id}
+              courseCompletion={student.courseCompletion}
+              courseEngagement={student.courseEngagement}
+              projectDegree={student.projectDegree}
+              teamProjectDegree={student.projectDegree}
+              firstName={student.studentInfo.firstName}
+              lastName={student.studentInfo.lastName}
+              expectedTypeWork={student.studentInfo.expectedTypeWork as ExpectedTypeWork}
+              targetWorkCity={student.studentInfo.targetWorkCity}
+              expectedContractType={
+                student.studentInfo.expectedContractType as ExpectedContractType
+              }
+              expectedSalary={student.studentInfo.expectedSalary}
+              canTakeApprenticeship={student.studentInfo.canTakeApprenticeship}
+              workExperience={student.studentInfo.workExperience}
+            />
+          ),
+        );
+        setStudentsJSX(studentsRes);
         setCurrentPage(response.pages.currentPage);
         setMaxPerPage(response.pages.maxPerPage);
         setTotalPages(response.pages.totalPages);
@@ -84,7 +89,7 @@ export const AvailableStudents = () => {
       <ViewPanel />
       <div className="available-students-wrapper">
         <SearchFiltration />
-        <div className="students-list">{students}</div>
+        <div className="students-list">{studentsJSX}</div>
         <ViewSupport
           currentPage={currentPage}
           maxPerPage={maxPerPage}

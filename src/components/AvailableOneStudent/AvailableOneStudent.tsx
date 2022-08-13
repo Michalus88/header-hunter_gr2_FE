@@ -4,6 +4,7 @@ import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
 interface Props {
+  id: string;
   firstName: string;
   lastName: string;
   courseCompletion: number;
@@ -22,6 +23,7 @@ export const AvailableOneStudent = (props: Props) => {
   const [details, setDetails] = useState(false);
 
   const {
+    id,
     firstName,
     lastName,
     courseCompletion, // Ocena przejścia kursu
@@ -78,7 +80,24 @@ export const AvailableOneStudent = (props: Props) => {
       setDetails(false);
     }
   };
-  const click = () => console.log('click');
+  const handleBookingStudent = async () => {
+    try {
+      await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKING_STUDENT}/${id}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    } catch (e) {
+      console.log(`Connection error: ${e}`);
+    }
+  };
 
   return (
     <article className="available-One-student">
@@ -90,7 +109,7 @@ export const AvailableOneStudent = (props: Props) => {
           <MegaButton
             classNameAdd="megak-primary filter-star-butons-group-small right-button"
             buttonTitle="Zarezerwuj rozmowę"
-            onClick={() => click}
+            onClick={handleBookingStudent}
           />
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />

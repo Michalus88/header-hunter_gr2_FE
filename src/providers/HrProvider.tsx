@@ -8,10 +8,10 @@ import {
 } from 'types';
 
 interface HrContextType {
-  availableStudents: AvailableStudentWhitPaginationRes[];
+  availableStudents: AvailableStudentWhitPaginationRes;
   bookedStudents: ReservedStudentResWithPaginationRes[];
   filteringOptions: FilteringOptions;
-  setAvailableStudents: (students: AvailableStudentWhitPaginationRes[]) => void;
+  setAvailableStudents: (students: AvailableStudentWhitPaginationRes) => void;
   setBookedStudents: (students: ReservedStudentResWithPaginationRes[]) => void;
   setFilteringOptions: (options: FilteringOptions) => void;
 }
@@ -19,8 +19,8 @@ interface HrContextType {
 export const HrContext = createContext<HrContextType>(null!);
 
 export const HrProvider = ({ children }: { children: JSX.Element }) => {
-  const [availableStudents, setAvailableStudents] = useState<AvailableStudentWhitPaginationRes[]>(
-    [],
+  const [availableStudents, setAvailableStudents] = useState<AvailableStudentWhitPaginationRes>(
+    null!,
   );
   const [bookedStudents, setBookedStudents] = useState<ReservedStudentResWithPaginationRes[]>([]);
   const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>({
