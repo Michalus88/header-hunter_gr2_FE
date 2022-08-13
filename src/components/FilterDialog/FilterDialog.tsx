@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
+import { HrContext } from '../../providers/HrProvider';
 
 interface Props {
   toggleFilterDialog: () => void;
@@ -10,8 +11,20 @@ interface Props {
 
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const [clearAll, setClearAll] = useState(false);
+  const { filteringOptions, setFilteringOptions } = useContext(HrContext);
 
   const toggleClearAll = () => {
+    setFilteringOptions({
+      courseCompletion: null,
+      courseEngagement: null,
+      projectDegree: null,
+      teamProjectDegree: null,
+      expectedContractType: null,
+      expectedSalaryFrom: null,
+      expectedSalaryTo: null,
+      canTakeApprenticeship: null,
+      monthsOfCommercialExp: null,
+    });
     setClearAll(!clearAll);
   };
 

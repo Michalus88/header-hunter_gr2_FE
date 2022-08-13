@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
+import { HrContext } from '../../providers/HrProvider';
 import { MegaButton } from '../Elements/MegaButton';
 import { StarButtonGroup } from './StarsButttonGroup';
 
@@ -17,8 +18,10 @@ export const FilterGroup = ({ clearAll }: Props) => {
   const [contractWork, setContractWork] = useState(false);
   const [value, setValue] = useState<number | null>(null);
   const [value1, setValue1] = useState<number | null>(null);
-  const [value2, setValue2] = useState<number | null>(0);
-  const [radioValue1, setRadioValue1] = useState(null);
+  const [workMonth, setWorkMonth] = useState<number | null>(0);
+  const [apprenticeship, setApprenticeship] = useState(null);
+
+  const { filteringOptions, setFilteringOptions } = useContext(HrContext);
 
   useEffect(() => {
     setWorkRemontely(false);
@@ -29,9 +32,23 @@ export const FilterGroup = ({ clearAll }: Props) => {
     setContractWork(false);
     setValue(null);
     setValue1(null);
-    setValue2(0);
-    setRadioValue1(null);
+    setWorkMonth(null);
+    setApprenticeship(null);
   }, [clearAll]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      monthsOfCommercialExp: workMonth,
+    });
+  }, [workMonth]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      canTakeApprenticeship: Boolean(Number(apprenticeship)),
+    });
+  }, [apprenticeship]);
 
   const toggleWorkRemontely = () => {
     setWorkRemontely(!workRemontely);
@@ -53,30 +70,30 @@ export const FilterGroup = ({ clearAll }: Props) => {
   };
 
   let suffix = '';
-  if (value2 === 0) suffix = ' miesięcy';
-  if (value2 === 1) suffix = ' miesiąc';
-  if (value2 === 2) suffix = ' miesiące';
-  if (value2 === 3) suffix = ' miesiące';
-  if (value2 === 4) suffix = ' miesiące';
-  if (value2 !== null && value2 >= 4) suffix = ' miesięcy';
+  if (workMonth === 0) suffix = ' miesięcy';
+  if (workMonth === 1) suffix = ' miesiąc';
+  if (workMonth === 2) suffix = ' miesiące';
+  if (workMonth === 3) suffix = ' miesiące';
+  if (workMonth === 4) suffix = ' miesiące';
+  if (workMonth !== null && workMonth >= 4) suffix = ' miesięcy';
 
   return (
     <>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena przejścia kursu</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="courseCompletion" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena aktywności i zaangażowania na kursie</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="courseEngagement" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena kodu w projekcie własnym</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="projectDegree" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena pracy w zespole Scrum</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="teamProjectDegree" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Preferowanie miejsce pracy</div>
@@ -166,9 +183,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <RadioButton
               inputId="yes"
               name="yes"
-              value="Yes"
-              onChange={(e) => setRadioValue1(e.value)}
-              checked={radioValue1 === 'Yes'}
+              value="1"
+              onChange={(e) => setApprenticeship(e.value)}
+              checked={apprenticeship === '1'}
             />
             <label className="filter-radio-label" htmlFor="yes">
               Tak
@@ -178,9 +195,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <RadioButton
               inputId="no"
               name="no"
-              value="No"
-              onChange={(e) => setRadioValue1(e.value)}
-              checked={radioValue1 === 'No'}
+              value="-1"
+              onChange={(e) => setApprenticeship(e.value)}
+              checked={apprenticeship === '-1'}
             />
             <label className="filter-radio-label" htmlFor="no">
               Nie
@@ -198,8 +215,8 @@ export const FilterGroup = ({ clearAll }: Props) => {
               size={8}
               min={0}
               inputId="input3"
-              value={value2}
-              onValueChange={(e) => setValue2(e.value)}
+              value={workMonth}
+              onValueChange={(e) => setWorkMonth(e.value)}
               showButtons
               suffix={suffix}
             />
