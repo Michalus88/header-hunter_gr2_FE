@@ -103,7 +103,6 @@ export const AdminPage = () => {
   return (
     <>
       {' '}
-      <TopPanel />
       <div>
         <div className="admin-title">
           <h1>Panel Administratora</h1>
