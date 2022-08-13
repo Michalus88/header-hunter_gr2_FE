@@ -49,6 +49,9 @@ export const CvPage = () => {
           expectedSalary={studentData.studentInfo.expectedSalary}
           canTakeApprenticeship={studentData.studentInfo.canTakeApprenticeship}
           monthsOfCommercialExp={studentData.studentInfo.monthsOfCommercialExp}
+          education={studentData.studentInfo.education}
+          courses={studentData.studentInfo.courses}
+          workExperience={studentData.studentInfo.workExperience}
         />
       </MainWrapper>
     </>

@@ -16,6 +16,9 @@ interface Props {
   expectedSalary: string | undefined;
   canTakeApprenticeship: boolean;
   monthsOfCommercialExp: number;
+  education: string | undefined;
+  courses: string | undefined;
+  workExperience: string | undefined;
 }
 
 export const CvContent = ({
@@ -29,6 +32,9 @@ export const CvContent = ({
   expectedSalary,
   canTakeApprenticeship,
   monthsOfCommercialExp,
+  education,
+  courses,
+  workExperience,
 }: Props) => {
   return (
     <div className="cv-container">
@@ -46,24 +52,9 @@ export const CvContent = ({
         canTakeApprenticeship={canTakeApprenticeship}
         monthsOfCommercialExp={monthsOfCommercialExp}
       />
-      <Knowledge
-        title="Edukacja"
-        description="Lorem111 ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
-          dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
-          repudiandae saepe suscipit tempora ullam vel!"
-      />
-      <Knowledge
-        title="Kursy"
-        description="Lorem222 ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
-          dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
-          repudiandae saepe suscipit tempora ullam vel!"
-      />
-      <Knowledge
-        title="Doświadczenie zawodowe"
-        description="Lorem333 ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
-          dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
-          repudiandae saepe suscipit tempora ullam vel!"
-      />
+      <Knowledge title="Edukacja" description={education} />
+      <Knowledge title="Kursy" description={courses} />
+      <Knowledge title="Doświadczenie zawodowe" description={workExperience} />
       <Projects title="Portfolio" urls={['url1', 'url2']} />
       <Projects title="Projekt w zespole Scrumowym" urls={['url5']} />
       <Projects title="Projekt na zaliczenie" urls={['url3', 'url4']} />
