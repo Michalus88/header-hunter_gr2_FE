@@ -49,12 +49,15 @@ export const ViewSupport = ({
       <p className="elements-status">Na stronie</p>
       <select className="select-footer" name="" id="" value={maxPerPage} onChange={handleChange}>
         {options.map((option) =>
-          studentsCount >= option.value ? (
+          studentsCount > option.value ? (
             <option value={option.value} key={option.value}>
               {option.label}
             </option>
           ) : null,
         )}
+        <option value={studentsCount} key={studentsCount}>
+          {studentsCount}
+        </option>
       </select>
       <p className="elements-status">{` Strona ${currentPage} z ${totalPages}`}</p>
       <p className="elements-switch">
