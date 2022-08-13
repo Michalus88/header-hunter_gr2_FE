@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 import { HrContext } from '../../providers/HrProvider';
@@ -19,11 +20,12 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       courseEngagement: null,
       projectDegree: null,
       teamProjectDegree: null,
-      expectedContractType: null,
+      expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
+      expectedContractType: ExpectedContractType.IRRELEVANT,
       expectedSalaryFrom: null,
       expectedSalaryTo: null,
       canTakeApprenticeship: null,
-      monthsOfCommercialExp: null,
+      monthsOfCommercialExp: 0,
     });
     setClearAll(!clearAll);
   };

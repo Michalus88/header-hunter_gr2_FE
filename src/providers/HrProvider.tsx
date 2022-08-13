@@ -1,6 +1,8 @@
 import React, { useState, createContext } from 'react';
 import {
   AvailableStudentWhitPaginationRes,
+  ExpectedContractType,
+  ExpectedTypeWork,
   FilteringOptions,
   ReservedStudentResWithPaginationRes,
 } from 'types';
@@ -26,7 +28,8 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
     courseEngagement: null,
     projectDegree: null,
     teamProjectDegree: null,
-    expectedContractType: null,
+    expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
+    expectedContractType: ExpectedContractType.IRRELEVANT,
     expectedSalaryFrom: null,
     expectedSalaryTo: null,
     canTakeApprenticeship: null,
