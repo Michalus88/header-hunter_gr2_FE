@@ -1,18 +1,45 @@
 import React, { useContext, useEffect, useState, createContext } from 'react';
-import { LoggedUserRes, Login, Role } from 'types';
-import { isResErrorMsg } from '../helpers/isErrorMsg';
+import { LoggedUserRes, Login } from 'types';
+import { setIfErrMsg } from '../helpers/setIfErrMsg';
 import { usePathRedirect } from './usePathRedirect';
+import { useNotification } from '../components/Notification/Notification';
+import { setNotification } from '../helpers/setNotification';
 
 interface AuthContextType {
   user: LoggedUserRes | null;
   signIn: (data: Login) => Promise<void>;
   signOut: () => void;
+  toast: React.MutableRefObject<any>;
+  notification: JSX.Element;
 }
 const AuthContext = createContext<AuthContextType>(null!);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+  const { Notification, toast } = useNotification();
   const [user, setUser] = useState<LoggedUserRes | null>(null);
-  const pathRedirect = usePathRedirect(setUser);
+  const signOut = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_LOGOUT}`,
+        {
+          method: 'POST',
+          credentials: 'include',
+        },
+      );
+      if (!res.ok) {
+        const errMsg = await setIfErrMsg(res);
+        setNotification(toast, errMsg);
+        setUser(null);
+      }
+    } catch (error) {
+      setNotification(toast);
+      setUser(null);
+    } finally {
+      setUser(null);
+    }
+  };
+  const pathRedirect = usePathRedirect(setUser, signOut);
+
   useEffect(() => {
     (async () => {
       try {
@@ -22,21 +49,18 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
             credentials: 'include',
           },
         );
-        if (res.ok) {
+        const errMsg = await setIfErrMsg(res);
+        if (!errMsg) {
           const userData = await res.json();
-
           setUser(userData);
           pathRedirect(userData);
         } else {
           setUser(null);
-          // Notification ''
         }
       } catch (err) {
-        console.log('Server is unavailable.');
-        // Notification 'Server is unavailable.'
+        setNotification(toast);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const signIn = async (data: Login) => {
@@ -53,50 +77,25 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           body: JSON.stringify(data),
         },
       );
-      console.log(res);
-      if (await isResErrorMsg(res)) {
-        // Notification 'wrong login or password'
-      } else {
-        const userData = (await res.json()) as LoggedUserRes;
-        setUser(userData);
-        pathRedirect(userData);
-      }
-    } catch (error) {
-      console.log('Sorry. Please try later.');
-      // Notification
-    }
-  };
-
-  const signOut = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_LOGOUT}`,
-        {
-          method: 'POST',
-          credentials: 'include',
-        },
-      );
-      const err = await isResErrorMsg(res);
-      if (res.status === 401) {
-        setUser(null);
-      } else if (err) {
-        // Notification
-        console.log(err);
-        setUser(null);
-      } else {
+      if (!res.ok) {
+        setNotification(toast, 'Wrong credentials.');
         setUser(null);
       }
+      const userData = (await res.json()) as LoggedUserRes;
+      setUser(userData);
+      pathRedirect(userData);
     } catch (error) {
-      console.log('Sorry. Please try later');
-      // Notification
-      setUser(null);
-    } finally {
+      setNotification(toast);
       setUser(null);
     }
   };
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  return <AuthContext.Provider value={{ user, signIn, signOut }}>{children}</AuthContext.Provider>;
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <AuthContext.Provider value={{ user, signIn, signOut, notification: Notification, toast }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {
