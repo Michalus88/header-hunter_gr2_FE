@@ -62,7 +62,7 @@ export const CvPage = () => {
         projectDegree={studentData.projectDegree}
         teamProjectDegree={studentData.teamProjectDegree}
         targetWorkCity={studentData.studentInfo.targetWorkCity}
-        expectedTypeWork={studentData.studentInfo.expectedTypeWork}
+        expectedTypeWork={studentData?.studentInfo.expectedTypeWork}
         expectedContractType={studentData.studentInfo.expectedContractType}
         expectedSalary={studentData.studentInfo.expectedSalary}
         canTakeApprenticeship={studentData.studentInfo.canTakeApprenticeship}

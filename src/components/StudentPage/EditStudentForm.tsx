@@ -62,7 +62,7 @@ export const EditStudentForm = () => {
     console.log(res);
     const data = await res.json();
     setDataStudent(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {
@@ -285,13 +285,18 @@ export const EditStudentForm = () => {
               <span>Preferowane miejsce pracy:</span>
               <select
                 {...register('expectedTypeWork')}
-                defaultValue={dataStudent?.studentInfo.expectedTypeWork}
+                defaultValue={
+                  dataStudent?.studentInfo.expectedTypeWork !== null
+                    ? dataStudent?.studentInfo.expectedTypeWork
+                    : ''
+                }
               >
+                <option value="">Bez znaczenia</option>
                 <option value={ExpectedTypeWork.AT_LOCATION}>Na miejscu</option>
                 <option value={ExpectedTypeWork.READY_TO_MOVE}>Gotowość do przeprowadzki</option>
                 <option value={ExpectedTypeWork.REMOTE}>Wyłącznie zdalnie</option>
                 <option value={ExpectedTypeWork.HYBRID}>Hybrydowo</option>
-                <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option>
+                {/* <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option> */}
               </select>
             </label>
           </div>
@@ -319,7 +324,11 @@ export const EditStudentForm = () => {
               <span>Oczekiwany typ kontraktu:</span>
               <select
                 {...register('expectedContractType')}
-                defaultValue={dataStudent?.studentInfo.expectedContractType}
+                defaultValue={
+                  dataStudent?.studentInfo.expectedContractType !== null
+                    ? dataStudent?.studentInfo.expectedContractType
+                    : ''
+                }
               >
                 {/* <option value="">Brak preferencji</option> */}
                 <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko UoP</option>

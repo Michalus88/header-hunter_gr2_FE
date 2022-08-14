@@ -3,7 +3,7 @@ import { ExpectedContractType, ExpectedTypeWork } from 'types';
 
 interface Props {
   title: string;
-  text: string | undefined | ExpectedTypeWork | ExpectedContractType;
+  text: string | undefined | ExpectedTypeWork | ExpectedContractType | null;
 }
 
 export const ExpectationElement = ({ title, text }: Props) => {

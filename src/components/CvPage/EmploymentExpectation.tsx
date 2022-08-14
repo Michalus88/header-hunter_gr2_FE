@@ -5,8 +5,8 @@ import { contractType, typeWork } from '../../helpers/convertEnumToStrings';
 
 interface Props {
   targetWorkCity: string | undefined;
-  expectedTypeWork: ExpectedTypeWork;
-  expectedContractType: ExpectedContractType;
+  expectedTypeWork: ExpectedTypeWork | null;
+  expectedContractType: ExpectedContractType | null;
   expectedSalary: string | undefined;
   canTakeApprenticeship: boolean;
   monthsOfCommercialExp: number;

@@ -1,36 +1,33 @@
 import { ExpectedContractType, ExpectedTypeWork } from 'types';
 
-export const typeWork = (type: ExpectedTypeWork) => {
+export const typeWork = (type: ExpectedTypeWork | null) => {
   switch (type) {
-    case 0:
+    case ExpectedTypeWork.AT_LOCATION:
       return 'Na miejscu';
-      break;
-    case 1:
+    case ExpectedTypeWork.READY_TO_MOVE:
       return 'Gotowość do przeprowadzki';
-      break;
-    case 2:
+    case ExpectedTypeWork.REMOTE:
       return 'Wyłącznie zdalnie';
-      break;
-    case 3:
+    case ExpectedTypeWork.HYBRID:
       return 'Hybrydowo';
-      break;
-    case 4:
+    case null:
       return 'Bez znaczenia';
-      break;
     default:
       return 'Bez znaczenia';
   }
 };
 
-export const contractType = (type: ExpectedContractType) => {
+export const contractType = (type: ExpectedContractType | null) => {
   switch (type) {
-    case 0:
+    case ExpectedContractType.EMPLOYMENT_CONTRACT:
       return 'Tylko UoP';
-    case 1:
+    case ExpectedContractType.B_TO_B:
       return 'Możliwe B2B';
-    case 2:
+    case ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT:
       return 'Możliwe UZ/UoD';
+    case null:
+      return 'Brak preferencji';
     default:
-      return 'Brak preferencji ';
+      return 'Brak preferencji';
   }
 };
