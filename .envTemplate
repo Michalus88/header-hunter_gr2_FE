@@ -1,6 +1,7 @@
 REACT_APP_LOGIN="api/auth/login"
 REACT_APP_LOGOUT="api/auth/logout"
 
+REACT_APP_USER_ACTIVATE="/api/user/activate"
 REACT_APP_USER_GET="api/user"
 REACT_APP_USER_PASSWORD="api/USER/password"
 REACT_APP_USER_PASSWORD_RECOVERY="api/USER/password-recovery"
