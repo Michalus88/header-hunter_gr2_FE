@@ -7,10 +7,6 @@ import { StudentInfo } from './StudentInfo';
 import { CvContent } from './CvContent';
 import { Spinner } from '../Spinner/Spinner';
 
-// interface Props {
-//   studentId: string | null;
-// }
-
 export const CvPage = () => {
   const { user } = useAuth();
   console.log(user);

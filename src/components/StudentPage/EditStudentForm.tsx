@@ -6,7 +6,6 @@ import {
   StudentProfileUpdate,
   ExpectedContractType,
   DetailedStudentDataRes,
-  StudentProfileRegister,
   UrlEntity,
 } from 'types';
 import { ValidateMsg } from './ValidateMsg';
@@ -82,10 +81,7 @@ export const EditStudentForm = ({
           'Content-Type': 'application/json',
         },
       });
-      console.log(res);
       const data = await res.json();
-      setDataStudent(data);
-      // console.log(data);
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -97,30 +93,8 @@ export const EditStudentForm = ({
     getStudentDetails();
   }, []);
 
-  // const [dataStudent, setDataStudent] = useState({
-  //   email: 'gnys1001@gmail.com',
-  //   tel: '60000000',
-  //   firstName: 'Sławek',
-  //   lastName: 'Gnyś',
-  //   githubUsername: 'sgnys',
-  //   portfolioUrls: ['https://portfolio1', 'https://portfolio2'],
-  //   projectUrls: ['https://project1', 'https://project2'],
-  //   bio: 'Lorem ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus',
-  //   expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
-  //   targetWorkCity: 'Łódź',
-  //   expectedContractType: ExpectedContractType.EMPLOYMENT_CONTRACT,
-  //   expectedSalary: '5 000',
-  //   canTakeApprenticeship: false,
-  //   monthsOfCommercialExp: 0,
-  //   education: 'edukacja',
-  //   workExperience: 'doświadczenie',
-  //   courses: 'ukończone kursy',
-  // });
-
   const projectUrlsWithoutId = projectUrls.map((el) => (el ? el.url : undefined));
-  console.log(projectUrlsWithoutId);
   const portfolioUrlsWithoutId = portfolioUrls.map((el) => (el ? el.url : undefined));
-  console.log(portfolioUrlsWithoutId);
 
   const {
     register,
@@ -190,7 +164,7 @@ export const EditStudentForm = ({
       bio: bioFromForm,
       expectedTypeWork: data.expectedTypeWork,
       targetWorkCity: targetWorkCityFromForm,
-      expectedContractType: targetWorkCityFromForm,
+      expectedContractType: expectedContractTypeFromForm,
       expectedSalary: expectedSalaryFromForm,
       canTakeApprenticeship: canTakeApprenticeshipFromForm,
       monthsOfCommercialExp: Number(data.monthsOfCommercialExp),
@@ -198,7 +172,7 @@ export const EditStudentForm = ({
       workExperience: workExperienceFromForm,
       courses: coursesFromForm,
     };
-    alert(JSON.stringify(fff));
+    // alert(JSON.stringify(fff));
     const res = await fetch(`http://localhost:3001/api/student`, {
       method: 'PUT',
       credentials: 'include',
@@ -208,13 +182,9 @@ export const EditStudentForm = ({
       },
       body: JSON.stringify(fff),
     });
-    console.log(res);
     const test = await res.json();
-    console.log(test);
     navigate('/student');
   };
-
-  console.log(dataStudent);
   if (loading) return <Spinner />;
 
   return (
@@ -579,20 +549,6 @@ export const EditStudentForm = ({
             <ValidateMsg text={errors.portfolio5 && errors.portfolio5.message} />
           </div>
 
-          {/* <div> */}
-          {/*  <h3>test</h3> */}
-          {/*  {dataStudent.portfolioUrls?.map((url: string, index: number) => { */}
-          {/*    const portfolio = `portfolio${index + 1}`; */}
-          {/*    console.log('sprawdzenie', portfolio); */}
-
-          {/*    return ( */}
-          {/*      <> */}
-          {/*        <input key={url} type="url" {...register({ portfolio1 })} defaultValue={url} /> */}
-          {/*        <p>{url}</p> */}
-          {/*      </> */}
-          {/*    ); */}
-          {/*  })} */}
-          {/* </div> */}
           <h3>Linki do Projektów zaliczeniowych</h3>
           <div className="student-page__project-urls">
             <div className="student-page__input-container">

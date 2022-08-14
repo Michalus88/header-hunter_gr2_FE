@@ -7,9 +7,7 @@ import { AdminPage } from './components/AdminPage/AdminPage';
 import { AvailableStudents } from './components/AvailableStudents/AvailableStudents';
 import { StudentPage } from './components/StudentPage/StudentPage';
 import { useAuth } from './hooks/useAuth';
-import { MainTemplate } from './components/templates/MainTemplate';
 import { Account } from './components/Account/Account';
-import { EditStudentForm } from './components/StudentPage/EditStudentForm';
 import { StudentDetails } from './components/StudentPage/StudentDetails';
 
 export const App = () => {
