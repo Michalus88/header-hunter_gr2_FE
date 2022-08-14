@@ -8,11 +8,14 @@ import { AvailableStudents } from '../components/AvailableStudents/AvailableStud
 import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
+import { UserActivation } from '../components/ActivateStudent/UserActivation';
+// import { HrProvider } from '../providers/';
 
 export const AuthenticatedApp = () => {
   return (
     <MainTemplate>
       <Routes>
+        <Route path="/activate/student/:userId/:registerToken" element={<UserActivation />} />
         <Route path="/" element={<LoginPage />} />
         <Route path="/account" element={<Account />} />
         <Route path="/interview" element={<BookInterview />} />

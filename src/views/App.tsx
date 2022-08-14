@@ -4,6 +4,11 @@ import { AuthenticatedApp } from './AuthenticatedApp';
 import { UnAuthenticatedApp } from './UnAuthenticatedApp';
 
 export const App = () => {
-  const { user } = useAuth();
-  return user ? <AuthenticatedApp /> : <UnAuthenticatedApp />;
+  const { user, notification } = useAuth();
+  return (
+    <>
+      {notification}
+      {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+    </>
+  );
 };
