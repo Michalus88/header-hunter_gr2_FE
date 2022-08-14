@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { EmailChange } from 'types';
 import { useAuth } from '../../hooks/useAuth';
@@ -29,12 +28,26 @@ export const ChangeEmail = () => {
   const formChangeEmailOnSubmit: SubmitHandler<EmailChange> = (data) => {
     console.log({ data });
 
-    // console.log(JSON.stringify(data));
+    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_EMAIL}`, {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      .catch((error) => console.log(`Failed: ${error.message}`));
   };
 
   return (
     <>
-      <h2 className="student-page__title-form">Zmiana adresu e-mail</h2>
+      <h2 className="student-page__title-form" style={{ marginTop: '85px' }}>
+        Zmiana adresu e-mail
+      </h2>
 
       <form onSubmit={handleSubmitEmail(formChangeEmailOnSubmit)}>
         <div className="student-page__form">

@@ -1,99 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import {
-  ExpectedTypeWork,
-  StudentProfileUpdate,
-  ExpectedContractType,
-  DetailedStudentDataRes,
-  UrlEntity,
-} from 'types';
-import { ValidateMsg } from './ValidateMsg';
-import { MegaButton } from '../Elements/MegaButton';
-import { MainStudentWrapper } from './MainStudentWrapper';
-import { Spinner } from '../Spinner/Spinner';
+import React, { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType } from 'types';
+import { ValidateMsg } from './StudentPage/ValidateMsg';
 
-interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
-  portfolio1: string | undefined;
-  portfolio2: string | undefined;
-  portfolio3: string | undefined;
-  portfolio4: string | undefined;
-  portfolio5: string | undefined;
-  project1: string | undefined;
-  project2: string | undefined;
-  project3: string | undefined;
-  project4: string | undefined;
-  project5: string | undefined;
-}
-interface Props {
-  tel: string | undefined;
-  firstName: string;
-  lastName: string;
-  githubUsername: string;
-  portfolioUrls: UrlEntity[] | [];
-  projectUrls: UrlEntity[];
-  bio: string | undefined;
-  expectedTypeWork: ExpectedTypeWork | null;
-  targetWorkCity: string | undefined;
-  expectedContractType: ExpectedContractType | null;
-  expectedSalary: string | undefined;
-  canTakeApprenticeship: boolean;
-  monthsOfCommercialExp: number;
-  education: string | undefined;
-  workExperience: string | undefined;
-  courses: string | undefined;
-}
-
-export const EditStudentForm = ({
-  tel,
-  firstName,
-  lastName,
-  githubUsername,
-  projectUrls,
-  portfolioUrls,
-  bio,
-  expectedTypeWork,
-  targetWorkCity,
-  expectedContractType,
-  expectedSalary,
-  canTakeApprenticeship,
-  monthsOfCommercialExp,
-  education,
-  workExperience,
-  courses,
-}: Props) => {
-  const navigate = useNavigate();
-  const goBack = () => navigate('/student');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [dataStudent, setDataStudent] = useState<DetailedStudentDataRes | null>(null);
-  const getStudentDetails = async () => {
-    setDataStudent(null);
-
-    setLoading(true);
-
-    try {
-      const res = await fetch(`http://localhost:3001/api/student/detailed`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
-    } catch (error: any) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getStudentDetails();
-  }, []);
-
-  const projectUrlsWithoutId = projectUrls.map((el) => (el ? el.url : undefined));
-  const portfolioUrlsWithoutId = portfolioUrls.map((el) => (el ? el.url : undefined));
+export const ActivateStudent = () => {
+  interface StudentProfileWithArrayUrls extends StudentProfileRegister {
+    portfolio1: string | undefined;
+    portfolio2: string | undefined;
+    portfolio3: string | undefined;
+    portfolio4: string | undefined;
+    portfolio5: string | undefined;
+    project1: string | undefined;
+    project2: string | undefined;
+    project3: string | undefined;
+    project4: string | undefined;
+    project5: string | undefined;
+  }
 
   const {
     register,
@@ -101,40 +23,19 @@ export const EditStudentForm = ({
     watch,
     formState: { errors },
   } = useForm<StudentProfileWithArrayUrls>({
-    defaultValues: {
-      firstName,
-      lastName,
-      tel,
-      githubUsername,
-      projectUrls: projectUrlsWithoutId,
-      portfolioUrls: portfolioUrlsWithoutId,
-      bio,
-      expectedTypeWork,
-      targetWorkCity,
-      expectedContractType,
-      expectedSalary,
-      canTakeApprenticeship,
-      monthsOfCommercialExp,
-      education,
-      workExperience,
-      courses,
-    },
     mode: 'onChange',
   });
 
-  const telFromForm = String(watch('tel')) === '' ? null : watch('tel');
-  const bioFromForm = String(watch('bio')) === '' ? null : watch('bio');
-  const targetWorkCityFromForm =
-    String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
-  const expectedSalaryFromForm =
-    String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
-  const educationFromForm = String(watch('education')) === '' ? null : watch('education');
-  const workExperienceFromForm =
-    String(watch('workExperience')) === '' ? null : watch('workExperience');
-  const coursesFromForm = String(watch('courses')) === '' ? null : watch('courses');
-  const expectedContractTypeFromForm =
+  const tel = String(watch('tel')) === '' ? null : watch('tel');
+  const bio = String(watch('bio')) === '' ? null : watch('bio');
+  const targetWorkCity = String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
+  const expectedSalary = String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
+  const education = String(watch('education')) === '' ? null : watch('education');
+  const workExperience = String(watch('workExperience')) === '' ? null : watch('workExperience');
+  const courses = String(watch('courses')) === '' ? null : watch('courses');
+  const expectedContractType =
     String(watch('expectedContractType')) === '' ? null : watch('expectedContractType');
-  const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
+  const canTakeApprenticeship = String(watch('canTakeApprenticeship')) !== 'No';
 
   let portfolioArr: (string | undefined | null)[] = [];
   let projectArr: (string | undefined | null)[] = [];
@@ -152,46 +53,51 @@ export const EditStudentForm = ({
     projectArr = projects.filter((el) => el);
   }, [portfolioArr, projectArr]);
 
-  const onSubmit: SubmitHandler<StudentProfileUpdate> = async (data) => {
-    const fff = {
-      tel: telFromForm,
+  const onSubmit: SubmitHandler<StudentProfileRegister> = async (data) => {
+    const data2 = {
+      tel,
       firstName: data.firstName,
       lastName: data.lastName,
       githubUsername: data.githubUsername,
       portfolioUrls: portfolioArr,
       projectUrls: projectArr,
-      bio: bioFromForm,
+      bio,
       expectedTypeWork: data.expectedTypeWork,
-      targetWorkCity: targetWorkCityFromForm,
-      expectedContractType: expectedContractTypeFromForm,
-      expectedSalary: expectedSalaryFromForm,
-      canTakeApprenticeship: canTakeApprenticeshipFromForm,
+      targetWorkCity,
+      expectedContractType,
+      expectedSalary,
+      canTakeApprenticeship,
       monthsOfCommercialExp: Number(data.monthsOfCommercialExp),
-      education: educationFromForm,
-      workExperience: workExperienceFromForm,
-      courses: coursesFromForm,
+      education,
+      workExperience,
+      courses,
     };
-    // alert(JSON.stringify(fff));
-    const res = await fetch(`http://localhost:3001/api/student`, {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+    alert(JSON.stringify(data2));
+    const res = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}${
+        process.env.REACT_APP_STUDENT_PROFILE_ACTIVATE
+      }/${'1'}/${1}`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data2),
       },
-      body: JSON.stringify(fff),
-    });
+    );
+    console.log(res);
     const test = await res.json();
-    navigate('/student');
+    console.log(test);
   };
-  if (loading) return <Spinner />;
 
   return (
-    <MainStudentWrapper>
-      <h2 className="student-page__title-form">Twoje dane które możesz modyfikować</h2>
-      <div className="student-page_btns">
-        <MegaButton buttonTitle="Wróć do CV" onClick={goBack} classNameAdd="megak-primary" />
-      </div>
+    <>
+      <h2 style={{ marginTop: '90px' }} className="student-page__title-form">
+        Formularz aktywacyjny
+      </h2>
+      <div className="student-page_btns" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="student-page__form">
           <div className="student-page__input-container">
@@ -211,7 +117,6 @@ export const EditStudentForm = ({
                     message: 'Min length is 3',
                   },
                 })}
-                // defaultValue={dataStudent?.studentInfo.firstName}
               />
             </label>
           </div>
@@ -221,7 +126,6 @@ export const EditStudentForm = ({
             <label>
               <span>Nazwisko:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.lastName}
                 className="student-page__input"
                 type="text"
                 {...register('lastName', {
@@ -244,7 +148,6 @@ export const EditStudentForm = ({
             <label>
               <span>Numer telefonu:</span>
               <input
-                // defaultValue={dataStudent?.studentInfo.tel}
                 className="student-page__input"
                 type="text"
                 {...register('tel', {
@@ -262,7 +165,6 @@ export const EditStudentForm = ({
             <label>
               <span>GitHub (username):</span>
               <input
-                defaultValue={dataStudent?.studentInfo.githubUsername}
                 className="student-page__input"
                 type="text"
                 {...register('githubUsername', {
@@ -280,7 +182,6 @@ export const EditStudentForm = ({
             <label>
               <span>Krótkie bio:</span>
               <textarea
-                defaultValue={dataStudent?.studentInfo.bio}
                 className="student-page__textarea"
                 rows={4}
                 cols={50}
@@ -292,14 +193,7 @@ export const EditStudentForm = ({
           <div className="student-page__input-container">
             <label>
               <span>Preferowane miejsce pracy:</span>
-              <select
-                {...register('expectedTypeWork')}
-                defaultValue={
-                  dataStudent?.studentInfo.expectedTypeWork !== null
-                    ? dataStudent?.studentInfo.expectedTypeWork
-                    : ''
-                }
-              >
+              <select {...register('expectedTypeWork')}>
                 <option value="">Bez znaczenia</option>
                 <option value={ExpectedTypeWork.AT_LOCATION}>Na miejscu</option>
                 <option value={ExpectedTypeWork.READY_TO_MOVE}>Gotowość do przeprowadzki</option>
@@ -314,7 +208,6 @@ export const EditStudentForm = ({
             <label>
               <span>Docelowe miasto pracy:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.targetWorkCity}
                 className="student-page__input"
                 type="text"
                 {...register('targetWorkCity', {
@@ -331,15 +224,8 @@ export const EditStudentForm = ({
           <div className="student-page__input-container">
             <label>
               <span>Oczekiwany typ kontraktu:</span>
-              <select
-                {...register('expectedContractType')}
-                defaultValue={
-                  dataStudent?.studentInfo.expectedContractType !== null
-                    ? dataStudent?.studentInfo.expectedContractType
-                    : ''
-                }
-              >
-                {/* <option value="">Brak preferencji</option> */}
+              <select {...register('expectedContractType')}>
+                <option value="">Brak preferencji</option>
                 <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko UoP</option>
                 <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
                 <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT}>
@@ -353,7 +239,6 @@ export const EditStudentForm = ({
             <label>
               <span>Oczekiwane wynagrodzenie netto:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.expectedSalary}
                 className="student-page__input"
                 type="text"
                 {...register('expectedSalary', {
@@ -372,7 +257,6 @@ export const EditStudentForm = ({
             <p>Zgoda na bezplatne praktyki/staż:</p>
             <div className="student-page__radio">
               <input
-                defaultChecked={dataStudent?.studentInfo.canTakeApprenticeship}
                 type="radio"
                 value="Yes"
                 {...register('canTakeApprenticeship', {
@@ -383,10 +267,10 @@ export const EditStudentForm = ({
             </div>
             <div className="student-page__radio">
               <input
-                defaultChecked={!dataStudent?.studentInfo.canTakeApprenticeship}
                 type="radio"
                 value="No"
                 {...register('canTakeApprenticeship')}
+                defaultChecked
               />
               <span>Nie</span>
             </div>
@@ -400,7 +284,6 @@ export const EditStudentForm = ({
             <label>
               <span>Ilość m-cy doświadczenia komercyjnego:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.monthsOfCommercialExp}
                 className="student-page__input"
                 type="number"
                 {...register('monthsOfCommercialExp', {
@@ -420,7 +303,6 @@ export const EditStudentForm = ({
             <label>
               <span>Edukacja:</span>
               <textarea
-                defaultValue={dataStudent?.studentInfo.education}
                 className="student-page__textarea"
                 rows={4}
                 cols={50}
@@ -433,7 +315,6 @@ export const EditStudentForm = ({
             <label>
               <span>Doświadczenie:</span>
               <textarea
-                defaultValue={dataStudent?.studentInfo.workExperience}
                 className="student-page__textarea"
                 rows={4}
                 cols={50}
@@ -446,7 +327,6 @@ export const EditStudentForm = ({
             <label>
               <span>Ukończone kursy:</span>
               <textarea
-                defaultValue={dataStudent?.studentInfo.courses}
                 className="student-page__textarea"
                 rows={4}
                 cols={50}
@@ -469,7 +349,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={portfolioUrls[0]?.url}
                 />
               </label>
             </div>
@@ -487,7 +366,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={portfolioUrls[1]?.url}
                 />
               </label>
             </div>
@@ -505,7 +383,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={portfolioUrls[2]?.url}
                 />
               </label>
             </div>
@@ -523,7 +400,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={portfolioUrls[3]?.url}
                 />
               </label>
             </div>
@@ -541,13 +417,26 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={portfolioUrls[4]?.url}
                 />
               </label>
             </div>
             <ValidateMsg text={errors.portfolio5 && errors.portfolio5.message} />
           </div>
 
+          {/* <div> */}
+          {/*  <h3>test</h3> */}
+          {/*  {dataStudent.portfolioUrls?.map((url: string, index: number) => { */}
+          {/*    const portfolio = `portfolio${index + 1}`; */}
+          {/*    console.log('sprawdzenie', portfolio); */}
+
+          {/*    return ( */}
+          {/*      <> */}
+          {/*        <input key={url} type="url" {...register({ portfolio1 })} defaultValue={url} /> */}
+          {/*        <p>{url}</p> */}
+          {/*      </> */}
+          {/*    ); */}
+          {/*  })} */}
+          {/* </div> */}
           <h3>Linki do Projektów zaliczeniowych</h3>
           <div className="student-page__project-urls">
             <div className="student-page__input-container">
@@ -563,7 +452,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={projectUrls[0]?.url}
                 />
               </label>
             </div>
@@ -581,7 +469,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={projectUrls[1]?.url}
                 />
               </label>
             </div>
@@ -599,7 +486,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={projectUrls[2]?.url}
                 />
               </label>
             </div>
@@ -617,7 +503,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={projectUrls[3]?.url}
                 />
               </label>
             </div>
@@ -635,7 +520,6 @@ export const EditStudentForm = ({
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={projectUrls[4]?.url}
                 />
               </label>
             </div>
@@ -643,10 +527,10 @@ export const EditStudentForm = ({
           </div>
 
           <button className="mega-k-button megak-primary edit" type="submit">
-            Edytuj
+            Zapisz
           </button>
         </div>
       </form>
-    </MainStudentWrapper>
+    </>
   );
 };

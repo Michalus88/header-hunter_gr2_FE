@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RadioButton } from 'primereact/radiobutton';
 import { InputNumber } from 'primereact/inputnumber';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
+import { HrContext } from '../../providers/HrProvider';
 import { MegaButton } from '../Elements/MegaButton';
 import { StarButtonGroup } from './StarsButttonGroup';
 
@@ -9,91 +11,148 @@ interface Props {
 }
 
 export const FilterGroup = ({ clearAll }: Props) => {
-  const [workRemontely, setWorkRemontely] = useState(false);
-  const [workInOffice, setWorkInOffice] = useState(false);
-  const [contract, setContract] = useState(false);
-  const [B2B, setB2B] = useState(false);
-  const [contractOfMandate, setContractOfMandate] = useState(false);
-  const [contractWork, setContractWork] = useState(false);
-  const [value, setValue] = useState<number | null>(null);
-  const [value1, setValue1] = useState<number | null>(null);
-  const [value2, setValue2] = useState<number | null>(0);
-  const [radioValue1, setRadioValue1] = useState(null);
+  const [workType, setWorkType] = useState<ExpectedTypeWork | null>(null);
+  const [contract, setContract] = useState<ExpectedContractType | null>(null);
+  const [salaryFrom, setSalaryFrom] = useState<number | null>(null);
+  const [salaryTo, setSalaryTo] = useState<number | null>(null);
+  const [workMonth, setWorkMonth] = useState<number | null>(0);
+  const [apprenticeship, setApprenticeship] = useState(null);
+
+  const { filteringOptions, setFilteringOptions } = useContext(HrContext);
 
   useEffect(() => {
-    setWorkRemontely(false);
-    setWorkInOffice(false);
-    setContract(false);
-    setB2B(false);
-    setContractOfMandate(false);
-    setContractWork(false);
-    setValue(null);
-    setValue1(null);
-    setValue2(0);
-    setRadioValue1(null);
+    setWorkType(null);
+    setContract(null);
+    setSalaryFrom(null);
+    setSalaryTo(null);
+    setWorkMonth(null);
+    setApprenticeship(null);
   }, [clearAll]);
 
-  const toggleWorkRemontely = () => {
-    setWorkRemontely(!workRemontely);
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      monthsOfCommercialExp: workMonth,
+    });
+  }, [workMonth]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      expectedTypeWork: workType,
+    });
+  }, [workType]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      expectedContractType: contract,
+    });
+  }, [contract]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      canTakeApprenticeship: !!apprenticeship,
+    });
+  }, [apprenticeship]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      expectedSalaryFrom: salaryFrom,
+    });
+  }, [salaryFrom]);
+
+  useEffect(() => {
+    setFilteringOptions({
+      ...filteringOptions,
+      expectedSalaryTo: salaryTo,
+    });
+  }, [salaryTo]);
+
+  const toggleWork = (wType: ExpectedTypeWork | null) => {
+    setWorkType(wType);
   };
-  const toggleWorkInOffice = () => {
-    setWorkInOffice(!workInOffice);
-  };
-  const toggleContract = () => {
-    setContract(!contract);
-  };
-  const toggleB2B = () => {
-    setB2B(!B2B);
-  };
-  const toggleContractOfMandate = () => {
-    setContractOfMandate(!contractOfMandate);
-  };
-  const toggleContractWork = () => {
-    setContractWork(!contractWork);
+
+  const toggleContract = (tContract: ExpectedContractType | null) => {
+    setContract(tContract);
   };
 
   let suffix = '';
-  if (value2 === 0) suffix = ' miesięcy';
-  if (value2 === 1) suffix = ' miesiąc';
-  if (value2 === 2) suffix = ' miesiące';
-  if (value2 === 3) suffix = ' miesiące';
-  if (value2 === 4) suffix = ' miesiące';
-  if (value2 !== null && value2 >= 4) suffix = ' miesięcy';
+  if (workMonth === 0) suffix = ' miesięcy';
+  if (workMonth === 1) suffix = ' miesiąc';
+  if (workMonth === 2) suffix = ' miesiące';
+  if (workMonth === 3) suffix = ' miesiące';
+  if (workMonth === 4) suffix = ' miesiące';
+  if (workMonth !== null && workMonth >= 4) suffix = ' miesięcy';
 
   return (
     <>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena przejścia kursu</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="courseCompletion" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena aktywności i zaangażowania na kursie</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="courseEngagement" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena kodu w projekcie własnym</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="projectDegree" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Ocena pracy w zespole Scrum</div>
-        <StarButtonGroup clearAll={clearAll} />
+        <StarButtonGroup clearAll={clearAll} rating="teamProjectDegree" />
       </div>
       <div className="filter-star-butons-wraper">
         <div className="filter-star-butons-tile">Preferowanie miejsce pracy</div>
         <div className="filter-star-butons-group">
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small ${
-              workRemontely && 'megak-glow'
+              workType === ExpectedTypeWork.AT_LOCATION && 'megak-glow'
             }`}
-            buttonTitle="Praca zdala"
-            onClick={toggleWorkRemontely}
+            buttonTitle="Praca na miejscu"
+            onClick={() => {
+              toggleWork(ExpectedTypeWork.AT_LOCATION);
+            }}
           />
           <MegaButton
-            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
-              workInOffice && 'megak-glow'
+            classNameAdd={`megak-secondary filter-star-butons-group-small ${
+              workType === ExpectedTypeWork.READY_TO_MOVE && 'megak-glow'
             }`}
-            buttonTitle="Praca w biurze"
-            onClick={toggleWorkInOffice}
+            buttonTitle="Gotowy do przeprowadzki"
+            onClick={() => {
+              toggleWork(ExpectedTypeWork.READY_TO_MOVE);
+            }}
+          />
+          <MegaButton
+            classNameAdd={`megak-secondary filter-star-butons-group-small ${
+              workType === ExpectedTypeWork.REMOTE && 'megak-glow'
+            }`}
+            buttonTitle="Praca zdala"
+            onClick={() => {
+              toggleWork(ExpectedTypeWork.REMOTE);
+            }}
+          />
+
+          <MegaButton
+            classNameAdd={`megak-secondary filter-star-butons-group-small ${
+              workType === ExpectedTypeWork.HYBRID && 'megak-glow'
+            }`}
+            buttonTitle="Hybrydowo"
+            onClick={() => {
+              toggleWork(ExpectedTypeWork.HYBRID);
+            }}
+          />
+          <MegaButton
+            classNameAdd={`megak-secondary filter-star-butons-group-small ${
+              workType === null && 'megak-glow'
+            }`}
+            buttonTitle="Bez znaczenia"
+            onClick={() => {
+              toggleWork(null);
+            }}
           />
         </div>
       </div>
@@ -102,29 +161,40 @@ export const FilterGroup = ({ clearAll }: Props) => {
         <div className="filter-star-butons-group">
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small  ${
-              contract && 'megak-glow'
+              contract === ExpectedContractType.EMPLOYMENT_CONTRACT && 'megak-glow'
             }`}
             buttonTitle="Umowa o pracę"
-            onClick={toggleContract}
+            onClick={() => {
+              toggleContract(ExpectedContractType.EMPLOYMENT_CONTRACT);
+            }}
           />
           <MegaButton
-            classNameAdd={`megak-secondary filter-star-butons-group-small  ${B2B && 'megak-glow'}`}
+            classNameAdd={`megak-secondary filter-star-butons-group-small  ${
+              contract === ExpectedContractType.B_TO_B && 'megak-glow'
+            }`}
             buttonTitle="B2B"
-            onClick={toggleB2B}
+            onClick={() => {
+              toggleContract(ExpectedContractType.B_TO_B);
+            }}
           />
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small  ${
-              contractOfMandate && 'megak-glow'
+              contract === ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT &&
+              'megak-glow'
             }`}
-            buttonTitle="Umowa zlecenie"
-            onClick={toggleContractOfMandate}
+            buttonTitle="UZ/UoD"
+            onClick={() => {
+              toggleContract(ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT);
+            }}
           />
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small  ${
-              contractWork && 'megak-glow'
+              contract === null && 'megak-glow'
             }`}
-            buttonTitle="Umowa o dzieło"
-            onClick={toggleContractWork}
+            buttonTitle="Brak preferencji"
+            onClick={() => {
+              toggleContract(null);
+            }}
           />
         </div>
       </div>
@@ -135,9 +205,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <label htmlFor="input1">Od </label>
             <InputNumber
               size={10}
-              inputId="input1"
-              value={value}
-              onValueChange={(e) => setValue(e.value)}
+              inputId="salaryFrom"
+              value={salaryFrom}
+              onValueChange={(e) => setSalaryFrom(e.value)}
               showButtons={false}
               placeholder="np. 1000 zł"
               min={0}
@@ -147,9 +217,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <label htmlFor="input12">Do </label>
             <InputNumber
               size={10}
-              inputId="input2"
-              value={value1}
-              onValueChange={(e) => setValue1(e.value)}
+              inputId="salaryTo"
+              value={salaryTo}
+              onValueChange={(e) => setSalaryTo(e.value)}
               showButtons={false}
               placeholder="np. 100000 zł"
               min={0}
@@ -166,9 +236,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <RadioButton
               inputId="yes"
               name="yes"
-              value="Yes"
-              onChange={(e) => setRadioValue1(e.value)}
-              checked={radioValue1 === 'Yes'}
+              value="1"
+              onChange={(e) => setApprenticeship(e.value)}
+              checked={apprenticeship === '1'}
             />
             <label className="filter-radio-label" htmlFor="yes">
               Tak
@@ -178,9 +248,9 @@ export const FilterGroup = ({ clearAll }: Props) => {
             <RadioButton
               inputId="no"
               name="no"
-              value="No"
-              onChange={(e) => setRadioValue1(e.value)}
-              checked={radioValue1 === 'No'}
+              value=""
+              onChange={(e) => setApprenticeship(e.value)}
+              checked={apprenticeship === ''}
             />
             <label className="filter-radio-label" htmlFor="no">
               Nie
@@ -198,8 +268,8 @@ export const FilterGroup = ({ clearAll }: Props) => {
               size={8}
               min={0}
               inputId="input3"
-              value={value2}
-              onValueChange={(e) => setValue2(e.value)}
+              value={workMonth}
+              onValueChange={(e) => setWorkMonth(e.value)}
               showButtons
               suffix={suffix}
             />

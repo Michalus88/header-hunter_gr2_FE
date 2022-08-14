@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
@@ -9,24 +10,16 @@ interface Props {
   courseEngagement: number;
   projectDegree: number;
   teamProjectDegree: number;
-  expectedTypeWork: string;
-  targetWorkCity: string | null;
-  expectedContractType: string;
-  expectedSalary: number;
-  canTakeApprenticeship: string;
-  workExperience: number;
+  expectedTypeWork: ExpectedTypeWork | null;
+  targetWorkCity: string | undefined;
+  expectedContractType: ExpectedContractType | null;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  workExperience: string | undefined;
 }
 
 export const AvailableOneStudent = (props: Props) => {
   const [details, setDetails] = useState(false);
-
-  const handleClick = () => {
-    if (!details) {
-      setDetails(true);
-    } else {
-      setDetails(false);
-    }
-  };
 
   const {
     firstName,
@@ -43,6 +36,48 @@ export const AvailableOneStudent = (props: Props) => {
     workExperience, // Komercyjne doświadczenie w programowaniu
   } = props;
 
+  const contractT = (): string => {
+    switch (expectedContractType) {
+      case 0:
+        return 'Tylko UoP';
+        break;
+      case 1:
+        return 'Możliwe B2B';
+        break;
+      case 2:
+        return 'Możliwe UZ/UoD';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const workT = (): string => {
+    switch (expectedTypeWork) {
+      case 0:
+        return 'Na miejscu';
+        break;
+      case 1:
+        return 'Gotowość do przeprowadzki';
+        break;
+      case 2:
+        return 'Wyłącznie zdalnie';
+        break;
+      case 3:
+        return 'Hybrydowo';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const handleClick = () => {
+    if (!details) {
+      setDetails(true);
+    } else {
+      setDetails(false);
+    }
+  };
   const click = () => console.log('click');
 
   return (
@@ -90,37 +125,37 @@ export const AvailableOneStudent = (props: Props) => {
         <div className="detail">
           <span className="title">Preferowane miejsce pracy</span>
           <span className="description-text">
-            <strong>{expectedTypeWork}</strong>
+            <strong>{workT()}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
           <span className="description-text">
-            <strong>{targetWorkCity}</strong>
+            <strong>{!targetWorkCity ? `brak` : `${targetWorkCity}`}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwany typ kontraktu</span>
           <span className="description-text">
-            <strong>{expectedContractType}</strong>
+            <strong>{contractT()}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
           <span className="description-text">
-            <strong>{expectedSalary}zł</strong>
+            <strong>{!expectedSalary ? `brak` : `${expectedSalary}zł`}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</span>
           <span className="description-text">
-            <strong>{canTakeApprenticeship}</strong>
+            <strong>{canTakeApprenticeship ? 'Tak' : 'Nie'}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Komercyjne doświadczenie w programowaniu</span>
           <span className="description-text">
-            <strong>{workExperience} mies.</strong>
+            <strong>{!workExperience ? 'brak' : `${workExperience}mies`}</strong>
           </span>
         </div>
       </div>
