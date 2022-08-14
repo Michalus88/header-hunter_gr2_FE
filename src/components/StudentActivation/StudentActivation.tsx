@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType } from 'types';
-import { ValidateMsg } from './StudentPage/ValidateMsg';
+import { ValidateMsg } from '../StudentPage/ValidateMsg';
 
-export const ActivateStudent = () => {
+export const StudentActivation = () => {
   interface StudentProfileWithArrayUrls extends StudentProfileRegister {
     portfolio1: string | undefined;
     portfolio2: string | undefined;
