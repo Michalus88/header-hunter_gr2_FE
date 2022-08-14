@@ -9,6 +9,8 @@ REACT_APP_STUDENT="api/user/student"
 REACT_APP_STUDENT_PROFILE_ACTIVATE="api/student/activate"
 REACT_APP_STUDENT_AVAILABLE="api/student/available"
 REACT_APP_STUDENT_FILTERED="api/student/filtered"
+REACT_APP_STUDENT_GET_DETAILS="api/student/detailed"
+REACT_APP_STUDENT_UPDATE="api/student"
 
 REACT_APP_HR="api/user/hr"
 REACT_APP_HR_BOOKING_STUDENT="api/hr/booking-student"

@@ -7,10 +7,12 @@ import {
   ExpectedContractType,
   DetailedStudentDataRes,
   StudentProfileRegister,
+  UrlEntity,
 } from 'types';
 import { ValidateMsg } from './ValidateMsg';
 import { MegaButton } from '../Elements/MegaButton';
 import { MainStudentWrapper } from './MainStudentWrapper';
+import { Spinner } from '../Spinner/Spinner';
 
 interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
   portfolio1: string | undefined;
@@ -25,44 +27,70 @@ interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
   project5: string | undefined;
 }
 
-// interface Props {
-//   tel: string | undefined;
-//   firstName: string;
-//   lastName: string;
-//   githubUsername: string;
-//   portfolioUrls: string[] | [];
-//   projectUrls: string[];
-//   bio: string | undefined;
-//   expectedTypeWork: ExpectedTypeWork;
-//   targetWorkCity: string | undefined;
-//   expectedContractType: ExpectedContractType;
-//   expectedSalary: string | undefined;
-//   canTakeApprenticeship: boolean;
-//   monthsOfCommercialExp: number;
-//   education: string | undefined;
-//   workExperience: string | undefined;
-//   courses: string | undefined;
-// }
+interface Props {
+  tel: string | undefined;
+  firstName: string;
+  lastName: string;
+  githubUsername: string;
+  portfolioUrls: UrlEntity[] | [];
+  projectUrls: UrlEntity[];
+  bio: string | undefined;
+  expectedTypeWork: ExpectedTypeWork | null;
+  targetWorkCity: string | undefined;
+  expectedContractType: ExpectedContractType | null;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  monthsOfCommercialExp: number;
+  education: string | undefined;
+  workExperience: string | undefined;
+  courses: string | undefined;
+}
 
-export const EditStudentForm = () => {
+export const EditStudentForm = ({
+  tel,
+  firstName,
+  lastName,
+  githubUsername,
+  projectUrls,
+  portfolioUrls,
+  bio,
+  expectedTypeWork,
+  targetWorkCity,
+  expectedContractType,
+  expectedSalary,
+  canTakeApprenticeship,
+  monthsOfCommercialExp,
+  education,
+  workExperience,
+  courses,
+}: Props) => {
   const navigate = useNavigate();
   const goBack = () => navigate('/student');
+  const [loading, setLoading] = useState<boolean>(false);
   const [dataStudent, setDataStudent] = useState<DetailedStudentDataRes | null>(null);
   const getStudentDetails = async () => {
     setDataStudent(null);
 
-    const res = await fetch(`http://localhost:3001/api/student/detailed`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
-    console.log(res);
-    const data = await res.json();
-    setDataStudent(data);
-    // console.log(data);
+    setLoading(true);
+
+    try {
+      const res = await fetch(`http://localhost:3001/api/student/detailed`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(res);
+      const data = await res.json();
+      setDataStudent(data);
+      // console.log(data);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -89,43 +117,51 @@ export const EditStudentForm = () => {
   //   courses: 'ukończone kursy',
   // });
 
+  const projectUrlsWithoutId = projectUrls.map((el) => (el ? el.url : undefined));
+  console.log(projectUrlsWithoutId);
+  const portfolioUrlsWithoutId = portfolioUrls.map((el) => (el ? el.url : undefined));
+  console.log(portfolioUrlsWithoutId);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<StudentProfileWithArrayUrls>({
-    // defaultValues: {
-    //   firstName,
-    //   lastName,
-    //   tel,
-    //   githubUsername: dataStudent?.studentInfo.githubUsername,
-    //   // portfolioUrls: dataStudent.portfolioUrls,
-    //   // projectUrls: dataStudent.projectUrls,
-    //   bio: dataStudent?.studentInfo.bio,
-    //   expectedTypeWork: dataStudent?.studentInfo.expectedTypeWork,
-    //   targetWorkCity: dataStudent?.studentInfo.targetWorkCity,
-    //   expectedContractType: dataStudent?.studentInfo.expectedContractType,
-    //   expectedSalary: dataStudent?.studentInfo.expectedSalary,
-    //   canTakeApprenticeship: dataStudent?.studentInfo.canTakeApprenticeship,
-    //   monthsOfCommercialExp: dataStudent?.studentInfo.monthsOfCommercialExp,
-    //   education: dataStudent?.studentInfo.education,
-    //   workExperience: dataStudent?.studentInfo.workExperience,
-    //   courses: dataStudent?.studentInfo.courses,
-    // },
+    defaultValues: {
+      firstName,
+      lastName,
+      tel,
+      githubUsername,
+      projectUrls: projectUrlsWithoutId,
+      portfolioUrls: portfolioUrlsWithoutId,
+      bio,
+      expectedTypeWork,
+      targetWorkCity,
+      expectedContractType,
+      expectedSalary,
+      canTakeApprenticeship,
+      monthsOfCommercialExp,
+      education,
+      workExperience,
+      courses,
+    },
     mode: 'onChange',
   });
 
-  const phone = String(watch('tel')) === '' ? null : watch('tel');
-  const bio = String(watch('bio')) === '' ? null : watch('bio');
-  const targetWorkCity = String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
-  const expectedSalary = String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
-  const education = String(watch('education')) === '' ? null : watch('education');
-  const workExperience = String(watch('workExperience')) === '' ? null : watch('workExperience');
-  const courses = String(watch('courses')) === '' ? null : watch('courses');
-  const expectedContractType =
+  const telFromForm = String(watch('tel')) === '' ? null : watch('tel');
+  const bioFromForm = String(watch('bio')) === '' ? null : watch('bio');
+  const targetWorkCityFromForm =
+    String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
+  const expectedSalaryFromForm =
+    String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
+  const educationFromForm = String(watch('education')) === '' ? null : watch('education');
+  const workExperienceFromForm =
+    String(watch('workExperience')) === '' ? null : watch('workExperience');
+  const coursesFromForm = String(watch('courses')) === '' ? null : watch('courses');
+  const expectedContractTypeFromForm =
     String(watch('expectedContractType')) === '' ? null : watch('expectedContractType');
-  const canTakeApprenticeship = String(watch('canTakeApprenticeship')) !== 'No';
+  const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
 
   let portfolioArr: (string | undefined | null)[] = [];
   let projectArr: (string | undefined | null)[] = [];
@@ -145,22 +181,22 @@ export const EditStudentForm = () => {
 
   const onSubmit: SubmitHandler<StudentProfileUpdate> = async (data) => {
     const fff = {
-      tel: phone,
+      tel: telFromForm,
       firstName: data.firstName,
       lastName: data.lastName,
       githubUsername: data.githubUsername,
       portfolioUrls: portfolioArr,
       projectUrls: projectArr,
-      bio,
+      bio: bioFromForm,
       expectedTypeWork: data.expectedTypeWork,
-      targetWorkCity,
-      expectedContractType,
-      expectedSalary,
-      canTakeApprenticeship,
+      targetWorkCity: targetWorkCityFromForm,
+      expectedContractType: targetWorkCityFromForm,
+      expectedSalary: expectedSalaryFromForm,
+      canTakeApprenticeship: canTakeApprenticeshipFromForm,
       monthsOfCommercialExp: Number(data.monthsOfCommercialExp),
-      education,
-      workExperience,
-      courses,
+      education: educationFromForm,
+      workExperience: workExperienceFromForm,
+      courses: coursesFromForm,
     };
     alert(JSON.stringify(fff));
     const res = await fetch(`http://localhost:3001/api/student`, {
@@ -175,7 +211,11 @@ export const EditStudentForm = () => {
     console.log(res);
     const test = await res.json();
     console.log(test);
+    navigate('/student');
   };
+
+  console.log(dataStudent);
+  if (loading) return <Spinner />;
 
   return (
     <MainStudentWrapper>
@@ -189,7 +229,6 @@ export const EditStudentForm = () => {
             <label>
               <span>Imię:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.firstName}
                 className="student-page__input"
                 type="text"
                 {...register('firstName', {
@@ -203,6 +242,7 @@ export const EditStudentForm = () => {
                     message: 'Min length is 3',
                   },
                 })}
+                // defaultValue={dataStudent?.studentInfo.firstName}
               />
             </label>
           </div>
@@ -235,7 +275,7 @@ export const EditStudentForm = () => {
             <label>
               <span>Numer telefonu:</span>
               <input
-                defaultValue={dataStudent?.studentInfo.tel}
+                // defaultValue={dataStudent?.studentInfo.tel}
                 className="student-page__input"
                 type="text"
                 {...register('tel', {
@@ -460,11 +500,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.portfolioUrls
-                      ? dataStudent.studentInfo.portfolioUrls[0]?.url
-                      : ''
-                  }
+                  defaultValue={portfolioUrls[0]?.url}
                 />
               </label>
             </div>
@@ -482,11 +518,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.portfolioUrls
-                      ? dataStudent.studentInfo.portfolioUrls[1]?.url
-                      : ''
-                  }
+                  defaultValue={portfolioUrls[1]?.url}
                 />
               </label>
             </div>
@@ -504,11 +536,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.portfolioUrls
-                      ? dataStudent.studentInfo.portfolioUrls[2]?.url
-                      : ''
-                  }
+                  defaultValue={portfolioUrls[2]?.url}
                 />
               </label>
             </div>
@@ -526,11 +554,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.portfolioUrls
-                      ? dataStudent.studentInfo.portfolioUrls[3]?.url
-                      : ''
-                  }
+                  defaultValue={portfolioUrls[3]?.url}
                 />
               </label>
             </div>
@@ -548,11 +572,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.portfolioUrls
-                      ? dataStudent.studentInfo.portfolioUrls[4]?.url
-                      : ''
-                  }
+                  defaultValue={portfolioUrls[4]?.url}
                 />
               </label>
             </div>
@@ -588,11 +608,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.projectUrls
-                      ? dataStudent.studentInfo.projectUrls[0]?.url
-                      : ''
-                  }
+                  defaultValue={projectUrls[0]?.url}
                 />
               </label>
             </div>
@@ -610,11 +626,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.projectUrls
-                      ? dataStudent.studentInfo.projectUrls[1]?.url
-                      : ''
-                  }
+                  defaultValue={projectUrls[1]?.url}
                 />
               </label>
             </div>
@@ -632,11 +644,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.projectUrls
-                      ? dataStudent.studentInfo.projectUrls[2]?.url
-                      : ''
-                  }
+                  defaultValue={projectUrls[2]?.url}
                 />
               </label>
             </div>
@@ -654,11 +662,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.projectUrls
-                      ? dataStudent.studentInfo.projectUrls[3]?.url
-                      : ''
-                  }
+                  defaultValue={projectUrls[3]?.url}
                 />
               </label>
             </div>
@@ -676,11 +680,7 @@ export const EditStudentForm = () => {
                       message: 'Invalid url',
                     },
                   })}
-                  defaultValue={
-                    dataStudent?.studentInfo.projectUrls
-                      ? dataStudent.studentInfo.projectUrls[4]?.url
-                      : ''
-                  }
+                  defaultValue={projectUrls[4]?.url}
                 />
               </label>
             </div>

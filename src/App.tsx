@@ -10,6 +10,7 @@ import { useAuth } from './hooks/useAuth';
 import { MainTemplate } from './components/templates/MainTemplate';
 import { Account } from './components/Account/Account';
 import { EditStudentForm } from './components/StudentPage/EditStudentForm';
+import { StudentDetails } from './components/StudentPage/StudentDetails';
 
 export const App = () => {
   const { user, signOut } = useAuth();
@@ -22,7 +23,7 @@ export const App = () => {
       <Route path="/hr/available-students" element={<AvailableStudents />} />
       <Route path="/students/:id" element={<CvPage />} />
       <Route path="/student" element={<StudentPage />} />
-      <Route path="/student/edit-form" element={<EditStudentForm />} />
+      <Route path="/student/edit-form" element={<StudentDetails />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
