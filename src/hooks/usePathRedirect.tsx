@@ -1,13 +1,19 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import { LoggedUserRes, Role } from 'types';
 
 export const usePathRedirect = (
   setUser: React.Dispatch<React.SetStateAction<LoggedUserRes | null>>,
+  signOut: () => void,
 ) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (userData: LoggedUserRes) => {
+    if (location.pathname.includes('activate')) {
+      signOut();
+      navigate(location.pathname);
+    }
     switch (userData.role) {
       case Role.STUDENT:
         navigate('/student');
