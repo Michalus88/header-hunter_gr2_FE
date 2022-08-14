@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const FilterGroup = ({ clearAll }: Props) => {
-  const [workType, setWorkType] = useState<ExpectedTypeWork>(ExpectedTypeWork.IRRELEVANT);
-  const [contract, setContract] = useState<ExpectedContractType>(ExpectedContractType.IRRELEVANT);
+  const [workType, setWorkType] = useState<ExpectedTypeWork | null>(null);
+  const [contract, setContract] = useState<ExpectedContractType | null>(null);
   const [salaryFrom, setSalaryFrom] = useState<number | null>(null);
   const [salaryTo, setSalaryTo] = useState<number | null>(null);
   const [workMonth, setWorkMonth] = useState<number | null>(0);
@@ -21,11 +21,11 @@ export const FilterGroup = ({ clearAll }: Props) => {
   const { filteringOptions, setFilteringOptions } = useContext(HrContext);
 
   useEffect(() => {
-    setWorkType(ExpectedTypeWork.IRRELEVANT);
-    setContract(ExpectedContractType.IRRELEVANT);
+    setWorkType(null);
+    setContract(null);
     setSalaryFrom(null);
     setSalaryTo(null);
-    setWorkMonth(0);
+    setWorkMonth(null);
     setApprenticeship(null);
   }, [clearAll]);
 
@@ -71,11 +71,11 @@ export const FilterGroup = ({ clearAll }: Props) => {
     });
   }, [salaryTo]);
 
-  const toggleWork = (wType: ExpectedTypeWork) => {
+  const toggleWork = (wType: ExpectedTypeWork | null) => {
     setWorkType(wType);
   };
 
-  const toggleContract = (tContract: ExpectedContractType) => {
+  const toggleContract = (tContract: ExpectedContractType | null) => {
     setContract(tContract);
   };
 
@@ -147,11 +147,11 @@ export const FilterGroup = ({ clearAll }: Props) => {
           />
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small ${
-              workType === ExpectedTypeWork.IRRELEVANT && 'megak-glow'
+              workType === null && 'megak-glow'
             }`}
             buttonTitle="Bez znaczenia"
             onClick={() => {
-              toggleWork(ExpectedTypeWork.IRRELEVANT);
+              toggleWork(null);
             }}
           />
         </div>
@@ -189,11 +189,11 @@ export const FilterGroup = ({ clearAll }: Props) => {
           />
           <MegaButton
             classNameAdd={`megak-secondary filter-star-butons-group-small  ${
-              contract === ExpectedContractType.IRRELEVANT && 'megak-glow'
+              contract === null && 'megak-glow'
             }`}
             buttonTitle="Brak preferencji"
             onClick={() => {
-              toggleContract(ExpectedContractType.IRRELEVANT);
+              toggleContract(null);
             }}
           />
         </div>

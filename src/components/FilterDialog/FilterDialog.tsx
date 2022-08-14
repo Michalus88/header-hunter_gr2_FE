@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
-import { ExpectedContractType, ExpectedTypeWork } from 'types';
+import { ExpectedTypeWork } from 'types';
 import { Toast } from 'primereact/toast';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
@@ -14,6 +14,10 @@ interface Props {
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const [clearAll, setClearAll] = useState(false);
   const { filteringOptions, setFilteringOptions } = useContext(HrContext);
+  const { filteredStudents, setFilteredStudents } = useContext(HrContext);
+  const { currentPage, setCurrentPage } = useContext(HrContext);
+  const { maxPerPage, setMaxPerPage } = useContext(HrContext);
+  const { studentsCount, setStudentsCount } = useContext(HrContext);
 
   const toast = useRef<any>(null);
 
@@ -23,8 +27,8 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       courseEngagement: null,
       projectDegree: null,
       teamProjectDegree: null,
-      expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
-      expectedContractType: ExpectedContractType.IRRELEVANT,
+      expectedTypeWork: null,
+      expectedContractType: null,
       expectedSalaryFrom: null,
       expectedSalaryTo: null,
       canTakeApprenticeship: null,
@@ -34,13 +38,9 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   };
 
   const sendValueFromFilterDialog = async () => {
-    console.log(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}`);
-
-    console.log({ filteringOptions });
-
     try {
       const data = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}`,
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}/9999999/1`,
         {
           mode: 'cors',
           credentials: 'include',
@@ -62,6 +62,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
         });
         return;
       }
+      setFilteredStudents(response);
     } catch (e: any) {
       toast.current.show({
         severity: 'error',
@@ -69,6 +70,10 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
         detail: `${e.message}`,
         life: 4000,
       });
+    } finally {
+      console.log({ filteredStudents });
+      toggleFilterDialog();
+      toggleClearAll();
     }
   };
 

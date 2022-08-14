@@ -12,9 +12,9 @@ interface Props {
   courseEngagement: number;
   projectDegree: number;
   teamProjectDegree: number;
-  expectedTypeWork: ExpectedTypeWork;
+  expectedTypeWork: ExpectedTypeWork | null;
   targetWorkCity: string | undefined;
-  expectedContractType: ExpectedContractType;
+  expectedContractType: ExpectedContractType | null;
   expectedSalary: string | undefined;
   canTakeApprenticeship: boolean;
   workExperience: string | undefined;

@@ -1,28 +1,17 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
-import { useState } from 'react';
-import back from '../../assets/img/back.png';
+import { useContext } from 'react';
+import { HrContext } from '../../providers/HrProvider';
 
-interface Props {
-  maxPerPage: number;
-  currentPage: number;
-  studentsCount: number;
-  totalPages: number;
-  onChangeViewSupport: (currentP: number, maxPerP: number) => void;
-}
+export const ViewSupport = () => {
+  const { currentPage, setCurrentPage } = useContext(HrContext);
+  const { maxPerPage, setMaxPerPage } = useContext(HrContext);
+  const { studentsCount, setStudentsCount } = useContext(HrContext);
+  const { totalPages, setTotalPages } = useContext(HrContext);
 
-interface ParentProps {
-  currentP: number;
-  maxPerP: number;
-}
+  const onChangeViewSupport = (currentP: number, maxPerP: number) => {
+    setCurrentPage(currentP);
+    setMaxPerPage(maxPerP);
+  };
 
-export const ViewSupport = ({
-  maxPerPage,
-  currentPage,
-  studentsCount,
-  totalPages,
-  onChangeViewSupport,
-}: Props) => {
   const options = [
     { value: 3, label: '3' },
     { value: 5, label: '5' },
@@ -37,24 +26,31 @@ export const ViewSupport = ({
 
   const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
     onChangeViewSupport(
-      studentsCount === maxPerPage ? 1 : currentPage,
+      studentsCount === Number(maxPerPage) ? 1 : Number(currentPage),
       Number(event.currentTarget.value),
     );
+    setCurrentPage(1);
   };
 
   return (
     <div className="footer-container">
       <p className="elements-status">Studentów na stronie</p>
-      <select className="select-footer" name="" id="" value={maxPerPage} onChange={handleChange}>
+      <select
+        className="select-footer"
+        name=""
+        id=""
+        value={Number(maxPerPage)}
+        onChange={handleChange}
+      >
         {options.map((option) =>
           studentsCount > option.value ? (
-            <option value={option.value} key={option.value}>
-              {option.label}
+            <option value={Number(option.value)} key={Number(option.value)}>
+              {Number(option.label)}
             </option>
           ) : null,
         )}
-        <option value={studentsCount} key={studentsCount}>
-          {studentsCount}
+        <option value={Number(studentsCount)} key={Number(studentsCount)}>
+          {Number(studentsCount)}
         </option>
       </select>
 
@@ -64,7 +60,9 @@ export const ViewSupport = ({
         <button
           className="left-switch"
           type="submit"
-          onClick={() => onChangeViewSupport(currentPage > 1 ? (currentPage -= 1) : 1, maxPerPage)}
+          onClick={() =>
+            onChangeViewSupport(currentPage > 1 ? Number(currentPage) - 1 : 1, Number(maxPerPage))
+          }
         >
           {' '}
         </button>
@@ -75,8 +73,8 @@ export const ViewSupport = ({
           type="submit"
           onClick={() =>
             onChangeViewSupport(
-              currentPage < totalPages ? (currentPage += 1) : totalPages,
-              maxPerPage,
+              currentPage < totalPages ? Number(currentPage) + 1 : Number(totalPages),
+              Number(maxPerPage),
             )
           }
         >
