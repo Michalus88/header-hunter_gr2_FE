@@ -9,6 +9,7 @@ import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
 import { HrProvider } from '../providers/HrProvider';
+import { ActivateStudent } from '../components/ActivateStudent';
 
 export const AuthenticatedApp = () => {
   return (
@@ -34,7 +35,8 @@ export const AuthenticatedApp = () => {
           }
         />
         <Route path="/students/:id" element={<CvPage />} />
-        <Route path="/student" element={<StudentPage />} />
+        <Route path="/student" element={<ActivateStudent />} />
+        {/* <Route path="/test" element={<ActivateStudent />} /> */}
       </Routes>
     </MainTemplate>
   );
