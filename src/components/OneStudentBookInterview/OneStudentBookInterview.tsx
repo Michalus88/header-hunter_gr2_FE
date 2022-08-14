@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
 interface Props {
+  // id: string;
   firstName: string;
   lastName: string;
   courseCompletion: number;
   courseEngagement: number;
   projectDegree: number;
   teamProjectDegree: number;
-  expectedTypeWork: string;
-  targetWorkCity: string | null;
-  expectedContractType: string;
-  expectedSalary: number;
-  canTakeApprenticeship: string;
-  workExperience: number;
+  expectedTypeWork: ExpectedTypeWork | null;
+  targetWorkCity: string | undefined;
+  expectedContractType: ExpectedContractType | null;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  workExperience: string | undefined;
+  bookingDateTo: Date;
+  githubUsername: string;
 }
 
 export const OneStudentBookInterview = (props: Props) => {
   const [details, setDetails] = useState(false);
+  const [avatar, setAvatar] = useState(
+    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E',
+  );
 
   const navigate = useNavigate();
 
@@ -44,7 +51,70 @@ export const OneStudentBookInterview = (props: Props) => {
     expectedSalary, // Oczekiwane wynagrodzenie miesięczne netto
     canTakeApprenticeship, // Zgoda na odbycie bezpłatnych praktyk/stażu na początek
     workExperience, // Komercyjne doświadczenie w programowaniu
+    bookingDateTo,
+    githubUsername,
   } = props;
+
+  const contractT = (): string => {
+    switch (expectedContractType) {
+      case 0:
+        return 'Tylko UoP';
+        break;
+      case 1:
+        return 'Możliwe B2B';
+        break;
+      case 2:
+        return 'Możliwe UZ/UoD';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const workT = (): string => {
+    switch (expectedTypeWork) {
+      case 0:
+        return 'Na miejscu';
+        break;
+      case 1:
+        return 'Gotowość do przeprowadzki';
+        break;
+      case 2:
+        return 'Wyłącznie zdalnie';
+        break;
+      case 3:
+        return 'Hybrydowo';
+        break;
+      default:
+        return 'Brak preferencji';
+    }
+  };
+
+  const checkGitHubUser = async () => {
+    try {
+      const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const response = await data.json();
+
+      // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+
+      if (response.message !== 'Not Found') {
+        setAvatar(`https://github.com/${githubUsername}.png`);
+      }
+      // eslint-disable-next-line no-empty
+    } catch {}
+  };
+
+  useEffect(() => {
+    checkGitHubUser();
+  }, []);
 
   return (
     <article className="available-One-student">
@@ -52,13 +122,15 @@ export const OneStudentBookInterview = (props: Props) => {
         <div className="BookInterview-student-all">
           <div className="BookInterview-student-reservation">
             <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
-            <p className="BookInterview-student-reservation-date">10.01.2001</p>
+            <p className="BookInterview-student-reservation-date">
+              {new Date(bookingDateTo).toLocaleDateString()}
+            </p>
           </div>
 
           <div className="BookInterview-student-information">
             <img
               className="BookInterview-student-information-avatar"
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              src={avatar}
               alt="avatar użytkownika"
             />
             <p className="BookInterview-student-information-name">
@@ -115,37 +187,37 @@ export const OneStudentBookInterview = (props: Props) => {
         <div className="detail">
           <span className="title">Preferowane miejsce pracy</span>
           <span className="description-text">
-            <strong>{expectedTypeWork}</strong>
+            <strong>{workT()}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Docelowe miejsce gdzie chce pracować kandydat</span>
           <span className="description-text">
-            <strong>{targetWorkCity}</strong>
+            <strong>{!targetWorkCity ? `brak` : `${targetWorkCity}`}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwany typ kontraktu</span>
           <span className="description-text">
-            <strong>{expectedContractType}</strong>
+            <strong>{contractT()}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Oczekiwane wynagrodzenie miesięczne netto</span>
           <span className="description-text">
-            <strong>{expectedSalary}zł</strong>
+            <strong>{!expectedSalary ? `brak` : `${expectedSalary}zł`}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Zgoda na odbycie bezpłatnych praktyk/stażu na początek</span>
           <span className="description-text">
-            <strong>{canTakeApprenticeship}</strong>
+            <strong>{canTakeApprenticeship ? 'Tak' : 'Nie'}</strong>
           </span>
         </div>
         <div className="detail">
           <span className="title">Komercyjne doświadczenie w programowaniu</span>
           <span className="description-text">
-            <strong>{workExperience} mies.</strong>
+            <strong>{!workExperience ? 'brak' : `${workExperience}mies`}</strong>
           </span>
         </div>
       </div>
