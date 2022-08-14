@@ -1,8 +1,9 @@
 import React from 'react';
+import { ExpectedContractType, ExpectedTypeWork } from 'types';
 
 interface Props {
   title: string;
-  text: string;
+  text: string | undefined | ExpectedTypeWork | ExpectedContractType | null;
 }
 
 export const ExpectationElement = ({ title, text }: Props) => {
