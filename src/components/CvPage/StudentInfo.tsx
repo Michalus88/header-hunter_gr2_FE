@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+import { Role } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../../hooks/useAuth';
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
@@ -16,6 +19,10 @@ interface Props {
 }
 
 export const StudentInfo = ({ githubUsername, firstName, lastName, tel, email, bio }: Props) => {
+  const navigate = useNavigate();
+  const editProfile = () => navigate('/student/edit-form');
+
+  const { user } = useAuth();
   return (
     <aside className="cv-student-info">
       <div className="cv-student-info__picture-container">
@@ -50,18 +57,26 @@ export const StudentInfo = ({ githubUsername, firstName, lastName, tel, email, b
         <p className="cv-student-info__text">{bio}</p>
       </div>
       <div className="cv-student-info__btns">
-        <MegaButton
-          buttonTitle="Brak zainteresowania"
-          onClick={() => {}}
-          classNameAdd="cv-student-info__btn megak-primary"
-        />
+        {user?.role !== Role.STUDENT && (
+          <MegaButton
+            buttonTitle="Brak zainteresowania"
+            onClick={() => {}}
+            classNameAdd="cv-student-info__btn megak-primary"
+          />
+        )}
+        {user?.role === Role.STUDENT && (
+          <MegaButton
+            buttonTitle="Edytuj profil"
+            onClick={editProfile}
+            classNameAdd="cv-student-info__btn megak-primary"
+          />
+        )}
         <MegaButton
           buttonTitle="Zatrudniony"
           onClick={() => {}}
           classNameAdd="megak-primary cv-student-info__btn"
         />
       </div>
-      {/*  TODO add buttons from develop */}
     </aside>
   );
 };

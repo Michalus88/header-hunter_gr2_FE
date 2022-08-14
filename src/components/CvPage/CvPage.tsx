@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DetailedStudentDataRes, Role } from 'types';
-import { useAuth } from 'src/hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { MainWrapper } from './MainWrapper';
 import { GoBack } from './GoBack';
 import { StudentInfo } from './StudentInfo';
@@ -12,12 +12,12 @@ import { Spinner } from '../Spinner/Spinner';
 // }
 
 export const CvPage = () => {
-  // const { user } = useAuth();
+  const { user } = useAuth();
+  console.log(user);
   const [studentData, getStudentData] = useState<DetailedStudentDataRes | null>(null);
   const getStudentDetails = async () => {
     getStudentData(null);
 
-    // console.log(user);
     const testID = '1';
 
     // const URL =
@@ -47,7 +47,7 @@ export const CvPage = () => {
 
   return (
     <MainWrapper>
-      <GoBack />
+      {user?.role !== Role.STUDENT && <GoBack />}
       <StudentInfo
         githubUsername={studentData.studentInfo.githubUsername}
         firstName={studentData.studentInfo.firstName}

@@ -9,6 +9,7 @@ import { StudentPage } from './components/StudentPage/StudentPage';
 import { useAuth } from './hooks/useAuth';
 import { MainTemplate } from './components/templates/MainTemplate';
 import { Account } from './components/Account/Account';
+import { EditStudentForm } from './components/StudentPage/EditStudentForm';
 
 export const App = () => {
   const { user, signOut } = useAuth();
@@ -21,6 +22,7 @@ export const App = () => {
       <Route path="/hr/available-students" element={<AvailableStudents />} />
       <Route path="/students/:id" element={<CvPage />} />
       <Route path="/student" element={<StudentPage />} />
+      <Route path="/student/edit-form" element={<EditStudentForm />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
   );

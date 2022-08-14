@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ExpectedTypeWork, StudentProfileUpdate, ExpectedContractType } from 'types';
 import { ValidateMsg } from './ValidateMsg';
 import { MegaButton } from '../Elements/MegaButton';
+import { MainStudentWrapper } from './MainStudentWrapper';
 
 interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
   portfolio1: string | undefined;
@@ -18,6 +20,8 @@ interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
 }
 
 export const EditStudentForm = () => {
+  const navigate = useNavigate();
+  const goBack = () => navigate('/student');
   const [dataStudent, setDataStudent] = useState({
     email: 'gnys1001@gmail.com',
     tel: '60000000',
@@ -129,11 +133,10 @@ export const EditStudentForm = () => {
   };
 
   return (
-    <>
+    <MainStudentWrapper>
       <h2 className="student-page__title-form">Twoje dane które możesz modyfikować</h2>
       <div className="student-page_btns">
-        <MegaButton buttonTitle="Zatrudniony" onClick={() => {}} classNameAdd="megak-primary" />
-        <MegaButton buttonTitle="Pokaż CV" onClick={() => {}} classNameAdd="megak-primary" />
+        <MegaButton buttonTitle="Wróć do CV" onClick={goBack} classNameAdd="megak-primary" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="student-page__form">
@@ -580,6 +583,6 @@ export const EditStudentForm = () => {
           </button>
         </div>
       </form>
-    </>
+    </MainStudentWrapper>
   );
 };
