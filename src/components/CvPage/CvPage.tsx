@@ -18,7 +18,7 @@ export const CvPage = () => {
   const getStudentDetails = async () => {
     getStudentData(null);
 
-    const testID = '1';
+    // const testID = '1';
 
     // const URL =
     //   user?.role === Role.STUDENT
