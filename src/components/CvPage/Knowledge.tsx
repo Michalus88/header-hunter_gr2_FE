@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {
   title: string;
-  description: string;
+  description: string | undefined;
 }
 
 export const Knowledge = ({ description, title }: Props) => {
@@ -11,7 +11,7 @@ export const Knowledge = ({ description, title }: Props) => {
       <h3 className="cv-title">{title}</h3>
       <div className="cv-knowledge__container">
         <div className="cv-knowledge__item">
-          <p className="cv-knowledge__text">{description}</p>
+          <pre className="cv-knowledge__text">{description}</pre>
         </div>
       </div>
     </div>

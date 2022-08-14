@@ -1,19 +1,36 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+import { Role } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
+import { useAuth } from '../../hooks/useAuth';
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
 import { MegaButton } from '../Elements/MegaButton';
 
-export const StudentInfo = () => {
+interface Props {
+  githubUsername: string;
+  firstName: string;
+  lastName: string;
+  tel: string | undefined;
+  email: string;
+  bio: string | undefined;
+}
+
+export const StudentInfo = ({ githubUsername, firstName, lastName, tel, email, bio }: Props) => {
+  const navigate = useNavigate();
+  const editProfile = () => navigate('/student/edit-form');
+
+  const { user } = useAuth();
   return (
     <aside className="cv-student-info">
       <div className="cv-student-info__picture-container">
-        <CvImage src="https://github.com/sgnys.png" alt="zdjęcie cv studenta" />
+        <CvImage src={`https://github.com/${githubUsername}.png`} alt="zdjęcie cv studenta" />
       </div>
-      <p className="cv-student-info__name">Sławomir Gnyś</p>
+      <p className="cv-student-info__name">
+        {firstName} {lastName}
+      </p>
       <div className="cv-student-info__gitHub-info">
         <GitHubIcon src={github} alt="ikona github" />
         <a
@@ -22,40 +39,44 @@ export const StudentInfo = () => {
           target="_blank"
           rel="noreferrer"
         >
-          sgnys
+          {githubUsername}
         </a>
       </div>
       <div className="cv-student-info__contact">
         <div className="cv-student-info__contact-phone">
           <FontAwesomeIcon icon={faPhone} className="cv-student-info__contact-icon" />
-          <p className="cv-student-info__phone">+48 600 000 000</p>
+          <p className="cv-student-info__phone">{tel}</p>
         </div>
         <div className="cv-student-info__contact-mail">
           <FontAwesomeIcon icon={faEnvelope} className="cv-student-info__contact-icon" />
-          <p className="cv-student-info__phone">gnys1001@gmail.com</p>
+          <p className="cv-student-info__phone">{email}</p>
         </div>
       </div>
       <div className="cv-student-info__about-me">
         <p className="cv-student-info__title">O mnie</p>
-        <p className="cv-student-info__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores delectus
-          dolores eius esse illum libero nesciunt nihil nobis nostrum odio optio possimus, provident
-          repudiandae saepe suscipit tempora ullam vel!
-        </p>
+        <p className="cv-student-info__text">{bio}</p>
       </div>
       <div className="cv-student-info__btns">
-        <MegaButton
-          buttonTitle="Brak zainteresowania"
-          onClick={() => {}}
-          classNameAdd="cv-student-info__btn megak-primary"
-        />
+        {user?.role !== Role.STUDENT && (
+          <MegaButton
+            buttonTitle="Brak zainteresowania"
+            onClick={() => {}}
+            classNameAdd="cv-student-info__btn megak-primary"
+          />
+        )}
+        {user?.role === Role.STUDENT && (
+          <MegaButton
+            buttonTitle="Edytuj profil"
+            onClick={editProfile}
+            classNameAdd="cv-student-info__btn megak-primary"
+          />
+        )}
         <MegaButton
           buttonTitle="Zatrudniony"
           onClick={() => {}}
           classNameAdd="megak-primary cv-student-info__btn"
         />
       </div>
-      {/*  TODO add buttons from develop */}
     </aside>
   );
 };
