@@ -1,5 +1,4 @@
 import React from 'react';
-
-// import '../../assets/css/spinner.css';
+import '../../assets/css/style.css';
 
 export const Spinner = () => <span className="loader" />;
