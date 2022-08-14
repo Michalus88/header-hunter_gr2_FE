@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType } from 'types';
-import { MegaButton } from './Elements/MegaButton';
 import { ValidateMsg } from './StudentPage/ValidateMsg';
 
 export const ActivateStudent = () => {
