@@ -1,28 +1,25 @@
 import { ErrorRes } from 'types';
 
-type IsResErrorMsg = (res: Response) => Promise<string | null>;
-
-export const isResErrorMsg: IsResErrorMsg = async (res: Response) => {
-  let errorMsg: null | string = null;
-
+export const setIfErrMsg = async (res: Response) => {
+  let errMsg: string | null = null;
   if (!res.ok) {
     const errorRes: ErrorRes | null = await res.json();
     const apiMessage = errorRes?.message ?? 'Sorry. Please try later';
 
     switch (res.status) {
       case 400:
-        errorMsg = apiMessage;
+        errMsg = apiMessage;
         break;
       case 401:
-        errorMsg = apiMessage;
+        errMsg = apiMessage;
         break;
       case 403:
-        errorMsg = apiMessage;
+        errMsg = apiMessage;
         break;
       default:
-        errorMsg = 'Sorry. Please try later';
+        errMsg = 'Sorry. Please try later';
         break;
     }
   }
-  return errorMsg;
+  return errMsg;
 };
