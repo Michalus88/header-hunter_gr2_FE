@@ -56,7 +56,7 @@ export const AvailableStudents = () => {
         (student: AvailableStudentRes): JSX.Element => (
           <AvailableOneStudent
             key={student.id}
-            id={student.id}
+            // id={student.id}
             courseCompletion={student.courseCompletion}
             courseEngagement={student.courseEngagement}
             projectDegree={student.projectDegree}
@@ -89,7 +89,7 @@ export const AvailableStudents = () => {
       (student: AvailableStudentRes): JSX.Element => (
         <AvailableOneStudent
           key={student.id}
-          id={student.id}
+          // id={student.id}
           courseCompletion={student.courseCompletion}
           courseEngagement={student.courseEngagement}
           projectDegree={student.projectDegree}

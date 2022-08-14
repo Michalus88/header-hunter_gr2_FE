@@ -12,13 +12,9 @@ export const SearchFiltration = () => {
     setSisplayFilterDialog(!displayFilterDialog);
   };
 
-  //   const clickSearch = () => {
-  //     console.log(`Szukam ${search}`);
-  //   };
-
   return (
     <div className="search-filtration">
-      <p className="input-wrapper">
+      {/* <p className="input-wrapper">
         <span className="p-input-icon-left">
           <i className="pi pi-search" />
           <InputText
@@ -27,18 +23,7 @@ export const SearchFiltration = () => {
             placeholder="Search"
           />
         </span>
-
-        {/* <button className="search-btn" type="button" onClick={clickSearch}>
-          <img src={magnifer} alt="" />
-        </button>
-
-        <input
-          type="text"
-          value={search}
-          placeholder="Szukaj"
-          onChange={(e) => setSearch(e.target.value)}
-        /> */}
-      </p>
+      </p> */}
       <MegaButton
         classNameAdd="megak-secondary megak-small-height megak-paddng"
         buttonTitle="Filter"
