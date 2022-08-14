@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
+import { ExpectedTypeWork } from 'types';
+import { Toast } from 'primereact/toast';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
+import { HrContext } from '../../providers/HrProvider';
 
 interface Props {
   toggleFilterDialog: () => void;
@@ -10,9 +13,68 @@ interface Props {
 
 export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const [clearAll, setClearAll] = useState(false);
+  const { filteringOptions, setFilteringOptions } = useContext(HrContext);
+  const { filteredStudents, setFilteredStudents } = useContext(HrContext);
+  const { currentPage, setCurrentPage } = useContext(HrContext);
+  const { maxPerPage, setMaxPerPage } = useContext(HrContext);
+  const { studentsCount, setStudentsCount } = useContext(HrContext);
+
+  const toast = useRef<any>(null);
 
   const toggleClearAll = () => {
+    setFilteringOptions({
+      courseCompletion: null,
+      courseEngagement: null,
+      projectDegree: null,
+      teamProjectDegree: null,
+      expectedTypeWork: null,
+      expectedContractType: null,
+      expectedSalaryFrom: null,
+      expectedSalaryTo: null,
+      canTakeApprenticeship: null,
+      monthsOfCommercialExp: 0,
+    });
     setClearAll(!clearAll);
+  };
+
+  const sendValueFromFilterDialog = async () => {
+    try {
+      const data = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}/9999999/1`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify(filteringOptions),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const response = await data.json();
+      if (data.status >= 400) {
+        toast.current.show({
+          severity: 'error',
+          summary: 'Błąd',
+          detail: `${response.message}`,
+          life: 4000,
+        });
+        return;
+      }
+      setFilteredStudents(response);
+    } catch (e: any) {
+      toast.current.show({
+        severity: 'error',
+        summary: 'Błąd',
+        detail: `${e.message}`,
+        life: 4000,
+      });
+    } finally {
+      console.log({ filteredStudents });
+      toggleFilterDialog();
+      toggleClearAll();
+    }
   };
 
   const header = (
@@ -35,22 +97,27 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       <MegaButton
         classNameAdd="megak-primary megak-paddng"
         buttonTitle="Pokaż wyniki"
-        onClick={() => toggleFilterDialog()}
+        onClick={() => {
+          sendValueFromFilterDialog();
+        }}
       />
     </div>
   );
 
   return (
-    <Dialog
-      className="filter-dialog"
-      header={header}
-      visible={visible}
-      resizable={false}
-      footer={footer}
-      onHide={() => toggleFilterDialog}
-      closable={false}
-    >
-      <FilterGroup clearAll={clearAll} />
-    </Dialog>
+    <>
+      <Toast ref={toast} />
+      <Dialog
+        className="filter-dialog"
+        header={header}
+        visible={visible}
+        resizable={false}
+        footer={footer}
+        onHide={() => toggleFilterDialog}
+        closable={false}
+      >
+        <FilterGroup clearAll={clearAll} />
+      </Dialog>
+    </>
   );
 };

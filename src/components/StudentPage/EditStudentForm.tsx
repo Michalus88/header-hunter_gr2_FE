@@ -27,7 +27,7 @@ export const EditStudentForm = () => {
     portfolioUrls: ['https://portfolio1', 'https://portfolio2'],
     projectUrls: ['https://project1', 'https://project2'],
     bio: 'Lorem ut etiam sit amet nisl purus in mollis nunc sed id semper risus in hendrerit gravida rutrum quisque non tellus',
-    expectedTypeWork: ExpectedTypeWork.IRRELEVANT,
+    expectedTypeWork: null,
     targetWorkCity: 'Łódź',
     expectedContractType: ExpectedContractType.EMPLOYMENT_CONTRACT,
     expectedSalary: '5 000',
@@ -243,7 +243,7 @@ export const EditStudentForm = () => {
                 <option value={ExpectedTypeWork.READY_TO_MOVE}>Gotowość do przeprowadzki</option>
                 <option value={ExpectedTypeWork.REMOTE}>Wyłącznie zdalnie</option>
                 <option value={ExpectedTypeWork.HYBRID}>Hybrydowo</option>
-                <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option>
+                {/* <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option> */}
               </select>
             </label>
           </div>
