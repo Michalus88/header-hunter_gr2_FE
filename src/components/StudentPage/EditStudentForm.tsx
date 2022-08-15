@@ -72,14 +72,17 @@ export const EditStudentForm = ({
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:3001/api/student/detailed`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_GET_DETAILS}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
         },
-      });
+      );
       const data = await res.json();
     } catch (error: any) {
       console.log(error.message);
