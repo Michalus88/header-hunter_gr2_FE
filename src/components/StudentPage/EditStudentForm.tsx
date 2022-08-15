@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
   ExpectedTypeWork,
-  StudentProfileUpdate,
+  StudentProfileRegister,
   ExpectedContractType,
   DetailedStudentDataRes,
   UrlEntity,
@@ -13,7 +13,7 @@ import { MegaButton } from '../Elements/MegaButton';
 import { MainStudentWrapper } from './MainStudentWrapper';
 import { Spinner } from '../Spinner/Spinner';
 
-interface StudentProfileWithArrayUrls extends StudentProfileUpdate {
+interface StudentProfileWithArrayUrls extends StudentProfileRegister {
   portfolio1: string | undefined;
   portfolio2: string | undefined;
   portfolio3: string | undefined;
@@ -33,9 +33,9 @@ interface Props {
   portfolioUrls: UrlEntity[] | [];
   projectUrls: UrlEntity[];
   bio: string | undefined;
-  expectedTypeWork: ExpectedTypeWork | null;
+  expectedTypeWork: ExpectedTypeWork | null | undefined;
   targetWorkCity: string | undefined;
-  expectedContractType: ExpectedContractType | null;
+  expectedContractType: ExpectedContractType | null | undefined;
   expectedSalary: string | undefined;
   canTakeApprenticeship: boolean;
   monthsOfCommercialExp: number;
@@ -152,7 +152,7 @@ export const EditStudentForm = ({
     projectArr = projects.filter((el) => el);
   }, [portfolioArr, projectArr]);
 
-  const onSubmit: SubmitHandler<StudentProfileUpdate> = async (data) => {
+  const onSubmit: SubmitHandler<StudentProfileRegister> = async (data) => {
     const fff = {
       tel: telFromForm,
       firstName: data.firstName,

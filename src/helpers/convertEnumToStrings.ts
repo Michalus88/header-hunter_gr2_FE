@@ -1,6 +1,6 @@
 import { ExpectedContractType, ExpectedTypeWork } from 'types';
 
-export const typeWork = (type: ExpectedTypeWork | null) => {
+export const typeWork = (type: ExpectedTypeWork | null | undefined) => {
   switch (type) {
     case ExpectedTypeWork.AT_LOCATION:
       return 'Na miejscu';
@@ -17,7 +17,7 @@ export const typeWork = (type: ExpectedTypeWork | null) => {
   }
 };
 
-export const contractType = (type: ExpectedContractType | null) => {
+export const contractType = (type: ExpectedContractType | null | undefined) => {
   switch (type) {
     case ExpectedContractType.EMPLOYMENT_CONTRACT:
       return 'Tylko UoP';
