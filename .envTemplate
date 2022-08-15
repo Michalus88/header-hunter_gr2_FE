@@ -1,13 +1,15 @@
 REACT_APP_LOGIN="api/auth/login"
 REACT_APP_LOGOUT="api/auth/logout"
 
-REACT_APP_USER_ACTIVATE="/api/user/activate"
 REACT_APP_USER_GET="api/user"
 REACT_APP_USER_PASSWORD="api/user/password"
 REACT_APP_USER_EMAIL="api/user/email"
 REACT_APP_USER_PASSWORD_RECOVERY="api/user/password-recovery"
+REACT_APP_USER_ACTIVATE="api/user/activate"
 
 REACT_APP_STUDENT="api/user/student"
+REACT_APP_STUDENT_UPDATE="api/student"
+REACT_APP_STUDENT_HIRED="api/student/hired"
 REACT_APP_STUDENT_PROFILE_ACTIVATE="api/student/activate"
 REACT_APP_STUDENT_AVAILABLE="api/student/available"
 REACT_APP_STUDENT_FILTERED="api/student/filtered"
@@ -15,8 +17,11 @@ REACT_APP_STUDENT_GET_DETAILS="api/student/detailed"
 REACT_APP_STUDENT_UPDATE="api/student"
 
 REACT_APP_HR="api/user/hr"
+REACT_APP_GET_HR="api/hr"
 REACT_APP_HR_BOOKING_STUDENT="api/hr/booking-student"
 REACT_APP_HR_BOOKED_STUDENTS="api/hr/booked-students"
+REACT_APP_HR_BOOKED_STUDENTS_FILTERED="api/hr/booked-students/filtered"
 REACT_APP_HR_DETAIL_STUDENTS="api/hr/reserved-students"
+REACT_APP_HR_HIRED="api/hr/hired"
 
 REACT_APP_RECAPTCHA_PUBLIC_KEY=""

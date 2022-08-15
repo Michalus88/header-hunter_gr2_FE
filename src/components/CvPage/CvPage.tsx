@@ -21,14 +21,17 @@ export const CvPage = () => {
     //     ? `http://localhost:3001/api/student/detailed`
     //     : `http://localhost:3001/api/hr/booked-students/${testID}`;
 
-    const res = await fetch(`http://localhost:3001/api/student/detailed`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+    const res = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_GET_DETAILS}`,
+      {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       },
-    });
+    );
     console.log(res);
     const data = await res.json();
     getStudentData(data);
