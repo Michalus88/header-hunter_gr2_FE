@@ -10,18 +10,20 @@ interface HrContextType {
   currentPage: Number;
   studentsCount: Number;
   totalPages: Number;
-  updateStudents: Boolean;
+  isFiltered: Boolean;
   availableStudents: AvailableStudentsWithtPaginationRes;
-  filteredStudents: AvailableStudentsWithtPaginationRes;
+  filteredStudents: AvailableStudentsWithtPaginationRes | ReservedStudentsWithPaginationRes;
   bookedStudents: ReservedStudentsWithPaginationRes;
   filteringOptions: FilteringOptions;
   setMaxPerPage: (page: number) => void;
   setCurrentPage: (page: number) => void;
   setStudentsCount: (students: number) => void;
   setTotalPages: (page: number) => void;
-  setUpdateStudents: (flag: Boolean) => void;
+  setFiltered: (flag: Boolean) => void;
   setAvailableStudents: (students: AvailableStudentsWithtPaginationRes) => void;
-  setFilteredStudents: (students: AvailableStudentsWithtPaginationRes) => void;
+  setFilteredStudents: (
+    students: AvailableStudentsWithtPaginationRes | ReservedStudentsWithPaginationRes,
+  ) => void;
   setBookedStudents: (students: ReservedStudentsWithPaginationRes) => void;
   setFilteringOptions: (options: FilteringOptions) => void;
 }
@@ -34,7 +36,7 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
   const [studentsCount, setStudentsCount] = useState<number>(null!);
   const [totalPages, setTotalPages] = useState<number>(null!);
 
-  const [updateStudents, setUpdateStudents] = useState<Boolean>(false);
+  const [isFiltered, setFiltered] = useState<Boolean>(false);
   const [availableStudents, setAvailableStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
   );
@@ -67,8 +69,8 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
         setStudentsCount,
         totalPages,
         setTotalPages,
-        updateStudents,
-        setUpdateStudents,
+        isFiltered,
+        setFiltered,
         filteredStudents,
         setFilteredStudents,
         availableStudents,

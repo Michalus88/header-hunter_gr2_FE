@@ -4,7 +4,11 @@ import magnifer from '../../assets/img/magnifier.png';
 import { MegaButton } from '../Elements/MegaButton';
 import { FilterDialog } from '../FilterDialog/FilterDialog';
 
-export const SearchFiltration = () => {
+interface Props {
+  isFilteringAllStudents: boolean;
+}
+
+export const SearchFiltration = ({ isFilteringAllStudents }: Props) => {
   const [searchValue, setSearchValue] = useState('');
   const [displayFilterDialog, setSisplayFilterDialog] = useState(false);
 

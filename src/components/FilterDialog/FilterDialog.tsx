@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { ExpectedTypeWork } from 'types';
 import { Toast } from 'primereact/toast';
+import { useLocation } from 'react-router-dom';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 import { HrContext } from '../../providers/HrProvider';
@@ -15,11 +16,11 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
   const [clearAll, setClearAll] = useState(false);
   const { filteringOptions, setFilteringOptions } = useContext(HrContext);
   const { filteredStudents, setFilteredStudents } = useContext(HrContext);
-  const { currentPage, setCurrentPage } = useContext(HrContext);
-  const { maxPerPage, setMaxPerPage } = useContext(HrContext);
-  const { studentsCount, setStudentsCount } = useContext(HrContext);
+  const { isFiltered, setFiltered } = useContext(HrContext);
 
   const toast = useRef<any>(null);
+
+  const location = useLocation();
 
   const toggleClearAll = () => {
     setFilteringOptions({
@@ -34,13 +35,17 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       canTakeApprenticeship: null,
       monthsOfCommercialExp: 0,
     });
+    // setFiltered(false);
     setClearAll(!clearAll);
   };
 
   const sendValueFromFilterDialog = async () => {
+    console.log(location.pathname);
     try {
       const data = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}/9999999/1`,
+        location.pathname === '/interview'
+          ? `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS_FILTERED}/9999999/1`
+          : `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}/9999999/1`,
         {
           mode: 'cors',
           credentials: 'include',
@@ -63,6 +68,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
         return;
       }
       setFilteredStudents(response);
+      setFiltered(true);
     } catch (e: any) {
       toast.current.show({
         severity: 'error',
