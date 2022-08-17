@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, ExpectedContractType, StudentProfileRegister } from 'types';
 import { useParams } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
-import '../../assets/css/RegisterStudentView.css';
+import '../../assets/css/StudentActivationForm.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface ActivationForm extends StudentProfileRegister {
@@ -62,13 +62,6 @@ export const StudentActivationForm = () => {
   const monthsOfCommercialExpForm = Number(watch('canTakeApprenticeship'));
 
   const { userId, token } = useParams();
-
-  const notify2 = () => {
-    toast.success('Test', {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
-    });
-  };
 
   const registerHendler: SubmitHandler<ActivationForm> = async (data) => {
     const {
