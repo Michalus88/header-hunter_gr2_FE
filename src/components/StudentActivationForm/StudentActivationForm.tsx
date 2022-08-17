@@ -95,7 +95,6 @@ export const StudentActivationForm = () => {
       });
       console.log(res);
       const test = await res.json();
-      console.log(test, 'test');
     } catch (e) {
       if (e) {
         const notifyError = () => {
