@@ -19,7 +19,7 @@ interface ActivationForm extends StudentProfileRegister {
   bonusProjectUrlFifth: string;
 }
 
-export const RegisterStudentView = () => {
+export const StudentActivation = () => {
   const {
     register,
     formState: { errors },
