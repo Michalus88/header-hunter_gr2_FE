@@ -31,6 +31,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"test/**/*.ts\"",
+    "prebuild": "rimraf build",
     "build": "set REACT_APP_API_URL=/api&& react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
