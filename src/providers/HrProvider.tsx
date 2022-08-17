@@ -36,14 +36,17 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
   const [studentsCount, setStudentsCount] = useState<number>(null!);
   const [totalPages, setTotalPages] = useState<number>(null!);
 
-  const [isFiltered, setFiltered] = useState<Boolean>(false);
+  const [isFiltered, setFiltered] = useState<Boolean>(false); // is now filtered data
+
   const [availableStudents, setAvailableStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
   );
+  const [bookedStudents, setBookedStudents] = useState<ReservedStudentsWithPaginationRes>(null!);
+
   const [filteredStudents, setFilteredStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
-  );
-  const [bookedStudents, setBookedStudents] = useState<ReservedStudentsWithPaginationRes>(null!);
+  ); // array od filtered students and booked students
+
   const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>({
     courseCompletion: null,
     courseEngagement: null,
