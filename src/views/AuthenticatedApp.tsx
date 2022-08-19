@@ -9,6 +9,7 @@ import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
 import { HrProvider } from '../providers/HrProvider';
+import { StudentDetails } from '../components/StudentPage/StudentDetails';
 
 export const AuthenticatedApp = () => {
   return (
@@ -34,6 +35,7 @@ export const AuthenticatedApp = () => {
         />
         <Route path="/students/:id" element={<CvPage />} />
         <Route path="/student" element={<StudentPage />} />
+        <Route path="/student/edit-form" element={<StudentDetails />} />
       </Routes>
     </MainTemplate>
   );
