@@ -7,7 +7,10 @@ import { StudentInfo } from './StudentInfo';
 import { CvContent } from './CvContent';
 import { Spinner } from '../Spinner/Spinner';
 
-export const CvPage = () => {
+interface Props {
+  studentId: string;
+}
+export const CvPage = ({ studentId }: Props) => {
   const { user } = useAuth();
   console.log(user);
   const [studentData, getStudentData] = useState<DetailedStudentDataRes | null>(null);
@@ -16,13 +19,18 @@ export const CvPage = () => {
 
     // const testID = '1';
 
+    const URL = !studentId
+      ? `http://localhost:3001/api/student/detailed`
+      : `http://localhost:3001/api/hr/booked-students/${studentId}`;
+
     // const URL =
     //   user?.role === Role.STUDENT
     //     ? `http://localhost:3001/api/student/detailed`
     //     : `http://localhost:3001/api/hr/booked-students/${testID}`;
 
     const res = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_GET_DETAILS}`,
+      URL,
+      // `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_GET_DETAILS}`,
       {
         method: 'GET',
         credentials: 'include',
