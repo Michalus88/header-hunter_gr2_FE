@@ -32,7 +32,7 @@ export const AuthenticatedApp = () => {
             </HrProvider>
           }
         />
-        <Route path="/students/:id" element={<CvPage />} />
+        <Route path="/hr/student-cv" element={<CvPage studentId="someExampleId" />} />
         <Route path="/student" element={<StudentPage />} />
       </Routes>
     </MainTemplate>
