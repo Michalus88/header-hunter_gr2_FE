@@ -29,6 +29,7 @@ export const OneStudentBookInterview = (props: Props) => {
   );
 
   const navigate = useNavigate();
+  const showStudentCv = () => navigate('/hr/student-cv');
 
   const handleClick = () => {
     if (!details) {
@@ -142,7 +143,7 @@ export const OneStudentBookInterview = (props: Props) => {
           <MegaButton
             classNameAdd="megak-primary filter-star-butons-group-small right-button"
             buttonTitle="Pokaż CV"
-            onClick={() => navigate('/students/id')}
+            onClick={showStudentCv}
           />
           <MegaButton
             classNameAdd="megak-primary filter-star-butons-group-small right-button"
