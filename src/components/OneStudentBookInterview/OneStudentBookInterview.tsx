@@ -75,34 +75,54 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
     }
   };
 
-  const checkGitHubUser = async () => {
-    try {
-      const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
-        mode: 'cors',
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const response = await data.json();
-
-      // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
-
-      if (response.message !== 'Not Found') {
-        setAvatar(`https://github.com/${githubUsername}.png`);
-      }
-      // eslint-disable-next-line no-empty
-    } catch {}
-  };
+  // const checkGitHubUser = async () => {
+  //   try {
+  //     const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+  //       mode: 'cors',
+  //       method: 'GET',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //
+  //     const response = await data.json();
+  //
+  //     // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+  //
+  //     if (response.message !== 'Not Found') {
+  //       setAvatar(`https://github.com/${githubUsername}.png`);
+  //     }
+  //     // eslint-disable-next-line no-empty
+  //   } catch {}
+  // };
 
   useEffect(() => {
-    checkGitHubUser();
+    (async () => {
+      try {
+        const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+          mode: 'cors',
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const response = await data.json();
+
+        // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+
+        if (response.message !== 'Not Found') {
+          setAvatar(`https://github.com/${githubUsername}.png`);
+        }
+        // eslint-disable-next-line no-empty
+      } catch {}
+    })();
   }, []);
 
   return (
-    <article className="available-One-student">
+    <article key={id} className="available-One-student">
       <div className="available-student">
         <div className="BookInterview-student-all">
           <div className="BookInterview-student-reservation">
