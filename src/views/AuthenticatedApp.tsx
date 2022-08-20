@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { LoginPage } from '../components/LoginPage/LoginPage';
 import { BookInterview } from '../components/BookInterView/BookInterview';
 import { CvPage } from '../components/CvPage/CvPage';
 import { AdminPage } from '../components/AdminPage/AdminPage';
@@ -12,6 +11,7 @@ import { HrProvider } from '../providers/HrProvider';
 import { StudentDetails } from '../components/StudentPage/StudentDetails';
 import { FilteringProvider } from '../hooks/useFilter';
 import { FilterDialog } from '../components/FilterDialog/FilterDialog';
+
 interface LocationState {
   background: string;
 }
