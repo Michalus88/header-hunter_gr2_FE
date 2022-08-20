@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { LoginPage } from '../components/LoginPage/LoginPage';
 import { BookInterview } from '../components/BookInterView/BookInterview';
 import { CvPage } from '../components/CvPage/CvPage';
@@ -9,32 +9,38 @@ import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
 import { HrProvider } from '../providers/HrProvider';
+import { FilteringProvider } from '../hooks/useFilter';
+import { FilterDialog } from '../components/FilterDialog/FilterDialog';
+
+interface LocationState {
+  background: string;
+}
 
 export const AuthenticatedApp = () => {
+  const location = useLocation();
+  const state = location.state as LocationState;
+  const background = state && state.background;
   return (
     <MainTemplate>
-      <Routes>
-        <Route path="/account" element={<Account />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route
-          path="/interview"
-          element={
-            <HrProvider>
-              <BookInterview />
-            </HrProvider>
-          }
-        />
-        <Route
-          path="/hr/available-students"
-          element={
-            <HrProvider>
-              <AvailableStudents />
-            </HrProvider>
-          }
-        />
-        <Route path="/students/:id" element={<CvPage />} />
-        <Route path="/student" element={<StudentPage />} />
-      </Routes>
+      <HrProvider>
+        <FilteringProvider>
+          <>
+            <Routes location={background || location}>
+              <Route path="/account" element={<Account />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/interview" element={<BookInterview />} />
+              <Route path="/hr/available-students" element={<AvailableStudents />} />
+              <Route path="/students/:id" element={<CvPage />} />
+              <Route path="/student" element={<StudentPage />} />
+            </Routes>
+            {background && (
+              <Routes>
+                <Route path="/hr/student-filter" element={<FilterDialog />} />
+              </Routes>
+            )}
+          </>
+        </FilteringProvider>
+      </HrProvider>
     </MainTemplate>
   );
 };

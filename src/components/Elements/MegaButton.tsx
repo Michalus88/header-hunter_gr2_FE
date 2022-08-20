@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface Props {
-  buttonTitle: string;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
+  buttonTitle: string | JSX.Element;
   classNameAdd: string;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export const MegaButton = ({ buttonTitle, onClick, classNameAdd }: Props) => {

@@ -4,26 +4,29 @@ import {
   FilteringOptions,
   ReservedStudentsWithPaginationRes,
 } from 'types';
+import { FILTERING_OPTION_INITIAL } from '../hooks/useFilter';
 
 interface HrContextType {
   maxPerPage: Number;
   currentPage: Number;
   studentsCount: Number;
   totalPages: Number;
-  updateStudents: Boolean;
+  isFiltered: Boolean;
   availableStudents: AvailableStudentsWithtPaginationRes;
-  filteredStudents: AvailableStudentsWithtPaginationRes;
+  filteredStudents: AvailableStudentsWithtPaginationRes | ReservedStudentsWithPaginationRes;
   bookedStudents: ReservedStudentsWithPaginationRes;
   filteringOptions: FilteringOptions;
   setMaxPerPage: (page: number) => void;
   setCurrentPage: (page: number) => void;
   setStudentsCount: (students: number) => void;
   setTotalPages: (page: number) => void;
-  setUpdateStudents: (flag: Boolean) => void;
+  setFiltered: (flag: Boolean) => void;
   setAvailableStudents: (students: AvailableStudentsWithtPaginationRes) => void;
-  setFilteredStudents: (students: AvailableStudentsWithtPaginationRes) => void;
+  setFilteredStudents: (
+    students: AvailableStudentsWithtPaginationRes | ReservedStudentsWithPaginationRes,
+  ) => void;
   setBookedStudents: (students: ReservedStudentsWithPaginationRes) => void;
-  setFilteringOptions: (options: FilteringOptions) => void;
+  setFilteringOptions: React.Dispatch<React.SetStateAction<FilteringOptions>>;
 }
 
 export const HrContext = createContext<HrContextType>(null!);
@@ -34,26 +37,19 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
   const [studentsCount, setStudentsCount] = useState<number>(null!);
   const [totalPages, setTotalPages] = useState<number>(null!);
 
-  const [updateStudents, setUpdateStudents] = useState<Boolean>(false);
+  const [isFiltered, setFiltered] = useState<Boolean>(false); // is now filtered data
+
   const [availableStudents, setAvailableStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
   );
+  const [bookedStudents, setBookedStudents] = useState<ReservedStudentsWithPaginationRes>(null!);
+
   const [filteredStudents, setFilteredStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
   );
-  const [bookedStudents, setBookedStudents] = useState<ReservedStudentsWithPaginationRes>(null!);
-  const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>({
-    courseCompletion: null,
-    courseEngagement: null,
-    projectDegree: null,
-    teamProjectDegree: null,
-    expectedTypeWork: null,
-    expectedContractType: null,
-    expectedSalaryFrom: null,
-    expectedSalaryTo: null,
-    canTakeApprenticeship: null,
-    monthsOfCommercialExp: null,
-  });
+
+  const [filteringOptions, setFilteringOptions] =
+    useState<FilteringOptions>(FILTERING_OPTION_INITIAL);
 
   return (
     <HrContext.Provider
@@ -67,8 +63,8 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
         setStudentsCount,
         totalPages,
         setTotalPages,
-        updateStudents,
-        setUpdateStudents,
+        isFiltered,
+        setFiltered,
         filteredStudents,
         setFilteredStudents,
         availableStudents,

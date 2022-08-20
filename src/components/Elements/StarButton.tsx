@@ -1,18 +1,17 @@
 import React from 'react';
 
 interface Props {
-  buttonTitle: number;
-  onClick: (e: any) => void;
-  classNameAdd: string;
-  chosenNumber: number;
+  rating: number | null;
+  setRating: () => void;
+  buttonValue: number;
 }
 
-export const StarButton = ({ buttonTitle, onClick, classNameAdd, chosenNumber }: Props) => {
-  const addGlow = buttonTitle === chosenNumber ? 'pi-star-fill' : 'pi-star';
+export const StarButton = ({ rating, setRating, buttonValue }: Props) => {
+  const addGlow = buttonValue === rating ? 'pi-star-fill' : 'pi-star';
   return (
     <div className="Wrap">
-      <button type="button" className={`${classNameAdd} mega-k-star`} onClick={onClick}>
-        {buttonTitle} <i className={`pi star-icon-size3 ${addGlow}`} />
+      <button type="button" className="megak-star-secondary mega-k-star" onClick={setRating}>
+        {buttonValue} <i className={`pi star-icon-size3 ${addGlow}`} />
       </button>
     </div>
   );
