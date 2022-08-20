@@ -4,6 +4,7 @@ import {
   FilteringOptions,
   ReservedStudentsWithPaginationRes,
 } from 'types';
+import { FILTERING_OPTION_INITIAL } from '../hooks/useFilter';
 
 interface HrContextType {
   maxPerPage: Number;
@@ -25,7 +26,7 @@ interface HrContextType {
     students: AvailableStudentsWithtPaginationRes | ReservedStudentsWithPaginationRes,
   ) => void;
   setBookedStudents: (students: ReservedStudentsWithPaginationRes) => void;
-  setFilteringOptions: (options: FilteringOptions) => void;
+  setFilteringOptions: React.Dispatch<React.SetStateAction<FilteringOptions>>;
 }
 
 export const HrContext = createContext<HrContextType>(null!);
@@ -45,20 +46,10 @@ export const HrProvider = ({ children }: { children: JSX.Element }) => {
 
   const [filteredStudents, setFilteredStudents] = useState<AvailableStudentsWithtPaginationRes>(
     null!,
-  ); // array od filtered students and booked students
+  );
 
-  const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>({
-    courseCompletion: null,
-    courseEngagement: null,
-    projectDegree: null,
-    teamProjectDegree: null,
-    expectedTypeWork: null,
-    expectedContractType: null,
-    expectedSalaryFrom: null,
-    expectedSalaryTo: null,
-    canTakeApprenticeship: null,
-    monthsOfCommercialExp: null,
-  });
+  const [filteringOptions, setFilteringOptions] =
+    useState<FilteringOptions>(FILTERING_OPTION_INITIAL);
 
   return (
     <HrContext.Provider
