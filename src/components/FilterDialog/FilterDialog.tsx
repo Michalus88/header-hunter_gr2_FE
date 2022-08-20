@@ -1,87 +1,34 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Dialog } from 'primereact/dialog';
-import { ExpectedTypeWork } from 'types';
-import { Toast } from 'primereact/toast';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 import { HrContext } from '../../providers/HrProvider';
+import { Portal } from '../Portal/Portal';
+import { useFilter } from '../../hooks/useFilter';
 
-interface Props {
-  toggleFilterDialog: () => void;
-  visible: boolean;
-}
-
-export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
-  const [clearAll, setClearAll] = useState(false);
+export const FilterDialog = () => {
+  const navigate = useNavigate();
   const { filteringOptions, setFilteringOptions } = useContext(HrContext);
-  const { filteredStudents, setFilteredStudents } = useContext(HrContext);
-  const { isFiltered, setFiltered } = useContext(HrContext);
+  const {
+    canTakeApprenticeship,
+    expectedTypeWork,
+    monthsOfCommercialExp,
+    expectedContractType,
+    expectedSalaryFrom,
+    expectedSalaryTo,
+    courseCompletion,
+    courseEngagement,
+    projectDegree,
+    teamProjectDegree,
+    resetAllFilters,
+    setPrevFilter,
+  } = useFilter();
+  const close = () => navigate(-1);
 
-  const toast = useRef<any>(null);
-
-  const location = useLocation();
-
-  const toggleClearAll = () => {
-    setFilteringOptions({
-      courseCompletion: null,
-      courseEngagement: null,
-      projectDegree: null,
-      teamProjectDegree: null,
-      expectedTypeWork: null,
-      expectedContractType: null,
-      expectedSalaryFrom: null,
-      expectedSalaryTo: null,
-      canTakeApprenticeship: null,
-      monthsOfCommercialExp: 0,
-    });
-    // setFiltered(false);
-    setClearAll(!clearAll);
-  };
-
-  const sendValueFromFilterDialog = async () => {
-    console.log(location.pathname);
-    try {
-      const data = await fetch(
-        location.pathname === '/interview'
-          ? `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS_FILTERED}/9999999/1`
-          : `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_FILTERED}/9999999/1`,
-        {
-          mode: 'cors',
-          credentials: 'include',
-          method: 'POST',
-          body: JSON.stringify(filteringOptions),
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      const response = await data.json();
-      if (data.status >= 400) {
-        toast.current.show({
-          severity: 'error',
-          summary: 'Błąd',
-          detail: `${response.message}`,
-          life: 4000,
-        });
-        return;
-      }
-      setFilteredStudents(response);
-      setFiltered(true);
-    } catch (e: any) {
-      toast.current.show({
-        severity: 'error',
-        summary: 'Błąd',
-        detail: `${e.message}`,
-        life: 4000,
-      });
-    } finally {
-      console.log({ filteredStudents });
-      toggleFilterDialog();
-      toggleClearAll();
-    }
-  };
+  useEffect(() => {
+    setPrevFilter(filteringOptions);
+  }, []);
 
   const header = (
     <div className="filter-header">
@@ -89,7 +36,7 @@ export const FilterDialog = ({ visible, toggleFilterDialog }: Props) => {
       <MegaButton
         classNameAdd="megak-secondary filter-clear-all megak-paddng"
         buttonTitle="Wyczyść wszystkie"
-        onClick={toggleClearAll}
+        onClick={resetAllFilters}
       />
     </div>
   );
