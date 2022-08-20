@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { ExpectedContractType, ExpectedTypeWork } from 'types';
+import { ExpectedContractType, ExpectedTypeWork, ReservedStudentRes } from 'types';
 import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
-interface Props {
-  // id: string;
-  firstName: string;
-  lastName: string;
-  courseCompletion: number;
-  courseEngagement: number;
-  projectDegree: number;
-  teamProjectDegree: number;
-  expectedTypeWork: ExpectedTypeWork | null | undefined;
-  targetWorkCity: string | undefined;
-  expectedContractType: ExpectedContractType | null | undefined;
-  expectedSalary: string | undefined;
-  canTakeApprenticeship: boolean;
-  workExperience: string | undefined;
-  bookingDateTo: Date;
-  githubUsername: string;
-}
-
-export const OneStudentBookInterview = (props: Props) => {
+export const OneStudentBookInterview = (student: ReservedStudentRes) => {
   const [details, setDetails] = useState(false);
   const [avatar, setAvatar] = useState(
     'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E',
@@ -39,21 +21,24 @@ export const OneStudentBookInterview = (props: Props) => {
   };
 
   const {
-    firstName,
-    lastName,
-    courseCompletion, // Ocena przejścia kursu
-    courseEngagement, // Ocena aktywności zaangażowania na kursie
-    projectDegree, // Ocena kodu w projekcie własnym
-    teamProjectDegree, // Ocena pracy w zespole Scrum
-    expectedTypeWork, // Preferowane miejsce pracy
-    targetWorkCity, // Docelowe miejsce gdzie chce pracować kandydat
-    expectedContractType, // Oczekiwany typ kontraktu
-    expectedSalary, // Oczekiwane wynagrodzenie miesięczne netto
-    canTakeApprenticeship, // Zgoda na odbycie bezpłatnych praktyk/stażu na początek
-    workExperience, // Komercyjne doświadczenie w programowaniu
+    id,
     bookingDateTo,
-    githubUsername,
-  } = props;
+    courseCompletion,
+    courseEngagement,
+    projectDegree,
+    teamProjectDegree,
+    studentInfo: {
+      firstName,
+      lastName,
+      expectedTypeWork,
+      targetWorkCity,
+      expectedContractType,
+      expectedSalary,
+      canTakeApprenticeship,
+      workExperience,
+      githubUsername,
+    },
+  } = student;
 
   const contractT = (): string => {
     switch (expectedContractType) {
