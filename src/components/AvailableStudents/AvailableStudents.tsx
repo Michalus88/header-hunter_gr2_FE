@@ -5,17 +5,17 @@ import {
   ExpectedContractType,
   ExpectedTypeWork,
 } from 'types';
-import { Toast } from 'primereact/toast';
 import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
 import { ViewSupport } from '../ViewSupport/ViewSupport';
 import { AvailableOneStudent } from '../AvailableOneStudent/AvailableOneStudent';
 import { ViewPanel } from '../ViewPanel/ViewPanel';
 import { HrContext } from '../../providers/HrProvider';
+import { useAuth } from '../../hooks/useAuth';
 
 export const AvailableStudents = () => {
+  const { toast } = useAuth();
   const [studentsJSX, setStudentsJSX] = useState<JSX.Element[]>(null!);
 
-  const toast = useRef<any>(null);
   const { currentPage, setCurrentPage } = useContext(HrContext);
   const { maxPerPage, setMaxPerPage } = useContext(HrContext);
   const { studentsCount, setStudentsCount } = useContext(HrContext);
@@ -137,7 +137,6 @@ export const AvailableStudents = () => {
 
   return (
     <>
-      <Toast ref={toast} />
       <ViewPanel />
       <div className="available-students-wrapper">
         <SearchFiltration />
