@@ -1,59 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
-import { HrContext } from '../../providers/HrProvider';
 import { StarButton } from '../Elements/StarButton';
 
 interface Props {
-  clearAll: boolean;
-  rating: string;
+  rating: number | null;
+  setRating: (rating: number) => void;
 }
 
-export const StarButtonGroup = ({ clearAll, rating }: Props) => {
-  const [chosenNumber, setChosenNumber] = useState(0);
-  const { filteringOptions, setFilteringOptions } = useContext(HrContext);
-
-  useEffect(() => {
-    setChosenNumber(0);
-  }, [clearAll]);
-
-  useEffect(() => {
-    setFilteringOptions({
-      ...filteringOptions,
-      [rating]: chosenNumber,
-    });
-  }, [chosenNumber]);
-
+export const StarButtonGroup = ({ rating, setRating }: Props) => {
   return (
     <div className="filter-star-butons-group">
-      <StarButton
-        classNameAdd="megak-star-secondary"
-        buttonTitle={1}
-        chosenNumber={chosenNumber}
-        onClick={() => setChosenNumber(1)}
-      />
-      <StarButton
-        classNameAdd="megak-star-secondary"
-        buttonTitle={2}
-        chosenNumber={chosenNumber}
-        onClick={() => setChosenNumber(2)}
-      />
-      <StarButton
-        classNameAdd="megak-star-secondary"
-        buttonTitle={3}
-        chosenNumber={chosenNumber}
-        onClick={() => setChosenNumber(3)}
-      />
-      <StarButton
-        classNameAdd="megak-star-secondary"
-        buttonTitle={4}
-        chosenNumber={chosenNumber}
-        onClick={() => setChosenNumber(4)}
-      />
-      <StarButton
-        classNameAdd="megak-star-secondary"
-        buttonTitle={5}
-        chosenNumber={chosenNumber}
-        onClick={() => setChosenNumber(5)}
-      />
+      <StarButton buttonValue={1} rating={rating} setRating={() => setRating(1)} />
+      <StarButton buttonValue={2} rating={rating} setRating={() => setRating(2)} />
+      <StarButton buttonValue={3} rating={rating} setRating={() => setRating(3)} />
+      <StarButton buttonValue={4} rating={rating} setRating={() => setRating(4)} />
+      <StarButton buttonValue={5} rating={rating} setRating={() => setRating(5)} />
     </div>
   );
 };
