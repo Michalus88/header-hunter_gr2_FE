@@ -140,10 +140,9 @@ export const AvailableStudents = () => {
       <Toast ref={toast} />
       <ViewPanel />
       <div className="available-students-wrapper">
-        <SearchFiltration isFilteringAllStudents />
+        <SearchFiltration />
         <div className="students-list">{studentsJSX}</div>
-
-        {isFiltered ? null : <ViewSupport />}
+        <ViewSupport />
       </div>
     </>
   );
