@@ -9,9 +9,9 @@ import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
 import { HrProvider } from '../providers/HrProvider';
+import { StudentDetails } from '../components/StudentPage/StudentDetails';
 import { FilteringProvider } from '../hooks/useFilter';
 import { FilterDialog } from '../components/FilterDialog/FilterDialog';
-
 interface LocationState {
   background: string;
 }
@@ -32,6 +32,7 @@ export const AuthenticatedApp = () => {
               <Route path="/hr/available-students" element={<AvailableStudents />} />
               <Route path="/students/:id" element={<CvPage />} />
               <Route path="/student" element={<StudentPage />} />
+              <Route path="/student/edit-form" element={<StudentDetails />} />
             </Routes>
             {background && (
               <Routes>
