@@ -23,7 +23,7 @@ export const AvailableStudents = () => {
 
   const { availableStudents, setAvailableStudents } = useContext(HrContext);
   const { filteredStudents, setFilteredStudents } = useContext(HrContext);
-  // const { updateStudents, setUpdateStudents } = useContext(HrContext);
+  const { isFiltered, setFiltered } = useContext(HrContext);
 
   const fetchAllStudents = async () => {
     try {
@@ -113,17 +113,26 @@ export const AvailableStudents = () => {
     setTotalPages(filteredStudents.pages.totalPages);
     setStudentsCount(filteredStudents.pages.studentsCount);
   };
+  useEffect(() => {
+    setFilteredStudents({
+      students: [],
+      pages: { maxPerPage: 0, currentPage: 1, studentsCount: 0, totalPages: 0 },
+    });
+    fetchAllStudents();
+  }, []);
 
   useEffect(() => {
     if (filteredStudents !== null) {
+      setFiltered(true);
       updateFilteredStudents();
     } else {
+      setFiltered(false);
       fetchAllStudents();
     }
   }, [currentPage, maxPerPage]);
 
   useEffect(() => {
-    if (filteredStudents !== null) updateFilteredStudents();
+    if (isFiltered) updateFilteredStudents();
   }, [filteredStudents]);
 
   return (
@@ -133,8 +142,7 @@ export const AvailableStudents = () => {
       <div className="available-students-wrapper">
         <SearchFiltration />
         <div className="students-list">{studentsJSX}</div>
-
-        {filteredStudents !== null ? null : <ViewSupport />}
+        <ViewSupport />
       </div>
     </>
   );

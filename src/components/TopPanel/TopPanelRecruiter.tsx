@@ -4,7 +4,6 @@ import { useAuth } from '../../hooks/useAuth';
 
 export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
   const { user } = useAuth();
-  console.log(user);
   const showOptions = () => {
     showMenu();
   };
