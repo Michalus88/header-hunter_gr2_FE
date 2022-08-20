@@ -45,32 +45,43 @@ export const FilterDialog = () => {
       <MegaButton
         classNameAdd="megak-secondary megak-paddng"
         buttonTitle="Anuluj"
-        onClick={() => toggleFilterDialog()}
+        onClick={() => close()}
       />
       <MegaButton
         classNameAdd="megak-primary megak-paddng"
         buttonTitle="Pokaż wyniki"
         onClick={() => {
-          sendValueFromFilterDialog();
+          setFilteringOptions((prev) => ({
+            ...prev,
+            canTakeApprenticeship,
+            expectedTypeWork,
+            monthsOfCommercialExp,
+            expectedContractType,
+            expectedSalaryFrom,
+            expectedSalaryTo,
+            courseCompletion,
+            courseEngagement,
+            projectDegree,
+            teamProjectDegree,
+          }));
+          close();
         }}
       />
     </div>
   );
 
   return (
-    <>
-      <Toast ref={toast} />
+    <Portal>
       <Dialog
         className="filter-dialog"
         header={header}
-        visible={visible}
+        visible
         resizable={false}
         footer={footer}
-        onHide={() => toggleFilterDialog}
-        closable={false}
+        onHide={close}
       >
-        <FilterGroup clearAll={clearAll} />
+        <FilterGroup />
       </Dialog>
-    </>
+    </Portal>
   );
 };
