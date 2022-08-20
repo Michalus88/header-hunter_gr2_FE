@@ -12,19 +12,8 @@ export const SearchFiltration = () => {
     resetAllFilters();
     setFilteringOptions(FILTERING_OPTION_INITIAL);
   };
-
   return (
     <div className="search-filtration">
-      {/* <p className="input-wrapper">
-        <span className="p-input-icon-left">
-          <i className="pi pi-search" />
-          <InputText
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search"
-          />
-        </span>
-      </p> */}
       <MegaButton
         classNameAdd="megak-secondary megak-small-height megak-paddng"
         buttonTitle={
@@ -39,7 +28,6 @@ export const SearchFiltration = () => {
         buttonTitle="Reset Filter"
         onClick={reset}
       />
-      <FilterDialog visible={displayFilterDialog} toggleFilterDialog={toggleFilterDialog} />
     </div>
   );
 };
