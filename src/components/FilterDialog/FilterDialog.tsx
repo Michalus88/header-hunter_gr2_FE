@@ -5,7 +5,7 @@ import { FilterGroup } from './FilterGroup';
 import { MegaButton } from '../Elements/MegaButton';
 import { HrContext } from '../../providers/HrProvider';
 import { Portal } from '../Portal/Portal';
-import { useFilter } from '../../hooks/useFilter';
+import { FILTERING_OPTION_INITIAL, useFilter } from '../../hooks/useFilter';
 
 export const FilterDialog = () => {
   const navigate = useNavigate();
@@ -25,7 +25,10 @@ export const FilterDialog = () => {
     setPrevFilter,
   } = useFilter();
   const close = () => navigate(-1);
-
+  const reset = () => {
+    resetAllFilters();
+    setFilteringOptions(FILTERING_OPTION_INITIAL);
+  };
   useEffect(() => {
     setPrevFilter(filteringOptions);
   }, []);
@@ -36,7 +39,7 @@ export const FilterDialog = () => {
       <MegaButton
         classNameAdd="megak-secondary filter-clear-all megak-paddng"
         buttonTitle="Wyczyść wszystkie"
-        onClick={resetAllFilters}
+        onClick={reset}
       />
     </div>
   );
