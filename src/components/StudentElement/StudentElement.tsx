@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { ExpectedContractType, ExpectedTypeWork, ReservedStudentRes } from 'types';
+import { ReservedStudentRes, AvailableStudentRes } from 'types';
 import group from '../../assets/img/Group 29.png';
 import { MegaButton } from '../Elements/MegaButton';
 
-export const OneStudentBookInterview = (student: ReservedStudentRes) => {
+export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes) => {
   const [details, setDetails] = useState(false);
   const [avatar, setAvatar] = useState(
     'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E',
   );
-
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,10 +18,8 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
       setDetails(false);
     }
   };
-
   const {
     id,
-    bookingDateTo,
     courseCompletion,
     courseEngagement,
     projectDegree,
@@ -39,6 +36,11 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
       githubUsername,
     },
   } = student;
+  let reservationDateTo: null | Date = null;
+  if ('bookingDateTo' in student) {
+    const { bookingDateTo } = student;
+    reservationDateTo = bookingDateTo;
+  }
 
   const contractT = (): string => {
     switch (expectedContractType) {
@@ -75,90 +77,107 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
     }
   };
 
-  // const checkGitHubUser = async () => {
-  //   try {
-  //     const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
-  //       mode: 'cors',
-  //       method: 'GET',
-  //       headers: {
-  //         Accept: 'application/json',
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //
-  //     const response = await data.json();
-  //
-  //     // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
-  //
-  //     if (response.message !== 'Not Found') {
-  //       setAvatar(`https://github.com/${githubUsername}.png`);
-  //     }
-  //     // eslint-disable-next-line no-empty
-  //   } catch {}
-  // };
+  const checkGitHubUser = async () => {
+    try {
+      const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const response = await data.json();
+
+      // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+
+      if (response.message !== 'Not Found') {
+        setAvatar(`https://github.com/${githubUsername}.png`);
+      }
+      // eslint-disable-next-line no-empty
+    } catch {}
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
-          mode: 'cors',
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        });
+    if (reservationDateTo) {
+      (async () => {
+        try {
+          const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+          });
 
-        const response = await data.json();
+          const response = await data.json();
 
-        // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+          // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
 
-        if (response.message !== 'Not Found') {
-          setAvatar(`https://github.com/${githubUsername}.png`);
-        }
-        // eslint-disable-next-line no-empty
-      } catch {}
-    })();
+          if (response.message !== 'Not Found') {
+            setAvatar(`https://github.com/${githubUsername}.png`);
+          }
+          // eslint-disable-next-line no-empty
+        } catch {}
+      })();
+    }
   }, []);
 
   return (
     <article key={id} className="available-One-student">
       <div className="available-student">
         <div className="BookInterview-student-all">
-          <div className="BookInterview-student-reservation">
-            <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
-            <p className="BookInterview-student-reservation-date">
-              {new Date(bookingDateTo).toLocaleDateString()}
-            </p>
-          </div>
+          {reservationDateTo && (
+            <div className="BookInterview-student-reservation">
+              <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
+              <p className="BookInterview-student-reservation-date">
+                {new Date(reservationDateTo).toLocaleDateString()}
+              </p>
+            </div>
+          )}
 
           <div className="BookInterview-student-information">
-            <img
-              className="BookInterview-student-information-avatar"
-              src={avatar}
-              alt="avatar użytkownika"
-            />
+            {reservationDateTo && (
+              <img
+                className="BookInterview-student-information-avatar"
+                src={avatar}
+                alt="avatar użytkownika"
+              />
+            )}
             <p className="BookInterview-student-information-name">
-              {firstName} {lastName}
+              {firstName} {reservationDateTo ? lastName : lastName[0]}
             </p>
           </div>
         </div>
         <div className="available-student-right">
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Pokaż CV"
-            onClick={() => navigate('/students/id')}
-          />
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Brak zainteresowania"
-            onClick={() => {}}
-          />
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Zatrudniony"
-            onClick={() => {}}
-          />
+          {reservationDateTo ? (
+            <>
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Pokaż CV"
+                onClick={() => navigate('/students/id')}
+              />
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Brak zainteresowania"
+                onClick={() => {}}
+              />
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Zatrudniony"
+                onClick={() => {}}
+              />
+            </>
+          ) : (
+            <MegaButton
+              classNameAdd="megak-primary filter-star-butons-group-small right-button"
+              buttonTitle="Zarezerwuj rozmowę"
+              onClick={() => {}}
+            />
+          )}
+
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
           </button>
@@ -249,7 +268,7 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
 //   workExperience: number;
 // }
 //
-// export const OneStudentBookInterview = (props: Props) => {
+// export const StudentElement = (props: Props) => {
 //   const [details, setDetails] = useState(false);
 //
 //   const handleClick = () => {
@@ -274,7 +293,7 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
 //     workExperience,
 //   } = props;
 //   return (
-//     <div className="BookInterview">
+//     <div className="StudentsList">
 //       <div className="BookInterview__container">
 //         <div className="BookInterview__student">
 //           <div className="BookInterview__student--all">
@@ -297,19 +316,19 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
 //           </div>
 //           <div className="BookInterview__student--buttons">
 //             <button
-//               className="BookInterview__student--button-show-cv BookInterview-button"
+//               className="BookInterview__student--button-show-cv StudentsList-button"
 //               type="button"
 //             >
 //               Pokaż CV
 //             </button>
 //             <button
-//               className="BookInterview__student--button-disinterest BookInterview-button"
+//               className="BookInterview__student--button-disinterest StudentsList-button"
 //               type="button"
 //             >
 //               Brak zainteresowania
 //             </button>
 //             <button
-//               className="BookInterview__student--button-hired BookInterview-button"
+//               className="BookInterview__student--button-hired StudentsList-button"
 //               type="button"
 //             >
 //               Zatrudniony
@@ -320,8 +339,8 @@ export const OneStudentBookInterview = (student: ReservedStudentRes) => {
 //               onClick={handleClick}
 //               className={
 //                 details
-//                   ? 'BookInterview-button BookInterview__student--button-more-close'
-//                   : 'BookInterview-button BookInterview__student--button-more-open'
+//                   ? 'StudentsList-button BookInterview__student--button-more-close'
+//                   : 'StudentsList-button BookInterview__student--button-more-open'
 //               }
 //             >
 //               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
