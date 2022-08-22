@@ -7,7 +7,12 @@ import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
 import { useAuth } from '../../hooks/useAuth';
 
-export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes) => {
+interface Props {
+  student: ReservedStudentRes | AvailableStudentRes;
+  setStudentsCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const StudentElement = (props: Props) => {
   const [details, setDetails] = useState(false);
   const [avatar, setAvatar] = useState(
     'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E',
@@ -22,6 +27,7 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
       setDetails(false);
     }
   };
+  const { student, setStudentsCount } = props;
   const {
     id,
     courseCompletion,
@@ -66,6 +72,32 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
         return;
       }
       setNotification(toast, 'Student has been added to your list.', 'success');
+    } catch (err) {
+      setNotification(toast);
+    }
+  };
+
+  const removeStudentFromHrList = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKING_STUDENT}/${id}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'DELETE',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (errMsg) {
+        setNotification(toast, errMsg);
+        return;
+      }
+      setNotification(toast, 'Student has been removed from your list.', 'success');
+      setStudentsCount((prev) => prev - 1);
     } catch (err) {
       setNotification(toast);
     }
@@ -191,7 +223,7 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Brak zainteresowania"
-                onClick={() => {}}
+                onClick={removeStudentFromHrList}
               />
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"

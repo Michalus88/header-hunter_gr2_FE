@@ -22,7 +22,7 @@ export const StudentsList = ({ path }: Props) => {
   const [studentsCount, setStudentsCount] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
 
-  const studentFetch = async () => {
+  const studentsFetch = async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}${path}/${maxPerPage}/${currentPage}`,
@@ -54,11 +54,11 @@ export const StudentsList = ({ path }: Props) => {
   };
 
   useEffect(() => {
-    studentFetch();
+    studentsFetch();
   }, []);
   useEffect(() => {
-    studentFetch();
-  }, [filteringOptions, currentPage, maxPerPage]);
+    studentsFetch();
+  }, [filteringOptions, currentPage, maxPerPage, studentsCount]);
 
   return (
     <>
@@ -67,7 +67,11 @@ export const StudentsList = ({ path }: Props) => {
         <SearchFiltration />
         <div className="students-list">
           {bookedStudents?.students.map((student) => (
-            <StudentElement key={student.id} {...student} />
+            <StudentElement
+              student={student}
+              key={student.id}
+              setStudentsCount={setStudentsCount}
+            />
           ))}
         </div>
         <ViewSupport
