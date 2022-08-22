@@ -22,7 +22,7 @@ export const StudentsList = ({ path }: Props) => {
   const [studentsCount, setStudentsCount] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
 
-  const studentFetch = async () => {
+  const studentsFetch = async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}${path}/${maxPerPage}/${currentPage}`,
