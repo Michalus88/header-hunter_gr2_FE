@@ -131,39 +131,51 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
             <div className="BookInterview-student-reservation">
               <p className="BookInterview-student-reservation-text">Rezerwacja do</p>
               <p className="BookInterview-student-reservation-date">
-                {/* eslint-disable-next-line react/destructuring-assignment */}
                 {new Date(reservationDateTo).toLocaleDateString()}
               </p>
             </div>
           )}
 
           <div className="BookInterview-student-information">
-            <img
-              className="BookInterview-student-information-avatar"
-              src={avatar}
-              alt="avatar użytkownika"
-            />
+            {reservationDateTo && (
+              <img
+                className="BookInterview-student-information-avatar"
+                src={avatar}
+                alt="avatar użytkownika"
+              />
+            )}
             <p className="BookInterview-student-information-name">
-              {firstName} {lastName}
+              {firstName} {reservationDateTo ? lastName : lastName[0]}
             </p>
           </div>
         </div>
         <div className="available-student-right">
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Pokaż CV"
-            onClick={() => navigate('/students/id')}
-          />
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Brak zainteresowania"
-            onClick={() => {}}
-          />
-          <MegaButton
-            classNameAdd="megak-primary filter-star-butons-group-small right-button"
-            buttonTitle="Zatrudniony"
-            onClick={() => {}}
-          />
+          {reservationDateTo ? (
+            <>
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Pokaż CV"
+                onClick={() => navigate('/students/id')}
+              />
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Brak zainteresowania"
+                onClick={() => {}}
+              />
+              <MegaButton
+                classNameAdd="megak-primary filter-star-butons-group-small right-button"
+                buttonTitle="Zatrudniony"
+                onClick={() => {}}
+              />
+            </>
+          ) : (
+            <MegaButton
+              classNameAdd="megak-primary filter-star-butons-group-small right-button"
+              buttonTitle="Zarezerwuj rozmowę"
+              onClick={() => {}}
+            />
+          )}
+
           <button className="expand" type="button" onClick={handleClick}>
             <img className={details ? 'image-off' : 'image-on'} src={group} alt="." />
           </button>
