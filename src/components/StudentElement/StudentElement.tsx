@@ -71,6 +71,31 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
     }
   };
 
+  const removeStudentFromHrList = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKING_STUDENT}/${id}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'DELETE',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (errMsg) {
+        setNotification(toast, errMsg);
+        return;
+      }
+      setNotification(toast, 'Student has been removed from your list.', 'success');
+    } catch (err) {
+      setNotification(toast);
+    }
+  };
+
   const contractT = (): string => {
     switch (expectedContractType) {
       case 0:
@@ -191,7 +216,7 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Brak zainteresowania"
-                onClick={() => {}}
+                onClick={removeStudentFromHrList}
               />
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
