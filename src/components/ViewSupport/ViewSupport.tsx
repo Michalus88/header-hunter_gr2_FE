@@ -1,11 +1,17 @@
-import { useContext } from 'react';
-import { HrContext } from '../../providers/HrProvider';
+import React from 'react';
 
-export const ViewSupport = () => {
-  const { currentPage, setCurrentPage } = useContext(HrContext);
-  const { maxPerPage, setMaxPerPage } = useContext(HrContext);
-  const { studentsCount, setStudentsCount } = useContext(HrContext);
-  const { totalPages, setTotalPages } = useContext(HrContext);
+interface Props {
+  currentPage: number;
+  maxPerPage: number;
+  studentsCount: number;
+  totalPages: number;
+  setCurrentPage: (currentPage: number) => void;
+  setMaxPerPage: (maxPerPage: number) => void;
+}
+
+export const ViewSupport = (props: Props) => {
+  const { currentPage, maxPerPage, studentsCount, totalPages, setCurrentPage, setMaxPerPage } =
+    props;
 
   const onChangeViewSupport = (currentP: number, maxPerP: number) => {
     setCurrentPage(currentP);
