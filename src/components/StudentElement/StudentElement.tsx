@@ -100,27 +100,29 @@ export const StudentElement = (student: ReservedStudentRes | AvailableStudentRes
   };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
-          mode: 'cors',
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        });
+    if (reservationDateTo) {
+      (async () => {
+        try {
+          const data = await fetch(`https://api.github.com/users/${githubUsername}`, {
+            mode: 'cors',
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+          });
 
-        const response = await data.json();
+          const response = await data.json();
 
-        // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
+          // response.message === 'Not Found' ? avatar : setAvatar(githubUsername);
 
-        if (response.message !== 'Not Found') {
-          setAvatar(`https://github.com/${githubUsername}.png`);
-        }
-        // eslint-disable-next-line no-empty
-      } catch {}
-    })();
+          if (response.message !== 'Not Found') {
+            setAvatar(`https://github.com/${githubUsername}.png`);
+          }
+          // eslint-disable-next-line no-empty
+        } catch {}
+      })();
+    }
   }, []);
 
   return (
