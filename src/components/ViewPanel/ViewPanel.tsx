@@ -8,7 +8,7 @@ export const ViewPanel = () => {
           Dostępni kursanci
         </NavLink>
 
-        <NavLink className="link" to="/interview">
+        <NavLink className="link" to="/hr/interview-students">
           Do rozmowy
         </NavLink>
       </div>
