@@ -52,14 +52,14 @@ export const StudentElement = (props: Props) => {
     reservationDateTo = bookingDateTo;
   }
 
-  const bookingStudent = async () => {
+  const toggleStudentReservation = async (method: 'POST' | 'DELETE') => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
         {
           mode: 'cors',
           credentials: 'include',
-          method: 'POST',
+          method,
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -71,32 +71,8 @@ export const StudentElement = (props: Props) => {
         setNotification(toast, errMsg);
         return;
       }
-      setNotification(toast, 'Student has been added to your list.', 'success');
-    } catch (err) {
-      setNotification(toast);
-    }
-  };
-
-  const removeStudentFromHrList = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
-        {
-          mode: 'cors',
-          credentials: 'include',
-          method: 'DELETE',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      const errMsg = await setIfErrMsg(res);
-      if (errMsg) {
-        setNotification(toast, errMsg);
-        return;
-      }
-      setNotification(toast, 'Student has been removed from your list.', 'success');
+      const resObj = await res.json();
+      setNotification(toast, resObj.message, 'success');
       setStudentsCount((prev) => prev - 1);
     } catch (err) {
       setNotification(toast);
@@ -223,7 +199,7 @@ export const StudentElement = (props: Props) => {
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Brak zainteresowania"
-                onClick={removeStudentFromHrList}
+                onClick={() => toggleStudentReservation('DELETE')}
               />
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
@@ -235,7 +211,7 @@ export const StudentElement = (props: Props) => {
             <MegaButton
               classNameAdd="megak-primary filter-star-butons-group-small right-button"
               buttonTitle="Zarezerwuj rozmowę"
-              onClick={bookingStudent}
+              onClick={() => toggleStudentReservation('POST')}
             />
           )}
 
