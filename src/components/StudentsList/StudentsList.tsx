@@ -55,9 +55,6 @@ export const StudentsList = ({ path }: Props) => {
 
   useEffect(() => {
     studentsFetch();
-  }, []);
-  useEffect(() => {
-    studentsFetch();
   }, [filteringOptions, currentPage, maxPerPage, studentsCount]);
 
   return (
