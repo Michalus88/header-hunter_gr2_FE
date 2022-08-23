@@ -32,17 +32,14 @@ export const AuthenticatedApp = () => {
                 element={
                   <StudentsList
                     key="interview-students"
-                    path={process.env.REACT_APP_HR_RESERVED_STUDENTS}
+                    path={process.env.REACT_APP_HR_BOOKED_STUDENTS}
                   />
                 }
               />
               <Route
                 path="/hr/available-students"
                 element={
-                  <StudentsList
-                    key="available-students"
-                    path={process.env.REACT_APP_STUDENT_FILTERED}
-                  />
+                  <StudentsList key="available-students" path={process.env.REACT_APP_STUDENT} />
                 }
               />
               <Route path="/students/:id" element={<CvPage />} />

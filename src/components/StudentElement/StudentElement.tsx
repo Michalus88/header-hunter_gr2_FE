@@ -55,7 +55,7 @@ export const StudentElement = (props: Props) => {
   const bookingStudent = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKING_STUDENT}/${id}`,
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
         {
           mode: 'cors',
           credentials: 'include',
@@ -80,7 +80,7 @@ export const StudentElement = (props: Props) => {
   const removeStudentFromHrList = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKING_STUDENT}/${id}`,
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
         {
           mode: 'cors',
           credentials: 'include',

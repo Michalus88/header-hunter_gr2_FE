@@ -22,42 +22,37 @@ export const StudentsList = ({ path }: Props) => {
   const [studentsCount, setStudentsCount] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
 
-  const studentsFetch = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}${path}/${maxPerPage}/${currentPage}`,
-        {
-          mode: 'cors',
-          credentials: 'include',
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_BASE_URL}${path}/${maxPerPage}/${currentPage}`,
+          {
+            mode: 'cors',
+            credentials: 'include',
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(filteringOptions),
           },
-          body: JSON.stringify(filteringOptions),
-        },
-      );
-      const errMsg = await setIfErrMsg(res);
-      if (errMsg) {
-        setNotification(toast, errMsg);
-        return;
+        );
+        const errMsg = await setIfErrMsg(res);
+        if (errMsg) {
+          setNotification(toast, errMsg);
+          return;
+        }
+        const students = (await res.json()) as ReservedStudentsWithPaginationRes;
+        setBookedStudents(students);
+        setCurrentPage(students.pages.currentPage);
+        setMaxPerPage(students.pages.maxPerPage);
+        setTotalPages(students.pages.totalPages);
+        setStudentsCount(students.pages.studentsCount);
+      } catch (err) {
+        setNotification(toast);
       }
-      const students = (await res.json()) as ReservedStudentsWithPaginationRes;
-      setBookedStudents(students);
-      setCurrentPage(students.pages.currentPage);
-      setMaxPerPage(students.pages.maxPerPage);
-      setTotalPages(students.pages.totalPages);
-      setStudentsCount(students.pages.studentsCount);
-    } catch (err) {
-      setNotification(toast);
-    }
-  };
-
-  useEffect(() => {
-    studentsFetch();
-  }, []);
-  useEffect(() => {
-    studentsFetch();
+    })();
   }, [filteringOptions, currentPage, maxPerPage, studentsCount]);
 
   return (
