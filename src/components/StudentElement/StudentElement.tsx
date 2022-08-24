@@ -52,7 +52,7 @@ export const StudentElement = (props: Props) => {
     reservationDateTo = bookingDateTo;
   }
 
-  const toggleStudentReservation = async (method: 'POST' | 'DELETE') => {
+  const toggleStudentStatus = async (method: 'POST' | 'DELETE' | 'PATCH') => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
@@ -199,19 +199,19 @@ export const StudentElement = (props: Props) => {
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Brak zainteresowania"
-                onClick={() => toggleStudentReservation('DELETE')}
+                onClick={() => toggleStudentStatus('DELETE')}
               />
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Zatrudniony"
-                onClick={() => {}}
+                onClick={() => toggleStudentStatus('PATCH')}
               />
             </>
           ) : (
             <MegaButton
               classNameAdd="megak-primary filter-star-butons-group-small right-button"
               buttonTitle="Zarezerwuj rozmowę"
-              onClick={() => toggleStudentReservation('POST')}
+              onClick={() => toggleStudentStatus('POST')}
             />
           )}
 
