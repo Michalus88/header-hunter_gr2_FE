@@ -5,7 +5,6 @@ export const setNotification = (
   msg?: null | string,
   severity: 'success' | 'error' = 'error',
 ) => {
-  console.log(severity);
   toast.current.show({
     severity,
     summary: severity,
