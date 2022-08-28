@@ -194,7 +194,7 @@ export const StudentElement = (props: Props) => {
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"
                 buttonTitle="Pokaż CV"
-                onClick={() => navigate('/students/id')}
+                onClick={() => navigate(`/hr/interview-students/${id}`)}
               />
               <MegaButton
                 classNameAdd="megak-primary filter-star-butons-group-small right-button"

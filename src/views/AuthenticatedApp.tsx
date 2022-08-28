@@ -42,7 +42,7 @@ export const AuthenticatedApp = () => {
                   <StudentsList key="available-students" path={process.env.REACT_APP_STUDENT} />
                 }
               />
-              <Route path="/students/:id" element={<CvPage />} />
+              <Route path="/hr/interview-students/:id" element={<CvPage />} />
               <Route path="/student" element={<StudentPage />} />
               <Route path="/student/edit-form" element={<StudentDetails />} />
             </Routes>
