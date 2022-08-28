@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DetailedStudentDataRes, Role } from 'types';
+import { useParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { MainWrapper } from './MainWrapper';
 import { GoBack } from './GoBack';
@@ -8,6 +9,7 @@ import { CvContent } from './CvContent';
 import { Spinner } from '../Spinner/Spinner';
 
 export const CvPage = () => {
+  const { id } = useParams();
   const { user } = useAuth();
   console.log(user);
   const [studentData, getStudentData] = useState<DetailedStudentDataRes | null>(null);
@@ -22,7 +24,7 @@ export const CvPage = () => {
     //     : `http://localhost:3001/api/hr/booked-students/${testID}`;
 
     const res = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_GET_DETAILS}`,
+      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
       {
         method: 'GET',
         credentials: 'include',
