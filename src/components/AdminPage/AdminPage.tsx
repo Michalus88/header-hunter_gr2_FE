@@ -1,10 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Path, UseFormRegister, SubmitHandler, useForm } from 'react-hook-form';
 import { HrProfileRegister } from 'types';
 
 import megaK from '../../assets/img/MegaK.webp';
 import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
+import { setIfErrMsg } from '../../helpers/setIfErrMsg';
+import { setNotification } from '../../helpers/setNotification';
+import { useAuth } from '../../hooks/useAuth';
 
 type InputProps = {
   name: Path<HrProfileRegister>;
@@ -42,30 +45,47 @@ type InputProps = {
 export const AdminPage = () => {
   const {
     register,
-    formState: { errors },
+    formState,
+    formState: { errors, isSubmitSuccessful },
     handleSubmit,
+    reset,
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
+  const { toast } = useAuth();
   const [file, setFile] = useState<File | null>(null);
   const formFileRef = useRef<HTMLFormElement | any>(null);
   const inputFileRef = useRef<HTMLFormElement | any>(null);
 
-  const onSubmit: SubmitHandler<HrProfileRegister> = (data) => {
-    const headers = new Headers();
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, reset]);
 
-    headers.append('Access-Control-Allow-Headers', '*');
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Credentials', 'true');
-
-    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR}`, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'POST',
-      headers,
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(`Failed: ${error.message}`));
+  const onSubmit: SubmitHandler<HrProfileRegister> = async (data) => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_HR}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (errMsg) {
+        setNotification(toast, errMsg);
+        return;
+      }
+      const resObj = await res.json();
+      setNotification(toast, resObj.message, 'success');
+    } catch (err) {
+      setNotification(toast);
+    }
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,22 +102,29 @@ export const AdminPage = () => {
 
     const data = new FormData();
     data.append('studentsList', file as File);
-
     const headers = new Headers();
-
     headers.append('Access-Control-Allow-Headers', '*');
-    headers.append('Access-Control-Allow-Credentials', 'true');
-
-    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT}`, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'POST',
-      headers,
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(`Failed: ${error.message}`));
+    // headers.append('Access-Control-Allow-Credentials', 'true');
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_STUDENT}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'POST',
+          headers,
+          body: data,
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (errMsg) {
+        setNotification(toast, errMsg);
+        return;
+      }
+      setNotification(toast, 'Registration completed successfully', 'success');
+    } catch (err) {
+      setNotification(toast);
+    }
   };
 
   return (
