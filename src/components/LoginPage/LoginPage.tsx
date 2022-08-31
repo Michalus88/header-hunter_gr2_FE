@@ -97,6 +97,8 @@ export const LoginPage = () => {
                     message: 'Nieprawidłowy adres E-mail',
                   },
                 })}
+                value={value1}
+                onChange={(e) => setValue1(e.target.value)}
               />
               <label className="login-input-label" htmlFor="email">
                 E-mail
@@ -122,8 +124,8 @@ export const LoginPage = () => {
                       message: 'Minimum 5 znaków',
                     },
                   })}
-                  // promptLabel="Wpisz hasło"
-                  // feedback={false}
+                  value={value2}
+                  onChange={(e) => setValue2(e.target.value)}
                 />
                 <label className="login-input-label" htmlFor="password">
                   Hasło
