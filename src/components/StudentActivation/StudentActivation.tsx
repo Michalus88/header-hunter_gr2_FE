@@ -180,6 +180,7 @@ export const StudentActivation = () => {
                 className="student-page__input"
                 type="text"
                 {...register('githubUsername', {
+                  required: 'this is a required',
                   maxLength: {
                     value: 255,
                     message: 'Max length is 255',
