@@ -45,8 +45,7 @@ type InputProps = {
 export const AdminPage = () => {
   const {
     register,
-    formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
@@ -54,12 +53,6 @@ export const AdminPage = () => {
   const [file, setFile] = useState<File | null>(null);
   const formFileRef = useRef<HTMLFormElement | any>(null);
   const inputFileRef = useRef<HTMLFormElement | any>(null);
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-  }, [formState, reset]);
 
   const onSubmit: SubmitHandler<HrProfileRegister> = async (data) => {
     try {
@@ -83,6 +76,7 @@ export const AdminPage = () => {
       }
       const resObj = await res.json();
       setNotification(toast, resObj.message, 'success');
+      reset();
     } catch (err) {
       setNotification(toast);
     }

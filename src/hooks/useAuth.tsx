@@ -7,6 +7,7 @@ import { setNotification } from '../helpers/setNotification';
 
 interface AuthContextType {
   user: LoggedUserRes | null;
+  setUser: React.Dispatch<React.SetStateAction<LoggedUserRes | null>>;
   signIn: (data: Login) => Promise<void>;
   signOut: () => void;
   toast: React.MutableRefObject<any>;
@@ -91,8 +92,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <AuthContext.Provider value={{ user, signIn, signOut, notification: Notification, toast }}>
+    <AuthContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
+      value={{ user, setUser, signIn, signOut, notification: Notification, toast }}
+    >
       {children}
     </AuthContext.Provider>
   );

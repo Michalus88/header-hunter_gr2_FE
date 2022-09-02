@@ -13,6 +13,7 @@ export const usePathRedirect = (
     if (location.pathname.includes('activate')) {
       signOut();
       navigate(location.pathname);
+      return;
     }
     switch (userData.role) {
       case Role.STUDENT:
@@ -26,7 +27,7 @@ export const usePathRedirect = (
         break;
       default:
         setUser(null);
-        // Notification 'User with the given role do not exist'
+        navigate('/');
         break;
     }
   };

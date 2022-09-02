@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType } from 'types';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { ValidateMsg } from '../StudentPage/ValidateMsg';
+import { setIfErrMsg } from '../../helpers/setIfErrMsg';
+import { setNotification } from '../../helpers/setNotification';
+import { useAuth } from '../../hooks/useAuth';
 
 export const StudentActivation = () => {
+  const navigate = useNavigate();
+  const { toast } = useAuth();
+  const { userId, registerToken } = useParams();
   interface StudentProfileWithArrayUrls extends StudentProfileRegister {
     portfolio1: string | undefined;
     portfolio2: string | undefined;
@@ -72,11 +80,8 @@ export const StudentActivation = () => {
       workExperience,
       courses,
     };
-    alert(JSON.stringify(data2));
     const res = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}${
-        process.env.REACT_APP_STUDENT_PROFILE_ACTIVATE
-      }/${'1'}/${1}`,
+      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_ACTIVATE}/${userId}/${registerToken}`,
       {
         method: 'POST',
         credentials: 'include',
@@ -87,9 +92,16 @@ export const StudentActivation = () => {
         body: JSON.stringify(data2),
       },
     );
-    console.log(res);
-    const test = await res.json();
-    console.log(test);
+    const errMsg = await setIfErrMsg(res);
+    if (errMsg) {
+      setNotification(toast, errMsg);
+      if (res.status === 403) {
+        navigate('/');
+      }
+    }
+    const resObj = await res.json();
+    setNotification(toast, resObj.message, 'success');
+    navigate('/');
   };
 
   return (
@@ -168,6 +180,7 @@ export const StudentActivation = () => {
                 className="student-page__input"
                 type="text"
                 {...register('githubUsername', {
+                  required: 'this is a required',
                   maxLength: {
                     value: 255,
                     message: 'Max length is 255',
