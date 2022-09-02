@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Role, UserRes } from 'types';
 import { useNavigate } from 'react-router';
@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { setNotification } from '../../helpers/setNotification';
 
 export const UserActivation = () => {
+  const { setUser } = useAuth();
   const { userId, registerToken } = useParams();
   const navigate = useNavigate();
   const [userToActivate, setUserToActivate] = useState<UserRes | null>(null);
@@ -15,6 +16,7 @@ export const UserActivation = () => {
   const { toast } = useAuth();
 
   useEffect(() => {
+    setUser(null);
     (async () => {
       try {
         setIsLoading(true);
@@ -26,7 +28,6 @@ export const UserActivation = () => {
           },
         );
         const errMsg = await setIfErrMsg(res);
-
         if (!errMsg) {
           const user = (await res.json()) as UserRes;
           setUserToActivate(user);
@@ -38,7 +39,7 @@ export const UserActivation = () => {
         }
       } catch (err) {
         setIsLoading(false);
-        // setNotification(toast);
+        setNotification(toast);
         navigate('/');
       }
     })();
@@ -48,7 +49,7 @@ export const UserActivation = () => {
     if (userToActivate !== null) {
       switch (userToActivate.role) {
         case Role.HR:
-          navigate(`/activate/student/${userId}/${registerToken}`);
+          navigate(`/`);
           break;
         case Role.STUDENT:
           navigate(`/activate/student/${userId}/${registerToken}`);
