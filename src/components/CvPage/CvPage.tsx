@@ -7,42 +7,35 @@ import { GoBack } from './GoBack';
 import { StudentInfo } from './StudentInfo';
 import { CvContent } from './CvContent';
 import { Spinner } from '../Spinner/Spinner';
+import { setNotification } from '../../helpers/setNotification';
 
 export const CvPage = () => {
   const { id } = useParams();
-  const { user } = useAuth();
-  console.log(user);
-  const [studentData, getStudentData] = useState<DetailedStudentDataRes | null>(null);
-  const getStudentDetails = async () => {
-    getStudentData(null);
-
-    // const testID = '1';
-
-    // const URL =
-    //   user?.role === Role.STUDENT
-    //     ? `http://localhost:3001/api/student/detailed`
-    //     : `http://localhost:3001/api/hr/booked-students/${testID}`;
-
-    const res = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`,
-      {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    console.log(res);
-    const data = await res.json();
-    getStudentData(data);
-    console.log(data);
-  };
+  const { user, toast } = useAuth();
+  const [studentData, setStudentData] = useState<DetailedStudentDataRes | null>(null);
 
   useEffect(() => {
-    getStudentDetails();
-  }, []);
+    (async () => {
+      setStudentData(null);
+      const path = id
+        ? `${process.env.REACT_APP_HR_BOOKED_STUDENTS}/${id}`
+        : process.env.REACT_APP_STUDENT;
+      try {
+        const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}${path}`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await res.json();
+        setStudentData(data);
+      } catch (err) {
+        setNotification(toast);
+      }
+    })();
+  }, [id, toast]);
 
   if (studentData === null) return <Spinner />;
 
