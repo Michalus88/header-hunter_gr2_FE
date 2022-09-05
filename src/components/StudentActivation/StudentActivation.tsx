@@ -207,12 +207,11 @@ export const StudentActivation = () => {
             <label>
               <span>Preferowane miejsce pracy:</span>
               <select {...register('expectedTypeWork')}>
-                <option value="">Bez znaczenia</option>
+                <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option>
                 <option value={ExpectedTypeWork.AT_LOCATION}>Na miejscu</option>
                 <option value={ExpectedTypeWork.READY_TO_MOVE}>Gotowość do przeprowadzki</option>
                 <option value={ExpectedTypeWork.REMOTE}>Wyłącznie zdalnie</option>
                 <option value={ExpectedTypeWork.HYBRID}>Hybrydowo</option>
-                {/* <option value={ExpectedTypeWork.IRRELEVANT}>Bez znaczenia</option> */}
               </select>
             </label>
           </div>
@@ -238,7 +237,7 @@ export const StudentActivation = () => {
             <label>
               <span>Oczekiwany typ kontraktu:</span>
               <select {...register('expectedContractType')}>
-                <option value="">Brak preferencji</option>
+                <option value={ExpectedContractType.IRRELEVANT}>Brak preferencji</option>
                 <option value={ExpectedContractType.EMPLOYMENT_CONTRACT}>Tylko UoP</option>
                 <option value={ExpectedContractType.B_TO_B}>Możliwe B2B</option>
                 <option value={ExpectedContractType.COMMISSION_CONTRACT_OR_SPECIFIC_TASK_CONTRACT}>

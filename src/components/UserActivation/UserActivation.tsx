@@ -17,6 +17,7 @@ export const UserActivation = () => {
 
   useEffect(() => {
     setUser(null);
+    setUserToActivate(null);
     (async () => {
       try {
         setIsLoading(true);
@@ -33,9 +34,11 @@ export const UserActivation = () => {
           setUserToActivate(user);
           setIsLoading(false);
         } else {
+          if (res.status === 403) {
+            navigate('/');
+          }
           setNotification(toast, errMsg);
           setIsLoading(false);
-          setUserToActivate(null);
         }
       } catch (err) {
         setIsLoading(false);
