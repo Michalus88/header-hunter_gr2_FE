@@ -8,7 +8,7 @@ import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
 import { useAuth } from '../../hooks/useAuth';
 
-export const StudentActivation = () => {
+export const StudentForm = () => {
   const navigate = useNavigate();
   const { toast } = useAuth();
   const { userId, registerToken } = useParams();

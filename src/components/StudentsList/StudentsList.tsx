@@ -53,7 +53,7 @@ export const StudentsList = ({ path }: Props) => {
         setNotification(toast);
       }
     })();
-  }, [filteringOptions, currentPage, maxPerPage, studentsCount]);
+  }, [filteringOptions, currentPage, maxPerPage, studentsCount, totalPages]);
 
   return (
     <>
