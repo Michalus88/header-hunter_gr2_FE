@@ -1,0 +1,183 @@
+@import "colors";
+
+.BookInterview-student-all {
+  display: flex;
+
+  .BookInterview-student-reservation {
+    display: flex;
+    flex-direction: column;
+    //margin-left: 20px;
+
+    .BookInterview-student-reservation-text {
+      color: #CFCFCF;
+      font-size: 12px;
+      text-align: left;
+      letter-spacing: 0;
+      opacity: 1;
+    }
+    .BookInterview-student-reservation-date {
+      letter-spacing: 1.6px;
+      color: #F7F7F7;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+}
+.BookInterview-student-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: lighter;
+  font-size: 13px;
+  .BookInterview-student-information-avatar {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid $bgc-dark;
+    margin-left: 3em;
+  }
+  .BookInterview-student-information-name {
+    text-align: left;
+    font-size: 17px;
+    letter-spacing: 0px;
+    color: #F7F7F7;
+    margin: 10px;
+  }
+  .reservation {
+    width: 158px;
+    height: 39px;
+    background-color: #e02735;
+    color: #f7f7f7;
+    font-size: 16px;
+    font-family: 'Catamaran', Arial, sans-serif;
+    letter-spacing: 0;
+    border: none;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 800px) {
+  .BookInterview-student-all {
+    display: flex;
+    justify-content: center;
+
+    .BookInterview-student-reservation {
+      display: flex;
+      flex-direction: column;
+      //margin-left: 20px;
+
+      .BookInterview-student-reservation-text {
+        color: #CFCFCF;
+        font-size: 14px;
+        text-align: left;
+        letter-spacing: 0;
+        opacity: 1;
+      }
+      .BookInterview-student-reservation-date {
+        letter-spacing: 0.5px;
+        color: #F7F7F7;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+  .BookInterview-student-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-weight: lighter;
+    font-size: 15px;
+    margin-left: 15px;
+    .BookInterview-student-information-avatar {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1px solid $bgc-dark;
+      margin: 0 2em;
+    }
+    .BookInterview-student-information-name {
+      text-align: center;
+      font-size: 15px;
+      letter-spacing: 0px;
+      color: #F7F7F7;
+      margin: 5px 15px;
+    }
+    .reservation {
+      width: 158px;
+      height: 39px;
+      background-color: #e02735;
+      color: #f7f7f7;
+      font-size: 16px;
+      font-family: 'Catamaran', Arial, sans-serif;
+      letter-spacing: 0;
+      border: none;
+      margin-right: 15px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .BookInterview-student-all {
+    display: flex;
+    justify-content: center;
+
+    .BookInterview-student-reservation {
+      display: flex;
+      flex-direction: column;
+      //margin-left: 20px;
+
+      .BookInterview-student-reservation-text {
+        color: #CFCFCF;
+        font-size: 14px;
+        text-align: left;
+        letter-spacing: 0;
+        opacity: 1;
+      }
+      .BookInterview-student-reservation-date {
+        letter-spacing: 0.5px;
+        color: #F7F7F7;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+  .BookInterview-student-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    font-weight: lighter;
+    font-size: 15px;
+    margin-left: 15px;
+    .BookInterview-student-information-avatar {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1px solid $bgc-dark;
+      margin: 0 2em;
+    }
+    .BookInterview-student-information-name {
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 0px;
+      color: #F7F7F7;
+      margin: 5px 15px;
+    }
+    .reservation {
+      width: 158px;
+      height: 39px;
+      background-color: #e02735;
+      color: #f7f7f7;
+      font-size: 16px;
+      font-family: 'Catamaran', Arial, sans-serif;
+      letter-spacing: 0;
+      border: none;
+      margin-right: 15px;
+    }
+  }
+}

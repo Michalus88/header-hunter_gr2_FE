@@ -1,0 +1,116 @@
+@import './colors';
+
+.login-page-login-group {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: 0.6px;
+
+  .login-group-image {
+    width: 124px;
+    height: 76px;
+  }
+
+  .login-input-email {
+    margin: 1rem 0;
+
+    .p-inputtext {
+      border: none;
+      border-radius: 2px;
+      background: $input-brown;
+    }
+    .p-inputtext:enabled:focus {
+      box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
+        inset 0 0 0 1px #c96789;
+    }
+    .p-float-label input:focus ~ label {
+      color: $megak-light-color;
+    }
+  }
+
+  .login-input-password {
+    margin: 1rem 0;
+
+    .p-inputtext {
+      border: none;
+      border-radius: 2px;
+      background: $input-brown;
+    }
+    .p-inputtext:enabled:focus {
+      box-shadow: inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789, inset 0 0 0 1px #c96789,
+        inset 0 0 0 1px #c96789;
+    }
+    .p-float-label input:focus ~ label {
+      color: $megak-light-color;
+    }
+  }
+  .p-float-label .p-inputwrapper-focus ~ label {
+    color: $megak-light-color;
+  }
+
+  .login-forgot-pass {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+  }
+
+  .register-new-acc {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 2rem;
+
+    .register-new-acc-text {
+      font-size: 14px;
+
+      .register-new-acc-register {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .register-new-acc-button {
+      width: 140px;
+      height: 45px;
+      background-color: $megak-red-color;
+      color: $main-text-color;
+      border-radius: 2px;
+    }
+    .register-new-acc-button:hover {
+      background-color: $megak-light-color;
+    }
+    .p-button {
+      background-color: $megak-red-color;
+    }
+    .p-button:hover {
+      background-color: $megak-light-color;
+      color: $main-text-color;
+    }
+    .p-button:focus {
+      background-color: $megak-red-color;
+    }
+    .p-button:focus:hover {
+      background-color: $megak-light-color;
+    }
+    .p-button:disabled:focus {
+      background-color: $megak-red-color;
+    }
+  }
+  .lost-password-text {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .reCaptcha {
+    .grecaptcha-badge {
+      bottom: -100% !important;
+      right: 15% !important;
+    }
+  }
+}
