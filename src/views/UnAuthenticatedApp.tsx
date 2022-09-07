@@ -9,7 +9,10 @@ export const UnAuthenticatedApp = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/activate/:userId/:registerToken" element={<UserActivation />} />
-      <Route path="/activate/student/:userId/:registerToken" element={<StudentForm />} />
+      <Route
+        path="/activate/student/:userId/:registerToken"
+        element={<StudentForm mode="activate" />}
+      />
     </Routes>
   );
 };

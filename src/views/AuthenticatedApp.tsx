@@ -3,13 +3,12 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { StudentsList } from '../components/StudentsList/StudentsList';
 import { CvPage } from '../components/CvPage/CvPage';
 import { AdminPage } from '../components/AdminPage/AdminPage';
-import { StudentPage } from '../components/StudentPage/StudentPage';
 import { MainTemplate } from '../components/templates/MainTemplate';
 import { Account } from '../components/Account/Account';
 import { HrProvider } from '../providers/HrProvider';
-import { StudentDetails } from '../components/StudentPage/StudentDetails';
 import { FilteringProvider } from '../hooks/useFilter';
 import { FilterDialog } from '../components/FilterDialog/FilterDialog';
+import { StudentForm } from '../components/StudentForm/Student-form';
 
 interface LocationState {
   background: string;
@@ -44,7 +43,7 @@ export const AuthenticatedApp = () => {
               />
               <Route path="/hr/interview-students/:id" element={<CvPage key="forHr" />} />
               <Route path="/student" element={<CvPage key="forStudent" />} />
-              <Route path="/student/edit-form" element={<StudentDetails />} />
+              <Route path="/student/edit-form" element={<StudentForm mode="update" />} />
             </Routes>
             {background && (
               <Routes>

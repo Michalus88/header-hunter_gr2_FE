@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType } from 'types';
+import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType, UrlEntity } from 'types';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { ValidateMsg } from '../StudentPage/ValidateMsg';
@@ -8,22 +8,92 @@ import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
 import { useAuth } from '../../hooks/useAuth';
 
-export const StudentForm = () => {
+interface Props {
+  tel: string | undefined;
+  firstName: string;
+  lastName: string;
+  githubUsername: string;
+  portfolioUrls: UrlEntity[] | [];
+  projectUrls: UrlEntity[];
+  bio: string | undefined;
+  expectedTypeWork: ExpectedTypeWork | null | undefined;
+  targetWorkCity: string | undefined;
+  expectedContractType: ExpectedContractType | null | undefined;
+  expectedSalary: string | undefined;
+  canTakeApprenticeship: boolean;
+  monthsOfCommercialExp: number;
+  education: string | undefined;
+  workExperience: string | undefined;
+  courses: string | undefined;
+}
+
+interface DefaultValues extends Omit<Props, 'projectUrls' | 'portfolioUrls'> {
+  projectUrls: (string | undefined)[];
+  portfolioUrls: (string | undefined)[];
+}
+
+interface StudentProfileWithArrayUrls extends StudentProfileRegister {
+  portfolio1: string | undefined;
+  portfolio2: string | undefined;
+  portfolio3: string | undefined;
+  portfolio4: string | undefined;
+  portfolio5: string | undefined;
+  project1: string | undefined;
+  project2: string | undefined;
+  project3: string | undefined;
+  project4: string | undefined;
+  project5: string | undefined;
+}
+
+export const StudentForm = (props?: Props) => {
   const navigate = useNavigate();
   const { toast } = useAuth();
   const { userId, registerToken } = useParams();
-  interface StudentProfileWithArrayUrls extends StudentProfileRegister {
-    portfolio1: string | undefined;
-    portfolio2: string | undefined;
-    portfolio3: string | undefined;
-    portfolio4: string | undefined;
-    portfolio5: string | undefined;
-    project1: string | undefined;
-    project2: string | undefined;
-    project3: string | undefined;
-    project4: string | undefined;
-    project5: string | undefined;
-  }
+  const [defaultValues, setDefaultValues] = useState<DefaultValues | null>(null);
+
+  useEffect(() => {
+    if (props !== undefined) {
+      const {
+        tel = undefined,
+        firstName,
+        lastName,
+        githubUsername,
+        projectUrls,
+        portfolioUrls,
+        bio,
+        expectedTypeWork,
+        targetWorkCity,
+        expectedContractType,
+        expectedSalary,
+        canTakeApprenticeship,
+        monthsOfCommercialExp,
+        education,
+        workExperience,
+        courses,
+      } = props;
+
+      const projectUrlsWithoutId = projectUrls.map((el) => (el ? el.url : undefined));
+      const portfolioUrlsWithoutId = portfolioUrls.map((el) => (el ? el.url : undefined));
+      setDefaultValues({
+        firstName,
+        lastName,
+        tel,
+        githubUsername,
+        projectUrls: projectUrlsWithoutId,
+        portfolioUrls: portfolioUrlsWithoutId,
+        bio,
+        expectedTypeWork,
+        targetWorkCity,
+        expectedContractType,
+        expectedSalary,
+        canTakeApprenticeship,
+        monthsOfCommercialExp,
+        education,
+        workExperience,
+        courses,
+      });
+    }
+  }, []);
 
   const {
     register,
@@ -31,19 +101,23 @@ export const StudentForm = () => {
     watch,
     formState: { errors },
   } = useForm<StudentProfileWithArrayUrls>({
+    defaultValues: defaultValues ?? {},
     mode: 'onChange',
   });
 
-  const tel = String(watch('tel')) === '' ? null : watch('tel');
-  const bio = String(watch('bio')) === '' ? null : watch('bio');
-  const targetWorkCity = String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
-  const expectedSalary = String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
-  const education = String(watch('education')) === '' ? null : watch('education');
-  const workExperience = String(watch('workExperience')) === '' ? null : watch('workExperience');
-  const courses = String(watch('courses')) === '' ? null : watch('courses');
-  const expectedContractType =
+  const telFromForm = String(watch('tel')) === '' ? null : watch('tel');
+  const bioFromForm = String(watch('bio')) === '' ? null : watch('bio');
+  const targetWorkCityFromForm =
+    String(watch('targetWorkCity')) === '' ? null : watch('targetWorkCity');
+  const expectedSalaryFromForm =
+    String(watch('expectedSalary')) === '' ? null : watch('expectedSalary');
+  const educationFromForm = String(watch('education')) === '' ? null : watch('education');
+  const workExperienceFromForm =
+    String(watch('workExperience')) === '' ? null : watch('workExperience');
+  const coursesFromForm = String(watch('courses')) === '' ? null : watch('courses');
+  const expectedContractTypeFromForm =
     String(watch('expectedContractType')) === '' ? null : watch('expectedContractType');
-  const canTakeApprenticeship = String(watch('canTakeApprenticeship')) !== 'No';
+  const canTakeApprenticeshipFromForm = String(watch('canTakeApprenticeship')) !== 'No';
 
   let portfolioArr: (string | undefined | null)[] = [];
   let projectArr: (string | undefined | null)[] = [];
@@ -63,22 +137,22 @@ export const StudentForm = () => {
 
   const onSubmit: SubmitHandler<StudentProfileRegister> = async (data) => {
     const data2 = {
-      tel,
+      tel: telFromForm,
       firstName: data.firstName,
       lastName: data.lastName,
       githubUsername: data.githubUsername,
       portfolioUrls: portfolioArr,
       projectUrls: projectArr,
-      bio,
+      bio: bioFromForm,
       expectedTypeWork: data.expectedTypeWork,
-      targetWorkCity,
-      expectedContractType,
-      expectedSalary,
-      canTakeApprenticeship,
+      targetWorkCity: targetWorkCityFromForm,
+      expectedContractType: expectedContractTypeFromForm,
+      expectedSalary: expectedSalaryFromForm,
+      canTakeApprenticeship: canTakeApprenticeshipFromForm,
       monthsOfCommercialExp: Number(data.monthsOfCommercialExp),
-      education,
-      workExperience,
-      courses,
+      education: educationFromForm,
+      workExperience: workExperienceFromForm,
+      courses: coursesFromForm,
     };
     const res = await fetch(
       `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_ACTIVATE}/${userId}/${registerToken}`,
