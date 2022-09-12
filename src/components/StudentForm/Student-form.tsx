@@ -9,27 +9,7 @@ import { setNotification } from '../../helpers/setNotification';
 import { useAuth } from '../../hooks/useAuth';
 
 interface Props {
-  tel: string | undefined;
-  firstName: string;
-  lastName: string;
-  githubUsername: string;
-  portfolioUrls: UrlEntity[] | [];
-  projectUrls: UrlEntity[];
-  bio: string | undefined;
-  expectedTypeWork: ExpectedTypeWork | null | undefined;
-  targetWorkCity: string | undefined;
-  expectedContractType: ExpectedContractType | null | undefined;
-  expectedSalary: string | undefined;
-  canTakeApprenticeship: boolean;
-  monthsOfCommercialExp: number;
-  education: string | undefined;
-  workExperience: string | undefined;
-  courses: string | undefined;
-}
-
-interface DefaultValues extends Omit<Props, 'projectUrls' | 'portfolioUrls'> {
-  projectUrls: (string | undefined)[];
-  portfolioUrls: (string | undefined)[];
+  mode: 'update' | 'activate';
 }
 
 interface StudentProfileWithArrayUrls extends StudentProfileRegister {
