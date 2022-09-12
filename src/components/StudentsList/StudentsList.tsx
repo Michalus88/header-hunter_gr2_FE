@@ -6,7 +6,7 @@ import { SearchFiltration } from '../SearchFiltration/SearchFiltration';
 import { ViewPanel } from '../ViewPanel/ViewPanel';
 import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { ViewSupport } from '../ViewSupport/ViewSupport';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 export const StudentsList = ({ path }: Props) => {
   const { filteringOptions } = useContext(HrContext);
   const [bookedStudents, setBookedStudents] = useState<ReservedStudentsWithPaginationRes>(null!);
-  const { toast } = useAuth();
+  const { toast } = useApp();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [maxPerPage, setMaxPerPage] = useState<number>(5);
   const [studentsCount, setStudentsCount] = useState<number>(0);
@@ -53,7 +53,7 @@ export const StudentsList = ({ path }: Props) => {
         setNotification(toast);
       }
     })();
-  }, [filteringOptions, currentPage, maxPerPage, studentsCount]);
+  }, [filteringOptions, currentPage, maxPerPage, studentsCount, totalPages]);
 
   return (
     <>

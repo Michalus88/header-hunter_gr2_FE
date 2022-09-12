@@ -1,10 +1,10 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { EmailChange } from 'types';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { ValidateMsg } from './ValidateMsg';
 
 export const ChangeEmail = () => {
-  const { user } = useAuth();
+  const { user } = useApp();
 
   const {
     register: registerEmail,
