@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { PasswordChange } from 'types';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { ValidateMsg } from './ValidateMsg';
 
 export const ChangePassword = () => {
-  const { user } = useAuth();
+  const { user } = useApp();
 
   const {
     register: registerPassword,

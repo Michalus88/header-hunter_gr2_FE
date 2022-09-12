@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import { ValidateMsg } from '../StudentPage/ValidateMsg';
 import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { useStudentForm } from '../../hooks/useStudentForm';
 
 interface Props {
@@ -68,7 +68,7 @@ export const StudentForm = ({ mode }: Props) => {
   //   defaultValues,
   //   mode: 'onChange',
   // });
-  const { toast } = useAuth();
+  const { toast } = useApp();
   const { defaultValues, register, handleSubmit, watch, errors } = useStudentForm({ mode });
 
   // const [defaultValues, setDefaultValues] = useState<StudentProfileWithArrayUrls>(DEFAULT_VALUES);
@@ -123,6 +123,8 @@ export const StudentForm = ({ mode }: Props) => {
   let portfolioArr: (string | undefined | null)[] = [];
   let projectArr: (string | undefined | null)[] = [];
   useEffect(() => {
+    portfolioArr = [];
+    projectArr = [];
     const portfolios = watch([
       'portfolio1',
       'portfolio2',
@@ -131,7 +133,6 @@ export const StudentForm = ({ mode }: Props) => {
       'portfolio5',
     ]);
     const projects = watch(['project1', 'project2', 'project3', 'project4', 'project5']);
-
     portfolioArr = portfolios.filter((el) => el);
     projectArr = projects.filter((el) => el);
   }, [portfolioArr, projectArr]);

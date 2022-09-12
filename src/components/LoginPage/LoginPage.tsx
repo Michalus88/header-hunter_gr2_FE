@@ -5,7 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Login } from 'types';
 import megaK from '../../assets/img/MegaK.webp';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
 
@@ -13,9 +13,9 @@ export const LoginPage = () => {
   const [login, setLogin] = useState(true);
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
-  const { signIn, user } = useAuth();
+  const { signIn, user } = useApp();
   const recaptchaRef = React.createRef<ReCAPTCHA>();
-  const { toast } = useAuth();
+  const { toast } = useApp();
   const {
     register,
     formState: { errors },

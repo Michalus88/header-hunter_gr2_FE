@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StudentProfileRegister, DetailedStudentDataRes, StudentInfo } from 'types';
 import { useForm } from 'react-hook-form';
-import { useAuth } from './useAuth';
+import { useApp } from './useApp';
 import { setNotification } from '../helpers/setNotification';
 
 interface Props {
@@ -60,7 +60,7 @@ export const useStudentForm = ({ mode }: Props) => {
     defaultValues,
     mode: 'onChange',
   });
-  const { toast } = useAuth();
+  const { toast } = useApp();
 
   useEffect(() => {
     if (mode === 'update') {

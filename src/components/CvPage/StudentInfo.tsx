@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Role } from 'types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { CvImage } from './CvImage';
 import { GitHubIcon } from './GitHubIcon';
 import github from '../../assets/img/github.png';
@@ -22,7 +22,7 @@ export const StudentInfo = ({ githubUsername, firstName, lastName, tel, email, b
   const navigate = useNavigate();
   const editProfile = () => navigate('/student/edit-form');
 
-  const { user } = useAuth();
+  const { user } = useApp();
   return (
     <aside className="cv-student-info">
       <div className="cv-student-info__picture-container">
