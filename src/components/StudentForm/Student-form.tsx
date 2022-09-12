@@ -141,7 +141,7 @@ export const StudentForm = ({ mode }: Props) => {
   }, [portfolioArr, projectArr]);
 
   const onSubmit: SubmitHandler<StudentProfileRegister> = async (data) => {
-    const data2 = {
+    const studentInfo = {
       tel: telFromForm,
       firstName: data.firstName,
       lastName: data.lastName,
@@ -159,18 +159,21 @@ export const StudentForm = ({ mode }: Props) => {
       workExperience: workExperienceFromForm,
       courses: coursesFromForm,
     };
-    const res = await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT_ACTIVATE}/${userId}/${registerToken}`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data2),
+    const path =
+      mode === 'update'
+        ? process.env.REACT_APP_STUDENT
+        : `${process.env.REACT_APP_STUDENT_ACTIVATE}/${userId}/${registerToken}`;
+    const method = mode === 'update' ? 'PUT' : 'POST';
+    const redirect = mode === 'update' ? '/student' : '/';
+    const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}${path}`, {
+      method,
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-    );
+      body: JSON.stringify(studentInfo),
+    });
     const errMsg = await setIfErrMsg(res);
     if (errMsg) {
       setNotification(toast, errMsg);
@@ -180,7 +183,7 @@ export const StudentForm = ({ mode }: Props) => {
     }
     const resObj = await res.json();
     setNotification(toast, resObj.message, 'success');
-    navigate('/');
+    navigate(redirect);
   };
 
   return (
