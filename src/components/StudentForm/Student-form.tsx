@@ -64,52 +64,7 @@ export const StudentForm = ({ mode }: Props) => {
   const navigate = useNavigate();
   const { toast } = useAuth();
   const { userId, registerToken } = useParams();
-  const [defaultValues, setDefaultValues] = useState<DefaultValues | null>(null);
-
-  useEffect(() => {
-    if (props !== undefined) {
-      const {
-        tel = undefined,
-        firstName,
-        lastName,
-        githubUsername,
-        projectUrls,
-        portfolioUrls,
-        bio,
-        expectedTypeWork,
-        targetWorkCity,
-        expectedContractType,
-        expectedSalary,
-        canTakeApprenticeship,
-        monthsOfCommercialExp,
-        education,
-        workExperience,
-        courses,
-      } = props;
-
-      const projectUrlsWithoutId = projectUrls.map((el) => (el ? el.url : undefined));
-      const portfolioUrlsWithoutId = portfolioUrls.map((el) => (el ? el.url : undefined));
-      setDefaultValues({
-        firstName,
-        lastName,
-        tel,
-        githubUsername,
-        projectUrls: projectUrlsWithoutId,
-        portfolioUrls: portfolioUrlsWithoutId,
-        bio,
-        expectedTypeWork,
-        targetWorkCity,
-        expectedContractType,
-        expectedSalary,
-        canTakeApprenticeship,
-        monthsOfCommercialExp,
-        education,
-        workExperience,
-        courses,
-      });
-    }
-  }, []);
-
+  const [defaultValues, setDefaultValues] = useState<StudentProfileWithArrayUrls>(DEFAULT_VALUES);
   const {
     register,
     handleSubmit,
