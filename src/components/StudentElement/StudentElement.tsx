@@ -156,8 +156,9 @@ export const StudentElement = (props: Props) => {
           if (response.message !== 'Not Found') {
             setAvatar(`https://github.com/${githubUsername}.png`);
           }
-          // eslint-disable-next-line no-empty
-        } catch {}
+        } catch (err) {
+          setNotification(toast);
+        }
       })();
     }
   }, []);
