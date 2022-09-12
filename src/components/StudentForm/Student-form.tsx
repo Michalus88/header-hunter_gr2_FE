@@ -69,11 +69,46 @@ export const StudentForm = ({ mode }: Props) => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<StudentProfileWithArrayUrls>({
     defaultValues,
     mode: 'onChange',
   });
+  const getStudentDetails = async () => {
+    const res = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_STUDENT}`,
+      {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const urlsObject: Record<string, any> = {};
+    const data = (await res.json()) as DetailedStudentDataRes;
+    data.studentInfo.portfolioUrls.forEach(({ url }, index) => {
+      const name = `portfolio${index + 1}`;
+      urlsObject[name] = url;
+    });
+    data.studentInfo.projectUrls.forEach(({ url }, index) => {
+      const name = `project${index + 1}`;
+      urlsObject[name] = url;
+    });
+    const studentInfoWithoutUrls: Omit<StudentInfo, 'portfolioUrls' | 'projectUrls'> =
+      data.studentInfo;
+    const studentInfo = { ...DEFAULT_VALUES, ...urlsObject, ...studentInfoWithoutUrls };
+    setDefaultValues(studentInfo);
+    reset(studentInfo);
+  };
+
+  useEffect(() => {
+    if (mode === 'update') {
+      getStudentDetails();
+    }
+  }, []);
 
   const telFromForm = String(watch('tel')) === '' ? null : watch('tel');
   const bioFromForm = String(watch('bio')) === '' ? null : watch('bio');
