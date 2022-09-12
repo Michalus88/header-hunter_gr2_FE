@@ -71,7 +71,7 @@ export const StudentForm = ({ mode }: Props) => {
     watch,
     formState: { errors },
   } = useForm<StudentProfileWithArrayUrls>({
-    defaultValues: defaultValues ?? {},
+    defaultValues,
     mode: 'onChange',
   });
 
