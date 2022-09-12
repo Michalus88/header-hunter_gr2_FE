@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ExpectedTypeWork, StudentProfileRegister, ExpectedContractType, UrlEntity } from 'types';
+import {
+  ExpectedTypeWork,
+  StudentProfileRegister,
+  ExpectedContractType,
+  DetailedStudentDataRes,
+  StudentInfo,
+} from 'types';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { ValidateMsg } from '../StudentPage/ValidateMsg';
@@ -25,7 +31,36 @@ interface StudentProfileWithArrayUrls extends StudentProfileRegister {
   project5: string | undefined;
 }
 
-export const StudentForm = (props?: Props) => {
+const DEFAULT_VALUES: StudentProfileWithArrayUrls = {
+  tel: '',
+  firstName: '',
+  lastName: '',
+  githubUsername: '',
+  portfolioUrls: [],
+  projectUrls: [],
+  portfolio1: undefined,
+  portfolio2: undefined,
+  portfolio3: undefined,
+  portfolio4: undefined,
+  portfolio5: undefined,
+  project1: undefined,
+  project2: undefined,
+  project3: undefined,
+  project4: undefined,
+  project5: undefined,
+  bio: undefined,
+  expectedTypeWork: undefined,
+  targetWorkCity: undefined,
+  expectedContractType: undefined,
+  expectedSalary: undefined,
+  canTakeApprenticeship: false,
+  monthsOfCommercialExp: 0,
+  education: undefined,
+  workExperience: undefined,
+  courses: undefined,
+};
+
+export const StudentForm = ({ mode }: Props) => {
   const navigate = useNavigate();
   const { toast } = useAuth();
   const { userId, registerToken } = useParams();
