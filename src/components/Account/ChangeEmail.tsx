@@ -1,11 +1,14 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { EmailChange } from 'types';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { ValidateMsg } from './ValidateMsg';
+import { setIfErrMsg } from '../../helpers/setIfErrMsg';
+import { setNotification } from '../../helpers/setNotification';
 
 export const ChangeEmail = () => {
-  const { user } = useAuth();
-
+  const { user, toast } = useApp();
+  const navigate = useNavigate();
   const {
     register: registerEmail,
     handleSubmit: handleSubmitEmail,
@@ -25,24 +28,33 @@ export const ChangeEmail = () => {
   const repeatNewEmail =
     String(watchEmail('repeatNewEmail')) === '' ? null : watchEmail('repeatNewEmail');
 
-  const formChangeEmailOnSubmit: SubmitHandler<EmailChange> = (data) => {
-    console.log({ data });
-
-    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_EMAIL}`, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'PATCH',
-      body: JSON.stringify(data),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(`Failed: ${error.message}`));
+  const formChangeEmailOnSubmit: SubmitHandler<EmailChange> = async (data) => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_EMAIL}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'PATCH',
+          body: JSON.stringify(data),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (!errMsg) {
+        setNotification(toast, 'Your e-mail has been changed', 'success');
+        navigate(-1);
+      } else {
+        setNotification(toast, errMsg);
+      }
+    } catch (err) {
+      setNotification(toast);
+      navigate(-1);
+    }
   };
-
   return (
     <>
       <h2 className="student-page__title-form" style={{ marginTop: '85px' }}>

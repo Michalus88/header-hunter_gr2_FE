@@ -4,16 +4,16 @@ import { Role, UserRes } from 'types';
 import { useNavigate } from 'react-router';
 import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { Spinner } from '../Spinner/Spinner';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { setNotification } from '../../helpers/setNotification';
 
 export const UserActivation = () => {
-  const { setUser } = useAuth();
+  const { setUser } = useApp();
   const { userId, registerToken } = useParams();
   const navigate = useNavigate();
   const [userToActivate, setUserToActivate] = useState<UserRes | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useAuth();
+  const { toast } = useApp();
 
   useEffect(() => {
     setUser(null);

@@ -7,7 +7,7 @@ import { MegaButton } from '../Elements/MegaButton';
 import { TopPanel } from '../TopPanel/TopPanel';
 import { setIfErrMsg } from '../../helpers/setIfErrMsg';
 import { setNotification } from '../../helpers/setNotification';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 
 type InputProps = {
   name: Path<HrProfileRegister>;
@@ -49,7 +49,7 @@ export const AdminPage = () => {
     handleSubmit,
     reset,
   } = useForm<HrProfileRegister>({ mode: 'onChange' });
-  const { toast } = useAuth();
+  const { toast } = useApp();
   const [file, setFile] = useState<File | null>(null);
   const formFileRef = useRef<HTMLFormElement | any>(null);
   const inputFileRef = useRef<HTMLFormElement | any>(null);

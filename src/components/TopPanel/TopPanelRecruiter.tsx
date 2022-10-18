@@ -1,9 +1,9 @@
 import React from 'react';
 import defaultUser from '../../assets/img/default-user.jpg';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 
 export const TopPanelRecruiter = ({ showMenu }: { showMenu: Function }) => {
-  const { user } = useAuth();
+  const { user } = useApp();
   const showOptions = () => {
     showMenu();
   };

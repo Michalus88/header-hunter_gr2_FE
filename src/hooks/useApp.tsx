@@ -5,17 +5,18 @@ import { usePathRedirect } from './usePathRedirect';
 import { useNotification } from '../components/Notification/Notification';
 import { setNotification } from '../helpers/setNotification';
 
-interface AuthContextType {
+interface AppContextType {
   user: LoggedUserRes | null;
   setUser: React.Dispatch<React.SetStateAction<LoggedUserRes | null>>;
   signIn: (data: Login) => Promise<void>;
   signOut: () => void;
   toast: React.MutableRefObject<any>;
   notification: JSX.Element;
+  pathRedirect: (userData: LoggedUserRes) => void;
 }
-const AuthContext = createContext<AuthContextType>(null!);
+const AppContext = createContext<AppContextType>(null!);
 
-export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const { Notification, toast } = useNotification();
   const [user, setUser] = useState<LoggedUserRes | null>(null);
   const signOut = async () => {
@@ -92,20 +93,20 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   return (
-    <AuthContext.Provider
+    <AppContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{ user, setUser, signIn, signOut, notification: Notification, toast }}
+      value={{ user, setUser, signIn, signOut, notification: Notification, toast, pathRedirect }}
     >
       {children}
-    </AuthContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  const auth = useContext(AuthContext);
+export const useApp = () => {
+  const auth = useContext(AppContext);
 
   if (!auth) {
-    throw Error('useAuth needs to be used inside AuthContext');
+    throw Error('useApp needs to be used inside AppContext');
   }
 
   return auth;

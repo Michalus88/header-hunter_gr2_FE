@@ -35,7 +35,7 @@ export const EmploymentExpectation = ({
         />
         <ExpectationElement
           title="Oczekiwane wynagrodzenie miesięczne netto"
-          text={expectedSalary ? `${expectedSalary}zł` : 'zł'}
+          text={expectedSalary ? `${expectedSalary} zł` : 'brak'}
         />
         <ExpectationElement
           title="Zgoda na odbycie bezpłatnych praktyk/stażu na początek"

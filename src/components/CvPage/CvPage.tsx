@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DetailedStudentDataRes, Role } from 'types';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useApp } from '../../hooks/useApp';
 import { MainWrapper } from './MainWrapper';
 import { GoBack } from './GoBack';
 import { StudentInfo } from './StudentInfo';
@@ -11,7 +11,7 @@ import { setNotification } from '../../helpers/setNotification';
 
 export const CvPage = () => {
   const { id } = useParams();
-  const { user, toast } = useAuth();
+  const { user, toast } = useApp();
   const [studentData, setStudentData] = useState<DetailedStudentDataRes | null>(null);
 
   useEffect(() => {

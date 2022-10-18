@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { PasswordChange } from 'types';
-import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router';
+import { useApp } from '../../hooks/useApp';
 import { ValidateMsg } from './ValidateMsg';
+import { setIfErrMsg } from '../../helpers/setIfErrMsg';
+import { setNotification } from '../../helpers/setNotification';
 
 export const ChangePassword = () => {
-  const { user } = useAuth();
-
+  const { user, toast } = useApp();
+  const navigate = useNavigate();
   const {
     register: registerPassword,
     handleSubmit: handleSubmitPassword,
@@ -21,31 +24,39 @@ export const ChangePassword = () => {
     mode: 'onChange',
   });
 
-  const oldPassword =
-    String(watchPassword('oldPassword')) === '' ? null : watchPassword('oldPassword');
-  const newPassword =
-    String(watchPassword('newPassword')) === '' ? null : watchPassword('newPassword');
-  const repeatPassword =
-    String(watchPassword('repeatPassword')) === '' ? null : watchPassword('repeatPassword');
+  // const oldPassword =
+  //   String(watchPassword('oldPassword')) === '' ? null : watchPassword('oldPassword');
+  // const newPassword =
+  //   String(watchPassword('newPassword')) === '' ? null : watchPassword('newPassword');
+  // const repeatPassword =
+  //   String(watchPassword('repeatPassword')) === '' ? null : watchPassword('repeatPassword');
 
-  const formChangePasswordOnSubmit: SubmitHandler<PasswordChange> = (data) => {
-    if (data.newPassword !== data.repeatPassword)
-      console.log('Nowe hasło i jego powtórzenie są różne.');
-    if (data.newPassword === data.oldPassword) console.log('Nowe i stare hasło są jednakowe.');
-
-    fetch(`${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_PASSWORD}`, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'PATCH',
-      body: JSON.stringify(data),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(`Failed: ${error.message}`));
+  const formChangePasswordOnSubmit: SubmitHandler<PasswordChange> = async (data) => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_USER_PASSWORD}`,
+        {
+          mode: 'cors',
+          credentials: 'include',
+          method: 'PATCH',
+          body: JSON.stringify(data),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const errMsg = await setIfErrMsg(res);
+      if (!errMsg) {
+        setNotification(toast, 'Your password has been changed', 'success');
+        navigate(-1);
+      } else {
+        setNotification(toast, errMsg);
+      }
+    } catch (err) {
+      setNotification(toast);
+      navigate(-1);
+    }
   };
 
   return (

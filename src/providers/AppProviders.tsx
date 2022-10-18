@@ -1,6 +1,6 @@
 import React from 'react';
-import { AuthProvider } from '../hooks/useAuth';
+import { AppProvider } from '../hooks/useApp';
 
 export const AppProviders = ({ children }: { children: JSX.Element }) => {
-  return <AuthProvider>{children}</AuthProvider>;
+  return <AppProvider>{children}</AppProvider>;
 };
