@@ -12,10 +12,11 @@ interface AppContextType {
   signOut: () => void;
   toast: React.MutableRefObject<any>;
   notification: JSX.Element;
+  pathRedirect: (userData: LoggedUserRes) => void;
 }
 const AppContext = createContext<AppContextType>(null!);
 
-export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+export const AppProvider = ({ children }: { children: JSX.Element }) => {
   const { Notification, toast } = useNotification();
   const [user, setUser] = useState<LoggedUserRes | null>(null);
   const signOut = async () => {
@@ -94,7 +95,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   return (
     <AppContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{ user, setUser, signIn, signOut, notification: Notification, toast }}
+      value={{ user, setUser, signIn, signOut, notification: Notification, toast, pathRedirect }}
     >
       {children}
     </AppContext.Provider>
