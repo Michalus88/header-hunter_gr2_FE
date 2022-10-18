@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { PasswordChange } from 'types';
 import { useNavigate } from 'react-router';
@@ -23,13 +22,6 @@ export const ChangePassword = () => {
     },
     mode: 'onChange',
   });
-
-  // const oldPassword =
-  //   String(watchPassword('oldPassword')) === '' ? null : watchPassword('oldPassword');
-  // const newPassword =
-  //   String(watchPassword('newPassword')) === '' ? null : watchPassword('newPassword');
-  // const repeatPassword =
-  //   String(watchPassword('repeatPassword')) === '' ? null : watchPassword('repeatPassword');
 
   const formChangePasswordOnSubmit: SubmitHandler<PasswordChange> = async (data) => {
     try {
