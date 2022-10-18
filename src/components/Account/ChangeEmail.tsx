@@ -23,11 +23,6 @@ export const ChangeEmail = () => {
     mode: 'onChange',
   });
 
-  const oldEmail = String(watchEmail('oldEmail')) === '' ? null : watchEmail('oldEmail');
-  const newEmail = String(watchEmail('newEmail')) === '' ? null : watchEmail('newEmail');
-  const repeatNewEmail =
-    String(watchEmail('repeatNewEmail')) === '' ? null : watchEmail('repeatNewEmail');
-
   const formChangeEmailOnSubmit: SubmitHandler<EmailChange> = async (data) => {
     try {
       const res = await fetch(
