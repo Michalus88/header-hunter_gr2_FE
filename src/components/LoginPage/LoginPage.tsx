@@ -43,12 +43,11 @@ export const LoginPage = () => {
       );
       const errMsg = await setIfErrMsg(res);
       if (errMsg) {
-        console.log(errMsg);
         setNotification(toast, errMsg);
         return;
       }
       setLogin(true);
-      setNotification(toast, 'Success. Check your email.');
+      setNotification(toast, 'Success. Check your email.', 'success');
     } else {
       const credential = { email: e.email, password: e.password };
       await signIn(credential);
